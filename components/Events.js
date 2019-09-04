@@ -22,6 +22,46 @@ const Events = props => {
                         <TextInput style={styles.output}></TextInput>
                     </View>
                 </View>
+
+                <View>
+                    <View style={styles.eventContainer}>
+                        <Text style={styles.eventName}>Power Throw</Text>
+                        <TextInput style={styles.input}></TextInput>
+                        <TextInput style={styles.output}></TextInput>
+                    </View>
+                </View>
+
+                <View>
+                    <View style={styles.eventContainer}>
+                        <Text style={styles.eventName}>Release Push-ups</Text>
+                        <TextInput style={styles.input}></TextInput>
+                        <TextInput style={styles.output}></TextInput>
+                    </View>
+                </View>
+
+                <View>
+                    <View style={styles.eventContainer}>
+                        <Text style={styles.eventName}>Sprint-Drag-Carry</Text>
+                        <TextInput style={styles.input}></TextInput>
+                        <TextInput style={styles.output}></TextInput>
+                    </View>
+                </View>
+
+                <View>
+                    <View style={styles.eventContainer}>
+                        <Text style={styles.eventName}>Leg Tuck</Text>
+                        <TextInput style={styles.input}></TextInput>
+                        <TextInput style={styles.output}></TextInput>
+                    </View>
+                </View>
+
+                <View>
+                    <View style={styles.eventContainer}>
+                        <Text style={styles.eventName}>2-Mile Run</Text>
+                        <TextInput style={styles.input}></TextInput>
+                        <TextInput style={styles.output}></TextInput>
+                    </View>
+                </View>
             </View>
         </TouchableWithoutFeedback>
     );
@@ -59,7 +99,8 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         width: '100%',
         justifyContent: 'space-between',
-        paddingHorizontal: 15
+        paddingHorizontal: 15,
+        paddingTop: 20
     },
     eventName: {
         fontSize: 24,

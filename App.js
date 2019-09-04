@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import Header from './components/Header';
 import GetMOS from './components/GetMOS';
 import Events from './components/Events';
+improt Score from './'
+import Footer from './components/Footer';
 
 export default function App() {
   return (
@@ -10,6 +12,8 @@ export default function App() {
       <Header title="ACFT Calculator" />
       <GetMOS />
       <Events />
+      <Score />
+      <Footer title="From 3932"/>
     </View>
   );
 }

@@ -19,7 +19,7 @@ export default class GetMOS extends Component {
         let mosInput = this.state.mosInput;
         let mos = this.state.mosDesc;
 
-        if (mosInput in mos) {
+        if (mosInput in mosDesc) {
             this.setState({
                 mosDesc,
                 mosInput: ''
@@ -35,7 +35,7 @@ export default class GetMOS extends Component {
                     getMOSInfo={() => this.getMOSInfo()}
                 />
                 <View>
-                    <Text>{this.state.mosInput}</Text>
+                    <Text>{this.state.mosDesc}</Text>
                 </View>
             </View>
         );
