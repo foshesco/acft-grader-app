@@ -8,42 +8,44 @@ import {
   Keyboard,
 } from 'react-native';
 import Deadlift from './events/Deadlift';
+import Deadlift2 from './events/Deadlift2';
 
 export default class Events extends Component {
-  constructor() {
-    super();
+  // constructor() {
+  //   super();
 
-    this.state = {
-      dlScoreInput: '',
-      deadliftScore: {
-        minMod: {
-          140: 60,
-        },
-        minSig: {
-          160: 65,
-        },
-        minHvy: {
-          180: 70,
-        },
-        maxMod: {
-          340: 100,
-        },
-        scoreSheet: {
-          100: 100,
-        },
-      },
-    };
-  }
+  //   this.state = {
+  //     dlScoreInput: '',
+  //     deadliftScore: {
+  //       minMod: {
+  //         140: 60,
+  //       },
+  //       minSig: {
+  //         160: 65,
+  //       },
+  //       minHvy: {
+  //         180: 70,
+  //       },
+  //       maxMod: {
+  //         340: 100,
+  //       },
+  //       scoreSheet: {
+  //         339: 99,
+  //         340: 100,
+  //       },
+  //     },
+  //   };
+  // }
 
-  getDLScore(e) {
-    let i;
-    let deadliftScore = this.state.deadliftScore;
+  // getDLScore(e) {
+  //   let i;
+  //   let deadliftScore = this.state.deadliftScore;
 
-    if (deadliftScore.scoreSheet[e]) {
-      i = deadliftScore.scoreSheet[e];
-      return i;
-    }
-  }
+  //   if (deadliftScore.scoreSheet[e]) {
+  //     i = deadliftScore.scoreSheet[e];
+  //     return i;
+  //   }
+  // }
 
   render() {
     return (
@@ -62,14 +64,9 @@ export default class Events extends Component {
 
           <View>
             <View style={styles.eventContainer}>
-              <Deadlift
+              <Deadlift2
                 textChange={dlScoreInput => this.setState({ dlScoreInput })}
               />
-              <View>
-                <Text style={styles.output}>
-                  {this.getDLScore(this.state.dlScoreInput)}
-                </Text>
-              </View>
             </View>
           </View>
         </View>
