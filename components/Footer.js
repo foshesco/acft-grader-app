@@ -19,9 +19,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     footerTitle: {
-        color: 'black',
+        color: 'white',
         fontSize: 18,
-        
+        paddingBottom: 45
     }
 });
 

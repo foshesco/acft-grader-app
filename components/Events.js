@@ -8,45 +8,9 @@ import {
   Keyboard,
 } from 'react-native';
 import Deadlift from './events/Deadlift';
-import Deadlift2 from './events/Deadlift2';
+import PowerThrow from './events/PowerThrow';
 
 export default class Events extends Component {
-  // constructor() {
-  //   super();
-
-  //   this.state = {
-  //     dlScoreInput: '',
-  //     deadliftScore: {
-  //       minMod: {
-  //         140: 60,
-  //       },
-  //       minSig: {
-  //         160: 65,
-  //       },
-  //       minHvy: {
-  //         180: 70,
-  //       },
-  //       maxMod: {
-  //         340: 100,
-  //       },
-  //       scoreSheet: {
-  //         339: 99,
-  //         340: 100,
-  //       },
-  //     },
-  //   };
-  // }
-
-  // getDLScore(e) {
-  //   let i;
-  //   let deadliftScore = this.state.deadliftScore;
-
-  //   if (deadliftScore.scoreSheet[e]) {
-  //     i = deadliftScore.scoreSheet[e];
-  //     return i;
-  //   }
-  // }
-
   render() {
     return (
       <TouchableWithoutFeedback
@@ -63,12 +27,13 @@ export default class Events extends Component {
           </View>
 
           <View>
-            <View style={styles.eventContainer}>
-              <Deadlift2
-                textChange={dlScoreInput => this.setState({ dlScoreInput })}
-              />
-            </View>
+            <Deadlift />
           </View>
+
+          <View>
+            <PowerThrow />
+          </View>
+
         </View>
       </TouchableWithoutFeedback>
     );
@@ -85,23 +50,12 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'space-between',
     paddingHorizontal: 15,
-    paddingBottom: 15,
+    paddingBottom: 10,
+    paddingTop: 40,
   },
   titleName: {
     fontSize: 22,
     justifyContent: 'center',
-  },
-  output: {
-    borderColor: 'black',
-    borderWidth: 1,
-    width: 100,
-    height: 50,
-  },
-  eventContainer: {
-    flexDirection: 'row',
-    width: '100%',
-    justifyContent: 'space-between',
-    paddingHorizontal: 15,
-    paddingTop: 20,
+    textDecorationLine: 'underline'
   },
 });

@@ -7,7 +7,7 @@ export default class Score extends Component {
         return (
             <View style={styles.screen}>
                 <View>
-                    <Text>{props.title}</Text>
+                    <Text>Score</Text>
                 </View>
             </View>
         );
