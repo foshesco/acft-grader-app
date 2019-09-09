@@ -15,6 +15,7 @@ export default class GetMOS extends Component {
 
         this.state = {
             mosInput: '',
+            mosLevel:'',
             mosDesc: {
                 '11A': '1Infantry',
                 '37F': '3PSYOP',

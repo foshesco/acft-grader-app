@@ -41,8 +41,6 @@ export default class Deadlift extends Component {
     let i;
     let deadliftScore = this.state.deadliftScore;
 
-    console.log("2", this.state.mosInput)
-
     if (deadliftScore.scoreSheet[e]) {
       i = deadliftScore.scoreSheet[e];
       if ((this.state.mosInput) == "MODERATE") {
