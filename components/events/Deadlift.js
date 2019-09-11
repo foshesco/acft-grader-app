@@ -7,7 +7,6 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
-import GetMOS from '../GetMOS';
 
 export default class Deadlift extends Component {
   constructor(props) {
@@ -34,16 +33,16 @@ export default class Deadlift extends Component {
         },
       },
     };
-
   }
 
   getDLScore(e) {
     let i;
     let deadliftScore = this.state.deadliftScore;
 
+    console.log("test in dl", this.props.mosLevel)
     if (deadliftScore.scoreSheet[e]) {
       i = deadliftScore.scoreSheet[e];
-      if ((this.state.mosInput) == "MODERATE") {
+      if (this.props.mosLevel == 'MODERATE') {
         return i;
       }
       return i;
@@ -54,8 +53,10 @@ export default class Deadlift extends Component {
     return (
       <View>
         <View style={styles.eventContainer}>
-          <Text style={styles.eventName}>Deadlift</Text>
-          <Deadlift2 textChange={dlScoreInput => this.setState({ dlScoreInput })} />
+        <Text style={styles.eventName}>Deadlift</Text>
+          <Deadlift2
+            textChange={dlScoreInput => this.setState({ dlScoreInput })}
+          />
           <View>
             <Text style={styles.output}>
               {this.getDLScore(this.state.dlScoreInput)}
