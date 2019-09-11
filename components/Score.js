@@ -9,7 +9,7 @@ import {
   Button,
 } from 'react-native';
 
-export default class Deadlift extends Component {
+export default class Score extends Component {
   constructor(props) {
     super(props);
 
