@@ -12,7 +12,7 @@ const Footer = props => {
 const styles = StyleSheet.create({
     footer: {
         width: '100%',
-        height: 90,
+        height: 50,
         paddingTop: 36,
         backgroundColor: 'green',
         alignItems: 'center',

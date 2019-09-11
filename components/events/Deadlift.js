@@ -55,18 +55,18 @@ export default class Deadlift extends Component {
       } else if (this.props.mosLevel === '2') {
         if (e <= 160) {
           return 'fail';
+        } else if (e >= 340) {
+          return 100;
         } else {
           return i;
         }
       } else if (this.props.mosLevel === '3') {
         if (e <= 140) {
           return 'fail';
+        } else if (e >= 340) {
+          return 100;
         } else {
           return i;
-        }
-      } else if (this.props.mosLevel === '1' || this.props.mosLevel === '2' || this.props.mosLevel === '3') {
-        if (e >= 340) {
-          return '100';
         }
       }
     }
@@ -76,7 +76,7 @@ export default class Deadlift extends Component {
     return (
       <View>
         <View style={styles.eventContainer}>
-          <Text style={styles.eventName}>Deadlift lvl - {this.props.mosLevel}</Text>
+          <Text style={styles.eventName}>DEADLIFT</Text>
           <Deadlift2
             textChange={dlScoreInput => this.setState({ dlScoreInput })}
           />
@@ -116,12 +116,18 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     width: 100,
     height: 50,
+    fontSize: 20,
+    fontWeight: '400',
+    textAlign: "center"
   },
   output: {
     borderColor: 'black',
     borderWidth: 1,
     width: 100,
     height: 50,
+    fontSize: 20,
+    fontWeight: '400',
+    textAlign: "center"
   },
   eventContainer: {
     flexDirection: 'row',

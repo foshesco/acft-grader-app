@@ -8,7 +8,7 @@ import {
     Keyboard,
 } from 'react-native';
 
-export default class PowerThrow extends Component {
+export default class ReleasePushups extends Component {
     constructor(props) {
         super(props);
 
@@ -77,7 +77,7 @@ export default class PowerThrow extends Component {
         return (
             <View>
                 <View style={styles.eventContainer}>
-                    <Text style={styles.eventName}>POWER THROW</Text>
+                    <Text style={styles.eventName}>HAND-RELEASE {"\n"}PUSH-UP</Text>
                     <PowerThrow2 textChange={ptScoreInput => this.setState({ ptScoreInput })} />
                     <View>
                         <Text style={styles.output}>

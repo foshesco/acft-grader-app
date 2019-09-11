@@ -7,8 +7,13 @@ import {
     TouchableWithoutFeedback,
     Keyboard,
 } from 'react-native';
-import PowerThrow from './events/PowerThrow';
 import Deadlift from './events/Deadlift';
+import PowerThrow from './events/PowerThrow';
+import ReleasePushups from './events/ReleasePushups';
+import SprintDragCarry from './events/SprintDragCarry';
+import LegTuck from './events/LegTuck';
+import Run from './events/Run';
+import Score from './Score';
 
 export default class GetMOS extends Component {
     constructor() {
@@ -120,7 +125,7 @@ export default class GetMOS extends Component {
     render() {
         return (
             <View style={styles.screen}>
-                <View>
+                <View style={styles.mosInfo}>
                     <Text style={styles.title}>Enter MOS</Text>
                     <TextInput
                         style={styles.input}
@@ -130,14 +135,13 @@ export default class GetMOS extends Component {
                         autoCorrect={false}
                         onChangeText={mosOutput => this.setState({ mosInput: mosOutput })}
                     />
-                </View>
-                <View style={styles.mosOutput}>
-                    <Text
-                        style={{ textAlign: 'center', fontWeight: '500', fontSize: 20 }}>
-                        {this.getMOSInfo(this.state.mosInput)}
-                    </Text>
-                    <Text>{this.getLevel(this.state.mosInput)}</Text>
-                    <Text>test in mos - {this.state.mosLevel}</Text>
+                    <View style={styles.mosOutput}>
+                        <Text
+                            style={{ textAlign: 'center', fontWeight: '500', fontSize: 20 }}>
+                            {this.getMOSInfo(this.state.mosInput)}
+                        </Text>
+                        <Text>{this.getLevel(this.state.mosInput)}</Text>
+                    </View>
                 </View>
                 <TouchableWithoutFeedback
                     onPress={() => {
@@ -157,10 +161,29 @@ export default class GetMOS extends Component {
                         </View>
 
                         <View>
-                            <PowerThrow />
+                            <PowerThrow mosLevel={this.state.mosLevel} />
+                        </View>
+
+                        <View>
+                            <ReleasePushups mosLevel={this.state.mosLevel} />
+                        </View>
+
+                        <View>
+                            <SprintDragCarry mosLevel={this.state.mosLevel} />
+                        </View>
+
+                        <View>
+                            <LegTuck mosLevel={this.state.mosLevel} />
+                        </View>
+
+                        <View>
+                            <Run mosLevel={this.state.mosLevel} />
                         </View>
                     </View>
                 </TouchableWithoutFeedback>
+                <View>
+                    <Score />
+                </View>
             </View>
         );
     }
@@ -172,9 +195,11 @@ const styles = StyleSheet.create({
         padding: 10,
         alignItems: 'center',
     },
+    mosInfo: {
+        height: 140
+    },
     screen2: {
-        flex: 4,
-        padding: 10,
+        padding: 20,
     },
     title2: {
         flexDirection: 'row',
@@ -182,7 +207,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingHorizontal: 15,
         paddingBottom: 10,
-        paddingTop: 40,
+        paddingTop: 10,
     },
     titleName: {
         fontSize: 22,
@@ -195,13 +220,15 @@ const styles = StyleSheet.create({
         width: 100,
         height: 50,
         textAlign: 'center',
+        fontSize: 22,
+        fontWeight: "bold"
     },
     title: {
         fontSize: 22,
         marginVertical: 10,
     },
     mosOutput: {
-        paddingBottom: 20,
+        paddingBottom: 10,
         paddingTop: 10,
     },
 });
