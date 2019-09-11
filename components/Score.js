@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   Keyboard,
+  Button,
 } from 'react-native';
 
 export default class Deadlift extends Component {
@@ -13,7 +14,7 @@ export default class Deadlift extends Component {
     super(props);
 
     this.state = {
-      dlScoreInput: '',
+      totalScore: '',
       deadliftScore: {
         minMod: {
           140: 60,
@@ -77,63 +78,38 @@ export default class Deadlift extends Component {
       <View>
         <View style={styles.eventContainer}>
           <Text style={styles.eventName}>TOTAL POINTS</Text>
-          <Deadlift2
-            textChange={dlScoreInput => this.setState({ dlScoreInput })}
-          />
-          <View>
-            <Text style={styles.output}>
-              {this.getDLScore(this.state.dlScoreInput)}
-            </Text>
-          </View>
+          <Text style={styles.output}>{this.getTotalScore}</Text>
+          <Button title="Clear" color="white" style={styles.clearButton} />
         </View>
       </View>
     );
   }
 }
 
-const Deadlift2 = props => {
-  return (
-    <View>
-      <Text
-        style={styles.input}
-        keyboardType='number-pad'
-        autoCorrect={false}
-        maxLength={3}
-        onChangeText={dlScoreInput => props.textChange(dlScoreInput)}
-        value={props.dlScoreInput}
-        onKeyPress={props.getDLScore}
-      />
-    </View>
-  );
-};
-
 const styles = StyleSheet.create({
   eventName: {
     fontSize: 15,
-  },
-  input: {
-    borderColor: 'black',
-    borderWidth: 1,
-    width: 100,
-    height: 50,
-    fontSize: 20,
-    fontWeight: '400',
-    textAlign: "center"
+    color: 'white',
   },
   output: {
     borderColor: 'black',
+    backgroundColor: 'white',
+    color: 'black',
     borderWidth: 1,
     width: 100,
     height: 50,
     fontSize: 20,
     fontWeight: '400',
-    textAlign: "center"
+    textAlign: 'center',
   },
   eventContainer: {
+    backgroundColor: 'gray',
     flexDirection: 'row',
     width: '100%',
     justifyContent: 'space-between',
     paddingHorizontal: 15,
     paddingTop: 20,
+    textAlignVertical: 'center',
+    alignContent: 'center',
   },
 });
