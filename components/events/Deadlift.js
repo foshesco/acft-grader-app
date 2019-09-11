@@ -28,6 +28,8 @@ export default class Deadlift extends Component {
           340: 100,
         },
         scoreSheet: {
+          1: 0,
+          21: 5,
           339: 99,
           340: 100,
         },
@@ -39,13 +41,34 @@ export default class Deadlift extends Component {
     let i;
     let deadliftScore = this.state.deadliftScore;
 
-    console.log("test in dl", this.props.mosLevel)
-    if (deadliftScore.scoreSheet[e]) {
-      i = deadliftScore.scoreSheet[e];
-      if (this.props.mosLevel == 'MODERATE') {
-        return i;
+    i = deadliftScore.scoreSheet[e];
+
+    if (e != '') {
+      if (this.props.mosLevel === '1') {
+        if (e <= 180) {
+          return 'fail';
+        } else if (e >= 340) {
+          return 100;
+        } else {
+          return i;
+        }
+      } else if (this.props.mosLevel === '2') {
+        if (e <= 160) {
+          return 'fail';
+        } else {
+          return i;
+        }
+      } else if (this.props.mosLevel === '3') {
+        if (e <= 140) {
+          return 'fail';
+        } else {
+          return i;
+        }
+      } else if (this.props.mosLevel === '1' || this.props.mosLevel === '2' || this.props.mosLevel === '3') {
+        if (e >= 340) {
+          return '100';
+        }
       }
-      return i;
     }
   }
 
@@ -53,7 +76,7 @@ export default class Deadlift extends Component {
     return (
       <View>
         <View style={styles.eventContainer}>
-        <Text style={styles.eventName}>Deadlift</Text>
+          <Text style={styles.eventName}>Deadlift lvl - {this.props.mosLevel}</Text>
           <Deadlift2
             textChange={dlScoreInput => this.setState({ dlScoreInput })}
           />
@@ -73,8 +96,9 @@ const Deadlift2 = props => {
     <View>
       <TextInput
         style={styles.input}
-        maxLength={3}
+        keyboardType='number-pad'
         autoCorrect={false}
+        maxLength={3}
         onChangeText={dlScoreInput => props.textChange(dlScoreInput)}
         value={props.dlScoreInput}
         onKeyPress={props.getDLScore}
