@@ -6,6 +6,8 @@ import {
     TextInput,
     TouchableWithoutFeedback,
     Keyboard,
+    ScrollView,
+    Dimensions
 } from 'react-native';
 import Deadlift from './events/Deadlift';
 import PowerThrow from './events/PowerThrow';
@@ -51,10 +53,10 @@ export default class GetMOS extends Component {
 
         if (mosDesc[e]) {
             lvl = mosDesc[e].substring(0, 1);
-            console.log(this.state.mosLevel)
+            console.log(this.state.mosLevel);
 
             if (this.state.mosLevel != lvl) {
-                this.setState({ mosLevel: lvl })
+                this.setState({ mosLevel: lvl });
             }
             mos = mosDesc[e].substring(1, 100);
 
@@ -125,37 +127,48 @@ export default class GetMOS extends Component {
     render() {
         return (
             <View style={styles.screen}>
-                <View style={styles.mosInfo}>
-                    <Text style={styles.title}>Enter MOS</Text>
-                    <TextInput
-                        style={styles.input}
-                        autoCapitalize="characters"
-                        maxLength={4}
-                        minLength={3}
-                        autoCorrect={false}
-                        onChangeText={mosOutput => this.setState({ mosInput: mosOutput })}
-                    />
-                    <View style={styles.mosOutput}>
-                        <Text
-                            style={{ textAlign: 'center', fontWeight: '500', fontSize: 20 }}>
-                            {this.getMOSInfo(this.state.mosInput)}
-                        </Text>
-                        <Text>{this.getLevel(this.state.mosInput)}</Text>
+                <View style={styles.mosInfoContainer}>
+                    <View style={styles.mosInput}>
+                        <Text style={styles.enterMOS}>Enter MOS</Text>
+                        <TextInput
+                            style={styles.input}
+                            autoCapitalize="characters"
+                            maxLength={4}
+                            minLength={3}
+                            autoCorrect={false}
+                            onChangeText={mosOutput => this.setState({ mosInput: mosOutput })}
+                        />
+                    </View>
+                    <View style={{flex: 1, flexDirection: 'row'}}>
+                        <View style={styles.mosText}>
+                            <Text style={{ paddingBottom: 40, paddingTop: 15 }}>Job - </Text>
+                            <Text style={{ paddingRight: 5 }}>Level - </Text>
+                        </View>
+                        <View style={styles.mosOutput}>
+                            <Text
+                                style={{
+                                    textAlign: 'center',
+                                    fontWeight: '500',
+                                    fontSize: 20,
+                                    paddingBottom: 30,
+                                }}>
+                                {this.getMOSInfo(this.state.mosInput)}
+                            </Text>
+                            <Text>{this.getLevel(this.state.mosInput)}</Text>
+                        </View>
                     </View>
                 </View>
+                <View
+                    style={{
+                        borderBottomColor: 'black',
+                        borderBottomWidth: 1,
+                    }}
+                />
                 <TouchableWithoutFeedback
                     onPress={() => {
                         Keyboard.dismiss();
                     }}>
                     <View style={styles.screen2}>
-                        <View>
-                            <View style={styles.title2}>
-                                <Text style={styles.titleName}>Events</Text>
-                                <Text style={styles.titleName}>Raw Score</Text>
-                                <Text style={styles.titleName}>Points</Text>
-                            </View>
-                        </View>
-
                         <View>
                             <Deadlift mosLevel={this.state.mosLevel} />
                         </View>
@@ -182,7 +195,7 @@ export default class GetMOS extends Component {
                     </View>
                 </TouchableWithoutFeedback>
                 <View>
-                    <Score />
+                    <Score mosLevel={this.state.mosLevel} />
                 </View>
             </View>
         );
@@ -190,16 +203,25 @@ export default class GetMOS extends Component {
 }
 
 const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
+    mosInfoContainer: {
         padding: 10,
-        alignItems: 'center',
+        height: 160,
+        flexDirection: 'row',
     },
-    mosInfo: {
-        height: 140
+    mosInput: {
+        flexDirection: 'column',
+        textAlign: 'right',
+        paddingRight: '10%',
+        padding: '5%'
     },
-    screen2: {
-        padding: 20,
+    mosText: {
+        textAlign: 'right',
+        paddingBottom: '5%',
+        paddingTop: '5%',
+    },
+    mosOutput: {
+        paddingBottom: '10%',
+        paddingTop: '10%',
     },
     title2: {
         flexDirection: 'row',
@@ -221,14 +243,12 @@ const styles = StyleSheet.create({
         height: 50,
         textAlign: 'center',
         fontSize: 22,
-        fontWeight: "bold"
+        fontWeight: 'bold',
+        justifyContent: 'center',
     },
-    title: {
+    enterMOS: {
         fontSize: 22,
-        marginVertical: 10,
-    },
-    mosOutput: {
-        paddingBottom: 10,
-        paddingTop: 10,
+        marginVertical: 4,
+        textAlign: 'center',
     },
 });

@@ -75,11 +75,17 @@ export default class Score extends Component {
 
   render() {
     return (
-      <View>
+      <View style={{paddingTop: '15%'}}>
         <View style={styles.eventContainer}>
-          <Text style={styles.eventName}>TOTAL POINTS</Text>
-          <Text style={styles.output}>{this.getTotalScore}</Text>
-          <Button title="Clear" color="white" style={styles.clearButton} />
+          <View>
+            <Text style={styles.eventName}>TOTAL POINTS</Text>
+          </View>
+          <View>
+            <Text style={styles.output}>{this.getTotalScore}</Text>
+          </View>
+          <View>
+            <Button title="Clear" color="white" style={styles.clearButton} />
+          </View>
         </View>
       </View>
     );
@@ -97,7 +103,7 @@ const styles = StyleSheet.create({
     color: 'black',
     borderWidth: 1,
     width: 100,
-    height: 50,
+    height: 55,
     fontSize: 20,
     fontWeight: '400',
     textAlign: 'center',
@@ -107,8 +113,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     justifyContent: 'space-between',
+    padding: '5%',
     paddingHorizontal: 15,
-    paddingTop: 20,
     textAlignVertical: 'center',
     alignContent: 'center',
   },

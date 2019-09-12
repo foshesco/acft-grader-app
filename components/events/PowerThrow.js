@@ -7,6 +7,7 @@ import {
     TouchableWithoutFeedback,
     Keyboard,
 } from 'react-native';
+import { styles } from './Styles';
 
 export default class PowerThrow extends Component {
     constructor(props) {
@@ -77,9 +78,13 @@ export default class PowerThrow extends Component {
         return (
             <View>
                 <View style={styles.eventContainer}>
-                    <Text style={styles.eventName}>POWER THROW</Text>
-                    <PowerThrow2 textChange={ptScoreInput => this.setState({ ptScoreInput })} />
-                    <View>
+                    <View styles={styles.child1}>
+                        <Text style={styles.eventName}>POWER THROW</Text>
+                    </View>
+                    <View styles={styles.child2}>
+                        <PowerThrow2 textChange={ptScoreInput => this.setState({ ptScoreInput })} />
+                    </View>
+                    <View styles={styles.child3}>
                         <Text style={styles.output}>
                             {this.getPTScore(this.state.ptScoreInput)}
                         </Text>
@@ -105,34 +110,3 @@ const PowerThrow2 = props => {
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    eventName: {
-        fontSize: 15,
-    },
-    input: {
-        borderColor: 'black',
-        borderWidth: 1,
-        width: 100,
-        height: 50,
-        fontSize: 20,
-        fontWeight: '400',
-        textAlign: "center"
-    },
-    output: {
-        borderColor: 'black',
-        borderWidth: 1,
-        width: 100,
-        height: 50,
-        fontSize: 20,
-        fontWeight: '400',
-        textAlign: "center"
-    },
-    eventContainer: {
-        flexDirection: 'row',
-        width: '100%',
-        justifyContent: 'space-between',
-        paddingHorizontal: 15,
-        paddingTop: 20,
-    },
-});

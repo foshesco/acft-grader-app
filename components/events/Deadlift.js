@@ -2,11 +2,9 @@ import React, { Component, useState } from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   TextInput,
-  TouchableWithoutFeedback,
-  Keyboard,
 } from 'react-native';
+import { styles } from './Styles';
 
 export default class Deadlift extends Component {
   constructor(props) {
@@ -76,11 +74,17 @@ export default class Deadlift extends Component {
     return (
       <View>
         <View style={styles.eventContainer}>
-          <Text style={styles.eventName}>DEADLIFT</Text>
-          <Deadlift2
-            textChange={dlScoreInput => this.setState({ dlScoreInput })}
-          />
-          <View>
+          <View styles={styles.child1}>
+            <Text style={styles.titleName}>Events</Text>
+            <Text style={styles.eventName}>DEADLIFT</Text>
+          </View>
+          <View styles={styles.child2}>
+            <Text style={styles.titleName}>Raw</Text>
+            <Deadlift2
+              textChange={dlScoreInput => this.setState({ dlScoreInput })}/>
+          </View>
+          <View styles={styles.child3}>
+            <Text style={styles.titleName}>Points</Text>
             <Text style={styles.output}>
               {this.getDLScore(this.state.dlScoreInput)}
             </Text>
@@ -106,34 +110,3 @@ const Deadlift2 = props => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  eventName: {
-    fontSize: 15,
-  },
-  input: {
-    borderColor: 'black',
-    borderWidth: 1,
-    width: 100,
-    height: 50,
-    fontSize: 20,
-    fontWeight: '400',
-    textAlign: "center"
-  },
-  output: {
-    borderColor: 'black',
-    borderWidth: 1,
-    width: 100,
-    height: 50,
-    fontSize: 20,
-    fontWeight: '400',
-    textAlign: "center"
-  },
-  eventContainer: {
-    flexDirection: 'row',
-    width: '100%',
-    justifyContent: 'space-between',
-    paddingHorizontal: 15,
-    paddingTop: 20,
-  },
-});
