@@ -8,6 +8,7 @@ export default class Deadlift extends Component {
 
     this.state = {
       dlScoreInput: '',
+      dlPoints: 0,
       deadliftScore: {
         minMod: {
           140: 60,
@@ -44,6 +45,9 @@ export default class Deadlift extends Component {
         } else if (e >= 340) {
           return 100;
         } else {
+          if (this.state.dlPoints != i) {
+            this.setState({ dlPoints: i });
+          }
           return i;
         }
       } else if (this.props.mosLevel === '2') {
@@ -71,6 +75,7 @@ export default class Deadlift extends Component {
       <View>
         <View style={styles.eventContainer}>
           <View styles={styles.child1}>
+            <Text>dlPoints - {this.state.dlPoints}</Text>
             <Text style={styles.titleName}>Events</Text>
             <Text style={styles.eventName}>DEADLIFT</Text>
           </View>

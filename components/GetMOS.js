@@ -23,11 +23,12 @@ export default class GetMOS extends Component {
 
     this.state = {
       clear: false,
+      totalScore: 'hi',
       mosInput: '',
       mosLevel: '',
       mosDesc: {
         '11A': '1Infantry',
-        '37F': '3PSYOP',
+        '37F': '3Psychological Operations Specialst',
         '42A': '3Secretary',
       },
     };
@@ -59,7 +60,7 @@ export default class GetMOS extends Component {
         this.setState({ mosLevel: lvl });
       }
       mos = mosDesc[e].substring(1, 100);
-
+      
       return mos;
     } else if (e !== '' && e.length >= 3 && !mosDesc[e]) {
       return invalid;
@@ -120,62 +121,56 @@ export default class GetMOS extends Component {
     }
   }
 
-  handleChangeInput = text => {
-    this.setState({ mosLevel: text });
-  };
-
   render() {
     return (
-      <ScrollView>
-        <View>
-          <View style={styles.mosInfoContainer}>
-            <View style={styles.mosInput}>
-              <Text style={styles.enterMOS}>Enter MOS</Text>
-              <TextInput
-                style={styles.input}
-                autoCapitalize="characters"
-                maxLength={4}
-                minLength={3}
-                autoCorrect={false}
-                onChangeText={mosOutput =>
-                  this.setState({ mosInput: mosOutput })
-                }
-              />
+      <View>
+        <View style={styles.mosInfoContainer}>
+          <View style={styles.mosInput}>
+            <Text style={styles.enterMOS}>Enter MOS</Text>
+            <TextInput
+              style={styles.input}
+              autoCapitalize="characters"
+              maxLength={4}
+              minLength={3}
+              autoCorrect={false}
+              onChangeText={mosOutput => this.setState({ mosInput: mosOutput })}
+            />
+          </View>
+          <View style={{ flex: 1, flexDirection: 'row' }}>
+            <View style={styles.mosText}>
+              <Text style={{ paddingBottom: 40, paddingTop: 15 }}>Job - </Text>
+              <Text style={{ paddingRight: 5 }}>Level - </Text>
             </View>
-            <View style={{ flex: 1, flexDirection: 'row' }}>
-              <View style={styles.mosText}>
-                <Text style={{ paddingBottom: 40, paddingTop: 15 }}>
-                  Job -{' '}
-                </Text>
-                <Text style={{ paddingRight: 5 }}>Level - </Text>
-              </View>
-              <View style={styles.mosOutput}>
-                <Text
-                  style={{
-                    textAlign: 'center',
-                    fontWeight: '500',
-                    fontSize: 20,
-                    paddingBottom: 30,
-                  }}>
-                  {this.getMOSInfo(this.state.mosInput)}
-                </Text>
-                <Text>{this.getLevel(this.state.mosInput)}</Text>
-              </View>
+            <View style={styles.mosOutput}>
+              <Text
+                style={{
+                  textAlign: 'center',
+                  fontWeight: '500',
+                  fontSize: 20,
+                  paddingBottom: 30,
+                }}>
+                {this.getMOSInfo(this.state.mosInput)}
+              </Text>
+              <Text>{this.getLevel(this.state.mosInput)}</Text>
             </View>
           </View>
-          <View
-            style={{
-              borderBottomColor: 'black',
-              borderBottomWidth: 1,
-            }}
-          />
+        </View>
+        <View
+          style={{
+            borderBottomColor: 'black',
+            borderBottomWidth: 1,
+          }}
+        />
+        <ScrollView>
           <TouchableWithoutFeedback
             onPress={() => {
               Keyboard.dismiss();
             }}>
             <View style={styles.screen2}>
               <View>
-                <Deadlift mosLevel={this.state.mosLevel} />
+                <Deadlift
+                  mosLevel={this.state.mosLevel}
+                />
               </View>
 
               <View>
@@ -199,8 +194,8 @@ export default class GetMOS extends Component {
               </View>
             </View>
           </TouchableWithoutFeedback>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     );
   }
 }
