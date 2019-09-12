@@ -6,7 +6,7 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   Keyboard,
-  Button,
+  TouchableOpacity,
 } from 'react-native';
 
 export default class Score extends Component {
@@ -75,16 +75,18 @@ export default class Score extends Component {
 
   render() {
     return (
-      <View style={{paddingTop: '15%'}}>
+      <View style={{ paddingTop: '15%' }}>
         <View style={styles.eventContainer}>
           <View>
-            <Text style={styles.eventName}>TOTAL POINTS</Text>
+            <Text style={styles.eventName}>TOTAL POINTS:</Text>
           </View>
           <View>
             <Text style={styles.output}>{this.getTotalScore}</Text>
           </View>
-          <View>
-            <Button title="Clear" color="white" style={styles.clearButton} />
+          <View style={{paddingTop: 10}}>
+            <TouchableOpacity style={styles.button}>
+              <Text> Clear </Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -94,8 +96,15 @@ export default class Score extends Component {
 
 const styles = StyleSheet.create({
   eventName: {
-    fontSize: 15,
+    fontSize: 25,
+    paddingTop: 10,
     color: 'white',
+    textAlignVertical: 'center',
+  },
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: 10
   },
   output: {
     borderColor: 'black',
@@ -109,8 +118,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   eventContainer: {
-    backgroundColor: 'gray',
     flexDirection: 'row',
+    backgroundColor: 'gray',
     width: '100%',
     justifyContent: 'space-between',
     padding: '5%',
