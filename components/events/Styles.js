@@ -3,19 +3,19 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   eventName: {
     fontSize: 15,
-    width: 150
+    width: 150,
   },
   titleName: {
     fontSize: 22,
     justifyContent: 'center',
     textDecorationLine: 'underline',
-    paddingBottom: 30
+    paddingBottom: 30,
   },
   input: {
     borderColor: 'black',
     borderWidth: 1,
-    width: 80,
-    height: 40,
+    width: 75,
+    height: 35,
     fontSize: 20,
     fontWeight: '400',
     textAlign: 'center',
@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
   output: {
     borderColor: 'black',
     borderWidth: 1,
-    width: 80,
-    height: 40,
+    width: 75,
+    height: 35,
     fontSize: 20,
     fontWeight: '400',
     textAlign: 'center',
@@ -36,15 +36,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingTop: 20,
   },
-  child1: {
-
-  },
-  child2: {
-
-  },
-  child3: {
-
-  }
+  child1: {},
+  child2: {},
+  child3: {},
 });
 
 export { styles };

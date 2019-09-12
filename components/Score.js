@@ -75,7 +75,7 @@ export default class Score extends Component {
 
   render() {
     return (
-      <View style={{ paddingTop: '15%' }}>
+      <View >
         <View style={styles.eventContainer}>
           <View>
             <Text style={styles.eventName}>TOTAL POINTS:</Text>
@@ -83,7 +83,7 @@ export default class Score extends Component {
           <View>
             <Text style={styles.output}>{this.getTotalScore}</Text>
           </View>
-          <View style={{paddingTop: 10}}>
+          <View style={{ paddingTop: '1%' }}>
             <TouchableOpacity style={styles.button}>
               <Text> Clear </Text>
             </TouchableOpacity>
@@ -96,7 +96,7 @@ export default class Score extends Component {
 
 const styles = StyleSheet.create({
   eventName: {
-    fontSize: 25,
+    fontSize: 22,
     paddingTop: 10,
     color: 'white',
     textAlignVertical: 'center',
@@ -104,15 +104,15 @@ const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
     backgroundColor: '#DDDDDD',
-    padding: 10
+    padding: 10,
   },
   output: {
     borderColor: 'black',
     backgroundColor: 'white',
     color: 'black',
     borderWidth: 1,
-    width: 100,
-    height: 55,
+    width: 80,
+    height: 45,
     fontSize: 20,
     fontWeight: '400',
     textAlign: 'center',
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'gray',
     width: '100%',
     justifyContent: 'space-between',
-    padding: '5%',
+    padding: '2%',
     paddingHorizontal: 15,
     textAlignVertical: 'center',
     alignContent: 'center',

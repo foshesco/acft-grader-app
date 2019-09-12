@@ -1,9 +1,5 @@
 import React, { Component, useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-} from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 import { styles } from './Styles';
 
 export default class Deadlift extends Component {
@@ -81,7 +77,8 @@ export default class Deadlift extends Component {
           <View styles={styles.child2}>
             <Text style={styles.titleName}>Raw</Text>
             <Deadlift2
-              textChange={dlScoreInput => this.setState({ dlScoreInput })}/>
+              textChange={dlScoreInput => this.setState({ dlScoreInput })}
+            />
           </View>
           <View styles={styles.child3}>
             <Text style={styles.titleName}>Points</Text>
@@ -100,7 +97,7 @@ const Deadlift2 = props => {
     <View>
       <TextInput
         style={styles.input}
-        keyboardType='number-pad'
+        keyboardType="number-pad"
         autoCorrect={false}
         maxLength={3}
         onChangeText={dlScoreInput => props.textChange(dlScoreInput)}
