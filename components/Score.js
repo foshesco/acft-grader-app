@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   eventName: {
     fontSize: 22,
     paddingTop: 10,
-    color: 'white',
+    color: 'black',
     textAlignVertical: 'center',
   },
   button: {
@@ -118,11 +118,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   eventContainer: {
+    borderTopColor: 'black',
+    borderTopWidth: 1.5,
     flexDirection: 'row',
-    backgroundColor: 'gray',
+    backgroundColor: '#E8E8E8',
     width: '100%',
     justifyContent: 'space-between',
-    padding: '2%',
+    padding: '6%',
     paddingHorizontal: 15,
     textAlignVertical: 'center',
     alignContent: 'center',

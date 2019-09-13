@@ -60,7 +60,7 @@ export default class GetMOS extends Component {
         this.setState({ mosLevel: lvl });
       }
       mos = mosDesc[e].substring(1, 100);
-      
+
       return mos;
     } else if (e !== '' && e.length >= 3 && !mosDesc[e]) {
       return invalid;
@@ -123,7 +123,7 @@ export default class GetMOS extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.mosScreen}>
         <View style={styles.mosInfoContainer}>
           <View style={styles.mosInput}>
             <Text style={styles.enterMOS}>Enter MOS</Text>
@@ -158,7 +158,7 @@ export default class GetMOS extends Component {
         <View
           style={{
             borderBottomColor: 'black',
-            borderBottomWidth: 1,
+            borderBottomWidth: 1.5,
           }}
         />
         <ScrollView>
@@ -200,11 +200,20 @@ export default class GetMOS extends Component {
   }
 }
 
+const { width, height } = Dimensions.get('window');
+
+
 const styles = StyleSheet.create({
+  mosScreen: {
+    height: height * 0.75,
+    width: width
+  },
   mosInfoContainer: {
     padding: 10,
     height: 130,
+    width: width,
     flexDirection: 'row',
+    backgroundColor: '#E8E8E8',
   },
   mosInput: {
     flexDirection: 'column',
@@ -230,6 +239,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: 'bold',
     justifyContent: 'center',
+    backgroundColor: 'white',
   },
   enterMOS: {
     fontSize: 22,
