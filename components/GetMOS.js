@@ -161,40 +161,42 @@ export default class GetMOS extends Component {
             borderBottomWidth: 1.5,
           }}
         />
-        <ScrollView>
-          <TouchableWithoutFeedback
-            onPress={() => {
-              Keyboard.dismiss();
-            }}>
-            <View style={styles.screen2}>
-              <View>
-                <Deadlift
-                  mosLevel={this.state.mosLevel}
-                />
-              </View>
+        <View style={styles.eventContainer}>
+          <ScrollView>
+            <TouchableWithoutFeedback
+              onPress={() => {
+                Keyboard.dismiss();
+              }}>
+              <View style={styles.screen2}>
+                <View>
+                  <Deadlift
+                    mosLevel={this.state.mosLevel}
+                  />
+                </View>
 
-              <View>
-                <PowerThrow mosLevel={this.state.mosLevel} />
-              </View>
+                <View>
+                  <PowerThrow mosLevel={this.state.mosLevel} />
+                </View>
 
-              <View>
-                <ReleasePushups mosLevel={this.state.mosLevel} />
-              </View>
+                <View>
+                  <ReleasePushups mosLevel={this.state.mosLevel} />
+                </View>
 
-              <View>
-                <SprintDragCarry mosLevel={this.state.mosLevel} />
-              </View>
+                <View>
+                  <SprintDragCarry mosLevel={this.state.mosLevel} />
+                </View>
 
-              <View>
-                <LegTuck mosLevel={this.state.mosLevel} />
-              </View>
+                <View>
+                  <LegTuck mosLevel={this.state.mosLevel} />
+                </View>
 
-              <View>
-                <Run mosLevel={this.state.mosLevel} />
+                <View>
+                  <Run mosLevel={this.state.mosLevel} />
+                </View>
               </View>
-            </View>
-          </TouchableWithoutFeedback>
-        </ScrollView>
+            </TouchableWithoutFeedback>
+          </ScrollView>
+        </View>
       </View>
     );
   }
@@ -202,11 +204,17 @@ export default class GetMOS extends Component {
 
 const { width, height } = Dimensions.get('window');
 
-
 const styles = StyleSheet.create({
   mosScreen: {
     height: height * 0.75,
     width: width
+  },
+  eventContainer: {
+    height: height,
+    flex:1,
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'center'
   },
   mosInfoContainer: {
     padding: 10,
