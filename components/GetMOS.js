@@ -202,7 +202,8 @@ export default class GetMOS extends Component {
   }
 }
 
-const { width, height } = Dimensions.get('window');
+const height = Dimensions.get('window').height;
+const width = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
   mosScreen: {
@@ -211,9 +212,7 @@ const styles = StyleSheet.create({
   },
   eventContainer: {
     height: height,
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'stretch',
+    width: width
   },
   mosInfoContainer: {
     padding: 10,

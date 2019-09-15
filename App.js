@@ -25,7 +25,8 @@ export default function App() {
   );
 }
 
-const { width, height } = Dimensions.get('window');
+const height = Dimensions.get('window').height;
+const width = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
   container: {
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   myView: {
-    width: width,
     height: height,
+    width: width,
   },
 });

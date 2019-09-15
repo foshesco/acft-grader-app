@@ -58,6 +58,17 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     textAlign: 'center',
   },
+  failed: {
+    borderColor: 'black',
+    borderWidth: 1,
+    width: 75,
+    height: 35,
+    fontSize: 20,
+    fontWeight: '400',
+    textAlign: 'center',
+    backgroundColor: 'red',
+    color: 'white'
+  },
   running: {
     flexDirection: 'row'
   },

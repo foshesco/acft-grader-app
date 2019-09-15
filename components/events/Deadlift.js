@@ -29,7 +29,7 @@ export default class Deadlift extends Component {
     if (e != '') {
       if (this.props.mosLevel === '1') {
         if (e < 180) {
-          return 'fail';
+          return (<Text style={styles.failed}>fail</Text>);
         } else if (e >= 340) {
           return 100;
         } else {
