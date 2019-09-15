@@ -16,18 +16,6 @@ export default class PowerThrow extends Component {
     this.state = {
       ptScoreInput: '',
       powerThrowScore: {
-        minMod: {
-          4.6: 60,
-        },
-        minSig: {
-          6.6: 65,
-        },
-        minHvy: {
-          8.5: 70,
-        },
-        maxMod: {
-          13.5: 100,
-        },
         scoreSheet: {
           13.1: 98,
           13.2: 99,
@@ -47,7 +35,7 @@ export default class PowerThrow extends Component {
 
     if (e != '') {
       if (this.props.mosLevel === '1') {
-        if (e <= 8.5) {
+        if (e < 8.5) {
           return 'fail';
         } else if (e >= 13.5) {
           return 100;
@@ -55,7 +43,7 @@ export default class PowerThrow extends Component {
           return i;
         }
       } else if (this.props.mosLevel === '2') {
-        if (e <= 6.6) {
+        if (e < 6.6) {
           return 'fail';
         } else if (e >= 13.5) {
           return 100;
@@ -63,7 +51,7 @@ export default class PowerThrow extends Component {
           return i;
         }
       } else if (this.props.mosLevel === '3') {
-        if (e <= 8.5) {
+        if (e < 4.6) {
           return 'fail';
         } else if (e >= 13.5) {
           return 100;

@@ -1,11 +1,9 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import {
     View,
     Text,
-    StyleSheet,
     TextInput,
-    TouchableWithoutFeedback,
-    Keyboard,
+    StyleSheet
 } from 'react-native';
 import { styles } from './Styles';
 
@@ -14,58 +12,56 @@ export default class SprintDragCarry extends Component {
         super(props);
 
         this.state = {
-            ptScoreInput: '',
-            powerThrowScore: {
-                minMod: {
-                    4.6: 60
-                },
-                minSig: {
-                    6.6: 65
-                },
-                minHvy: {
-                    8.5: 70
-                },
-                maxMod: {
-                    13.5: 100
-                },
+            sdcTotalScore: '',
+            sdcMinInput: '',
+            sdcSecInput: '',
+            value: '',
+            sdcScore: {
                 scoreSheet: {
-                    13.1: 98,
-                    13.2: 99,
-                    13.3: 99,
-                    13.4: 99,
-                    13.5: 100
+                    140: 100,
+                    141: 98,
+                    142: 97,
+                    143: 96,
+                    144: 95,
+                    145: 94,
+                    146: 93,
+                    147: 92,
                 },
             },
         };
     }
 
-    getPTScore(e) {
+    getSDCScore() {
         let i;
-        let powerThrowScore = this.state.powerThrowScore;
+        let sdcScore = this.state.sdcScore;
+        e = this.state.sdcMinInput.concat(this.state.sdcSecInput)
 
-        i = powerThrowScore.scoreSheet[e];
+        console.log("this.state.sdcMinInput", this.state.sdcMinInput)
+        console.log("e", e)
+
+        i = sdcScore.scoreSheet[e];
 
         if (e != '') {
             if (this.props.mosLevel === '1') {
-                if (e <= 8.5) {
+                if (e >= 209) {
                     return 'fail';
-                } else if (e >= 13.5) {
+                } else if (e <= 140) {
                     return 100;
                 } else {
                     return i;
                 }
             } else if (this.props.mosLevel === '2') {
-                if (e <= 6.6) {
+                if (e >= 245) {
                     return 'fail';
-                } else if (e >= 13.5) {
+                } else if (e <= 140) {
                     return 100;
                 } else {
                     return i;
                 }
             } else if (this.props.mosLevel === '3') {
-                if (e <= 8.5) {
+                if (e >= 335) {
                     return 'fail';
-                } else if (e >= 13.5) {
+                } else if (e <= 140) {
                     return 100;
                 } else {
                     return i;
@@ -82,11 +78,37 @@ export default class SprintDragCarry extends Component {
                         <Text style={styles.eventName}>SPRINT-DRAG-CARRY</Text>
                     </View>
                     <View styles={styles.child2}>
-                        <PowerThrow2 textChange={ptScoreInput => this.setState({ ptScoreInput })} />
+                        <View style={styles.runContainer}>
+                            <TextInput
+                                onChangeText={sdcMinInput => this.setState({ sdcMinInput })}
+                                style={styles.input1}
+                                keyboardType='decimal-pad'
+                                maxLength={1}
+                                autoCorrect={false}
+                                value={this.state.value}
+                                onChangeText={value => {
+                                    this.setState({ value })
+                                    if (value) this.refs.input_2.focus(); //assumption is TextInput ref is input_2
+                                }}
+                            />
+                            <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, borderTopColor: 'black', borderTopWidth: 1 }}>
+                                <Text style={{ fontSize: 22 }}>:</Text>
+                            </View>
+                            <TextInput
+                                onChangeText={sdcSecInput => this.setState({ sdcSecInput })}
+                                style={styles.input2}
+                                ref="input_2"
+                                keyboardType='decimal-pad'
+                                maxLength={2}
+                                autoCorrect={false}
+                                value={this.state.sdcSecInput}
+                            />
+                        </View >
                     </View>
                     <View styles={styles.child3}>
+
                         <Text style={styles.output}>
-                            {this.getPTScore(this.state.ptScoreInput)}
+                            {this.getSDCScore()}
                         </Text>
                     </View>
                 </View>
@@ -97,16 +119,31 @@ export default class SprintDragCarry extends Component {
 
 const PowerThrow2 = props => {
     return (
-        <View>
+        <View style={styles.runContainer}>
             <TextInput
-                style={styles.input}
+                style={styles.input1}
                 keyboardType='decimal-pad'
-                maxLength={4}
+                maxLength={1}
                 autoCorrect={false}
-                onChangeText={ptScoreInput => props.textChange(ptScoreInput)}
-                value={props.ptScoreInput}
-                onKeyPress={props.getPTScore}
+                onChangeText={sdcMinInput => props.minInput(sdcMinInput)}
+                value={props.sdcMinInput}
+                onChangeText={value => {
+                    this.setState({ value })
+                    if (value) this.refs.input_2.focus(); //assumption is TextInput ref is input_2
+                }}
             />
-        </View>
+            <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, borderTopColor: 'black', borderTopWidth: 1 }}>
+                <Text style={{ fontSize: 22 }}>:</Text>
+            </View>
+            <TextInput
+                style={styles.input2}
+                ref="input_2"
+                keyboardType='decimal-pad'
+                maxLength={2}
+                autoCorrect={false}
+                onChangeText={sdcSecInput => props.secInput(sdcSecInput)}
+                value={props.sdcSecInput}
+            />
+        </View >
     );
 };

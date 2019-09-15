@@ -14,20 +14,8 @@ export default class LegTuck extends Component {
     super(props);
 
     this.state = {
-      ptScoreInput: '',
-      powerThrowScore: {
-        minMod: {
-          4.6: 60,
-        },
-        minSig: {
-          6.6: 65,
-        },
-        minHvy: {
-          8.5: 70,
-        },
-        maxMod: {
-          13.5: 100,
-        },
+      ltScoreInput: '',
+      legTuckScore: {
         scoreSheet: {
           13.1: 98,
           13.2: 99,
@@ -39,33 +27,33 @@ export default class LegTuck extends Component {
     };
   }
 
-  getPTScore(e) {
+  getLTScore(e) {
     let i;
-    let powerThrowScore = this.state.powerThrowScore;
+    let legTuckScore = this.state.legTuckScore;
 
-    i = powerThrowScore.scoreSheet[e];
+    i = legTuckScore.scoreSheet[e];
 
     if (e != '') {
       if (this.props.mosLevel === '1') {
-        if (e <= 8.5) {
+        if (e < 5) {
           return 'fail';
-        } else if (e >= 13.5) {
+        } else if (e >= 20) {
           return 100;
         } else {
           return i;
         }
       } else if (this.props.mosLevel === '2') {
-        if (e <= 6.6) {
+        if (e < 3) {
           return 'fail';
-        } else if (e >= 13.5) {
+        } else if (e >= 20) {
           return 100;
         } else {
           return i;
         }
       } else if (this.props.mosLevel === '3') {
-        if (e <= 8.5) {
+        if (e < 1) {
           return 'fail';
-        } else if (e >= 13.5) {
+        } else if (e >= 20) {
           return 100;
         } else {
           return i;
@@ -83,12 +71,12 @@ export default class LegTuck extends Component {
           </View>
           <View styles={styles.child2}>
             <PowerThrow2
-              textChange={ptScoreInput => this.setState({ ptScoreInput })}
+              textChange={ltScoreInput => this.setState({ ltScoreInput })}
             />
           </View>
           <View styles={styles.child3}>
             <Text style={styles.output}>
-              {this.getPTScore(this.state.ptScoreInput)}
+              {this.getLTScore(this.state.ltScoreInput)}
             </Text>
           </View>
         </View>
@@ -105,9 +93,9 @@ const PowerThrow2 = props => {
         keyboardType="decimal-pad"
         maxLength={4}
         autoCorrect={false}
-        onChangeText={ptScoreInput => props.textChange(ptScoreInput)}
-        value={props.ptScoreInput}
-        onKeyPress={props.getPTScore}
+        onChangeText={ltScoreInput => props.textChange(ltScoreInput)}
+        value={props.ltScoreInput}
+        onKeyPress={props.getLTScore}
       />
     </View>
   );

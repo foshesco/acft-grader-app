@@ -20,6 +20,35 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     textAlign: 'center',
   },
+  runContainer: {
+    flexDirection: 'row'
+  },
+  input1: {
+    borderTopColor: 'black',
+    borderTopWidth: 1,
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
+    borderLeftColor: 'black',
+    borderLeftWidth: 1,
+    width: 35,
+    height: 35,
+    fontSize: 20,
+    fontWeight: '400',
+    textAlign: 'center',
+  },
+  input2: {
+    borderTopColor: 'black',
+    borderTopWidth: 1,
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
+    borderRightColor: 'black',
+    borderRightWidth: 1,
+    width: 35,
+    height: 35,
+    fontSize: 20,
+    fontWeight: '400',
+    textAlign: 'center',
+  },
   output: {
     borderColor: 'black',
     borderWidth: 1,
@@ -28,6 +57,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '400',
     textAlign: 'center',
+  },
+  running: {
+    flexDirection: 'row'
   },
   eventContainer: {
     flexDirection: 'row',

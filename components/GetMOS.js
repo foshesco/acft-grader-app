@@ -54,7 +54,6 @@ export default class GetMOS extends Component {
 
     if (mosDesc[e]) {
       lvl = mosDesc[e].substring(0, 1);
-      console.log(this.state.mosLevel);
 
       if (this.state.mosLevel != lvl) {
         this.setState({ mosLevel: lvl });
@@ -171,6 +170,7 @@ export default class GetMOS extends Component {
                 <View>
                   <Deadlift
                     mosLevel={this.state.mosLevel}
+                    dlScoreInput={this.props.dlScoreInput}
                   />
                 </View>
 
@@ -211,10 +211,9 @@ const styles = StyleSheet.create({
   },
   eventContainer: {
     height: height,
-    flex:1,
-    flexDirection:'row',
-    alignItems:'center',
-    justifyContent:'center'
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'stretch',
   },
   mosInfoContainer: {
     padding: 10,

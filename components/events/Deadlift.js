@@ -10,18 +10,6 @@ export default class Deadlift extends Component {
       dlScoreInput: '',
       dlPoints: 0,
       deadliftScore: {
-        minMod: {
-          140: 60,
-        },
-        minSig: {
-          160: 65,
-        },
-        minHvy: {
-          180: 70,
-        },
-        maxMod: {
-          340: 100,
-        },
         scoreSheet: {
           1: 0,
           21: 5,
@@ -40,7 +28,7 @@ export default class Deadlift extends Component {
 
     if (e != '') {
       if (this.props.mosLevel === '1') {
-        if (e <= 180) {
+        if (e < 180) {
           return 'fail';
         } else if (e >= 340) {
           return 100;
@@ -51,7 +39,7 @@ export default class Deadlift extends Component {
           return i;
         }
       } else if (this.props.mosLevel === '2') {
-        if (e <= 160) {
+        if (e < 160) {
           return 'fail';
         } else if (e >= 340) {
           return 100;
@@ -59,7 +47,7 @@ export default class Deadlift extends Component {
           return i;
         }
       } else if (this.props.mosLevel === '3') {
-        if (e <= 140) {
+        if (e < 140) {
           return 'fail';
         } else if (e >= 340) {
           return 100;
@@ -75,7 +63,6 @@ export default class Deadlift extends Component {
       <View>
         <View style={styles.eventContainer}>
           <View styles={styles.child1}>
-            <Text>dlPoints - {this.state.dlPoints}</Text>
             <Text style={styles.titleName}>Events</Text>
             <Text style={styles.eventName}>DEADLIFT</Text>
           </View>
@@ -83,6 +70,7 @@ export default class Deadlift extends Component {
             <Text style={styles.titleName}>Raw</Text>
             <Deadlift2
               textChange={dlScoreInput => this.setState({ dlScoreInput })}
+              dlScoreInput={this.state.dlScoreInput}
             />
           </View>
           <View styles={styles.child3}>

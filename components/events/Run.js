@@ -14,58 +14,53 @@ export default class Run extends Component {
         super(props);
 
         this.state = {
-            ptScoreInput: '',
-            powerThrowScore: {
-                minMod: {
-                    4.6: 60
-                },
-                minSig: {
-                    6.6: 65
-                },
-                minHvy: {
-                    8.5: 70
-                },
-                maxMod: {
-                    13.5: 100
-                },
+            runTotalScore: '',
+            runMinInput: '',
+            runSecInput: '',
+            runScore: {
                 scoreSheet: {
-                    13.1: 98,
-                    13.2: 99,
-                    13.3: 99,
-                    13.4: 99,
-                    13.5: 100
+                    1245: 100,
+                    1246: 99,
+                    1247: 99,
+                    1248: 99,
+                    1249: 99,
+                    1250: 99,
+                    1251: 99,
                 },
             },
         };
     }
 
-    getPTScore(e) {
+    getRunScore(e) {
         let i;
-        let powerThrowScore = this.state.powerThrowScore;
+        let runScore = this.state.runScore;
+        e = this.state.runMinInput.concat(this.state.runSecInput)
 
-        i = powerThrowScore.scoreSheet[e];
+        console.log("e", e)
+
+        i = runScore.scoreSheet[e];
 
         if (e != '') {
             if (this.props.mosLevel === '1') {
-                if (e <= 8.5) {
+                if (e >= 1800) {
                     return 'fail';
-                } else if (e >= 13.5) {
+                } else if (e <= 1245) {
                     return 100;
                 } else {
                     return i;
                 }
             } else if (this.props.mosLevel === '2') {
-                if (e <= 6.6) {
+                if (e >= 1900) {
                     return 'fail';
-                } else if (e >= 13.5) {
+                } else if (e <= 1245) {
                     return 100;
                 } else {
                     return i;
                 }
             } else if (this.props.mosLevel === '3') {
-                if (e <= 8.5) {
+                if (e >= 2107) {
                     return 'fail';
-                } else if (e >= 13.5) {
+                } else if (e <= 1245) {
                     return 100;
                 } else {
                     return i;
@@ -82,11 +77,13 @@ export default class Run extends Component {
                         <Text style={styles.eventName}>TWO-MILE RUN</Text>
                     </View>
                     <View styles={styles.child2}>
-                        <PowerThrow2 textChange={ptScoreInput => this.setState({ ptScoreInput })} />
+                        <PowerThrow2 minInput={runMinInput => this.setState({ runMinInput })}
+                            secInput={runSecInput => this.setState({ runSecInput })}
+                        />
                     </View>
                     <View styles={styles.child3}>
                         <Text style={styles.output}>
-                            {this.getPTScore(this.state.ptScoreInput)}
+                            {this.getRunScore()}
                         </Text>
                     </View>
                 </View>
@@ -97,16 +94,26 @@ export default class Run extends Component {
 
 const PowerThrow2 = props => {
     return (
-        <View>
+        <View style={styles.runContainer}>
             <TextInput
-                style={styles.input}
+                style={styles.input1}
                 keyboardType='decimal-pad'
-                maxLength={4}
+                maxLength={2}
                 autoCorrect={false}
-                onChangeText={ptScoreInput => props.textChange(ptScoreInput)}
-                value={props.ptScoreInput}
-                onKeyPress={props.getPTScore}
+                onChangeText={runMinInput => props.minInput(runMinInput)}
+                value={props.runMinInput}
             />
-        </View>
+            <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, borderTopColor: 'black', borderTopWidth: 1 }}>
+                <Text style={{ fontSize: 22 }}>:</Text>
+            </View>
+            <TextInput
+                style={styles.input2}
+                keyboardType='decimal-pad'
+                maxLength={2}
+                autoCorrect={false}
+                onChangeText={runSecInput => props.secInput(runSecInput)}
+                value={props.runSecInput}
+            />
+        </View >
     );
 };

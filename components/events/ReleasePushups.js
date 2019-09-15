@@ -14,58 +14,50 @@ export default class ReleasePushups extends Component {
         super(props);
 
         this.state = {
-            ptScoreInput: '',
-            powerThrowScore: {
-                minMod: {
-                    4.6: 60
-                },
-                minSig: {
-                    6.6: 65
-                },
-                minHvy: {
-                    8.5: 70
-                },
-                maxMod: {
-                    13.5: 100
-                },
+            puScoreInput: '',
+            pushupScore: {
                 scoreSheet: {
-                    13.1: 98,
-                    13.2: 99,
-                    13.3: 99,
-                    13.4: 99,
-                    13.5: 100
+                    62: 96,
+                    63: 96,
+                    64: 97,
+                    65: 97,
+                    66: 98,
+                    67: 98,
+                    68: 99,
+                    69: 99,
+                    70: 100
                 },
             },
         };
     }
 
-    getPTScore(e) {
+    getPUScore(e) {
         let i;
-        let powerThrowScore = this.state.powerThrowScore;
+        let pushupScore = this.state.pushupScore;
 
-        i = powerThrowScore.scoreSheet[e];
+        i = pushupScore.scoreSheet[e];
 
         if (e != '') {
             if (this.props.mosLevel === '1') {
-                if (e <= 8.5) {
+                if (e < 30) {
                     return 'fail';
-                } else if (e >= 13.5) {
+                } else if (e >= 70) {
                     return 100;
                 } else {
                     return i;
                 }
             } else if (this.props.mosLevel === '2') {
-                if (e <= 6.6) {
+                if (e < 20) {
                     return 'fail';
-                } else if (e >= 13.5) {
+                } else if (e >= 70) {
                     return 100;
                 } else {
                     return i;
                 }
             } else if (this.props.mosLevel === '3') {
-                if (e <= 8.5) {
+                if (e < 10) {
                     return 'fail';
-                } else if (e >= 13.5) {
+                } else if (e >= 70) {
                     return 100;
                 } else {
                     return i;
@@ -82,11 +74,11 @@ export default class ReleasePushups extends Component {
                         <Text style={styles.eventName}>HAND-RELEASE{"\n"}PUSH-UP</Text>
                     </View>
                     <View styles={styles.child2}>
-                        <PowerThrow2 textChange={ptScoreInput => this.setState({ ptScoreInput })} />
+                        <PowerThrow2 textChange={puScoreInput => this.setState({ puScoreInput })} />
                     </View>
                     <View styles={styles.child3}>
                         <Text style={styles.output}>
-                            {this.getPTScore(this.state.ptScoreInput)}
+                            {this.getPUScore(this.state.puScoreInput)}
                         </Text>
                     </View>
                 </View>
@@ -103,9 +95,9 @@ const PowerThrow2 = props => {
                 keyboardType='decimal-pad'
                 maxLength={4}
                 autoCorrect={false}
-                onChangeText={ptScoreInput => props.textChange(ptScoreInput)}
-                value={props.ptScoreInput}
-                onKeyPress={props.getPTScore}
+                onChangeText={puScoreInput => props.textChange(puScoreInput)}
+                value={props.puScoreInput}
+                onKeyPress={props.getPUScore}
             />
         </View>
     );
