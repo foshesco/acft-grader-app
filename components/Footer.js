@@ -12,8 +12,7 @@ const Footer = props => {
 const styles = StyleSheet.create({
   footer: {
     width: '100%',
-    height: '7%',
-    paddingTop: '10%',
+    paddingTop: 20,
     backgroundColor: 'green',
     alignItems: 'center',
     justifyContent: 'center',
@@ -21,7 +20,7 @@ const styles = StyleSheet.create({
   footerTitle: {
     color: 'white',
     fontSize: 18,
-    paddingBottom: 45,
+    fontWeight: '500',
   },
 });
 

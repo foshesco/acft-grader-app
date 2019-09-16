@@ -16,6 +16,8 @@ import SprintDragCarry from './events/SprintDragCarry';
 import LegTuck from './events/LegTuck';
 import Run from './events/Run';
 import Score from './Score';
+import Footer from './Footer';
+import Header from './Header';
 
 export default class GetMOS extends Component {
   constructor() {
@@ -122,7 +124,10 @@ export default class GetMOS extends Component {
 
   render() {
     return (
-      <View style={styles.mosScreen}>
+      <View style={styles.mainContainer}>
+        <View style={styles.headerContainer}>
+          <Header title="ACFT Calculator" />
+        </View>
         <View style={styles.mosInfoContainer}>
           <View style={styles.mosInput}>
             <Text style={styles.enterMOS}>Enter MOS</Text>
@@ -161,41 +166,45 @@ export default class GetMOS extends Component {
           }}
         />
         <View style={styles.eventContainer}>
-          <ScrollView>
-            <TouchableWithoutFeedback
-              onPress={() => {
-                Keyboard.dismiss();
-              }}>
-              <View style={styles.screen2}>
-                <View>
-                  <Deadlift
-                    mosLevel={this.state.mosLevel}
-                    dlScoreInput={this.props.dlScoreInput}
-                  />
-                </View>
-
-                <View>
-                  <PowerThrow mosLevel={this.state.mosLevel} />
-                </View>
-
-                <View>
-                  <ReleasePushups mosLevel={this.state.mosLevel} />
-                </View>
-
-                <View>
-                  <SprintDragCarry mosLevel={this.state.mosLevel} />
-                </View>
-
-                <View>
-                  <LegTuck mosLevel={this.state.mosLevel} />
-                </View>
-
-                <View>
-                  <Run mosLevel={this.state.mosLevel} />
-                </View>
+          <TouchableWithoutFeedback
+            onPress={() => {
+              Keyboard.dismiss();
+            }}>
+            <View>
+              <View>
+                <Deadlift
+                  mosLevel={this.state.mosLevel}
+                  dlScoreInput={this.props.dlScoreInput}
+                />
               </View>
-            </TouchableWithoutFeedback>
-          </ScrollView>
+
+              <View>
+                <PowerThrow mosLevel={this.state.mosLevel} />
+              </View>
+
+              <View>
+                <ReleasePushups mosLevel={this.state.mosLevel} />
+              </View>
+
+              <View>
+                <SprintDragCarry mosLevel={this.state.mosLevel} />
+              </View>
+
+              <View>
+                <LegTuck mosLevel={this.state.mosLevel} />
+              </View>
+
+              <View>
+                <Run mosLevel={this.state.mosLevel} />
+              </View>
+            </View>
+          </TouchableWithoutFeedback>
+        </View>
+        <View style={styles.scoreContainer}>
+          <Score />
+        </View>
+        <View style={styles.footerContainer}>
+          <Footer title="3932 - Group" />
         </View>
       </View>
     );
@@ -206,20 +215,33 @@ const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
-  mosScreen: {
-    height: height * 0.75,
-    width: width
+  mainContainer: {
+    flex: 1,
   },
-  eventContainer: {
-    height: height,
-    width: width
+  headerContainer: {
+    flex: 1,
   },
   mosInfoContainer: {
-    padding: 10,
-    height: 130,
+    paddingTop: 5,
+    paddingLeft: 10,
+    paddingBottom: 35,
+    flex: 2,
     width: width,
     flexDirection: 'row',
     backgroundColor: '#E8E8E8',
+  },
+  eventContainer: {
+    flex: 10,
+    width: width,
+    flexDirection: 'row',
+    paddingRight: 10,
+  },
+  scoreContainer: {
+    flex: 2,
+    paddingTop: 35,
+  },
+  footerContainer: {
+    flex: 1,
   },
   mosInput: {
     flexDirection: 'column',

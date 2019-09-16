@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 const styles = StyleSheet.create({
   eventName: {
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   runContainer: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   input1: {
     borderTopColor: 'black',
@@ -67,17 +67,20 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     textAlign: 'center',
     backgroundColor: 'red',
-    color: 'white'
+    color: 'white',
   },
   running: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   eventContainer: {
     flexDirection: 'row',
-    width: '100%',
+    width: Dimensions.get('window').width,
     justifyContent: 'space-between',
     paddingHorizontal: 15,
     paddingTop: 20,
+  },
+  eventBottom: {
+    marginBottom: 10,
   },
   child1: {},
   child2: {},
