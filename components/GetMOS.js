@@ -142,27 +142,30 @@ export default class GetMOS extends Component {
           </View>
           <View style={{ flex: 1, flexDirection: 'row' }}>
             <View style={styles.mosText}>
-              <Text style={{ paddingBottom: 40, paddingTop: 15 }}>Job - </Text>
-              <Text style={{ paddingRight: 5 }}>Level - </Text>
+              <Text style={{ paddingBottom: 40, paddingTop: 15 }}>Job: </Text>
+              <Text style={{ paddingRight: 5 }}>Level: </Text>
             </View>
             <View style={styles.mosOutput}>
-              <Text
-                style={{
-                  textAlign: 'center',
-                  fontWeight: '500',
-                  fontSize: 20,
-                  paddingBottom: 30,
-                }}>
+              <Text style={styles.mosOutputText}>
                 {this.getMOSInfo(this.state.mosInput)}
               </Text>
-              <Text>{this.getLevel(this.state.mosInput)}</Text>
+              <Text style={styles.mosOutputText}>
+                {this.getLevel(this.state.mosInput)}
+              </Text>
             </View>
           </View>
         </View>
         <View
           style={{
-            borderBottomColor: 'black',
-            borderBottomWidth: 1.5,
+            borderWidth: 1,
+            borderRadius: 2,
+            borderColor: '#ddd',
+            borderBottomWidth: 0,
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.8,
+            shadowRadius: 2,
+            elevation: 1,
           }}
         />
         <View style={styles.eventContainer}>
@@ -201,6 +204,19 @@ export default class GetMOS extends Component {
           </TouchableWithoutFeedback>
         </View>
         <View style={styles.scoreContainer}>
+          <View
+            style={{
+              borderWidth: 2,
+              borderRadius: 2,
+              borderColor: '#ddd',
+              borderBottomWidth: 0,
+              shadowColor: '#000',
+              shadowOffset: { width: 0, height: 2 },
+              shadowOpacity: 1,
+              shadowRadius: 2,
+              elevation: 1,
+            }}
+          />
           <Score />
         </View>
         <View style={styles.footerContainer}>
@@ -222,13 +238,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   mosInfoContainer: {
-    paddingTop: 5,
     paddingLeft: 10,
     paddingBottom: 35,
     flex: 2,
     width: width,
     flexDirection: 'row',
-    backgroundColor: '#E8E8E8',
   },
   eventContainer: {
     flex: 10,
@@ -238,7 +252,7 @@ const styles = StyleSheet.create({
   },
   scoreContainer: {
     flex: 2,
-    paddingTop: 35,
+    marginTop: 35,
   },
   footerContainer: {
     flex: 1,
@@ -255,8 +269,18 @@ const styles = StyleSheet.create({
     paddingTop: '5%',
   },
   mosOutput: {
-    paddingBottom: '10%',
-    paddingTop: '10%',
+    paddingTop: '8%',
+  },
+  mosOutputText: {
+    width: 150,
+    height: 35,
+    fontSize: 14,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    backgroundColor: '#F5F5F5',
+    marginBottom: 14,
+    textAlignVertical: 'center',
+    alignSelf: 'center',
   },
   input: {
     borderColor: 'black',

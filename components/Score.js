@@ -75,16 +75,16 @@ export default class Score extends Component {
 
   render() {
     return (
-      <View >
-        <View style={styles.eventContainer}>
+      <View>
+        <View style={styles.scoreContainer}>
           <View>
-            <Text style={styles.eventName}>TOTAL POINTS:</Text>
+            <Text style={styles.scoreTitle}>TOTAL POINTS:</Text>
           </View>
           <View>
-            <Text style={styles.output}>{this.getTotalScore}</Text>
+            <Text style={styles.scoreOutput}>{this.getTotalScore}</Text>
           </View>
           <View style={{ paddingTop: '1%' }}>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.scoreButton}>
               <Text> Clear </Text>
             </TouchableOpacity>
           </View>
@@ -95,18 +95,18 @@ export default class Score extends Component {
 }
 
 const styles = StyleSheet.create({
-  eventName: {
+  scoreTitle: {
     fontSize: 22,
     paddingTop: 10,
     color: 'black',
     textAlignVertical: 'center',
   },
-  button: {
+  scoreButton: {
     alignItems: 'center',
     backgroundColor: '#DDDDDD',
     padding: 10,
   },
-  output: {
+  scoreOutput: {
     borderColor: 'black',
     backgroundColor: 'white',
     color: 'black',
@@ -117,16 +117,12 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     textAlign: 'center',
   },
-  eventContainer: {
-    borderTopColor: 'black',
-    borderTopWidth: 1.5,
+  scoreContainer: {
     flexDirection: 'row',
-    backgroundColor: '#E8E8E8',
     width: '100%',
     justifyContent: 'space-between',
-    padding: '6%',
+    padding: '5%',
+    paddingBottom: '2%',
     paddingHorizontal: 15,
-    textAlignVertical: 'center',
-    alignContent: 'center',
   },
 });

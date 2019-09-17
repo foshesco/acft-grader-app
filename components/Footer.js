@@ -12,14 +12,14 @@ const Footer = props => {
 const styles = StyleSheet.create({
   footer: {
     width: '100%',
-    paddingTop: 20,
     backgroundColor: 'green',
-    alignItems: 'center',
+    flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
   },
   footerTitle: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '500',
   },
 });
