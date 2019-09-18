@@ -23,6 +23,7 @@ import Run from './events/Run';
 import Score from './Score';
 import Footer from './Footer';
 import Header from './Header';
+import GLOBAL from './global.js'
 
 export default class GetMOS extends Component {
   constructor() {
@@ -179,10 +180,10 @@ export default class GetMOS extends Component {
               Keyboard.dismiss();
             }}>
             <View>
+              <Text>Points - {GLOBAL.dlScore}</Text>
               <View>
                 <Deadlift
                   mosLevel={this.state.mosLevel}
-                  dlScoreInput={this.props.dlScoreInput}
                 />
               </View>
 
