@@ -116,34 +116,3 @@ export default class SprintDragCarry extends Component {
         );
     }
 }
-
-const PowerThrow2 = props => {
-    return (
-        <View style={styles.runContainer}>
-            <TextInput
-                style={styles.input1}
-                keyboardType='decimal-pad'
-                maxLength={1}
-                autoCorrect={false}
-                onChangeText={sdcMinInput => props.minInput(sdcMinInput)}
-                value={props.sdcMinInput}
-                onChangeText={value => {
-                    this.setState({ value })
-                    if (value) this.refs.input_2.focus(); //assumption is TextInput ref is input_2
-                }}
-            />
-            <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, borderTopColor: 'black', borderTopWidth: 1 }}>
-                <Text style={{ fontSize: 22 }}>:</Text>
-            </View>
-            <TextInput
-                style={styles.input2}
-                ref="input_2"
-                keyboardType='decimal-pad'
-                maxLength={2}
-                autoCorrect={false}
-                onChangeText={sdcSecInput => props.secInput(sdcSecInput)}
-                value={props.sdcSecInput}
-            />
-        </View >
-    );
-};

@@ -77,9 +77,31 @@ export default class Run extends Component {
                         <Text style={styles.eventName}>TWO-MILE RUN</Text>
                     </View>
                     <View styles={styles.child2}>
-                        <PowerThrow2 minInput={runMinInput => this.setState({ runMinInput })}
-                            secInput={runSecInput => this.setState({ runSecInput })}
-                        />
+                        <View style={styles.runContainer}>
+                            <TextInput
+                                onChangeText={runMinInput => this.setState({ runMinInput })}
+                                style={styles.input1}
+                                keyboardType='decimal-pad'
+                                maxLength={2}
+                                autoCorrect={false}
+                                value={this.state.value}
+                                onChangeText={value => {
+                                    this.setState({ value })
+                                    if (value) this.refs.input_2.focus(); //assumption is TextInput ref is input_2
+                                }}
+                            />
+                            <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, borderTopColor: 'black', borderTopWidth: 1 }}>
+                                <Text style={{ fontSize: 22 }}>:</Text>
+                            </View>
+                            <TextInput
+                                onChangeText={runSecInput => this.setState({ runSecInput })}
+                                style={styles.input2}
+                                keyboardType='decimal-pad'
+                                maxLength={2}
+                                autoCorrect={false}
+                                value={this.state.runSecInput}
+                            />
+                        </View >
                     </View>
                     <View styles={styles.child3}>
                         <Text style={styles.output}>
@@ -91,29 +113,3 @@ export default class Run extends Component {
         );
     }
 }
-
-const PowerThrow2 = props => {
-    return (
-        <View style={styles.runContainer}>
-            <TextInput
-                style={styles.input1}
-                keyboardType='decimal-pad'
-                maxLength={2}
-                autoCorrect={false}
-                onChangeText={runMinInput => props.minInput(runMinInput)}
-                value={props.runMinInput}
-            />
-            <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, borderTopColor: 'black', borderTopWidth: 1 }}>
-                <Text style={{ fontSize: 22 }}>:</Text>
-            </View>
-            <TextInput
-                style={styles.input2}
-                keyboardType='decimal-pad'
-                maxLength={2}
-                autoCorrect={false}
-                onChangeText={runSecInput => props.secInput(runSecInput)}
-                value={props.runSecInput}
-            />
-        </View >
-    );
-};
