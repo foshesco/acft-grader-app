@@ -21,6 +21,12 @@ export default class Deadlift extends Component {
     };
   }
 
+  render() {
+
+    GLOBAL.dlScore = this;
+
+  }
+
   getDLScore(e) {
     let i;
     let deadliftScore = this.state.deadliftScore;
@@ -35,7 +41,9 @@ export default class Deadlift extends Component {
           return 100;
         } else {
           if (this.state.dlPoints != i) {
-            GLOBAL.dlScore.setState({ dlScore: i });
+            GLOBAL.dlScore.setState({
+              dlScore: i
+            });
           }
           return i;
         }
