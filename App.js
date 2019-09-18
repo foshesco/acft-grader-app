@@ -7,15 +7,14 @@ import {
   TextInput,
   Dimensions,
 } from 'react-native';
-import Header from './components/Header';
 import GetMOS from './components/GetMOS';
-import Score from './components/Score';
-import Footer from './components/Footer';
+import StatusBar from './components/StatusBar';
 
 export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.myView}>
+       <StatusBar backgroundColor="#2EBD6B" barStyle="light-content" />
         <GetMOS />
       </View>
     </View>

@@ -8,7 +8,12 @@ import {
   Keyboard,
   ScrollView,
   Dimensions,
+  KeyboardAvoidingView,
 } from 'react-native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 import Deadlift from './events/Deadlift';
 import PowerThrow from './events/PowerThrow';
 import ReleasePushups from './events/ReleasePushups';
@@ -168,7 +173,7 @@ export default class GetMOS extends Component {
             elevation: 1,
           }}
         />
-        <View style={styles.eventContainer}>
+        <KeyboardAvoidingView style={styles.eventContainer}>
           <TouchableWithoutFeedback
             onPress={() => {
               Keyboard.dismiss();
@@ -202,21 +207,22 @@ export default class GetMOS extends Component {
               </View>
             </View>
           </TouchableWithoutFeedback>
-        </View>
+        </KeyboardAvoidingView>
+
+        <View
+          style={{
+            borderWidth: 1,
+            borderRadius: 2,
+            borderColor: '#ddd',
+            borderBottomWidth: 0,
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.8,
+            shadowRadius: 2,
+            elevation: 1,
+          }}
+        />
         <View style={styles.scoreContainer}>
-          <View
-            style={{
-              borderWidth: 1,
-              borderRadius: 2,
-              borderColor: '#ddd',
-              borderBottomWidth: 0,
-              shadowColor: '#000',
-              shadowOffset: { width: 0, height: 2 },
-              shadowOpacity: 0.8,
-              shadowRadius: 2,
-              elevation: 1,
-            }}
-          />
           <Score />
         </View>
         <View style={styles.footerContainer}>
@@ -235,22 +241,24 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   headerContainer: {
-    height: '10%',
+    height: hp('5%'),
+    backgroundColor: 'green',
   },
   mosInfoContainer: {
     paddingLeft: 20,
-    paddingTop: 25,
-    height: '20%',
+    height: hp('18%'),
     flexDirection: 'row',
   },
   eventContainer: {
-    height: '50%',
+    height: hp('52%'),
+    justifyContent: 'space-evenly',
   },
   scoreContainer: {
-    height: '15%',
+    height: hp('17%'),
   },
   footerContainer: {
-    height: '5%'
+    height: hp('5%'),
+    backgroundColor: 'green',
   },
   mosInput: {
     flexDirection: 'column',

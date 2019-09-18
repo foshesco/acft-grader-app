@@ -77,21 +77,13 @@ export default class Score extends Component {
     return (
       <View>
         <View style={styles.scoreContainer}>
-          <View>
-            <Text style={styles.scoreTitle}>TOTAL POINTS:</Text>
+          <View styles={styles.child1}>
+            <Text style={styles.scoreTitle}>TOTAL POINTS: </Text>
           </View>
-          <View>
+          <View styles={styles.child2}>
             <Text style={styles.scoreOutput}>{this.getTotalScore}</Text>
           </View>
-        </View>
-        <View style={styles.goContainer}>
-          <View>
-            <Text style={styles.scoreTitle}>GO/NO-GO:</Text>
-          </View>
-          <View>
-            <Text style={styles.scoreOutput}>{this.getTotalScore}</Text>
-          </View>
-          <View>
+          <View styles={styles.child3}>
             <TouchableOpacity style={styles.scoreButton}>
               <Text> Clear </Text>
             </TouchableOpacity>
@@ -104,10 +96,8 @@ export default class Score extends Component {
 
 const styles = StyleSheet.create({
   scoreTitle: {
-    fontSize: 22,
-    paddingTop: 10,
+    fontSize: 20,
     color: 'black',
-    textAlignVertical: 'center',
   },
   scoreButton: {
     alignItems: 'center',
@@ -129,15 +119,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     justifyContent: 'space-between',
-    padding: '5%',
-    paddingBottom: '2%',
     paddingHorizontal: 15,
+    padding: 20,
   },
-  goContainer: {
-    flexDirection: 'row',
-    width: '100%',
-    justifyContent: 'space-between',
-    paddingHorizontal: 15,
-    alignItems: 'center'
-  },
+  child1: {},
+  child2: {},
+  child3: {},
 });

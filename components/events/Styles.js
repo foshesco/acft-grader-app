@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     justifyContent: 'space-between',
     paddingHorizontal: 15,
-    paddingTop: 25,
+    padding: 5,
   },
   eventBottom: {
     marginBottom: 10,
