@@ -83,7 +83,15 @@ export default class Score extends Component {
           <View>
             <Text style={styles.scoreOutput}>{this.getTotalScore}</Text>
           </View>
-          <View style={{ paddingTop: '1%' }}>
+        </View>
+        <View style={styles.goContainer}>
+          <View>
+            <Text style={styles.scoreTitle}>GO/NO-GO:</Text>
+          </View>
+          <View>
+            <Text style={styles.scoreOutput}>{this.getTotalScore}</Text>
+          </View>
+          <View>
             <TouchableOpacity style={styles.scoreButton}>
               <Text> Clear </Text>
             </TouchableOpacity>
@@ -124,5 +132,12 @@ const styles = StyleSheet.create({
     padding: '5%',
     paddingBottom: '2%',
     paddingHorizontal: 15,
+  },
+  goContainer: {
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between',
+    paddingHorizontal: 15,
+    alignItems: 'center'
   },
 });

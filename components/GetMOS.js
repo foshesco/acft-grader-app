@@ -206,13 +206,13 @@ export default class GetMOS extends Component {
         <View style={styles.scoreContainer}>
           <View
             style={{
-              borderWidth: 2,
+              borderWidth: 1,
               borderRadius: 2,
               borderColor: '#ddd',
               borderBottomWidth: 0,
               shadowColor: '#000',
               shadowOffset: { width: 0, height: 2 },
-              shadowOpacity: 1,
+              shadowOpacity: 0.8,
               shadowRadius: 2,
               elevation: 1,
             }}
@@ -235,27 +235,22 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   headerContainer: {
-    flex: 1,
+    height: '10%',
   },
   mosInfoContainer: {
-    paddingLeft: 10,
-    paddingBottom: 35,
-    flex: 2,
-    width: width,
+    paddingLeft: 20,
+    paddingTop: 25,
+    height: '20%',
     flexDirection: 'row',
   },
   eventContainer: {
-    flex: 10,
-    width: width,
-    flexDirection: 'row',
-    paddingRight: 10,
+    height: '50%',
   },
   scoreContainer: {
-    flex: 2,
-    marginTop: 35,
+    height: '15%',
   },
   footerContainer: {
-    flex: 1,
+    height: '5%'
   },
   mosInput: {
     flexDirection: 'column',
