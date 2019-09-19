@@ -10,7 +10,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   SafeAreaView,
-  ScrollView
+  ScrollView,
 } from 'react-native';
 import Deadlift from './events/Deadlift';
 import PowerThrow from './events/PowerThrow';
@@ -171,12 +171,18 @@ export default class GetMOS extends Component {
             elevation: 1,
           }}
         />
-        <KeyboardAvoidingView
-          style={styles.mainContainer}
-          behavior="padding"
-          enabled >
-          <ScrollView>
-            <View style={styles.eventContainer}>
+
+        <View style={styles.eventContainer}>
+          <KeyboardAvoidingView
+            style={{
+              flex: 1,
+              flexDirection: 'column',
+              justifyContent: 'center',
+            }}
+            behavior="padding"
+            enabled
+            keyboardVerticalOffset={100}>
+            <ScrollView>
               <TouchableWithoutFeedback
                 onPress={() => {
                   Keyboard.dismiss();
@@ -207,9 +213,9 @@ export default class GetMOS extends Component {
                   </View>
                 </View>
               </TouchableWithoutFeedback>
-            </View>
-          </ScrollView>
-        </KeyboardAvoidingView >
+            </ScrollView>
+          </KeyboardAvoidingView>
+        </View>
 
         <View
           style={{
@@ -222,7 +228,7 @@ export default class GetMOS extends Component {
             shadowOpacity: 0.8,
             shadowRadius: 2,
             elevation: 1,
-            paddingBottom: 2
+            paddingBottom: 2,
           }}
         />
         <View style={styles.scoreContainer}>
@@ -231,7 +237,7 @@ export default class GetMOS extends Component {
         <View style={styles.footerContainer}>
           <Footer title="3932 - Group" />
         </View>
-      </View >
+      </View>
     );
   }
 }
@@ -242,20 +248,18 @@ const width = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    justifyContent: 'space-between'
   },
   headerContainer: {
     height: '8%',
     backgroundColor: 'green',
   },
   mosInfoContainer: {
-    paddingLeft: '6%',
-    paddingTop: '4%',
     height: '17%',
     flexDirection: 'row',
-    borderWidth: 1,
-    borderRadius: 5,
-    borderColor: 'gray',
+    borderBottomColor: 'gray',
+    borderBottomWidth: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   eventContainer: {
     height: '53%',
@@ -263,9 +267,10 @@ const styles = StyleSheet.create({
   },
   scoreContainer: {
     height: '17%',
-    borderWidth: 1,
-    borderRadius: 5,
-    borderColor: 'gray',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderTopColor: 'gray',
+    borderTopWidth: 1,
   },
   footerContainer: {
     height: '5%',
