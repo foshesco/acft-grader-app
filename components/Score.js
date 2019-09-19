@@ -75,19 +75,27 @@ export default class Score extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.mainScoreContainer}>
         <View style={styles.scoreContainer}>
-          <View styles={styles.child1}>
-            <Text style={styles.scoreTitle}>TOTAL POINTS: </Text>
+          <View>
+            <Text style={styles.scoreTitle}>TOTAL POINTS:</Text>
           </View>
-          <View styles={styles.child2}>
+          <View>
+            <Text style={styles.scoreTitle}>GO/NO-GO:</Text>
+          </View>
+        </View>
+        <View style={styles.goContainer}>
+          <View>
             <Text style={styles.scoreOutput}>{this.getTotalScore}</Text>
           </View>
-          <View styles={styles.child3}>
-            <TouchableOpacity style={styles.scoreButton}>
-              <Text> Clear </Text>
-            </TouchableOpacity>
+          <View>
+            <Text style={styles.scoreOutput}>{this.getTotalScore}</Text>
           </View>
+        </View>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.scoreButton}>
+            <Text> Clear </Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -96,33 +104,45 @@ export default class Score extends Component {
 
 const styles = StyleSheet.create({
   scoreTitle: {
-    fontSize: 20,
+    fontSize: 22,
+    paddingTop: 10,
+    paddingBottom: 10,
     color: 'black',
+    textAlignVertical: 'center',
   },
   scoreButton: {
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#DDDDDD',
-    padding: 10,
+    height: '40%',
+    width: '60%',
   },
   scoreOutput: {
     borderColor: 'black',
     backgroundColor: 'white',
     color: 'black',
     borderWidth: 1,
+    marginBottom: 10,
     width: 80,
     height: 45,
     fontSize: 20,
     fontWeight: '400',
     textAlign: 'center',
   },
-  scoreContainer: {
+  mainScoreContainer: {
+    flex: 1,
     flexDirection: 'row',
-    width: '100%',
-    justifyContent: 'space-between',
-    paddingHorizontal: 15,
-    padding: 20,
+    alignItems: 'flex-start',
+    padding: 20
   },
-  child1: {},
-  child2: {},
-  child3: {},
+  scoreContainer: {
+    width: '50%'
+  },
+  goContainer: {
+    width: '30%'
+  },
+  buttonContainer: {
+    width: '30%',
+    paddingTop: '7%'
+  },
 });

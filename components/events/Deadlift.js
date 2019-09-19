@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
 import { View, Text, TextInput } from 'react-native';
 import { styles } from './Styles';
-import GLOBAL from './global.js'
+import GLOBAL from '../global';
 
 export default class Deadlift extends Component {
   constructor(props) {
@@ -84,8 +84,7 @@ export default class Deadlift extends Component {
                 keyboardType="number-pad"
                 autoCorrect={false}
                 maxLength={3}
-                value={props.dlScoreInput}
-                onKeyPress={props.getDLScore}
+                value={this.state.dlScoreInput}
               />
             </View>
           </View>

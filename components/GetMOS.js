@@ -6,14 +6,12 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   Keyboard,
-  ScrollView,
   Dimensions,
   KeyboardAvoidingView,
+  Platform,
+  SafeAreaView,
+  ScrollView
 } from 'react-native';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
 import Deadlift from './events/Deadlift';
 import PowerThrow from './events/PowerThrow';
 import ReleasePushups from './events/ReleasePushups';
@@ -23,7 +21,6 @@ import Run from './events/Run';
 import Score from './Score';
 import Footer from './Footer';
 import Header from './Header';
-import GLOBAL from './global.js'
 
 export default class GetMOS extends Component {
   constructor() {
@@ -174,41 +171,45 @@ export default class GetMOS extends Component {
             elevation: 1,
           }}
         />
-        <KeyboardAvoidingView style={styles.eventContainer}>
-          <TouchableWithoutFeedback
-            onPress={() => {
-              Keyboard.dismiss();
-            }}>
-            <View>
-              <Text>Points - {GLOBAL.dlScore}</Text>
-              <View>
-                <Deadlift
-                  mosLevel={this.state.mosLevel}
-                />
-              </View>
+        <KeyboardAvoidingView
+          style={styles.mainContainer}
+          behavior="padding"
+          enabled >
+          <ScrollView>
+            <View style={styles.eventContainer}>
+              <TouchableWithoutFeedback
+                onPress={() => {
+                  Keyboard.dismiss();
+                }}>
+                <View>
+                  <View>
+                    <Deadlift mosLevel={this.state.mosLevel} />
+                  </View>
 
-              <View>
-                <PowerThrow mosLevel={this.state.mosLevel} />
-              </View>
+                  <View>
+                    <PowerThrow mosLevel={this.state.mosLevel} />
+                  </View>
 
-              <View>
-                <ReleasePushups mosLevel={this.state.mosLevel} />
-              </View>
+                  <View>
+                    <ReleasePushups mosLevel={this.state.mosLevel} />
+                  </View>
 
-              <View>
-                <SprintDragCarry mosLevel={this.state.mosLevel} />
-              </View>
+                  <View>
+                    <SprintDragCarry mosLevel={this.state.mosLevel} />
+                  </View>
 
-              <View>
-                <LegTuck mosLevel={this.state.mosLevel} />
-              </View>
+                  <View>
+                    <LegTuck mosLevel={this.state.mosLevel} />
+                  </View>
 
-              <View>
-                <Run mosLevel={this.state.mosLevel} />
-              </View>
+                  <View>
+                    <Run mosLevel={this.state.mosLevel} />
+                  </View>
+                </View>
+              </TouchableWithoutFeedback>
             </View>
-          </TouchableWithoutFeedback>
-        </KeyboardAvoidingView>
+          </ScrollView>
+        </KeyboardAvoidingView >
 
         <View
           style={{
@@ -221,6 +222,7 @@ export default class GetMOS extends Component {
             shadowOpacity: 0.8,
             shadowRadius: 2,
             elevation: 1,
+            paddingBottom: 2
           }}
         />
         <View style={styles.scoreContainer}>
@@ -229,7 +231,7 @@ export default class GetMOS extends Component {
         <View style={styles.footerContainer}>
           <Footer title="3932 - Group" />
         </View>
-      </View>
+      </View >
     );
   }
 }
@@ -240,25 +242,33 @@ const width = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
+    justifyContent: 'space-between'
   },
   headerContainer: {
-    height: hp('5%'),
+    height: '8%',
     backgroundColor: 'green',
   },
   mosInfoContainer: {
-    paddingLeft: 20,
-    height: hp('18%'),
+    paddingLeft: '6%',
+    paddingTop: '4%',
+    height: '17%',
     flexDirection: 'row',
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: 'gray',
   },
   eventContainer: {
-    height: hp('52%'),
+    height: '53%',
     justifyContent: 'space-evenly',
   },
   scoreContainer: {
-    height: hp('17%'),
+    height: '17%',
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: 'gray',
   },
   footerContainer: {
-    height: hp('5%'),
+    height: '5%',
     backgroundColor: 'green',
   },
   mosInput: {
