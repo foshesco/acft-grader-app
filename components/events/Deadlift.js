@@ -20,12 +20,6 @@ export default class Deadlift extends Component {
     };
   }
 
-  render() {
-
-    GLOBAL.dlScore = this;
-
-  }
-
   getDLScore(e) {
     let i;
     let deadliftScore = this.state.deadliftScore;
@@ -35,7 +29,7 @@ export default class Deadlift extends Component {
     if (e != '') {
       if (this.props.mosLevel === '1') {
         if (e < 180) {
-          return (<Text style={styles.failed}>fail</Text>);
+          return <Text style={styles.failed}>fail</Text>;
         } else if (e >= 340) {
           return 100;
         } else {
@@ -61,11 +55,6 @@ export default class Deadlift extends Component {
     }
   }
 
-  handleClick = () => {
-    const passedData = this.getDLScore(this.state.dlScoreInput);
-    this.props.updateData(passedData);
-  };
-
   render() {
     return (
       <View>
@@ -84,12 +73,15 @@ export default class Deadlift extends Component {
                 autoCorrect={false}
                 maxLength={3}
                 value={this.state.dlScoreInput}
+                onChange={() =>
+                  this.props.handler(this.getDLScore(this.state.dlScoreInput))
+                }
               />
             </View>
           </View>
           <View styles={styles.child3}>
             <Text style={styles.titleName}>Points</Text>
-            <Text style={styles.output} onChangeText={this.handleClick()}>
+            <Text style={styles.output}>
               {this.getDLScore(this.state.dlScoreInput)}
             </Text>
           </View>

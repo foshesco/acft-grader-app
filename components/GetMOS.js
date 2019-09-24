@@ -10,7 +10,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   SafeAreaView,
-  ScrollView
+  ScrollView,
 } from 'react-native';
 import Deadlift from './events/Deadlift';
 import PowerThrow from './events/PowerThrow';
@@ -28,6 +28,7 @@ export default class GetMOS extends Component {
 
     this.state = {
       clear: false,
+      dlScore: 0,
       totalScore: 'hi',
       mosInput: '',
       mosLevel: '',
@@ -125,12 +126,11 @@ export default class GetMOS extends Component {
     }
   }
 
-  updateData = getDLScore => {
-    if (this.state.dlScore <= 0) {
-      this.setState({ dlScore: getDLScore })
-    }
-    console.log(`Total Score: ${getDLScore}.`);
-    console.log('dlScore', this.state.dlScore)
+  handler = getDLScore => {
+    this.setState({
+      dlScore: getDLScore,
+    });
+    console.log('dlScore', this.state.dlScore);
   };
 
   render() {
@@ -169,7 +169,6 @@ export default class GetMOS extends Component {
         <View
           style={{
             borderWidth: 1,
-            borderRadius: 2,
             borderColor: '#ddd',
             borderBottomWidth: 0,
             shadowColor: '#000',
@@ -182,40 +181,45 @@ export default class GetMOS extends Component {
         <KeyboardAvoidingView
           style={styles.eventContainer}
           behavior="padding"
-          enabled >
+          enabled>
           <TouchableWithoutFeedback
             onPress={() => {
               Keyboard.dismiss();
             }}>
-            <View>
+            <ScrollView>
               <View>
-                <Text>Points - {this.state.dlScore}</Text>
-              </View>
-              <View>
-                <Deadlift mosLevel={this.state.mosLevel} updateData={this.updateData} />
-              </View>
-              <View>
-                <PowerThrow mosLevel={this.state.mosLevel} />
-              </View>
+                <View>
+                  <Text>Points - {this.state.dlScore}</Text>
+                </View>
+                <View>
+                  <Deadlift
+                    mosLevel={this.state.mosLevel}
+                    handler={this.handler}
+                  />
+                </View>
+                <View>
+                  <PowerThrow mosLevel={this.state.mosLevel} />
+                </View>
 
-              <View>
-                <ReleasePushups mosLevel={this.state.mosLevel} />
-              </View>
+                <View>
+                  <ReleasePushups mosLevel={this.state.mosLevel} />
+                </View>
 
-              <View>
-                <SprintDragCarry mosLevel={this.state.mosLevel} />
-              </View>
+                <View>
+                  <SprintDragCarry mosLevel={this.state.mosLevel} />
+                </View>
 
-              <View>
-                <LegTuck mosLevel={this.state.mosLevel} />
-              </View>
+                <View>
+                  <LegTuck mosLevel={this.state.mosLevel} />
+                </View>
 
-              <View>
-                <Run mosLevel={this.state.mosLevel} />
+                <View>
+                  <Run mosLevel={this.state.mosLevel} />
+                </View>
               </View>
-            </View>
+            </ScrollView>
           </TouchableWithoutFeedback>
-        </KeyboardAvoidingView >
+        </KeyboardAvoidingView>
 
         <View
           style={{
@@ -228,7 +232,7 @@ export default class GetMOS extends Component {
             shadowOpacity: 0.8,
             shadowRadius: 2,
             elevation: 1,
-            paddingBottom: 2
+            paddingBottom: 2,
           }}
         />
         <View style={styles.scoreContainer}>
@@ -237,7 +241,7 @@ export default class GetMOS extends Component {
         <View style={styles.footerContainer}>
           <Footer title="3932 - Group" />
         </View>
-      </View >
+      </View>
     );
   }
 }
@@ -248,10 +252,7 @@ const width = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-  },
-  mainContainer: {
-    flex: 1,
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   headerContainer: {
     height: '8%',
@@ -259,21 +260,21 @@ const styles = StyleSheet.create({
   },
   mosInfoContainer: {
     paddingLeft: '6%',
-    paddingTop: '4%',
+    paddingTop: '2%',
+    paddingBottom: '2%',
     height: '17%',
     flexDirection: 'row',
-    borderWidth: 1,
-    borderRadius: 5,
+    borderBottomWidth: 1,
     borderColor: 'gray',
   },
   eventContainer: {
-    height: '53%',
+    height: '50%',
     justifyContent: 'space-evenly',
-    flexGrow: 1
+    flexGrow: 1,
   },
   scoreContainer: {
-    height: '17%',
-    borderWidth: 1,
+    height: '20%',
+    borderTopWidth: 1,
     borderRadius: 5,
     borderColor: 'gray',
   },
