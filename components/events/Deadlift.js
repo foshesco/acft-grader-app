@@ -1,7 +1,6 @@
 import React, { Component, useState } from 'react';
 import { View, Text, TextInput } from 'react-native';
 import { styles } from './Styles';
-import GLOBAL from '../global';
 
 export default class Deadlift extends Component {
   constructor(props) {
@@ -40,11 +39,6 @@ export default class Deadlift extends Component {
         } else if (e >= 340) {
           return 100;
         } else {
-          if (this.state.dlPoints != i) {
-            GLOBAL.dlScore.setState({
-              dlScore: i
-            });
-          }
           return i;
         }
       } else if (this.props.mosLevel === '2') {
@@ -67,6 +61,11 @@ export default class Deadlift extends Component {
     }
   }
 
+  handleClick = () => {
+    const passedData = this.getDLScore(this.state.dlScoreInput);
+    this.props.updateData(passedData);
+  };
+
   render() {
     return (
       <View>
@@ -78,14 +77,19 @@ export default class Deadlift extends Component {
           <View styles={styles.child2}>
             <Text style={styles.titleName}>Raw</Text>
             <View>
-              <Deadlift2
-                textChange={dlScoreInput => this.setState({ dlScoreInput })}
+              <TextInput
+                onChangeText={dlScoreInput => this.setState({ dlScoreInput })}
+                style={styles.input}
+                keyboardType="number-pad"
+                autoCorrect={false}
+                maxLength={3}
+                value={this.state.dlScoreInput}
               />
             </View>
           </View>
           <View styles={styles.child3}>
             <Text style={styles.titleName}>Points</Text>
-            <Text style={styles.output}>
+            <Text style={styles.output} onChangeText={this.handleClick()}>
               {this.getDLScore(this.state.dlScoreInput)}
             </Text>
           </View>
@@ -94,19 +98,3 @@ export default class Deadlift extends Component {
     );
   }
 }
-
-const Deadlift2 = props => {
-  return (
-    <View>
-      <TextInput
-        style={styles.input}
-        keyboardType="number-pad"
-        autoCorrect={false}
-        maxLength={3}
-        onChangeText={dlScoreInput => props.textChange(dlScoreInput)}
-        value={props.dlScoreInput}
-        onKeyPress={props.getDLScore}
-      />
-    </View>
-  );
-};

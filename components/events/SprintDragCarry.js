@@ -36,9 +36,6 @@ export default class SprintDragCarry extends Component {
         let sdcScore = this.state.sdcScore;
         e = this.state.sdcMinInput.concat(this.state.sdcSecInput)
 
-        console.log("this.state.sdcMinInput", this.state.sdcMinInput)
-        console.log("e", e)
-
         i = sdcScore.scoreSheet[e];
 
         if (e != '') {

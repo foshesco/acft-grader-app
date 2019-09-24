@@ -125,6 +125,14 @@ export default class GetMOS extends Component {
     }
   }
 
+  updateData = getDLScore => {
+    if (this.state.dlScore <= 0) {
+      this.setState({ dlScore: getDLScore })
+    }
+    console.log(`Total Score: ${getDLScore}.`);
+    console.log('dlScore', this.state.dlScore)
+  };
+
   render() {
     return (
       <View style={styles.mainContainer}>
@@ -181,7 +189,10 @@ export default class GetMOS extends Component {
             }}>
             <View>
               <View>
-                <Deadlift mosLevel={this.state.mosLevel} />
+                <Text>Points - {this.state.dlScore}</Text>
+              </View>
+              <View>
+                <Deadlift mosLevel={this.state.mosLevel} updateData={this.updateData} />
               </View>
               <View>
                 <PowerThrow mosLevel={this.state.mosLevel} />
