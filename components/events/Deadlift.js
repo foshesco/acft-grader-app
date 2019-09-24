@@ -78,13 +78,8 @@ export default class Deadlift extends Component {
           <View styles={styles.child2}>
             <Text style={styles.titleName}>Raw</Text>
             <View>
-              <TextInput
-                onChangeText={dlScoreInput => this.setState({ dlScoreInput })}
-                style={styles.input}
-                keyboardType="number-pad"
-                autoCorrect={false}
-                maxLength={3}
-                value={this.state.dlScoreInput}
+              <Deadlift2
+                textChange={dlScoreInput => this.setState({ dlScoreInput })}
               />
             </View>
           </View>

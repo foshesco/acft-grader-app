@@ -75,9 +75,9 @@ const styles = StyleSheet.create({
   eventContainer: {
     flexDirection: 'row',
     width: Dimensions.get('window').width,
-    justifyContent: 'space-between',
-    paddingHorizontal: 15,
+    paddingHorizontal: 10,
     padding: 5,
+    justifyContent: 'space-around',
   },
   eventBottom: {
     marginBottom: 10,
