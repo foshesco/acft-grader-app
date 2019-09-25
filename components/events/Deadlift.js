@@ -73,9 +73,9 @@ export default class Deadlift extends Component {
                 autoCorrect={false}
                 maxLength={3}
                 value={this.state.dlScoreInput}
-                onChange={() =>
-                  this.props.handler(this.getDLScore(this.state.dlScoreInput))
-                }
+                onChange={() => {
+                  this.props.handler(this.getDLScore(this.state.dlScoreInput));
+                }}
               />
             </View>
           </View>

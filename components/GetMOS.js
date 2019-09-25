@@ -29,6 +29,7 @@ export default class GetMOS extends Component {
     this.state = {
       clear: false,
       dlScore: 0,
+      ptScore: 0,
       totalScore: 'hi',
       mosInput: '',
       mosLevel: '',
@@ -126,11 +127,14 @@ export default class GetMOS extends Component {
     }
   }
 
-  handler = getDLScore => {
-    this.setState({
-      dlScore: getDLScore,
-    });
+  DL = getDLScore => {
+    this.setState({ dlScore: getDLScore }, () => console.log('state', this.state))
     console.log('dlScore', this.state.dlScore);
+  };
+
+  PT = getPTScore => {
+    this.setState({ ptScore: getPTScore }, () => console.log('state', this.state))
+    console.log('dlScore', this.state.ptScore);
   };
 
   render() {
@@ -189,16 +193,19 @@ export default class GetMOS extends Component {
             <ScrollView>
               <View>
                 <View>
-                  <Text>Points - {this.state.dlScore}</Text>
+                  <Text>Points - {this.state.dlScore} + {this.state.ptScore}</Text>
                 </View>
                 <View>
                   <Deadlift
                     mosLevel={this.state.mosLevel}
-                    handler={this.handler}
+                    handler={this.DL}
                   />
                 </View>
                 <View>
-                  <PowerThrow mosLevel={this.state.mosLevel} />
+                  <PowerThrow
+                    mosLevel={this.state.mosLevel}
+                    handler={this.PT}
+                  />
                 </View>
 
                 <View>
@@ -236,7 +243,7 @@ export default class GetMOS extends Component {
           }}
         />
         <View style={styles.scoreContainer}>
-          <Score />
+          <Score dl={this.state.dlScore} pt={this.state.ptScore} />
         </View>
         <View style={styles.footerContainer}>
           <Footer title="3932 - Group" />

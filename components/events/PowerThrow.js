@@ -70,9 +70,19 @@ export default class PowerThrow extends Component {
             <Text style={styles.eventName}>POWER THROW</Text>
           </View>
           <View styles={styles.child2}>
-            <PowerThrow2
-              textChange={ptScoreInput => this.setState({ ptScoreInput })}
-            />
+            <View>
+              <TextInput
+                onChangeText={ptScoreInput => this.setState({ ptScoreInput })}
+                style={styles.input}
+                keyboardType="decimal-pad"
+                maxLength={4}
+                autoCorrect={false}
+                value={this.state.ptScoreInput}
+                onChange={() => {
+                  this.props.handler(this.getPTScore(this.state.ptScoreInput));
+                }}
+              />
+            </View>
           </View>
           <View styles={styles.child3}>
             <Text style={styles.output}>
@@ -84,19 +94,3 @@ export default class PowerThrow extends Component {
     );
   }
 }
-
-const PowerThrow2 = props => {
-  return (
-    <View>
-      <TextInput
-        style={styles.input}
-        keyboardType="decimal-pad"
-        maxLength={4}
-        autoCorrect={false}
-        onChangeText={ptScoreInput => props.textChange(ptScoreInput)}
-        value={props.ptScoreInput}
-        onKeyPress={props.getPTScore}
-      />
-    </View>
-  );
-};

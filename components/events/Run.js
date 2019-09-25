@@ -36,8 +36,6 @@ export default class Run extends Component {
         let runScore = this.state.runScore;
         e = this.state.runMinInput.concat(this.state.runSecInput)
 
-        console.log("e", e)
-
         i = runScore.scoreSheet[e];
 
         if (e != '') {

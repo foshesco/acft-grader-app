@@ -86,7 +86,7 @@ export default class Score extends Component {
         </View>
         <View style={styles.goContainer}>
           <View>
-            <Text style={styles.scoreOutput}>{this.getTotalScore}</Text>
+            <Text style={styles.scoreOutput}>{this.props.dl + this.props.pt}</Text>
           </View>
           <View>
             <Text style={styles.scoreOutput}>{this.getTotalScore}</Text>
