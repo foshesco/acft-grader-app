@@ -26,12 +26,16 @@ export default class GetMOS extends Component {
   constructor() {
     super();
 
+    this.state = this.getInitialState();
+    this.handleSomething = this.handleSomething.bind(this);
+
     this.state = {
-      clear: false,
+      dlScoreInput: '',
       dlScore: 0,
       ptScore: 0,
-      totalScore: 'hi',
+      totalScore: 0,
       mosInput: '',
+      mosOutput: '',
       mosLevel: '',
       mosDesc: {
         '11A': '1Infantry',
@@ -39,6 +43,29 @@ export default class GetMOS extends Component {
         '42A': '3Secretary',
       },
     };
+  }
+
+  getInitialState = () => {
+    const initialState = {
+      dlScoreInput: 0,
+      dlScore: 0,
+      ptScore: 0,
+      totalScore: 0,
+      mosInput: '',
+      mosOutput: '',
+      mosLevel: '',
+    };
+    return initialState;
+  };
+
+  clearState = () => {
+    this.setState(this.getInitialState());
+    this.setState({ mosDesc: '' });
+    console.log('cleared', this.state);
+  };
+
+  handleSomething(value) {
+    this.setState({ dlScoreInput: value });
   }
 
   getMOSInfo(e) {
@@ -128,13 +155,19 @@ export default class GetMOS extends Component {
   }
 
   DL = getDLScore => {
-    this.setState({ dlScore: getDLScore }, () => console.log('state', this.state))
-    console.log('dlScore', this.state.dlScore);
+    this.setState({ dlScore: getDLScore }, () =>
+      console.log('state', this.state.dlScore)
+    );
   };
 
   PT = getPTScore => {
-    this.setState({ ptScore: getPTScore }, () => console.log('state', this.state))
-    console.log('dlScore', this.state.ptScore);
+    this.setState({ ptScore: getPTScore }, () =>
+      console.log('ptScore', this.state.ptScore)
+    );
+  };
+
+  getTotalScore = () => {
+    this.setState({ totalScore: this.state.dlScore + this.state.ptScore });
   };
 
   render() {
@@ -193,12 +226,16 @@ export default class GetMOS extends Component {
             <ScrollView>
               <View>
                 <View>
-                  <Text>Points - {this.state.dlScore} + {this.state.ptScore}</Text>
+                  <Text>
+                    Points - {this.state.dlScore} + {this.state.ptScore}
+                  </Text>
+                  <Text>dlScoreInput - {this.state.dlScoreInput}</Text>
                 </View>
                 <View>
                   <Deadlift
                     mosLevel={this.state.mosLevel}
                     handler={this.DL}
+                    handleSomething={this.handleSomething}
                   />
                 </View>
                 <View>
@@ -227,7 +264,6 @@ export default class GetMOS extends Component {
             </ScrollView>
           </TouchableWithoutFeedback>
         </KeyboardAvoidingView>
-
         <View
           style={{
             borderWidth: 1,
@@ -243,7 +279,10 @@ export default class GetMOS extends Component {
           }}
         />
         <View style={styles.scoreContainer}>
-          <Score dl={this.state.dlScore} pt={this.state.ptScore} />
+          <Score
+            clearState={this.clearState}
+            getTotalScore={this.getTotalScore}
+          />
         </View>
         <View style={styles.footerContainer}>
           <Footer title="3932 - Group" />

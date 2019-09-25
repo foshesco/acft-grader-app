@@ -86,15 +86,17 @@ export default class Score extends Component {
         </View>
         <View style={styles.goContainer}>
           <View>
-            <Text style={styles.scoreOutput}>{this.props.dl + this.props.pt}</Text>
+            <Text style={styles.scoreOutput}>{this.props.getTotalScore}</Text>
           </View>
           <View>
             <Text style={styles.scoreOutput}>{this.getTotalScore}</Text>
           </View>
         </View>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.scoreButton}>
-            <Text> Clear </Text>
+          <TouchableOpacity
+            style={styles.scoreButton}
+            onPress={() => this.props.clearState()}>
+            <Text>Clear</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -133,16 +135,16 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-start',
-    padding: 20
+    padding: 20,
   },
   scoreContainer: {
-    width: '50%'
+    width: '50%',
   },
   goContainer: {
-    width: '30%'
+    width: '30%',
   },
   buttonContainer: {
     width: '30%',
-    paddingTop: '7%'
+    paddingTop: '7%',
   },
 });
