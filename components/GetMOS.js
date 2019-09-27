@@ -51,16 +51,12 @@ export default class GetMOS extends Component {
       dlScore: 0,
       ptScore: 0,
       totalScore: 0,
-      mosInput: '',
-      mosOutput: '',
-      mosLevel: '',
     };
     return initialState;
   };
 
   clearState = () => {
     this.setState(this.getInitialState());
-    this.setState({ mosDesc: '' });
     console.log('cleared', this.state);
   };
 
@@ -170,6 +166,12 @@ export default class GetMOS extends Component {
     this.setState({ totalScore: this.state.dlScore + this.state.ptScore });
   };
 
+  onChangeTextHandler = (e, x) => {
+    console.log("e", e, x);
+    this.setState({ dlScoreInput: e });
+    this.setState({ dlScore: x })
+  }
+
   render() {
     return (
       <View style={styles.mainContainer}>
@@ -234,8 +236,9 @@ export default class GetMOS extends Component {
                 <View>
                   <Deadlift
                     mosLevel={this.state.mosLevel}
-                    handler={this.DL}
-                    handleSomething={this.handleSomething}
+                    onChangeTextHandler={this.onChangeTextHandler}
+                    dlScoreInput={this.state.dlScoreInput}
+                    dlScore={this.state.dlScore}
                   />
                 </View>
                 <View>

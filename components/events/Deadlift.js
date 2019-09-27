@@ -55,12 +55,9 @@ export default class Deadlift extends Component {
     }
   }
 
-  handleInputChange = () => {
-    this.props.handler(this.getDLScore(this.state.dlScoreInput));
-    this.props.handleSomething(this.state.dlScoreInput);
-  };
-
   render() {
+    const { onChangeTextHandler } = this.props;
+
     return (
       <View>
         <View style={styles.eventContainer}>
@@ -72,20 +69,22 @@ export default class Deadlift extends Component {
             <Text style={styles.titleName}>Raw</Text>
             <View>
               <TextInput
-                onChangeText={dlScoreInput => this.setState({ dlScoreInput })}
+                {...this.props}
                 style={styles.input}
                 keyboardType="number-pad"
                 autoCorrect={false}
                 maxLength={3}
-                value={this.state.dlScoreInput}
-                onChange={this.handleInputChange}
+                onChange={event => {
+                  onChangeTextHandler(event.nativeEvent.text, this.getDLScore(event.nativeEvent.text));
+                }}
+                value={this.props.dlScoreInput}
               />
             </View>
           </View>
           <View styles={styles.child3}>
             <Text style={styles.titleName}>Points</Text>
             <Text style={styles.output}>
-              {this.getDLScore(this.state.dlScoreInput)}
+              {this.props.dlScore}
             </Text>
           </View>
         </View>
