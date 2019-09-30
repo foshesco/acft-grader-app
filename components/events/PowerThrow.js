@@ -15,6 +15,7 @@ export default class PowerThrow extends Component {
 
     this.state = {
       ptScoreInput: '',
+      ptScore: 0,
       powerThrowScore: {
         scoreSheet: {
           13.1: 98,
@@ -63,6 +64,8 @@ export default class PowerThrow extends Component {
   }
 
   render() {
+    const { onPTHandler } = this.props;
+
     return (
       <View>
         <View style={styles.eventContainer}>
@@ -72,22 +75,23 @@ export default class PowerThrow extends Component {
           <View styles={styles.child2}>
             <View>
               <TextInput
-                onChangeText={ptScoreInput => this.setState({ ptScoreInput })}
+                {...this.props}
                 style={styles.input}
                 keyboardType="decimal-pad"
-                maxLength={4}
                 autoCorrect={false}
-                value={this.state.ptScoreInput}
-                onChange={() => {
-                  this.props.handler(this.getPTScore(this.state.ptScoreInput));
+                maxLength={4}
+                onChange={event => {
+                  onPTHandler(
+                    event.nativeEvent.text,
+                    this.getPTScore(event.nativeEvent.text)
+                  );
                 }}
+                value={this.props.ptScoreInput}
               />
             </View>
           </View>
           <View styles={styles.child3}>
-            <Text style={styles.output}>
-              {this.getPTScore(this.state.ptScoreInput)}
-            </Text>
+            <Text style={styles.output}>{this.props.ptScore}</Text>
           </View>
         </View>
       </View>

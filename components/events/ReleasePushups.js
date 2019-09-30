@@ -15,6 +15,7 @@ export default class ReleasePushups extends Component {
 
         this.state = {
             puScoreInput: '',
+            puScore: 0,
             pushupScore: {
                 scoreSheet: {
                     62: 96,
@@ -25,7 +26,7 @@ export default class ReleasePushups extends Component {
                     67: 98,
                     68: 99,
                     69: 99,
-                    70: 100
+                    70: 100,
                 },
             },
         };
@@ -67,38 +68,37 @@ export default class ReleasePushups extends Component {
     }
 
     render() {
+        const { onPUHandler } = this.props;
+
         return (
             <View>
                 <View style={styles.eventContainer}>
                     <View styles={styles.child1}>
-                        <Text style={styles.eventName}>HAND-RELEASE{"\n"}PUSH-UP</Text>
+                        <Text style={styles.eventName}>HAND-RELEASE{'\n'}PUSH-UP</Text>
                     </View>
                     <View styles={styles.child2}>
-                        <PowerThrow2 textChange={puScoreInput => this.setState({ puScoreInput })} />
+                        <View>
+                            <TextInput
+                                {...this.props}
+                                style={styles.input}
+                                keyboardType="number-pad"
+                                autoCorrect={false}
+                                maxLength={2}
+                                onChange={event => {
+                                    onPUHandler(
+                                        event.nativeEvent.text,
+                                        this.getPUScore(event.nativeEvent.text)
+                                    );
+                                }}
+                                value={this.props.puScoreInput}
+                            />
+                        </View>
                     </View>
                     <View styles={styles.child3}>
-                        <Text style={styles.output}>
-                            {this.getPUScore(this.state.puScoreInput)}
-                        </Text>
+                        <Text style={styles.output}>{this.props.puScore}</Text>
                     </View>
                 </View>
             </View>
         );
     }
 }
-
-const PowerThrow2 = props => {
-    return (
-        <View>
-            <TextInput
-                style={styles.input}
-                keyboardType='decimal-pad'
-                maxLength={4}
-                autoCorrect={false}
-                onChangeText={puScoreInput => props.textChange(puScoreInput)}
-                value={props.puScoreInput}
-                onKeyPress={props.getPUScore}
-            />
-        </View>
-    );
-};

@@ -56,7 +56,7 @@ export default class Deadlift extends Component {
   }
 
   render() {
-    const { onChangeTextHandler } = this.props;
+    const { onDLHandler } = this.props;
 
     return (
       <View>
@@ -75,7 +75,10 @@ export default class Deadlift extends Component {
                 autoCorrect={false}
                 maxLength={3}
                 onChange={event => {
-                  onChangeTextHandler(event.nativeEvent.text, this.getDLScore(event.nativeEvent.text));
+                  onDLHandler(
+                    event.nativeEvent.text,
+                    this.getDLScore(event.nativeEvent.text)
+                  );
                 }}
                 value={this.props.dlScoreInput}
               />
@@ -83,9 +86,7 @@ export default class Deadlift extends Component {
           </View>
           <View styles={styles.child3}>
             <Text style={styles.titleName}>Points</Text>
-            <Text style={styles.output}>
-              {this.props.dlScore}
-            </Text>
+            <Text style={styles.output}>{this.props.dlScore}</Text>
           </View>
         </View>
       </View>

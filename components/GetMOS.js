@@ -27,12 +27,20 @@ export default class GetMOS extends Component {
     super();
 
     this.state = this.getInitialState();
-    this.handleSomething = this.handleSomething.bind(this);
 
     this.state = {
       dlScoreInput: '',
       dlScore: 0,
+      ptScoreInput: '',
       ptScore: 0,
+      puScoreInput: '',
+      puScore: 0,
+      sdcScoreInput: '',
+      sdcScore: 0,
+      ltScoreInput: '',
+      ltScore: 0,
+      runScoreInput: '',
+      runScore: 0,
       totalScore: 0,
       mosInput: '',
       mosOutput: '',
@@ -47,9 +55,18 @@ export default class GetMOS extends Component {
 
   getInitialState = () => {
     const initialState = {
-      dlScoreInput: 0,
+      dlScoreInput: '',
       dlScore: 0,
+      ptScoreInput: '',
       ptScore: 0,
+      puScoreInput: '',
+      puScore: 0,
+      sdcScoreInput: '',
+      sdcScore: 0,
+      ltScoreInput: '',
+      ltScore: 0,
+      runScoreInput: '',
+      runScore: 0,
       totalScore: 0,
     };
     return initialState;
@@ -59,10 +76,6 @@ export default class GetMOS extends Component {
     this.setState(this.getInitialState());
     console.log('cleared', this.state);
   };
-
-  handleSomething(value) {
-    this.setState({ dlScoreInput: value });
-  }
 
   getMOSInfo(e) {
     let mos;
@@ -150,27 +163,35 @@ export default class GetMOS extends Component {
     }
   }
 
-  DL = getDLScore => {
-    this.setState({ dlScore: getDLScore }, () =>
-      console.log('state', this.state.dlScore)
-    );
-  };
-
-  PT = getPTScore => {
-    this.setState({ ptScore: getPTScore }, () =>
-      console.log('ptScore', this.state.ptScore)
-    );
-  };
-
-  getTotalScore = () => {
-    this.setState({ totalScore: this.state.dlScore + this.state.ptScore });
-  };
-
-  onChangeTextHandler = (e, x) => {
-    console.log("e", e, x);
+  onDLHandler = (e, x) => {
     this.setState({ dlScoreInput: e });
-    this.setState({ dlScore: x })
-  }
+    this.setState({ dlScore: x });
+  };
+
+  onPTHandler = (e, x) => {
+    this.setState({ ptScoreInput: e });
+    this.setState({ ptScore: x });
+  };
+
+  onPUHandler = (e, x) => {
+    this.setState({ puScoreInput: e });
+    this.setState({ puScore: x });
+  };
+
+  onSDCHandler = (e, x) => {
+    this.setState({ sdcScoreInput: e });
+    this.setState({ sdcScore: x });
+  };
+
+  onLTHandler = (e, x) => {
+    this.setState({ ltScoreInput: e });
+    this.setState({ ltScore: x });
+  };
+
+  onRunHandler = (e, x) => {
+    this.setState({ runScoreInput: e });
+    this.setState({ runScore: x });
+  };
 
   render() {
     return (
@@ -228,15 +249,9 @@ export default class GetMOS extends Component {
             <ScrollView>
               <View>
                 <View>
-                  <Text>
-                    Points - {this.state.dlScore} + {this.state.ptScore}
-                  </Text>
-                  <Text>dlScoreInput - {this.state.dlScoreInput}</Text>
-                </View>
-                <View>
                   <Deadlift
                     mosLevel={this.state.mosLevel}
-                    onChangeTextHandler={this.onChangeTextHandler}
+                    onDLHandler={this.onDLHandler}
                     dlScoreInput={this.state.dlScoreInput}
                     dlScore={this.state.dlScore}
                   />
@@ -244,24 +259,46 @@ export default class GetMOS extends Component {
                 <View>
                   <PowerThrow
                     mosLevel={this.state.mosLevel}
-                    handler={this.PT}
+                    onPTHandler={this.onPTHandler}
+                    ptScoreInput={this.state.ptScoreInput}
+                    ptScore={this.state.ptScore}
                   />
                 </View>
 
                 <View>
-                  <ReleasePushups mosLevel={this.state.mosLevel} />
+                  <ReleasePushups
+                    mosLevel={this.state.mosLevel}
+                    onPUHandler={this.onPUHandler}
+                    puScoreInput={this.state.puScoreInput}
+                    puScore={this.state.puScore}
+                  />
                 </View>
 
                 <View>
-                  <SprintDragCarry mosLevel={this.state.mosLevel} />
+                  <SprintDragCarry
+                    mosLevel={this.state.mosLevel}
+                    onSDCHandler={this.onSDCHandler}
+                    sdcScoreInput={this.state.sdcScoreInput}
+                    sdcScore={this.state.sdcScore}
+                  />
                 </View>
 
                 <View>
-                  <LegTuck mosLevel={this.state.mosLevel} />
+                  <LegTuck
+                    mosLevel={this.state.mosLevel}
+                    onLTHandler={this.onLTHandler}
+                    ltScoreInput={this.state.ltScoreInput}
+                    ltScore={this.state.ltScore}
+                  />
                 </View>
 
                 <View>
-                  <Run mosLevel={this.state.mosLevel} />
+                  <Run
+                    mosLevel={this.state.mosLevel}
+                    onRunHandler={this.onRunHandler}
+                    runScoreInput={this.state.runScoreInput}
+                    runScore={this.state.runScore}
+                  />
                 </View>
               </View>
             </ScrollView>
@@ -284,7 +321,15 @@ export default class GetMOS extends Component {
         <View style={styles.scoreContainer}>
           <Score
             clearState={this.clearState}
-            getTotalScore={this.getTotalScore}
+            mosLevel={this.state.mosLevel}
+            totalScore={
+              this.state.dlScore +
+              this.state.ptScore +
+              this.state.puScore +
+              this.state.sdcScore +
+              this.state.ltScore +
+              this.state.runScore
+            }
           />
         </View>
         <View style={styles.footerContainer}>

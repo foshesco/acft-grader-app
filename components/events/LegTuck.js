@@ -63,6 +63,8 @@ export default class LegTuck extends Component {
   }
 
   render() {
+    const { onLTHandler } = this.props;
+
     return (
       <View>
         <View style={styles.eventContainer}>
@@ -70,33 +72,28 @@ export default class LegTuck extends Component {
             <Text style={styles.eventName}>LEG TUCK</Text>
           </View>
           <View styles={styles.child2}>
-            <PowerThrow2
-              textChange={ltScoreInput => this.setState({ ltScoreInput })}
-            />
+            <View>
+              <TextInput
+                {...this.props}
+                style={styles.input}
+                keyboardType="decimal-pad"
+                autoCorrect={false}
+                maxLength={3}
+                onChange={event => {
+                  onLTHandler(
+                    event.nativeEvent.text,
+                    this.getLTScore(event.nativeEvent.text)
+                  );
+                }}
+                value={this.props.ltScoreInput}
+              />
+            </View>
           </View>
           <View styles={styles.child3}>
-            <Text style={styles.output}>
-              {this.getLTScore(this.state.ltScoreInput)}
-            </Text>
+            <Text style={styles.output}>{this.props.ltScore}</Text>
           </View>
         </View>
       </View>
     );
   }
 }
-
-const PowerThrow2 = props => {
-  return (
-    <View>
-      <TextInput
-        style={styles.input}
-        keyboardType="decimal-pad"
-        maxLength={4}
-        autoCorrect={false}
-        onChangeText={ltScoreInput => props.textChange(ltScoreInput)}
-        value={props.ltScoreInput}
-        onKeyPress={props.getLTScore}
-      />
-    </View>
-  );
-};

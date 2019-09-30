@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import {
-    View,
-    Text,
-    TextInput,
-    StyleSheet
-} from 'react-native';
+import { View, Text, TextInput, StyleSheet } from 'react-native';
 import { styles } from './Styles';
 
 export default class SprintDragCarry extends Component {
@@ -31,10 +26,9 @@ export default class SprintDragCarry extends Component {
         };
     }
 
-    getSDCScore() {
+    getSDCScore(e) {
         let i;
         let sdcScore = this.state.sdcScore;
-        e = this.state.sdcMinInput.concat(this.state.sdcSecInput)
 
         i = sdcScore.scoreSheet[e];
 
@@ -68,6 +62,8 @@ export default class SprintDragCarry extends Component {
     }
 
     render() {
+        const { onSDCHandler } = this.props;
+
         return (
             <View>
                 <View style={styles.eventContainer}>
@@ -79,34 +75,45 @@ export default class SprintDragCarry extends Component {
                             <TextInput
                                 onChangeText={sdcMinInput => this.setState({ sdcMinInput })}
                                 style={styles.input1}
-                                keyboardType='decimal-pad'
+                                keyboardType="decimal-pad"
                                 maxLength={1}
                                 autoCorrect={false}
                                 value={this.state.value}
                                 onChangeText={value => {
-                                    this.setState({ value })
+                                    this.setState({ value });
                                     if (value) this.refs.input_2.focus(); //assumption is TextInput ref is input_2
                                 }}
                             />
-                            <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, borderTopColor: 'black', borderTopWidth: 1 }}>
+                            <View
+                                style={{
+                                    borderBottomColor: 'black',
+                                    borderBottomWidth: 1,
+                                    borderTopColor: 'black',
+                                    borderTopWidth: 1,
+                                }}>
                                 <Text style={{ fontSize: 22 }}>:</Text>
                             </View>
                             <TextInput
-                                onChangeText={sdcSecInput => this.setState({ sdcSecInput })}
+                                {...this.props}
                                 style={styles.input2}
                                 ref="input_2"
-                                keyboardType='decimal-pad'
-                                maxLength={2}
+                                keyboardType="number-pad"
                                 autoCorrect={false}
-                                value={this.state.sdcSecInput}
+                                maxLength={2}
+                                onChange={event => {
+                                    onSDCHandler(
+                                        event.nativeEvent.text,
+                                        this.getSDCScore(
+                                            this.state.sdcMinInput.concat(event.nativeEvent.text)
+                                        )
+                                    );
+                                }}
+                                value={this.props.sdcSecInput}
                             />
-                        </View >
+                        </View>
                     </View>
                     <View styles={styles.child3}>
-
-                        <Text style={styles.output}>
-                            {this.getSDCScore()}
-                        </Text>
+                        <Text style={styles.output}>{this.props.sdcScore}</Text>
                     </View>
                 </View>
             </View>
