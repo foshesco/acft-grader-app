@@ -12,67 +12,15 @@ import {
 export default class Score extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      goNoGo: '',
+    };
   }
 
-  goNoGo = e => {
-    if (e == 1 && this.props.totalScore < 420) {
-      return (
-        <Text
-          style={{
-            color: 'white',
-            fontSize: 20,
-            fontWeight: '500',
-            backgroundColor: 'red',
-            width: '100%',
-            textAlign: 'center',
-          }}>
-          No-Go
-        </Text>
-      );
-    } else if (e == 2 && this.props.totalScore < 390) {
-      return (
-        <Text
-          style={{
-            color: 'white',
-            fontSize: 20,
-            fontWeight: '500',
-            backgroundColor: 'red',
-            width: '100%',
-            textAlign: 'center',
-          }}>
-          No-Go
-        </Text>
-      );
-    } else if (e == 3 && this.props.totalScore < 360) {
-      return (
-        <Text
-          style={{
-            color: 'white',
-            fontSize: 20,
-            fontWeight: '500',
-            backgroundColor: 'red',
-            width: '100%',
-            textAlign: 'center',
-          }}>
-          No-Go
-        </Text>
-      );
-    } else {
-      return (
-        <Text
-          style={{
-            color: 'white',
-            fontSize: 20,
-            fontWeight: '500',
-            backgroundColor: 'green',
-            width: '100%',
-            textAlign: 'center',
-          }}>
-          Go
-        </Text>
-      );
-    }
-  };
+  goNoGo() {
+    this.setState({ goNoGo: '' }, () => { });
+  }
 
   render() {
     return (
@@ -91,7 +39,7 @@ export default class Score extends Component {
           </View>
           <View>
             <Text style={styles.scoreOutput}>
-              {this.goNoGo(this.props.mosLevel)}
+              {this.props.goNoGo(this.props.mosLevel)}
             </Text>
           </View>
         </View>

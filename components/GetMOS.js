@@ -30,18 +30,19 @@ export default class GetMOS extends Component {
 
     this.state = {
       dlScoreInput: '',
-      dlScore: 0,
+      dlScore: '',
       ptScoreInput: '',
-      ptScore: 0,
+      ptScore: '',
       puScoreInput: '',
-      puScore: 0,
+      puScore: '',
       sdcScoreInput: '',
-      sdcScore: 0,
+      sdcScore: '',
       ltScoreInput: '',
-      ltScore: 0,
+      ltScore: '',
       runScoreInput: '',
-      runScore: 0,
-      totalScore: 0,
+      runScore: '',
+      totalScore: '',
+      goNoGo: '',
       mosInput: '',
       mosOutput: '',
       mosLevel: '',
@@ -56,24 +57,26 @@ export default class GetMOS extends Component {
   getInitialState = () => {
     const initialState = {
       dlScoreInput: '',
-      dlScore: 0,
+      dlScore: '',
       ptScoreInput: '',
-      ptScore: 0,
+      ptScore: '',
       puScoreInput: '',
-      puScore: 0,
+      puScore: '',
       sdcScoreInput: '',
-      sdcScore: 0,
+      sdcScore: '',
       ltScoreInput: '',
-      ltScore: 0,
+      ltScore: '',
       runScoreInput: '',
-      runScore: 0,
-      totalScore: 0,
+      runScore: '',
+      totalScore: '',
+      goNoGo: '',
     };
     return initialState;
   };
 
   clearState = () => {
     this.setState(this.getInitialState());
+    this.setState({ goNoGo: '' });
     console.log('cleared', this.state);
   };
 
@@ -162,6 +165,77 @@ export default class GetMOS extends Component {
       }
     }
   }
+
+  goNoGo = e => {
+    if (e == 1 || e == 2 || e == 3) {
+      if (e == 1 && this.state.totalScore < 420) {
+        if (this.state.goNoGo != 'NO-GO') {
+          this.setState({ goNoGo: 'NO-GO' });
+        }
+        return (
+          <Text
+            style={{
+              color: 'white',
+              fontSize: 20,
+              fontWeight: '500',
+              backgroundColor: 'red',
+              width: '100%',
+              textAlign: 'center',
+            }}>
+            {this.state.goNoGo}
+          </Text>
+        );
+      } else if (e == 2 && this.state.totalScore < 390) {
+        if (this.state.goNoGo != 'NO-GO') {
+          this.setState({ goNoGo: 'NO-GO' });
+        }
+        return (
+          <Text
+            style={{
+              color: 'white',
+              fontSize: 20,
+              fontWeight: '500',
+              backgroundColor: 'red',
+              width: '100%',
+              textAlign: 'center',
+            }}>
+            {this.state.goNoGo}
+          </Text>
+        );
+      } else if (e == 3 && this.state.totalScore < 360) {
+        if (this.state.goNoGo != 'NO-GO') {
+          this.setState({ goNoGo: 'NO-GO' });
+        }
+        return (
+          <Text
+            style={{
+              color: 'white',
+              fontSize: 20,
+              fontWeight: '500',
+              backgroundColor: 'red',
+              width: '100%',
+              textAlign: 'center',
+            }}>
+            {this.state.goNoGo}
+          </Text>
+        );
+      } else {
+        return (
+          <Text
+            style={{
+              color: 'white',
+              fontSize: 20,
+              fontWeight: '500',
+              backgroundColor: 'green',
+              width: '100%',
+              textAlign: 'center',
+            }}>
+            {this.state.goNoGo}
+          </Text>
+        );
+      }
+    }
+  };
 
   onDLHandler = (e, x) => {
     this.setState({ dlScoreInput: e });
@@ -320,6 +394,7 @@ export default class GetMOS extends Component {
         />
         <View style={styles.scoreContainer}>
           <Score
+            goNoGo={this.goNoGo}
             clearState={this.clearState}
             mosLevel={this.state.mosLevel}
             totalScore={
