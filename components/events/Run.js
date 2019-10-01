@@ -34,7 +34,6 @@ export default class Run extends Component {
     getRunScore(e) {
         let i;
         let runScore = this.state.runScore;
-        e = this.state.runMinInput.concat(this.state.runSecInput);
 
         i = runScore.scoreSheet[e];
 
@@ -85,10 +84,6 @@ export default class Run extends Component {
                                 maxLength={2}
                                 autoCorrect={false}
                                 value={this.state.value}
-                                onChangeText={value => {
-                                    this.setState({ value });
-                                    if (value) this.refs.input_2.focus(); //assumption is TextInput ref is input_2
-                                }}
                             />
                             <View
                                 style={{

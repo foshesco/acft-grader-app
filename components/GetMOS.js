@@ -70,14 +70,14 @@ export default class GetMOS extends Component {
       runScore: '',
       totalScore: '',
       goNoGo: '',
+      mosLevel: '',
+      mosInput: ''
     };
     return initialState;
   };
 
   clearState = () => {
     this.setState(this.getInitialState());
-    this.setState({ goNoGo: '' });
-    console.log('cleared', this.state);
   };
 
   getMOSInfo(e) {
@@ -165,77 +165,6 @@ export default class GetMOS extends Component {
       }
     }
   }
-
-  goNoGo = e => {
-    if (e == 1 || e == 2 || e == 3) {
-      if (e == 1 && this.state.totalScore < 420) {
-        if (this.state.goNoGo != 'NO-GO') {
-          this.setState({ goNoGo: 'NO-GO' });
-        }
-        return (
-          <Text
-            style={{
-              color: 'white',
-              fontSize: 20,
-              fontWeight: '500',
-              backgroundColor: 'red',
-              width: '100%',
-              textAlign: 'center',
-            }}>
-            {this.state.goNoGo}
-          </Text>
-        );
-      } else if (e == 2 && this.state.totalScore < 390) {
-        if (this.state.goNoGo != 'NO-GO') {
-          this.setState({ goNoGo: 'NO-GO' });
-        }
-        return (
-          <Text
-            style={{
-              color: 'white',
-              fontSize: 20,
-              fontWeight: '500',
-              backgroundColor: 'red',
-              width: '100%',
-              textAlign: 'center',
-            }}>
-            {this.state.goNoGo}
-          </Text>
-        );
-      } else if (e == 3 && this.state.totalScore < 360) {
-        if (this.state.goNoGo != 'NO-GO') {
-          this.setState({ goNoGo: 'NO-GO' });
-        }
-        return (
-          <Text
-            style={{
-              color: 'white',
-              fontSize: 20,
-              fontWeight: '500',
-              backgroundColor: 'red',
-              width: '100%',
-              textAlign: 'center',
-            }}>
-            {this.state.goNoGo}
-          </Text>
-        );
-      } else {
-        return (
-          <Text
-            style={{
-              color: 'white',
-              fontSize: 20,
-              fontWeight: '500',
-              backgroundColor: 'green',
-              width: '100%',
-              textAlign: 'center',
-            }}>
-            {this.state.goNoGo}
-          </Text>
-        );
-      }
-    }
-  };
 
   onDLHandler = (e, x) => {
     this.setState({ dlScoreInput: e });
@@ -405,6 +334,12 @@ export default class GetMOS extends Component {
               this.state.ltScore +
               this.state.runScore
             }
+            dlScore={this.state.dlScore}
+            ptScore={this.state.ptScore}
+            puScore={this.state.puScore}
+            sdcScore={this.state.sdcScore}
+            ltScore={this.state.ltScore}
+            runScore={this.state.runScore}
           />
         </View>
         <View style={styles.footerContainer}>

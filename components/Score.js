@@ -14,13 +14,92 @@ export default class Score extends Component {
     super(props);
 
     this.state = {
-      goNoGo: '',
-    };
+      goNoGo: 'GO'
+    }
   }
 
-  goNoGo() {
-    this.setState({ goNoGo: '' }, () => { });
-  }
+  goNoGo = e => {
+    if (e == 1 || e == 2 || e == 3) {
+      if (this.props.dlScore > 0 &&
+        this.props.ptScore > 0 &&
+        this.props.puScore > 0 &&
+        this.props.sdcScore > 0 &&
+        this.props.ltScore > 0 &&
+        this.props.runScore > 0) {
+        if (e == 1 && this.props.totalScore < 420) {
+          return (
+            <Text
+              style={{
+                color: 'white',
+                fontSize: 20,
+                fontWeight: '500',
+                backgroundColor: 'red',
+                width: '100%',
+                textAlign: 'center',
+              }}>
+              NO-GO
+          </Text>
+          );
+        } else if (e == 2 && this.props.totalScore < 390) {
+          return (
+            <Text
+              style={{
+                color: 'white',
+                fontSize: 20,
+                fontWeight: '500',
+                backgroundColor: 'red',
+                width: '100%',
+                textAlign: 'center',
+              }}>
+              NO-GO
+          </Text>
+          );
+        } else if (e == 3 && this.props.totalScore < 360) {
+          return (
+            <Text
+              style={{
+                color: 'white',
+                fontSize: 20,
+                fontWeight: '500',
+                backgroundColor: 'red',
+                width: '100%',
+                textAlign: 'center',
+              }}>
+              NO-GO
+          </Text>
+          );
+        } else {
+          return (
+            <Text
+              style={{
+                color: 'white',
+                fontSize: 20,
+                fontWeight: '500',
+                backgroundColor: 'green',
+                width: '100%',
+                textAlign: 'center',
+              }}>
+              GO
+          </Text>
+          );
+        }
+      } else {
+        return (
+          <Text
+            style={{
+              color: 'white',
+              fontSize: 12,
+              fontWeight: '500',
+              backgroundColor: 'red',
+              width: '100%',
+              textAlign: 'center',
+            }}>
+            Enter Scores
+        </Text>
+        );
+      }
+    }
+  };
 
   render() {
     return (
@@ -39,7 +118,7 @@ export default class Score extends Component {
           </View>
           <View>
             <Text style={styles.scoreOutput}>
-              {this.props.goNoGo(this.props.mosLevel)}
+              {this.goNoGo(this.props.mosLevel)}
             </Text>
           </View>
         </View>
