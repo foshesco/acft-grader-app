@@ -80,10 +80,18 @@ export default class Run extends Component {
                             <TextInput
                                 onChangeText={runMinInput => this.setState({ runMinInput })}
                                 style={styles.input1}
-                                keyboardType="decimal-pad"
+                                keyboardType="number-pad"
                                 maxLength={2}
                                 autoCorrect={false}
-                                value={this.state.value}
+                                onChange={event => {
+                                    onRunHandler(
+                                        event.nativeEvent.text,
+                                        this.getRunScore(
+                                            this.state.runMinInput.concat(event.nativeEvent.text)
+                                        )
+                                    );
+                                }}
+                                value={this.props.runMinInput}
                             />
                             <View
                                 style={{
@@ -103,6 +111,7 @@ export default class Run extends Component {
                                 maxLength={2}
                                 onChange={event => {
                                     onRunHandler(
+                                        this.state.runMinInput,
                                         event.nativeEvent.text,
                                         this.getRunScore(
                                             this.state.runMinInput.concat(event.nativeEvent.text)
