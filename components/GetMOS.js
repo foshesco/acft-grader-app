@@ -120,6 +120,7 @@ export default class GetMOS extends Component {
   getLevel(e) {
     let i;
     let mosDesc = this.state.mosDesc;
+    e = this.state.mosInput;
 
     if (mosDesc[e]) {
       i = mosDesc[e].substring(0, 1);
@@ -219,6 +220,7 @@ export default class GetMOS extends Component {
               minLength={3}
               autoCorrect={false}
               onChangeText={mosOutput => this.setState({ mosInput: mosOutput })}
+              value={this.state.mosInput}
             />
           </View>
           <View style={{ flex: 1, flexDirection: 'row' }}>
@@ -313,11 +315,6 @@ export default class GetMOS extends Component {
                   />
                 </View>
                 <View>
-                  <Text>
-                    sdcMinInput- {this.state.sdcMinInput}
-                    sdcSecInput- {this.state.sdcSecInput}
-                    sdcScore- {this.state.sdcScore}
-                  </Text>
                 </View>
               </View>
             </ScrollView>

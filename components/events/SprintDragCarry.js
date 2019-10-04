@@ -75,14 +75,18 @@ export default class SprintDragCarry extends Component {
                             <TextInput
                                 onChangeText={sdcMinInput => this.setState({ sdcMinInput })}
                                 style={styles.input1}
-                                keyboardType="decimal-pad"
+                                keyboardType="number-pad"
                                 maxLength={1}
                                 autoCorrect={false}
-                                value={this.state.value}
-                                onChangeText={value => {
-                                    this.setState({ value });
-                                    if (value) this.refs.input_2.focus(); //assumption is TextInput ref is input_2
+                                onChange={event => {
+                                    onSDCHandler(
+                                        event.nativeEvent.text,
+                                        this.getSDCScore(
+                                            this.state.sdcMinInput.concat(event.nativeEvent.text)
+                                        )
+                                    );
                                 }}
+                                value={this.props.sdcMinInput}
                             />
                             <View
                                 style={{
@@ -102,6 +106,7 @@ export default class SprintDragCarry extends Component {
                                 maxLength={2}
                                 onChange={event => {
                                     onSDCHandler(
+                                        this.state.sdcMinInput,
                                         event.nativeEvent.text,
                                         this.getSDCScore(
                                             this.state.sdcMinInput.concat(event.nativeEvent.text)

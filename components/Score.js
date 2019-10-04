@@ -14,19 +14,82 @@ export default class Score extends Component {
     super(props);
 
     this.state = {
-      goNoGo: 'GO'
-    }
+      goNoGo: 'GO',
+      totalScore: '',
+    };
   }
+
+  calcScore = e => {
+    if (e == 1 || e == 2 || e == 3) {
+      if (this.props.dlScore == 'fail' || this.props.dlScore == undefined) {
+        this.props.dlScore = 0;
+      }
+      if (this.props.ptScore == 'fail' || this.props.ptScore == undefined) {
+        this.props.ptScore = 0;
+      }
+      if (this.props.puScore == 'fail' || this.props.puScore == undefined) {
+        this.props.puScore = 0;
+      }
+      if (this.props.sdcScore == 'fail' || this.props.sdcScore == undefined) {
+        this.props.sdcScore = 0;
+      }
+      if (this.props.ltScore == 'fail' || this.props.ltScore == undefined) {
+        this.props.ltScore = 0;
+      }
+      if (this.props.runScore == 'fail' || this.props.runScore == undefined) {
+        this.props.runScore = 0;
+      }
+
+      console.log('dlScore', this.props);
+
+      var totalScore =
+        this.props.dlScore +
+        this.props.ptScore +
+        this.props.puScore +
+        this.props.sdcScore +
+        this.props.ltScore +
+        this.props.runScore;
+
+      return totalScore;
+    }
+  };
 
   goNoGo = e => {
     if (e == 1 || e == 2 || e == 3) {
-      if (this.props.dlScore > 0 &&
+      var noGo =
+        this.props.dlScore == 0 ||
+        this.props.ptScore == 0 ||
+        this.props.puScore == 0 ||
+        this.props.sdcScore == 0 ||
+        this.props.ltScore == 0 ||
+        this.props.runScore == 0;
+
+      var go =
+        this.props.dlScore > 0 &&
         this.props.ptScore > 0 &&
         this.props.puScore > 0 &&
         this.props.sdcScore > 0 &&
         this.props.ltScore > 0 &&
-        this.props.runScore > 0) {
-        if (e == 1 && this.props.totalScore < 420) {
+        this.props.runScore > 0;
+
+      var clear =
+        this.props.dlScore == undefined ||
+        this.props.ptScore == undefined ||
+        this.props.puScore == undefined ||
+        this.props.sdcScore == undefined ||
+        this.props.ltScore == undefined ||
+        this.props.runScore == undefined;
+
+      var noEntry =
+        this.props.dlScore == '' ||
+        this.props.ptScore == '' ||
+        this.props.puScore == '' ||
+        this.props.sdcScore == '' ||
+        this.props.ltScore == '' ||
+        this.props.runScore == '';
+
+      if (go && (!noGo || !noEntry || !clear)) {
+        if (e == 1 && this.totalScore < 420) {
           return (
             <Text
               style={{
@@ -38,9 +101,9 @@ export default class Score extends Component {
                 textAlign: 'center',
               }}>
               NO-GO
-          </Text>
+            </Text>
           );
-        } else if (e == 2 && this.props.totalScore < 390) {
+        } else if (e == 2 && this.totalScore < 390) {
           return (
             <Text
               style={{
@@ -52,9 +115,9 @@ export default class Score extends Component {
                 textAlign: 'center',
               }}>
               NO-GO
-          </Text>
+            </Text>
           );
-        } else if (e == 3 && this.props.totalScore < 360) {
+        } else if (e == 3 && this.totalScore < 360) {
           return (
             <Text
               style={{
@@ -66,7 +129,7 @@ export default class Score extends Component {
                 textAlign: 'center',
               }}>
               NO-GO
-          </Text>
+            </Text>
           );
         } else {
           return (
@@ -80,22 +143,36 @@ export default class Score extends Component {
                 textAlign: 'center',
               }}>
               GO
-          </Text>
+            </Text>
           );
         }
-      } else {
+      } else if (!noEntry && (noGo || clear)) {
         return (
           <Text
             style={{
               color: 'white',
-              fontSize: 12,
+              fontSize: 20,
               fontWeight: '500',
               backgroundColor: 'red',
               width: '100%',
               textAlign: 'center',
             }}>
-            Enter Scores
-        </Text>
+            NO-GO
+          </Text>
+        );
+      } else if (noEntry) {
+        return (
+          <Text
+            style={{
+              color: 'black',
+              flexWrap: 'wrap',
+              fontSize: 12,
+              fontWeight: '500',
+              width: '100%',
+              textAlign: 'center',
+            }}>
+            Enter All Scores
+          </Text>
         );
       }
     }
@@ -114,7 +191,9 @@ export default class Score extends Component {
         </View>
         <View style={styles.goContainer}>
           <View>
-            <Text style={styles.scoreOutput}>{this.props.totalScore}</Text>
+            <Text style={styles.scoreOutput}>
+              {this.calcScore(this.props.mosLevel)}
+            </Text>
           </View>
           <View>
             <Text style={styles.scoreOutput}>
