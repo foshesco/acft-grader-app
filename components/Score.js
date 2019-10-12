@@ -40,8 +40,6 @@ export default class Score extends Component {
         this.props.runScore = 0;
       }
 
-      console.log('dlScore', this.props);
-
       var totalScore =
         this.props.dlScore +
         this.props.ptScore +
@@ -55,16 +53,9 @@ export default class Score extends Component {
   };
 
   goNoGo = e => {
-    if (e == 1 || e == 2 || e == 3) {
-      var noGo =
-        this.props.dlScore == 0 ||
-        this.props.ptScore == 0 ||
-        this.props.puScore == 0 ||
-        this.props.sdcScore == 0 ||
-        this.props.ltScore == 0 ||
-        this.props.runScore == 0;
 
-      var go =
+    if (e == 1 || e == 2 || e == 3) {
+      var scoresAboveZero =
         this.props.dlScore > 0 &&
         this.props.ptScore > 0 &&
         this.props.puScore > 0 &&
@@ -72,81 +63,33 @@ export default class Score extends Component {
         this.props.ltScore > 0 &&
         this.props.runScore > 0;
 
-      var clear =
+      var scoresUndefined =
         this.props.dlScore == undefined ||
         this.props.ptScore == undefined ||
         this.props.puScore == undefined ||
         this.props.sdcScore == undefined ||
         this.props.ltScore == undefined ||
         this.props.runScore == undefined;
+    }
 
-      var noEntry =
-        this.props.dlScore == '' ||
-        this.props.ptScore == '' ||
-        this.props.puScore == '' ||
-        this.props.sdcScore == '' ||
-        this.props.ltScore == '' ||
-        this.props.runScore == '';
+    var scoresEqualFail =
+      this.props.dlScore == "fail" ||
+      this.props.ptScore == "fail" ||
+      this.props.puScore == "fail" ||
+      this.props.sdcScore == "fail" ||
+      this.props.ltScore == "fail" ||
+      this.props.runScore == "fail";
 
-      if (go && (!noGo || !noEntry || !clear)) {
-        if (e == 1 && this.totalScore < 420) {
-          return (
-            <Text
-              style={{
-                color: 'white',
-                fontSize: 20,
-                fontWeight: '500',
-                backgroundColor: 'red',
-                width: '100%',
-                textAlign: 'center',
-              }}>
-              NO-GO
-            </Text>
-          );
-        } else if (e == 2 && this.totalScore < 390) {
-          return (
-            <Text
-              style={{
-                color: 'white',
-                fontSize: 20,
-                fontWeight: '500',
-                backgroundColor: 'red',
-                width: '100%',
-                textAlign: 'center',
-              }}>
-              NO-GO
-            </Text>
-          );
-        } else if (e == 3 && this.totalScore < 360) {
-          return (
-            <Text
-              style={{
-                color: 'white',
-                fontSize: 20,
-                fontWeight: '500',
-                backgroundColor: 'red',
-                width: '100%',
-                textAlign: 'center',
-              }}>
-              NO-GO
-            </Text>
-          );
-        } else {
-          return (
-            <Text
-              style={{
-                color: 'white',
-                fontSize: 20,
-                fontWeight: '500',
-                backgroundColor: 'green',
-                width: '100%',
-                textAlign: 'center',
-              }}>
-              GO
-            </Text>
-          );
-        }
-      } else if (!noEntry && (noGo || clear)) {
+    var scoresNotEntered =
+      this.props.dlScore == "" ||
+      this.props.ptScore == "" ||
+      this.props.puScore == "" ||
+      this.props.sdcScore == "" ||
+      this.props.ltScore == "" ||
+      this.props.runScore == "";
+
+    if (scoresAboveZero) {
+      if (e == 1 && this.totalScore < 420) {
         return (
           <Text
             style={{
@@ -158,55 +101,113 @@ export default class Score extends Component {
               textAlign: 'center',
             }}>
             NO-GO
-          </Text>
+            </Text>
         );
-      } else if (noEntry) {
+      } else if (e == 2 && this.totalScore < 390) {
         return (
           <Text
             style={{
-              color: 'black',
-              flexWrap: 'wrap',
-              fontSize: 12,
+              color: 'white',
+              fontSize: 20,
               fontWeight: '500',
+              backgroundColor: 'red',
               width: '100%',
               textAlign: 'center',
             }}>
-            Enter All Scores
-          </Text>
+            NO-GO
+            </Text>
+        );
+      } else if (e == 3 && this.totalScore < 360) {
+        return (
+          <Text
+            style={{
+              color: 'white',
+              fontSize: 20,
+              fontWeight: '500',
+              backgroundColor: 'red',
+              width: '100%',
+              textAlign: 'center',
+            }}>
+            NO-GO
+            </Text>
+        );
+      } else {
+        return (
+          <Text
+            style={{
+              color: 'white',
+              fontSize: 20,
+              fontWeight: '500',
+              backgroundColor: 'green',
+              width: '100%',
+              textAlign: 'center',
+            }}>
+            GO
+            </Text>
         );
       }
+    } else if (scoresEqualFail || scoresUndefined) {
+      return (
+        <Text
+          style={{
+            color: 'white',
+            fontSize: 20,
+            fontWeight: '500',
+            backgroundColor: 'red',
+            width: '100%',
+            textAlign: 'center',
+          }}>
+          NO-GO
+          </Text>
+      );
+    } else if (scoresNotEntered) {
+      return (
+        <Text
+          style={{
+            color: 'black',
+            flexWrap: 'wrap',
+            fontSize: 12,
+            fontWeight: '500',
+            width: '100%',
+            textAlign: 'center',
+          }}>
+          Enter All Scores
+          </Text>
+      );
     }
   };
 
   render() {
     return (
-      <View style={styles.mainScoreContainer}>
-        <View style={styles.scoreContainer}>
-          <View>
-            <Text style={styles.scoreTitle}>TOTAL POINTS:</Text>
+      <View>
+        <View style={styles.mainScoreContainer}>
+          <View style={styles.scoreContainer}>
+            <View>
+              <Text style={styles.scoreTitle}>TOTAL POINTS:</Text>
+            </View>
+            <View>
+              <Text style={styles.scoreTitle}>GO/NO-GO:</Text>
+            </View>
           </View>
-          <View>
-            <Text style={styles.scoreTitle}>GO/NO-GO:</Text>
+          <View style={styles.goContainer}>
+            <View>
+              <Text style={styles.scoreOutput}>
+                {this.calcScore(this.props.mosLevel)}
+              </Text>
+            </View>
+            <View>
+              <Text style={styles.scoreOutput}>
+                {this.goNoGo(this.props.mosLevel)}
+              </Text>
+            </View>
           </View>
-        </View>
-        <View style={styles.goContainer}>
-          <View>
-            <Text style={styles.scoreOutput}>
-              {this.calcScore(this.props.mosLevel)}
-            </Text>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              style={styles.scoreButton}
+              onPress={() => this.props.clearState()}>
+              <Text>Clear</Text>
+            </TouchableOpacity>
           </View>
-          <View>
-            <Text style={styles.scoreOutput}>
-              {this.goNoGo(this.props.mosLevel)}
-            </Text>
-          </View>
-        </View>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={styles.scoreButton}
-            onPress={() => this.props.clearState()}>
-            <Text>Clear</Text>
-          </TouchableOpacity>
         </View>
       </View>
     );
@@ -241,7 +242,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   mainScoreContainer: {
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-start',
     padding: 20,

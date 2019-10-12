@@ -64,19 +64,18 @@ export default class GetMOS extends Component {
       ptScore: '',
       puScoreInput: '',
       puScore: '',
-      sdcMinInput: '',
-      sdcSecInput: '',
+      sdcScoreInput: '',
       sdcScore: '',
       ltScoreInput: '',
       ltScore: '',
-      runMinInput: '',
-      runSecInput: '',
+      runScoreInput: '',
       runScore: '',
       totalScore: '',
       goNoGo: '',
       mosLevel: '',
       mosInput: '',
       mosOutput: '',
+      mosError: ''
     };
     return initialState;
   };
@@ -173,38 +172,38 @@ export default class GetMOS extends Component {
   }
 
   onDLHandler = (e, x) => {
-    this.setState({ dlScoreInput: e });
+    this.setState({ dlScoreInput: e })
     this.setState({ dlScore: x });
+    console.log("e", e, "x", x)
   };
 
   onPTHandler = (e, x) => {
-    this.setState({ ptScoreInput: e });
+    this.setState({ ptScoreInput: e })
     this.setState({ ptScore: x });
   };
 
   onPUHandler = (e, x) => {
-    this.setState({ puScoreInput: e });
+    this.setState({ puScoreInput: e })
     this.setState({ puScore: x });
   };
 
-  onSDCHandler = (m, e, x) => {
-    this.setState({ sdcMinInput: m });
-    this.setState({ sdcSecInput: e });
+  onSDCHandler = (e, x) => {
+    this.setState({ sdcScoreInput: e })
     this.setState({ sdcScore: x });
   };
 
   onLTHandler = (e, x) => {
-    this.setState({ ltScoreInput: e });
+    this.setState({ ltScoreInput: e })
     this.setState({ ltScore: x });
   };
 
-  onRunHandler = (m, e, x) => {
-    this.setState({ runMinInput: m });
-    this.setState({ runSecInput: e });
+  onRunHandler = (e, x) => {
+    this.setState({ runScoreInput: e })
     this.setState({ runScore: x });
   };
 
   render() {
+
     return (
       <View style={styles.mainContainer}>
         <View style={styles.headerContainer}>
@@ -222,6 +221,9 @@ export default class GetMOS extends Component {
               onChangeText={mosOutput => this.setState({ mosInput: mosOutput })}
               value={this.state.mosInput}
             />
+            {!!this.state.mosError && (
+              <Text style={{ paddingTop: 10, fontSize: 15, color: 'red' }}>{this.state.mosError}</Text>
+            )}
           </View>
           <View style={{ flex: 1, flexDirection: 'row' }}>
             <View style={styles.mosText}>
@@ -253,7 +255,14 @@ export default class GetMOS extends Component {
         <KeyboardAvoidingView
           style={styles.eventContainer}
           behavior="padding"
-          enabled>
+          enabled
+          onTouchStart={() => {
+            if (this.state.mosLevel.trim() === "") {
+              this.setState(() => ({ mosError: "MOS Required" }));
+            } else {
+              this.setState(() => ({ mosError: null }));
+            }
+          }}>
           <TouchableWithoutFeedback
             onPress={() => {
               Keyboard.dismiss();
@@ -290,8 +299,7 @@ export default class GetMOS extends Component {
                   <SprintDragCarry
                     mosLevel={this.state.mosLevel}
                     onSDCHandler={this.onSDCHandler}
-                    sdcMinInput={this.state.sdcMinInput}
-                    sdcSecInput={this.state.sdcSecInput}
+                    sdcScoreInput={this.state.sdcScoreInput}
                     sdcScore={this.state.sdcScore}
                   />
                 </View>
@@ -309,12 +317,9 @@ export default class GetMOS extends Component {
                   <Run
                     mosLevel={this.state.mosLevel}
                     onRunHandler={this.onRunHandler}
-                    runMinInput={this.state.runMinInput}
-                    runSecInput={this.state.runSecInput}
+                    runScoreInput={this.state.runScoreInput}
                     runScore={this.state.runScore}
                   />
-                </View>
-                <View>
                 </View>
               </View>
             </ScrollView>

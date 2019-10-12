@@ -1,13 +1,11 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
-  StyleSheet,
-  TextInput,
-  TouchableWithoutFeedback,
-  Keyboard,
 } from 'react-native';
 import { styles } from './Styles';
+import Picker from 'react-native-picker-select';
+import { pickerSelectStyles } from './PickerStyles';
 
 export default class LegTuck extends Component {
   constructor(props) {
@@ -17,13 +15,51 @@ export default class LegTuck extends Component {
       ltScoreInput: '',
       legTuckScore: {
         scoreSheet: {
-          13.1: 98,
-          13.2: 99,
-          13.3: 99,
-          13.4: 99,
-          13.5: 100,
+          20: 100,
+          19: 98,
+          18: 96,
+          17: 94,
+          16: 92,
+          15: 90,
+          14: 88,
+          13: 86,
+          12: 84,
+          11: 82,
+          10: 80,
+          9: 78,
+          8: 76,
+          7: 74,
+          6: 72,
+          5: 70,
+          4: 67,
+          3: 65,
+          2: 63,
+          1: 60
         },
       },
+      items: [
+        { label: '0', value: '0' },
+        { label: '1', value: '1' },
+        { label: '2', value: '2' },
+        { label: '3', value: '3' },
+        { label: '4', value: '4' },
+        { label: '5', value: '5' },
+        { label: '6', value: '6' },
+        { label: '7', value: '7' },
+        { label: '8', value: '8' },
+        { label: '9', value: '9' },
+        { label: '10', value: '10' },
+        { label: '11', value: '11' },
+        { label: '12', value: '12' },
+        { label: '13', value: '13' },
+        { label: '14', value: '14' },
+        { label: '15', value: '15' },
+        { label: '16', value: '16' },
+        { label: '17', value: '17' },
+        { label: '18', value: '18' },
+        { label: '19', value: '19' },
+        { label: '20', value: '20' },
+      ]
     };
   }
 
@@ -65,6 +101,45 @@ export default class LegTuck extends Component {
   render() {
     const { onLTHandler } = this.props;
 
+    if (this.props.mosLevel === '1' || this.props.mosLevel === '2' || this.props.mosLevel === '3') {
+      picker = <Picker
+        {...this.props}
+        style={pickerSelectStyles}
+        placeholder={{
+          label: 'Reps',
+          value: null,
+        }}
+        items={this.state.items}
+        onValueChange={(value) => {
+          onLTHandler(
+            value,
+            this.getLTScore((value))
+          );
+        }}
+        value={this.props.ltScoreInput}
+        selectedValue={this.props.ltScore}
+      />
+    } else {
+      picker = <Picker
+        {...this.props}
+        style={pickerSelectStyles}
+        placeholder={{
+          label: 'Reps',
+          value: null,
+        }}
+        disabled
+        items={this.state.items}
+        onValueChange={(value) => {
+          onLTHandler(
+            value,
+            this.getLTScore((value))
+          );
+        }}
+        value={this.props.ltScoreInput}
+        selectedValue={this.props.ltScore}
+      />
+    }
+
     return (
       <View>
         <View style={styles.eventContainer}>
@@ -73,20 +148,7 @@ export default class LegTuck extends Component {
           </View>
           <View styles={styles.child2}>
             <View>
-              <TextInput
-                {...this.props}
-                style={styles.input}
-                keyboardType="decimal-pad"
-                autoCorrect={false}
-                maxLength={3}
-                onChange={event => {
-                  onLTHandler(
-                    event.nativeEvent.text,
-                    this.getLTScore(event.nativeEvent.text)
-                  );
-                }}
-                value={this.props.ltScoreInput}
-              />
+              {picker}
             </View>
           </View>
           <View styles={styles.child3}>
