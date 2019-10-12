@@ -1280,25 +1280,25 @@ export default class Run extends Component {
 
         if (e != '') {
             if (this.props.mosLevel === '1') {
-                if (e >= 1800) {
+                if (e >= '18:00') {
                     return 'fail';
-                } else if (e <= 1245) {
+                } else if (e <= '12:45') {
                     return 100;
                 } else {
                     return i;
                 }
             } else if (this.props.mosLevel === '2') {
-                if (e >= 1900) {
+                if (e >= '19:00') {
                     return 'fail';
-                } else if (e <= 1245) {
+                } else if (e <= '12:45') {
                     return 100;
                 } else {
                     return i;
                 }
             } else if (this.props.mosLevel === '3') {
-                if (e >= 2107) {
+                if (e >= '21:07') {
                     return 'fail';
-                } else if (e <= 1245) {
+                } else if (e <= '12:45') {
                     return 100;
                 } else {
                     return i;

@@ -384,7 +384,7 @@ export default class SprintDragCarry extends Component {
 
         if (e != '') {
             if (this.props.mosLevel === '1') {
-                if (e >= "2:09") {
+                if (e >= '2:09') {
                     return 'fail';
                 } else if (e <= 140) {
                     return 100;
@@ -400,9 +400,9 @@ export default class SprintDragCarry extends Component {
                     return i;
                 }
             } else if (this.props.mosLevel === '3') {
-                if (e >= "3:35") {
+                if (e >= '3:35') {
                     return 'fail';
-                } else if (e <= "1:40") {
+                } else if (e <= '1:40') {
                     return 100;
                 } else {
                     return i;

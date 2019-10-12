@@ -19,41 +19,27 @@ export default class Score extends Component {
     };
   }
 
-  calcScore = e => {
+  calcScore() {
+    e = this.props.mosLevel
+
+    var totalScore =
+      this.props.dlScore +
+      this.props.ptScore +
+      this.props.puScore +
+      this.props.sdcScore +
+      this.props.ltScore +
+      this.props.runScore
+
     if (e == 1 || e == 2 || e == 3) {
-      if (this.props.dlScore == 'fail' || this.props.dlScore == undefined) {
-        this.props.dlScore = 0;
+      if (isNaN(totalScore)) {
+        return totalScore = 'fail';
+      } else {
+        return totalScore
       }
-      if (this.props.ptScore == 'fail' || this.props.ptScore == undefined) {
-        this.props.ptScore = 0;
-      }
-      if (this.props.puScore == 'fail' || this.props.puScore == undefined) {
-        this.props.puScore = 0;
-      }
-      if (this.props.sdcScore == 'fail' || this.props.sdcScore == undefined) {
-        this.props.sdcScore = 0;
-      }
-      if (this.props.ltScore == 'fail' || this.props.ltScore == undefined) {
-        this.props.ltScore = 0;
-      }
-      if (this.props.runScore == 'fail' || this.props.runScore == undefined) {
-        this.props.runScore = 0;
-      }
-
-      var totalScore =
-        this.props.dlScore +
-        this.props.ptScore +
-        this.props.puScore +
-        this.props.sdcScore +
-        this.props.ltScore +
-        this.props.runScore;
-
-      return totalScore;
     }
   };
 
   goNoGo = e => {
-
     if (e == 1 || e == 2 || e == 3) {
       var scoresAboveZero =
         this.props.dlScore > 0 &&
@@ -192,7 +178,7 @@ export default class Score extends Component {
           <View style={styles.goContainer}>
             <View>
               <Text style={styles.scoreOutput}>
-                {this.calcScore(this.props.mosLevel)}
+                {this.calcScore()}
               </Text>
             </View>
             <View>
