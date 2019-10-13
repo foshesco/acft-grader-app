@@ -17,7 +17,7 @@ const pickerSelectStyles = StyleSheet.create({
         borderWidth: 1,
         width: 75,
         height: 35,
-        fontSize: 20,
+        fontSize: 17,
         fontWeight: '400',
         textAlign: 'center',
         color: 'black'
