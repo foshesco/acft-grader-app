@@ -23,12 +23,12 @@ export default class Score extends Component {
     e = this.props.mosLevel
 
     var totalScore =
-      this.props.dlScore +
-      this.props.ptScore +
-      this.props.puScore +
-      this.props.sdcScore +
-      this.props.ltScore +
-      this.props.runScore
+      Number(this.props.dlScore) +
+      Number(this.props.ptScore) +
+      Number(this.props.puScore) +
+      Number(this.props.sdcScore) +
+      Number(this.props.ltScore) +
+      Number(this.props.runScore)
 
     if (e == 1 || e == 2 || e == 3) {
       if (isNaN(totalScore)) {
@@ -56,26 +56,82 @@ export default class Score extends Component {
         this.props.sdcScore == undefined ||
         this.props.ltScore == undefined ||
         this.props.runScore == undefined;
-    }
 
-    var scoresEqualFail =
-      this.props.dlScore == "fail" ||
-      this.props.ptScore == "fail" ||
-      this.props.puScore == "fail" ||
-      this.props.sdcScore == "fail" ||
-      this.props.ltScore == "fail" ||
-      this.props.runScore == "fail";
+      var scoresEqualFail =
+        this.props.dlScore == "fail" ||
+        this.props.ptScore == "fail" ||
+        this.props.puScore == "fail" ||
+        this.props.sdcScore == "fail" ||
+        this.props.ltScore == "fail" ||
+        this.props.runScore == "fail";
 
-    var scoresNotEntered =
-      this.props.dlScore == "" ||
-      this.props.ptScore == "" ||
-      this.props.puScore == "" ||
-      this.props.sdcScore == "" ||
-      this.props.ltScore == "" ||
-      this.props.runScore == "";
+      var scoresNotEntered =
+        this.props.dlScore == "" ||
+        this.props.ptScore == "" ||
+        this.props.puScore == "" ||
+        this.props.sdcScore == "" ||
+        this.props.ltScore == "" ||
+        this.props.runScore == "";
 
-    if (scoresAboveZero) {
-      if (e == 1 && this.totalScore < 420) {
+      if (scoresAboveZero) {
+        if (e == 1 && this.totalScore < 420) {
+          return (
+            <Text
+              style={{
+                color: 'white',
+                fontSize: 20,
+                fontWeight: '500',
+                backgroundColor: 'red',
+                width: '100%',
+                textAlign: 'center',
+              }}>
+              NO-GO
+            </Text>
+          );
+        } else if (e == 2 && this.totalScore < 390) {
+          return (
+            <Text
+              style={{
+                color: 'white',
+                fontSize: 20,
+                fontWeight: '500',
+                backgroundColor: 'red',
+                width: '100%',
+                textAlign: 'center',
+              }}>
+              NO-GO
+            </Text>
+          );
+        } else if (e == 3 && this.totalScore < 360) {
+          return (
+            <Text
+              style={{
+                color: 'white',
+                fontSize: 20,
+                fontWeight: '500',
+                backgroundColor: 'red',
+                width: '100%',
+                textAlign: 'center',
+              }}>
+              NO-GO
+            </Text>
+          );
+        } else {
+          return (
+            <Text
+              style={{
+                color: 'white',
+                fontSize: 20,
+                fontWeight: '500',
+                backgroundColor: 'green',
+                width: '100%',
+                textAlign: 'center',
+              }}>
+              GO
+            </Text>
+          );
+        }
+      } else if (scoresEqualFail || scoresUndefined) {
         return (
           <Text
             style={{
@@ -87,81 +143,25 @@ export default class Score extends Component {
               textAlign: 'center',
             }}>
             NO-GO
-            </Text>
+          </Text>
         );
-      } else if (e == 2 && this.totalScore < 390) {
+      } else if (scoresNotEntered) {
         return (
           <Text
             style={{
-              color: 'white',
-              fontSize: 20,
+              color: 'black',
+              flexWrap: 'wrap',
+              fontSize: 12,
               fontWeight: '500',
-              backgroundColor: 'red',
               width: '100%',
               textAlign: 'center',
             }}>
-            NO-GO
-            </Text>
-        );
-      } else if (e == 3 && this.totalScore < 360) {
-        return (
-          <Text
-            style={{
-              color: 'white',
-              fontSize: 20,
-              fontWeight: '500',
-              backgroundColor: 'red',
-              width: '100%',
-              textAlign: 'center',
-            }}>
-            NO-GO
-            </Text>
-        );
-      } else {
-        return (
-          <Text
-            style={{
-              color: 'white',
-              fontSize: 20,
-              fontWeight: '500',
-              backgroundColor: 'green',
-              width: '100%',
-              textAlign: 'center',
-            }}>
-            GO
-            </Text>
+            Enter All Scores
+          </Text>
         );
       }
-    } else if (scoresEqualFail || scoresUndefined) {
-      return (
-        <Text
-          style={{
-            color: 'white',
-            fontSize: 20,
-            fontWeight: '500',
-            backgroundColor: 'red',
-            width: '100%',
-            textAlign: 'center',
-          }}>
-          NO-GO
-          </Text>
-      );
-    } else if (scoresNotEntered) {
-      return (
-        <Text
-          style={{
-            color: 'black',
-            flexWrap: 'wrap',
-            fontSize: 12,
-            fontWeight: '500',
-            width: '100%',
-            textAlign: 'center',
-          }}>
-          Enter All Scores
-          </Text>
-      );
-    }
-  };
+    };
+  }
 
   render() {
     return (

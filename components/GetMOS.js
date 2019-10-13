@@ -84,9 +84,8 @@ export default class GetMOS extends Component {
     this.setState(this.getInitialState());
   };
 
-  getMOSInfo(e) {
+  getMOSInfo = (e) => {
     let mos;
-    let lvl;
     let mosDesc = this.state.mosDesc;
     let invalid = (
       <Text
@@ -103,11 +102,6 @@ export default class GetMOS extends Component {
     );
 
     if (mosDesc[e]) {
-      lvl = mosDesc[e].substring(0, 1);
-
-      if (this.state.mosLevel != lvl) {
-        this.setState({ mosLevel: lvl });
-      }
       mos = mosDesc[e].substring(1, 100);
 
       return mos;
@@ -202,8 +196,21 @@ export default class GetMOS extends Component {
     this.setState({ runScore: x });
   };
 
-  render() {
+  componentDidUpdate() {
+    console.log("mosinput state", this.state.mosInput)
+    if (this.state.mosInput !== '') {
+      let mosDesc = this.state.mosDesc;
+      let e = this.state.mosInput;
+      if (mosDesc[e]) {
+        lvl = mosDesc[this.state.mosInput].substring(0, 1);
+        if (this.state.mosLevel != lvl) {
+          this.setState({ mosLevel: lvl });
+        }
+      }
+    }
+  }
 
+  render() {
     return (
       <View style={styles.mainContainer}>
         <View style={styles.headerContainer}>
