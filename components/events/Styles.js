@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     paddingHorizontal: 10,
     padding: 5,
+    paddingTop: 20,
     justifyContent: 'space-around',
   },
   eventBottom: {
