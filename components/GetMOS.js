@@ -70,7 +70,6 @@ export default class GetMOS extends Component {
         "35D": "3All Source Intelligence",
         "35E": "3Counter Intelligence (CI)",
         "35F": "3Human Intelligence (HUMINT)",
-        "35G": "3Signals Intelligence/Electronic Warfare(SIGINT/EW)",
         "36A": "3Financial Manager",
         "37A": "3Psychological Operations",
         "37X": "3Psychological Operations, Designated",
@@ -693,11 +692,11 @@ export default class GetMOS extends Component {
               this.setState(() => ({ mosError: null }));
             }
           }}>
-          <TouchableWithoutFeedback
-            onPress={() => {
-              Keyboard.dismiss();
-            }}>
-            <ScrollView>
+          <ScrollView>
+            <TouchableWithoutFeedback
+              onPress={() => {
+                Keyboard.dismiss();
+              }}>
               <View>
                 <View>
                   <Deadlift
@@ -752,8 +751,8 @@ export default class GetMOS extends Component {
                   />
                 </View>
               </View>
-            </ScrollView>
-          </TouchableWithoutFeedback>
+            </TouchableWithoutFeedback>
+          </ScrollView>
         </KeyboardAvoidingView>
         <View
           style={{
@@ -789,40 +788,34 @@ export default class GetMOS extends Component {
   }
 }
 
-const height = Dimensions.get('window').height;
-const width = Dimensions.get('window').width;
-
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     justifyContent: 'space-between',
   },
   headerContainer: {
-    height: '8%',
+    flex: 0.8,
     backgroundColor: 'green',
   },
   mosInfoContainer: {
     paddingLeft: '6%',
-    paddingTop: '2%',
-    paddingBottom: '2%',
-    height: '17%',
+    flex: 2,
     flexDirection: 'row',
     borderBottomWidth: 1,
     borderColor: 'gray',
   },
   eventContainer: {
-    height: '50%',
+    flex: 5,
     justifyContent: 'space-evenly',
-    flexGrow: 1,
   },
   scoreContainer: {
-    height: '20%',
+    flex: 2,
     borderTopWidth: 1,
     borderRadius: 5,
     borderColor: 'gray',
   },
   footerContainer: {
-    height: '5%',
+    flex: 0.5,
     backgroundColor: 'green',
   },
   mosInput: {
