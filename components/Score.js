@@ -32,9 +32,26 @@ export default class Score extends Component {
 
     if (e == 1 || e == 2 || e == 3) {
       if (isNaN(totalScore)) {
-        return totalScore = 'fail';
+        return totalScore = <Text
+          style={{
+            color: 'white',
+            backgroundColor: 'red',
+            flexWrap: 'wrap',
+            fontSize: 12,
+            fontWeight: '500',
+            width: '100%',
+            textAlign: 'center',
+          }}>fail</Text>;
       } else {
-        return totalScore
+        return <Text
+          style={{
+            color: 'black',
+            flexWrap: 'wrap',
+            fontSize: 24,
+            fontWeight: '500',
+            width: '100%',
+            textAlign: 'center',
+          }}>{totalScore}</Text>
       }
     }
   };
@@ -177,14 +194,14 @@ export default class Score extends Component {
           </View>
           <View style={styles.goContainer}>
             <View>
-              <Text style={styles.scoreOutput}>
+              <View style={styles.scoreOutput}>
                 {this.calcScore()}
-              </Text>
+              </View>
             </View>
             <View>
-              <Text style={styles.scoreOutput}>
+              <View style={styles.scoreOutput}>
                 {this.goNoGo(this.props.mosLevel)}
-              </Text>
+              </View>
             </View>
           </View>
           <View style={styles.buttonContainer}>
@@ -203,8 +220,8 @@ export default class Score extends Component {
 const styles = StyleSheet.create({
   scoreTitle: {
     fontSize: 22,
-    paddingTop: 10,
-    paddingBottom: 10,
+    paddingTop: '5%',
+    paddingBottom: '15%',
     color: 'black',
     textAlignVertical: 'center',
   },
@@ -220,17 +237,19 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     color: 'black',
     borderWidth: 1,
-    marginBottom: 10,
-    width: 80,
+    marginBottom: '20%',
+    width: '70%',
     height: 45,
     fontSize: 20,
     fontWeight: '400',
     textAlign: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
   },
   mainScoreContainer: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    padding: 20,
+    padding: '5%',
   },
   scoreContainer: {
     width: '50%',

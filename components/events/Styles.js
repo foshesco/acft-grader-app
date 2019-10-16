@@ -77,8 +77,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: Dimensions.get('window').width,
     paddingHorizontal: 10,
-    padding: 5,
-    paddingTop: 20,
+    paddingBottom: '5%',
     justifyContent: 'space-around',
   },
   eventBottom: {

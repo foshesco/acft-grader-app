@@ -385,7 +385,7 @@ export default class GetMOS extends Component {
         "46R": "3Public Affairs Broadcast Specialist",
         "46S": "3Public Affairs Mass Communications Specialist",
         "46Z": "3Chief Public Affairs NCO",
-        "51C": "3Acquisition, Logistics & Technology (AI&T) Contracting NCO",
+        "51C": "3AI&T Contracting NCO",
         "56M": "3Religious Affairs Specialist",
         "68A": "3Biomedical Equipment Specialist",
         "68B": "3Orthopedic Specialist",
@@ -411,11 +411,11 @@ export default class GetMOS extends Component {
         "68X": "3Behavioral Health Specialist",
         "68Y": "3Eye Specialist",
         "68Z": "3Chief Medical NCO",
-        "74D": "3Chemical, Biological, Radiological & Nuclear (CBRN) Specialist",
+        "74D": "3CBRN Specialist",
         "79R": "3Recruiter",
         "79S": "3Career Counselor",
-        "79T": "3Recruiting & retention NCO (Army National Guard of the United States)",
-        "79V": "3Retention & Transition NCO, USAR",
+        "79T": "3Recruiting & retention NCO",
+        "79V": "3Retention & Transition NCO",
         "88H": "1Cargo Specialist",
         "88K": "1Watercraft Operator",
         "88L": "2Watercraft Engineer",
@@ -423,7 +423,7 @@ export default class GetMOS extends Component {
         "88N": "2Transportation Management Coordinator",
         "88U": "3Railway Specialist (RC)",
         "88Z": "3Transportation Senior Sergeant",
-        "89A": "3Ammunition Stock Control & Accounting Specialist",
+        "89A": "3Ammunition & Accounting Specialist",
         "89B": "3Ammunition Specialist",
         "89D": "1Explosive Ordnance Disposal Specialist",
         "91A": "3M1 Abrams Tank System Maintainer",
@@ -455,14 +455,14 @@ export default class GetMOS extends Component {
         "94D": "3Air Traffic Control Equipment Repairer",
         "94E": "3Radio Equipment Repairer",
         "94F": "3Computer Detection Systems Repairer",
-        "94H": "3Test, Measurement, & Diagnostic Equipment(TMDE) Maintenance Support Specialist",
+        "94H": "3Test, Maintenance Support Specialist",
         "94M": "3Radar Repairer",
         "94P": "3Multiple Launch Rocket System Repairer",
         "94R": "3Avionic & Survivability Equipment Repairer",
         "94S": "3Patriot System Repairer",
         "94T": "3Short Range Air Defense System Repairer",
         "94W": "3Electronic Maintenance Supervisor",
-        "94Y": "3Integrated Family of Test Equipment(IFTE) Operator",
+        "94Y": "3IFTE Operator",
         "94Z": "3Senior Electronic Maintenance Supervisor"
       },
     };
@@ -502,15 +502,16 @@ export default class GetMOS extends Component {
     let invalid = (
       <Text
         style={{
-          width: 150,
           height: 35,
           color: 'white',
           fontSize: 20,
           fontWeight: '500',
           backgroundColor: 'red',
-          width: '100%',
           textAlign: 'center',
-          paddingTop: '3%'
+          paddingTop: '3%',
+          flex: 1,
+          flexWrap: 'wrap',
+          textAlign: 'center'
         }}>
         Invalid MOS
       </Text>
@@ -520,12 +521,15 @@ export default class GetMOS extends Component {
       mos = mosDesc[e].substring(1, 100);
       return <Text
         style={{
-          height: 35,
-          width: 150,
           color: 'black',
-          fontSize: 20,
+          fontSize: 13,
           fontWeight: '500',
-          paddingTop: '3%'
+          flex: 1,
+          flexWrap: 'wrap',
+          textAlign: 'center',
+          justifyContent: 'center',
+          alignSelf: 'center',
+          alignItems: 'center'
         }}>
         {mos}
       </Text>
@@ -655,13 +659,13 @@ export default class GetMOS extends Component {
               value={this.state.mosInput}
             />
             {!!this.state.mosError && (
-              <Text style={{ paddingTop: 10, fontSize: 15, color: 'red' }}>{this.state.mosError}</Text>
+              <Text style={{ paddingTop: '5%', fontSize: 15, color: 'red' }}>{this.state.mosError}</Text>
             )}
           </View>
           <View style={{ flex: 1, flexDirection: 'row' }}>
             <View style={styles.mosText}>
-              <Text style={{ paddingBottom: 35, paddingTop: 20 }}>Job: </Text>
-              <Text style={{ paddingRight: 5 }}>Level: </Text>
+              <Text style={{ paddingBottom: '65%', paddingTop: '50%', fontSize: 15 }}>Job: </Text>
+              <Text style={{ paddingRight: '10%', fontSize: 15 }}>Level: </Text>
             </View>
             <View style={styles.mosOutput}>
               <View style={styles.mosOutputText}>{this.getMOSInfo(this.state.mosInput)}</View>
@@ -681,79 +685,82 @@ export default class GetMOS extends Component {
             elevation: 1,
           }}
         />
-        <KeyboardAvoidingView
-          style={styles.eventContainer}
-          behavior="padding"
-          enabled
-          onTouchStart={() => {
-            if (this.state.mosLevel.trim() === "") {
-              this.setState(() => ({ mosError: "MOS Required" }));
-            } else {
-              this.setState(() => ({ mosError: null }));
-            }
-          }}>
-          <ScrollView>
-            <TouchableWithoutFeedback
-              onPress={() => {
-                Keyboard.dismiss();
-              }}>
-              <View>
+        <View style={styles.eventContainer}>
+          <KeyboardAvoidingView
+            behavior="position"
+            enabled
+            keyboardVerticalOffset={100}
+            onTouchStart={() => {
+              if (this.state.mosLevel.trim() === "") {
+                this.setState(() => ({ mosError: "MOS Required" }));
+              } else {
+                this.setState(() => ({ mosError: null }));
+              }
+            }}>
+            <ScrollView>
+              <TouchableWithoutFeedback
+                onPress={() => {
+                  Keyboard.dismiss();
+                }}>
                 <View>
-                  <Deadlift
-                    mosLevel={this.state.mosLevel}
-                    onDLHandler={this.onDLHandler}
-                    dlScoreInput={this.state.dlScoreInput}
-                    dlScore={this.state.dlScore}
-                  />
-                </View>
-                <View>
-                  <PowerThrow
-                    mosLevel={this.state.mosLevel}
-                    onPTHandler={this.onPTHandler}
-                    ptScoreInput={this.state.ptScoreInput}
-                    ptScore={this.state.ptScore}
-                  />
-                </View>
+                  <View>
+                    <Deadlift
+                      mosLevel={this.state.mosLevel}
+                      onDLHandler={this.onDLHandler}
+                      dlScoreInput={this.state.dlScoreInput}
+                      dlScore={this.state.dlScore}
+                    />
+                  </View>
+                  <View>
+                    <PowerThrow
+                      mosLevel={this.state.mosLevel}
+                      onPTHandler={this.onPTHandler}
+                      ptScoreInput={this.state.ptScoreInput}
+                      ptScore={this.state.ptScore}
+                    />
+                  </View>
 
-                <View>
-                  <ReleasePushups
-                    mosLevel={this.state.mosLevel}
-                    onPUHandler={this.onPUHandler}
-                    puScoreInput={this.state.puScoreInput}
-                    puScore={this.state.puScore}
-                  />
-                </View>
+                  <View>
+                    <ReleasePushups
+                      mosLevel={this.state.mosLevel}
+                      onPUHandler={this.onPUHandler}
+                      puScoreInput={this.state.puScoreInput}
+                      puScore={this.state.puScore}
+                    />
+                  </View>
 
-                <View>
-                  <SprintDragCarry
-                    mosLevel={this.state.mosLevel}
-                    onSDCHandler={this.onSDCHandler}
-                    sdcScoreInput={this.state.sdcScoreInput}
-                    sdcScore={this.state.sdcScore}
-                  />
-                </View>
+                  <View>
+                    <SprintDragCarry
+                      mosLevel={this.state.mosLevel}
+                      onSDCHandler={this.onSDCHandler}
+                      sdcScoreInput={this.state.sdcScoreInput}
+                      sdcScore={this.state.sdcScore}
+                    />
+                  </View>
 
-                <View>
-                  <LegTuck
-                    mosLevel={this.state.mosLevel}
-                    onLTHandler={this.onLTHandler}
-                    ltScoreInput={this.state.ltScoreInput}
-                    ltScore={this.state.ltScore}
-                  />
-                </View>
+                  <View>
+                    <LegTuck
+                      mosLevel={this.state.mosLevel}
+                      onLTHandler={this.onLTHandler}
+                      ltScoreInput={this.state.ltScoreInput}
+                      ltScore={this.state.ltScore}
+                    />
+                  </View>
 
-                <View>
-                  <Run
-                    mosLevel={this.state.mosLevel}
-                    onRunHandler={this.onRunHandler}
-                    runScoreInput={this.state.runScoreInput}
-                    runScore={this.state.runScore}
-                  />
+                  <View>
+                    <Run
+                      mosLevel={this.state.mosLevel}
+                      onRunHandler={this.onRunHandler}
+                      runScoreInput={this.state.runScoreInput}
+                      runScore={this.state.runScore}
+                    />
+                  </View>
                 </View>
-              </View>
-            </TouchableWithoutFeedback>
-          </ScrollView>
-        </KeyboardAvoidingView>
+              </TouchableWithoutFeedback>
+            </ScrollView>
+          </KeyboardAvoidingView>
+        </View>
+
         <View
           style={{
             borderWidth: 1,
@@ -783,7 +790,7 @@ export default class GetMOS extends Component {
         <View style={styles.footerContainer}>
           <Footer title="3932 - Group" />
         </View>
-      </View>
+      </View >
     );
   }
 }
@@ -822,22 +829,24 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     textAlign: 'right',
     paddingRight: '10%',
-    padding: '2%',
+    paddingTop: '5%',
   },
   mosText: {
     textAlign: 'right',
-    paddingBottom: '5%',
     paddingTop: '5%',
+    paddingBottom: '5%',
   },
   mosOutput: {
-    paddingTop: '9%',
+    paddingTop: '15%',
   },
   mosOutputText: {
-    width: 150,
     height: 35,
     textAlign: 'center',
     backgroundColor: '#F5F5F5',
-    marginBottom: '12%',
+    marginBottom: '20%',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   mosLevelText: {
     width: 150,
@@ -861,10 +870,8 @@ const styles = StyleSheet.create({
   },
   enterMOS: {
     fontSize: 20,
-    marginVertical: 4,
+    marginVertical: '10%',
     textAlign: 'center',
     justifyContent: 'center',
-    paddingBottom: 5,
-    paddingTop: 5
   },
 });
