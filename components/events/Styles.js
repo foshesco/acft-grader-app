@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     textAlign: 'center',
     justifyContent: 'center',
+    paddingTop: '1%'
   },
   runContainer: {
     flexDirection: 'row',
@@ -60,15 +61,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   failed: {
-    borderColor: 'black',
-    borderWidth: 1,
-    width: 75,
-    height: 35,
-    fontSize: 20,
-    fontWeight: '400',
+    color: 'red',
+    fontSize: 18,
+    fontWeight: '500',
     textAlign: 'center',
-    backgroundColor: 'red',
-    color: 'white',
+    paddingTop: '1%'
   },
   running: {
     flexDirection: 'row',

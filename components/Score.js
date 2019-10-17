@@ -34,24 +34,20 @@ export default class Score extends Component {
       if (isNaN(totalScore)) {
         return totalScore = <Text
           style={{
-            color: 'white',
-            backgroundColor: 'red',
-            flexWrap: 'wrap',
-            fontSize: 12,
+            color: 'red',
+            fontSize: 18,
             fontWeight: '500',
-            width: '100%',
             textAlign: 'center',
-          }}>fail</Text>;
+            paddingTop: '5%'
+          }}>FAIL</Text>;
       } else {
         return <Text
           style={{
             color: 'black',
-            flexWrap: 'wrap',
-            fontSize: 24,
+            fontSize: 18,
             fontWeight: '500',
-            width: '100%',
-            textAlign: 'center',
-          }}>{totalScore}</Text>
+            paddingTop: '5%'
+          }}>{totalScore}/600</Text>
       }
     }
   };
@@ -95,12 +91,12 @@ export default class Score extends Component {
           return (
             <Text
               style={{
-                color: 'white',
+                color: 'red',
                 fontSize: 20,
                 fontWeight: '500',
-                backgroundColor: 'red',
                 width: '100%',
                 textAlign: 'center',
+                paddingTop: '5%'
               }}>
               NO-GO
             </Text>
@@ -109,12 +105,12 @@ export default class Score extends Component {
           return (
             <Text
               style={{
-                color: 'white',
+                color: 'red',
                 fontSize: 20,
                 fontWeight: '500',
-                backgroundColor: 'red',
                 width: '100%',
                 textAlign: 'center',
+                paddingTop: '5%'
               }}>
               NO-GO
             </Text>
@@ -123,12 +119,12 @@ export default class Score extends Component {
           return (
             <Text
               style={{
-                color: 'white',
+                color: 'red',
                 fontSize: 20,
                 fontWeight: '500',
-                backgroundColor: 'red',
                 width: '100%',
                 textAlign: 'center',
+                paddingTop: '5%'
               }}>
               NO-GO
             </Text>
@@ -137,12 +133,12 @@ export default class Score extends Component {
           return (
             <Text
               style={{
-                color: 'white',
+                color: 'green',
                 fontSize: 20,
                 fontWeight: '500',
-                backgroundColor: 'green',
                 width: '100%',
                 textAlign: 'center',
+                paddingTop: '5%'
               }}>
               GO
             </Text>
@@ -152,12 +148,12 @@ export default class Score extends Component {
         return (
           <Text
             style={{
-              color: 'white',
+              color: 'red',
               fontSize: 20,
               fontWeight: '500',
-              backgroundColor: 'red',
               width: '100%',
               textAlign: 'center',
+              paddingTop: '5%'
             }}>
             NO-GO
           </Text>
@@ -172,6 +168,7 @@ export default class Score extends Component {
               fontWeight: '500',
               width: '100%',
               textAlign: 'center',
+              paddingTop: '5%'
             }}>
             Enter All Scores
           </Text>
@@ -193,22 +190,18 @@ export default class Score extends Component {
             </View>
           </View>
           <View style={styles.goContainer}>
-            <View>
-              <View style={styles.scoreOutput}>
-                {this.calcScore()}
-              </View>
+            <View style={styles.scoreOutput}>
+              {this.calcScore()}
             </View>
-            <View>
-              <View style={styles.scoreOutput}>
-                {this.goNoGo(this.props.mosLevel)}
-              </View>
+            <View style={styles.scoreOutput}>
+              {this.goNoGo(this.props.mosLevel)}
             </View>
           </View>
           <View style={styles.buttonContainer}>
             <TouchableOpacity
               style={styles.scoreButton}
               onPress={() => this.props.clearState()}>
-              <Text>Clear</Text>
+              <Text style={{ color: 'white' }}>Clear</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -219,18 +212,20 @@ export default class Score extends Component {
 
 const styles = StyleSheet.create({
   scoreTitle: {
-    fontSize: 22,
+    fontSize: 20,
     paddingTop: '5%',
-    paddingBottom: '15%',
+    paddingBottom: '25%',
     color: 'black',
     textAlignVertical: 'center',
+    textAlign: 'right'
   },
   scoreButton: {
+    height: 50,
+    width: 70,
+    backgroundColor: '#3f4a46',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#DDDDDD',
-    height: '40%',
-    width: '60%',
+    borderRadius: 5
   },
   scoreOutput: {
     borderColor: 'black',
@@ -242,9 +237,9 @@ const styles = StyleSheet.create({
     height: 45,
     fontSize: 20,
     fontWeight: '400',
-    textAlign: 'center',
+    flexDirection: 'row',
     justifyContent: 'center',
-    backgroundColor: 'white',
+    alignItems: 'center',
   },
   mainScoreContainer: {
     flexDirection: 'row',
@@ -253,12 +248,13 @@ const styles = StyleSheet.create({
   },
   scoreContainer: {
     width: '50%',
+    paddingRight: '10%'
   },
   goContainer: {
     width: '30%',
   },
   buttonContainer: {
-    width: '30%',
-    paddingTop: '7%',
+    width: '20%',
+    paddingTop: '8%',
   },
 });

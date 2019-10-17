@@ -246,7 +246,7 @@ export default class ReleasePushups extends Component {
             <View>
                 <View style={styles.eventContainer}>
                     <View styles={styles.child1}>
-                        <Text style={styles.eventName}>HAND-RELEASE{'\n'}PUSH-UP</Text>
+                        <Text style={styles.eventName}>HAND RELEASE{'\n'}PUSH-UP</Text>
                     </View>
                     <View styles={styles.child2}>
                         <View>
