@@ -26,7 +26,10 @@ export default class GetMOS extends Component {
   constructor() {
     super();
 
+    this.state = { isLoading: true }
+
     this.state = this.getInitialState();
+
 
     this.state = {
       dlScoreInput: '',
@@ -640,7 +643,28 @@ export default class GetMOS extends Component {
     }
   }
 
+  splashScreen = async () => {
+    return new Promise((resolve) =>
+      setTimeout(
+        () => { resolve('result') },
+        2000
+      )
+    );
+  }
+
+  async componentDidMount() {
+    const data = await this.splashScreen();
+
+    if (data !== null) {
+      this.setState({ isLoading: false });
+    }
+  }
+
   render() {
+    if (this.state.isLoading) {
+      return <SplashScreen />;
+    }
+
     return (
       <View style={styles.mainContainer}>
         <View style={styles.headerContainer}>
