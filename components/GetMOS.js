@@ -522,7 +522,6 @@ export default class GetMOS extends Component {
           paddingTop: '3%',
           flex: 1,
           flexWrap: 'wrap',
-          textAlign: 'center',
         }}>
         Invalid MOS
       </Text>
@@ -564,14 +563,15 @@ export default class GetMOS extends Component {
         return (
           <Text
             style={{
-              width: 150,
-              height: 35,
+              width: wp('40%'),
+              height: 40,
               fontSize: 20,
               fontWeight: 'bold',
               textAlign: 'center',
               backgroundColor: 'black',
               color: 'white',
               paddingTop: '4%',
+              marginBottom: hp('3%'),
             }}>
             HEAVY
           </Text>
@@ -580,14 +580,15 @@ export default class GetMOS extends Component {
         return (
           <Text
             style={{
-              width: 150,
-              height: 35,
+              width: wp('40%'),
+              height: 40,
               fontSize: 20,
               fontWeight: 'bold',
               textAlign: 'center',
-              backgroundColor: 'red',
+              backgroundColor: 'blue',
               color: 'white',
               paddingTop: '4%',
+              marginBottom: hp('3%'),
             }}>
             SIGNIFICANT
           </Text>
@@ -596,14 +597,15 @@ export default class GetMOS extends Component {
         return (
           <Text
             style={{
-              width: 150,
-              height: 35,
+              width: wp('40%'),
+              height: 40,
               fontSize: 20,
               fontWeight: 'bold',
               textAlign: 'center',
               backgroundColor: 'pink',
               color: 'white',
               paddingTop: '4%',
+              marginBottom: hp('3%'),
             }}>
             MODERATE
           </Text>
@@ -685,7 +687,9 @@ export default class GetMOS extends Component {
           <View style={styles.mosInput}>
             <Text style={styles.enterMOS}>Enter MOS</Text>
             <TextInput
-              style={styles.input}
+              style={
+                this.state.mosError != 'MOS Required' ? styles.input : styles.mosError
+              }
               autoCapitalize="characters"
               maxLength={4}
               minLength={3}
@@ -694,7 +698,13 @@ export default class GetMOS extends Component {
               value={this.state.mosInput}
             />
             {!!this.state.mosError && (
-              <Text style={{ paddingTop: '5%', fontSize: 15, color: 'red' }}>
+              <Text
+                style={{
+                  paddingTop: hp('1%'),
+                  textAlign: 'center',
+                  fontSize: 15,
+                  color: 'red',
+                }}>
                 {this.state.mosError}
               </Text>
             )}
@@ -703,13 +713,15 @@ export default class GetMOS extends Component {
             <View style={styles.mosText}>
               <Text
                 style={{
-                  paddingBottom: '65%',
-                  paddingTop: '50%',
+                  paddingBottom: hp('6%'),
+                  paddingTop: hp('4%'),
                   fontSize: 15,
                 }}>
                 Job:{' '}
               </Text>
-              <Text style={{ paddingRight: '10%', fontSize: 15 }}>Level: </Text>
+              <Text style={{ paddingRight: wp('1%'), fontSize: 15 }}>
+                Level:{' '}
+              </Text>
             </View>
             <View style={styles.mosOutput}>
               <View style={styles.mosOutputText}>
@@ -853,7 +865,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'green',
   },
   mosInfoContainer: {
-    paddingLeft: wp('3%'),
+    paddingLeft: wp('5%'),
     width: wp('100%'),
     height: hp('21%'),
     flexDirection: 'row',
@@ -892,7 +904,8 @@ const styles = StyleSheet.create({
     paddingTop: hp('4%'),
   },
   mosOutputText: {
-    height: hp('6%'),
+    width: wp('40%'),
+    height: 35,
     textAlign: 'center',
     backgroundColor: '#F5F5F5',
     marginBottom: hp('4%'),
@@ -902,7 +915,7 @@ const styles = StyleSheet.create({
   },
   mosLevelText: {
     width: wp('40%'),
-    height: hp('6%'),
+    height: 40,
     fontWeight: 'bold',
     textAlign: 'center',
     backgroundColor: '#F5F5F5',
@@ -911,17 +924,29 @@ const styles = StyleSheet.create({
   input: {
     borderColor: 'black',
     borderWidth: 1,
-    width: wp('26%'),
-    height: hp('8%'),
+    width: wp('27%'),
+    height: hp('7%'),
     textAlign: 'center',
     justifyContent: 'center',
-    fontSize: hp('4%'),
+    fontSize: hp('3%'),
+    fontWeight: 'bold',
+    backgroundColor: 'white',
+  },
+  mosError: {
+    borderColor: 'red',
+    borderWidth: 2,
+    width: wp('27%'),
+    height: hp('7%'),
+    textAlign: 'center',
+    justifyContent: 'center',
+    fontSize: hp('3%'),
     fontWeight: 'bold',
     backgroundColor: 'white',
   },
   enterMOS: {
-    fontSize: hp('3%'),
-    marginVertical: hp('2%'),
+    fontSize: hp('2.5%'),
+    paddingTop: hp('2.5%'),
+    paddingBottom: hp('1%'),
     textAlign: 'center',
     justifyContent: 'center',
   },

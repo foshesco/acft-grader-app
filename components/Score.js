@@ -8,6 +8,10 @@ import {
   Keyboard,
   TouchableOpacity,
 } from 'react-native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 export default class Score extends Component {
   constructor(props) {
