@@ -24,7 +24,7 @@ export default class Score extends Component {
   }
 
   calcScore() {
-    e = this.props.mosLevel
+    var e = this.props.mosLevel;
 
     var totalScore =
       Number(this.props.dlScore) +
@@ -32,30 +32,38 @@ export default class Score extends Component {
       Number(this.props.puScore) +
       Number(this.props.sdcScore) +
       Number(this.props.ltScore) +
-      Number(this.props.runScore)
+      Number(this.props.runScore);
 
     if (e == 1 || e == 2 || e == 3) {
       if (isNaN(totalScore)) {
-        return <Text
-          style={{
-            color: 'red',
-            fontSize: 18,
-            fontWeight: '500',
-            textAlign: 'center',
-            paddingTop: '4%'
-          }}>FAIL</Text>;
+        return (
+          <Text
+            style={{
+              color: 'red',
+              fontSize: 18,
+              fontWeight: '500',
+              textAlign: 'center',
+              paddingBottom: hp('6%'),
+            }}>
+            FAIL
+          </Text>
+        );
       } else {
-        return <Text
-          style={{
-            color: 'black',
-            fontSize: 18,
-            fontWeight: '500',
-            textAlign: 'center',
-            paddingTop: '4%'
-          }}>{totalScore}/600</Text>
+        return (
+          <Text
+            style={{
+              color: 'black',
+              fontSize: 18,
+              fontWeight: '500',
+              textAlign: 'center',
+              paddingBottom: hp('6%'),
+            }}>
+            {totalScore}/600
+          </Text>
+        );
       }
     }
-  };
+  }
 
   goNoGo = e => {
     if (e == 1 || e == 2 || e == 3) {
@@ -76,20 +84,20 @@ export default class Score extends Component {
         this.props.runScore == undefined;
 
       var scoresEqualFail =
-        this.props.dlScore == "fail" ||
-        this.props.ptScore == "fail" ||
-        this.props.puScore == "fail" ||
-        this.props.sdcScore == "fail" ||
-        this.props.ltScore == "fail" ||
-        this.props.runScore == "fail";
+        this.props.dlScore == 'fail' ||
+        this.props.ptScore == 'fail' ||
+        this.props.puScore == 'fail' ||
+        this.props.sdcScore == 'fail' ||
+        this.props.ltScore == 'fail' ||
+        this.props.runScore == 'fail';
 
       var scoresNotEntered =
-        this.props.dlScore == "" ||
-        this.props.ptScore == "" ||
-        this.props.puScore == "" ||
-        this.props.sdcScore == "" ||
-        this.props.ltScore == "" ||
-        this.props.runScore == "";
+        this.props.dlScore == '' ||
+        this.props.ptScore == '' ||
+        this.props.puScore == '' ||
+        this.props.sdcScore == '' ||
+        this.props.ltScore == '' ||
+        this.props.runScore == '';
 
       if (scoresAboveZero) {
         if (e == 1 && this.totalScore < 420) {
@@ -101,7 +109,7 @@ export default class Score extends Component {
                 fontWeight: '500',
                 width: '100%',
                 textAlign: 'center',
-                paddingTop: '5%'
+                paddingBottom: hp('7.5%'),
               }}>
               NO-GO
             </Text>
@@ -115,7 +123,7 @@ export default class Score extends Component {
                 fontWeight: '500',
                 width: '100%',
                 textAlign: 'center',
-                paddingTop: '5%'
+                paddingBottom: hp('7.5%'),
               }}>
               NO-GO
             </Text>
@@ -129,7 +137,7 @@ export default class Score extends Component {
                 fontWeight: '500',
                 width: '100%',
                 textAlign: 'center',
-                paddingTop: '5%'
+                paddingBottom: hp('7.5%'),
               }}>
               NO-GO
             </Text>
@@ -143,7 +151,7 @@ export default class Score extends Component {
                 fontWeight: '500',
                 width: '100%',
                 textAlign: 'center',
-                paddingTop: '4%'
+                paddingBottom: hp('7.5%'),
               }}>
               GO
             </Text>
@@ -158,7 +166,7 @@ export default class Score extends Component {
               fontWeight: '500',
               width: '100%',
               textAlign: 'center',
-              paddingTop: '5%'
+              paddingBottom: hp('7.5%'),
             }}>
             NO-GO
           </Text>
@@ -168,18 +176,20 @@ export default class Score extends Component {
           <Text
             style={{
               color: 'black',
-              fontSize: 12,
+              fontSize: 14,
               fontWeight: '500',
               width: '100%',
+              flex: 1,
+              flexWrap: 'wrap',
               textAlign: 'center',
-              paddingTop: '5%'
+              paddingBottom: hp('7.5%'),
             }}>
             Enter All Scores
           </Text>
         );
       }
-    };
-  }
+    }
+  };
 
   render() {
     return (
@@ -194,9 +204,7 @@ export default class Score extends Component {
             </View>
           </View>
           <View style={styles.goContainer}>
-            <View style={styles.scoreOutput}>
-              {this.calcScore()}
-            </View>
+            <View style={styles.scoreOutput}>{this.calcScore()}</View>
             <View style={styles.scoreOutput}>
               {this.goNoGo(this.props.mosLevel)}
             </View>
@@ -205,7 +213,7 @@ export default class Score extends Component {
             <View style={styles.lazyButton}>
               <TouchableOpacity
                 style={styles.scoreButton}
-                onPress={() => this.props.clearState()}>
+                onPress={() => this.props.imLazy()}>
                 <Text style={{ color: 'white' }}>I'm Lazy</Text>
               </TouchableOpacity>
             </View>
@@ -225,33 +233,37 @@ export default class Score extends Component {
 
 const styles = StyleSheet.create({
   scoreTitle: {
-    fontSize: 22,
-    paddingTop: '5%',
-    paddingBottom: '15%',
+    fontSize: hp('2.5%'),
+    paddingTop: hp('1%'),
+    paddingBottom: hp('5%'),
     color: 'black',
     textAlignVertical: 'center',
+  },
+  lazyButton: {
+    paddingTop: hp('0.5%'),
+    marginBottom: hp('4%'),
+    justifyContent: 'center',
   },
   scoreButton: {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#3f4a46',
-    height: 50,
-    width: 70,
-    borderRadius: 5
+    height: hp('5%'),
+    width: hp('8%'),
+    borderRadius: 5,
   },
   scoreOutput: {
     borderColor: 'black',
     backgroundColor: 'white',
     color: 'black',
     borderWidth: 1,
-    marginBottom: '20%',
-    width: '70%',
-    height: 45,
+    marginBottom: hp('3%'),
+    width: wp('22%'),
+    height: hp('6%'),
+    paddingTop: hp('3%'),
     justifyContent: 'center',
-  },
-  lazyButton: {
-    paddingBottom: '12%',
-    justifyContent: 'center',
+    textAlignVertical: 'center',
+    textAlign: 'center',
   },
   mainScoreContainer: {
     flexDirection: 'row',
@@ -259,14 +271,12 @@ const styles = StyleSheet.create({
     padding: '5%',
   },
   scoreContainer: {
-    width: '50%',
+    width: wp('43%'),
   },
   goContainer: {
-    width: '30%',
+    width: wp('28%'),
   },
   buttonContainer: {
-    width: '30%',
-    justifyContent: 'center',
-    marginBottom: '20%',
+    width: wp('29%'),
   },
 });

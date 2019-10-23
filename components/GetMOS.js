@@ -11,6 +11,7 @@ import {
   Platform,
   SafeAreaView,
   ScrollView,
+  Vibration,
 } from 'react-native';
 import {
   widthPercentageToDP as wp,
@@ -25,6 +26,7 @@ import Run from './events/Run';
 import Score from './Score';
 import Footer from './Footer';
 import Header from './Header';
+const DURATION = 10000;
 
 export default class GetMOS extends Component {
   constructor() {
@@ -507,6 +509,18 @@ export default class GetMOS extends Component {
     this.setState(this.getInitialState());
   };
 
+  imLazy = () => {
+    if (this.state.mosLevel == 1) {
+      this.onDLHandler(180, 70);
+    } else if (this.state.mosLevel == 2) {
+      this.setState({ dlScoreInput: 160 });
+      this.setState({ dlScore: 65 });
+    } else if (this.state.mosLevel == 3) {
+      this.setState({ dlScoreInput: 140 });
+      this.setState({ dlScore: 60 });
+    }
+  };
+
   getMOSInfo = e => {
     let mos;
     let mosDesc = this.state.mosDesc;
@@ -649,7 +663,7 @@ export default class GetMOS extends Component {
       let mosDesc = this.state.mosDesc;
       let e = this.state.mosInput;
       if (mosDesc[e]) {
-        lvl = mosDesc[this.state.mosInput].substring(0, 1);
+        var lvl = mosDesc[this.state.mosInput].substring(0, 1);
         if (this.state.mosLevel != lvl) {
           this.setState({ mosLevel: lvl });
         }
@@ -688,7 +702,9 @@ export default class GetMOS extends Component {
             <Text style={styles.enterMOS}>Enter MOS</Text>
             <TextInput
               style={
-                this.state.mosError != 'MOS Required' ? styles.input : styles.mosError
+                this.state.mosError != 'MOS Required'
+                  ? styles.input
+                  : styles.mosError
               }
               autoCapitalize="characters"
               maxLength={4}
@@ -752,6 +768,7 @@ export default class GetMOS extends Component {
             keyboardVerticalOffset={100}
             onTouchStart={() => {
               if (this.state.mosLevel.trim() === '') {
+                Vibration.vibrate(DURATION);
                 this.setState(() => ({ mosError: 'MOS Required' }));
               } else {
                 this.setState(() => ({ mosError: null }));
@@ -760,10 +777,12 @@ export default class GetMOS extends Component {
             <ScrollView>
               <TouchableWithoutFeedback
                 onPress={() => {
+                  this.StartVibrationFunction;
                   Keyboard.dismiss();
                 }}>
                 <View>
                   <View>
+                    <Text>dl - {this.state.dlScoreInput}</Text>
                     <Deadlift
                       mosLevel={this.state.mosLevel}
                       onDLHandler={this.onDLHandler}
@@ -839,6 +858,7 @@ export default class GetMOS extends Component {
           <Score
             clearState={this.clearState}
             mosLevel={this.state.mosLevel}
+            imLazy={this.imLazy}
             dlScore={this.state.dlScore}
             ptScore={this.state.ptScore}
             puScore={this.state.puScore}
