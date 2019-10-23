@@ -194,19 +194,28 @@ export default class Score extends Component {
             </View>
           </View>
           <View style={styles.goContainer}>
-              <View style={styles.scoreOutput}>
-                {this.calcScore()}
-              </View>
-              <View style={styles.scoreOutput}>
-                {this.goNoGo(this.props.mosLevel)}
-              </View>
+            <View style={styles.scoreOutput}>
+              {this.calcScore()}
+            </View>
+            <View style={styles.scoreOutput}>
+              {this.goNoGo(this.props.mosLevel)}
+            </View>
           </View>
           <View style={styles.buttonContainer}>
-            <TouchableOpacity
-              style={styles.scoreButton}
-              onPress={() => this.props.clearState()}>
-              <Text style={{ color: 'white' }}>Clear</Text>
-            </TouchableOpacity>
+            <View style={styles.lazyButton}>
+              <TouchableOpacity
+                style={styles.scoreButton}
+                onPress={() => this.props.clearState()}>
+                <Text style={{ color: 'white' }}>I'm Lazy</Text>
+              </TouchableOpacity>
+            </View>
+            <View>
+              <TouchableOpacity
+                style={styles.scoreButton}
+                onPress={() => this.props.clearState()}>
+                <Text style={{ color: 'white' }}>Clear</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </View>
@@ -240,6 +249,10 @@ const styles = StyleSheet.create({
     height: 45,
     justifyContent: 'center',
   },
+  lazyButton: {
+    paddingBottom: '12%',
+    justifyContent: 'center',
+  },
   mainScoreContainer: {
     flexDirection: 'row',
     alignItems: 'flex-start',
@@ -253,6 +266,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     width: '30%',
-    paddingTop: '7%',
+    justifyContent: 'center',
+    marginBottom: '20%',
   },
 });
