@@ -242,7 +242,7 @@ export default class PowerThrow extends Component {
     if (e != '') {
       if (this.props.mosLevel === '1') {
         if (e < 8.5) {
-          return 'fail';
+          return <Text style={styles.failed}>FAIL</Text>;
         } else if (e >= 13.5) {
           return 100;
         } else {
@@ -250,7 +250,7 @@ export default class PowerThrow extends Component {
         }
       } else if (this.props.mosLevel === '2') {
         if (e < 6.6) {
-          return 'fail';
+          return <Text style={styles.failed}>FAIL</Text>;
         } else if (e >= 13.5) {
           return 100;
         } else {
@@ -258,7 +258,7 @@ export default class PowerThrow extends Component {
         }
       } else if (this.props.mosLevel === '3') {
         if (e < 4.6) {
-          return 'fail';
+          return <Text style={styles.failed}>FAIL</Text>;
         } else if (e >= 13.5) {
           return 100;
         } else {
@@ -322,7 +322,7 @@ export default class PowerThrow extends Component {
             </View>
           </View>
           <View styles={styles.child3}>
-            <Text style={styles.output}>{this.props.ptScore}</Text>
+            <View style={styles.pointsContainer}><Text style={this.props.ptScore < 1 ? styles.initialScore : styles.output}>{this.props.ptScore}</Text></View>
           </View>
         </View>
       </View>

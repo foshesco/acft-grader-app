@@ -6,70 +6,45 @@ import {
 
 const styles = StyleSheet.create({
   eventName: {
-    fontSize: 15,
-    width: 150,
+    fontSize: hp('1.7%'),
+    width: wp('30%'),
   },
   titleName: {
-    fontSize: 22,
+    fontSize: hp('2.7%'),
     justifyContent: 'center',
     textDecorationLine: 'underline',
-    paddingBottom: 30,
+    paddingBottom: hp('3%'),
   },
-  input: {
-    borderColor: 'black',
-    borderWidth: 1,
-    width: 75,
-    height: 35,
-    fontSize: 20,
-    fontWeight: '400',
-    textAlign: 'center',
-  },
-  output: {
-    borderColor: 'black',
-    borderWidth: 1,
-    width: 75,
-    height: 35,
-    fontSize: 20,
+  initialScore: {
+    fontSize: hp('2%'),
     fontWeight: '400',
     textAlign: 'center',
     justifyContent: 'center',
-    paddingTop: '1%'
+    paddingTop: hp('0.5%'),
+    color: '#d1d1d1'
+  },
+  output: {
+    fontSize: hp('2%'),
+    fontWeight: '400',
+    textAlign: 'center',
+    justifyContent: 'center',
+    paddingTop: hp('0.5%')
+  },
+  pointsContainer: {
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
+    width: wp('18%'),
+    height: hp('4%'),
   },
   runContainer: {
     flexDirection: 'row',
   },
-  input1: {
-    borderTopColor: 'black',
-    borderTopWidth: 1,
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
-    borderLeftColor: 'black',
-    borderLeftWidth: 1,
-    width: 35,
-    height: 35,
-    fontSize: 20,
-    fontWeight: '400',
-    textAlign: 'center',
-  },
-  input2: {
-    borderTopColor: 'black',
-    borderTopWidth: 1,
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
-    borderRightColor: 'black',
-    borderRightWidth: 1,
-    width: 35,
-    height: 35,
-    fontSize: 20,
-    fontWeight: '400',
-    textAlign: 'center',
-  },
   failed: {
     color: 'red',
-    fontSize: 18,
+    fontSize: hp('2%'),
     fontWeight: '500',
     textAlign: 'center',
-    paddingTop: '1%'
+    paddingTop: hp('0.5%')
   },
   running: {
     flexDirection: 'row',
@@ -77,16 +52,13 @@ const styles = StyleSheet.create({
   eventContainer: {
     flexDirection: 'row',
     width: Dimensions.get('window').width,
-    paddingHorizontal: 10,
-    paddingBottom: '5%',
+    paddingHorizontal: wp('2%'),
+    paddingBottom: hp('2.3%'),
     justifyContent: 'space-around',
   },
   eventBottom: {
-    marginBottom: 10,
+    marginBottom: hp('3%'),
   },
-  child1: {},
-  child2: {},
-  child3: {},
 });
 
 export { styles };

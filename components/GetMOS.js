@@ -38,19 +38,17 @@ export default class GetMOS extends Component {
 
     this.state = {
       dlScoreInput: '',
-      dlScore: '',
+      dlScore: '0',
       ptScoreInput: '',
-      ptScore: '',
+      ptScore: '0',
       puScoreInput: '',
-      puScore: '',
-      sdcMinInput: '',
-      sdcSecInput: '',
-      sdcScore: '',
+      puScore: '0',
+      sdcScoreInput: '',
+      sdcScore: '0:00',
       ltScoreInput: '',
-      ltScore: '',
-      runMinInput: '',
-      runSecInput: '',
-      runScore: '',
+      ltScore: '0',
+      runScoreInput: '',
+      runScore: '00:00',
       totalScore: '',
       goNoGo: '',
       mosInput: '',
@@ -484,17 +482,17 @@ export default class GetMOS extends Component {
   getInitialState = () => {
     const initialState = {
       dlScoreInput: '',
-      dlScore: '',
+      dlScore: '0',
       ptScoreInput: '',
-      ptScore: '',
+      ptScore: '0',
       puScoreInput: '',
-      puScore: '',
+      puScore: '0',
       sdcScoreInput: '',
-      sdcScore: '',
+      sdcScore: '0:00',
       ltScoreInput: '',
-      ltScore: '',
+      ltScore: '0',
       runScoreInput: '',
-      runScore: '',
+      runScore: '00:00',
       totalScore: '',
       goNoGo: '',
       mosLevel: '',
@@ -782,7 +780,6 @@ export default class GetMOS extends Component {
                 }}>
                 <View>
                   <View>
-                    <Text>dl - {this.state.dlScoreInput}</Text>
                     <Deadlift
                       mosLevel={this.state.mosLevel}
                       onDLHandler={this.onDLHandler}

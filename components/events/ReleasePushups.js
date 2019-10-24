@@ -174,7 +174,7 @@ export default class ReleasePushups extends Component {
         if (e != '') {
             if (this.props.mosLevel === '1') {
                 if (e < 30) {
-                    return 'fail';
+                    return <Text style={styles.failed}>FAIL</Text>;
                 } else if (e >= 70) {
                     return 100;
                 } else {
@@ -182,7 +182,7 @@ export default class ReleasePushups extends Component {
                 }
             } else if (this.props.mosLevel === '2') {
                 if (e < 20) {
-                    return 'fail';
+                    return <Text style={styles.failed}>FAIL</Text>;
                 } else if (e >= 70) {
                     return 100;
                 } else {
@@ -190,7 +190,7 @@ export default class ReleasePushups extends Component {
                 }
             } else if (this.props.mosLevel === '3') {
                 if (e < 10) {
-                    return 'fail';
+                    return <Text style={styles.failed}>FAIL</Text>;
                 } else if (e >= 70) {
                     return 100;
                 } else {
@@ -254,7 +254,7 @@ export default class ReleasePushups extends Component {
                         </View>
                     </View>
                     <View styles={styles.child3}>
-                        <Text style={styles.output}>{this.props.puScore}</Text>
+                        <View style={styles.pointsContainer}><Text style={this.props.puScore < 1 ? styles.initialScore : styles.output}>{this.props.puScore}</Text></View>
                     </View>
                 </View>
             </View>

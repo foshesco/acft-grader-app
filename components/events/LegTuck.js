@@ -72,7 +72,7 @@ export default class LegTuck extends Component {
     if (e != '') {
       if (this.props.mosLevel === '1') {
         if (e < 5) {
-          return 'fail';
+          return <Text style={styles.failed}>FAIL</Text>;
         } else if (e >= 20) {
           return 100;
         } else {
@@ -80,7 +80,7 @@ export default class LegTuck extends Component {
         }
       } else if (this.props.mosLevel === '2') {
         if (e < 3) {
-          return 'fail';
+          return <Text style={styles.failed}>FAIL</Text>;
         } else if (e >= 20) {
           return 100;
         } else {
@@ -88,7 +88,7 @@ export default class LegTuck extends Component {
         }
       } else if (this.props.mosLevel === '3') {
         if (e < 1) {
-          return 'fail';
+          return <Text style={styles.failed}>FAIL</Text>;
         } else if (e >= 20) {
           return 100;
         } else {
@@ -152,7 +152,7 @@ export default class LegTuck extends Component {
             </View>
           </View>
           <View styles={styles.child3}>
-            <Text style={styles.output}>{this.props.ltScore}</Text>
+            <View style={styles.pointsContainer}><Text style={this.props.ltScore < 1 ? styles.initialScore : styles.output}>{this.props.ltScore}</Text></View>
           </View>
         </View>
       </View>

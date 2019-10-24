@@ -551,7 +551,7 @@ export default class Deadlift extends Component {
     if (e != '') {
       if (this.props.mosLevel === '1') {
         if (e < 180) {
-          return <Text style={styles.failed}>fail</Text>;
+          return <Text style={styles.failed}>FAIL</Text>;
         } else if (e >= 340) {
           return 100;
         } else {
@@ -559,7 +559,7 @@ export default class Deadlift extends Component {
         }
       } else if (this.props.mosLevel === '2') {
         if (e < 160) {
-          return 'fail';
+          return <Text style={styles.failed}>FAIL</Text>;
         } else if (e >= 340) {
           return 100;
         } else {
@@ -567,7 +567,7 @@ export default class Deadlift extends Component {
         }
       } else if (this.props.mosLevel === '3') {
         if (e < 140) {
-          return 'fail';
+          return <Text style={styles.failed}>FAIL</Text>;
         } else if (e >= 340) {
           return 100;
         } else {
@@ -579,10 +579,6 @@ export default class Deadlift extends Component {
 
   render() {
     const { onDLHandler } = this.props;
-    console.log("dlscoreinput", this.props.dlScoreInput != '')
-    if (this.props.dlScoreInput != '') {
-      var picker = (this.props.dlScoreInput);
-    }
     if (
       this.props.mosLevel === '1' ||
       this.props.mosLevel === '2' ||
@@ -637,7 +633,7 @@ export default class Deadlift extends Component {
           </View>
           <View styles={styles.child3}>
             <Text style={styles.titleName}>Points</Text>
-            <Text style={styles.output}>{this.props.dlScore}</Text>
+            <View style={styles.pointsContainer}><Text style={this.props.dlScore < 1 ? styles.initialScore : styles.output}>{this.props.dlScore}</Text></View>
           </View>
         </View>
       </View>

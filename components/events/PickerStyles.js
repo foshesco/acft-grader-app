@@ -1,23 +1,26 @@
 import { StyleSheet, Dimensions } from 'react-native';
-
+import {
+    widthPercentageToDP as wp,
+    heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const pickerSelectStyles = StyleSheet.create({
     inputIOS: {
-        borderColor: 'black',
-        borderWidth: 1,
-        width: 75,
-        height: 35,
-        fontSize: 17,
+        borderBottomColor: 'black',
+        borderBottomWidth: 1,
+        width: wp('18%'),
+        height: hp('4%'),
+        fontSize: hp('1.9%'),
         fontWeight: '400',
         textAlign: 'center',
         color: 'black'
     },
     inputAndroid: {
-        borderColor: 'black',
-        borderWidth: 1,
-        width: 75,
-        height: 35,
-        fontSize: 17,
+        borderBottomColor: 'black',
+        borderBottomWidth: 1,
+        width: wp('18%'),
+        height: hp('4%'),
+        fontSize: hp('1.9%'),
         fontWeight: '400',
         textAlign: 'center',
         color: 'black'

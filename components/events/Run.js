@@ -1281,7 +1281,7 @@ export default class Run extends Component {
         if (e != '') {
             if (this.props.mosLevel === '1') {
                 if (e >= '18:00') {
-                    return 'fail';
+                    return <Text style={styles.failed}>FAIL</Text>;
                 } else if (e <= '12:45') {
                     return 100;
                 } else {
@@ -1289,7 +1289,7 @@ export default class Run extends Component {
                 }
             } else if (this.props.mosLevel === '2') {
                 if (e >= '19:00') {
-                    return 'fail';
+                    return <Text style={styles.failed}>FAIL</Text>;
                 } else if (e <= '12:45') {
                     return 100;
                 } else {
@@ -1297,7 +1297,7 @@ export default class Run extends Component {
                 }
             } else if (this.props.mosLevel === '3') {
                 if (e >= '21:07') {
-                    return 'fail';
+                    return <Text style={styles.failed}>FAIL</Text>;
                 } else if (e <= '12:45') {
                     return 100;
                 } else {
@@ -1362,7 +1362,7 @@ export default class Run extends Component {
                         </View>
                     </View>
                     <View styles={styles.child3}>
-                        <Text style={styles.output}>{this.props.runScore}</Text>
+                        <View style={styles.pointsContainer}><Text style={this.props.runScore == '00:00' ? styles.initialScore : styles.output}>{this.props.runScore}</Text></View>
                     </View>
                 </View>
             </View>
