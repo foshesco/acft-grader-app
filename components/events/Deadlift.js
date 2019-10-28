@@ -579,21 +579,32 @@ export default class Deadlift extends Component {
 
   render() {
     const { onDLHandler } = this.props;
-    console.log("dlscoreinput", this.props)
+    console.log('props', this.props);
     if (
       this.props.mosLevel === '1' ||
       this.props.mosLevel === '2' ||
       this.props.mosLevel === '3'
     ) {
-      if (this.props.dlScore != '0' &&
-        (this.props.dlScoreInput == '180' || this.props.dlScoreInput == '170' || this.props.dlScoreInput == '160')) {
-        picker = (
+      if (
+        this.props.dlScore != 0 &&
+        this.props.dlScoreInput != null &&
+        (this.props.dlScoreInput == 180 ||
+          this.props.dlScoreInput == 160 ||
+          this.props.dlScoreInput == 140)
+      ) {
+        var picker = (
           <Picker
             {...this.props}
-            style={pickerSelectStyles}
+            style={{
+              ...pickerSelectStyles,
+              placeholder: {
+                color: 'black',
+              },
+            }}
             placeholder={{
               label: this.props.dlScoreInput.toString(),
               value: this.props.dlScoreInput,
+              color: 'black',
             }}
             items={this.state.items}
             onValueChange={value => {
@@ -603,22 +614,19 @@ export default class Deadlift extends Component {
           />
         );
       } else {
-        console.log("3, dlscoreInput", this.props.dlScoreInput)
-        console.log("4, dlscore", this.props.dlScore)
-
         picker = (
           <Picker
             {...this.props}
             style={pickerSelectStyles}
             placeholder={{
               label: 'Weight',
-              value: null,
+              value: 0,
             }}
             items={this.state.items}
-            value={this.props.dlScoreInput}
             onValueChange={value => {
               onDLHandler(value, this.getDLScore(value));
             }}
+            value={this.props.dlScoreInput}
           />
         );
       }
@@ -629,7 +637,7 @@ export default class Deadlift extends Component {
           style={pickerSelectStyles}
           placeholder={{
             label: 'Weight',
-            value: null,
+            value: 0,
           }}
           disabled
           items={this.state.items}
@@ -654,7 +662,14 @@ export default class Deadlift extends Component {
           </View>
           <View styles={styles.child3}>
             <Text style={styles.titleName}>Points</Text>
-            <View style={styles.pointsContainer}><Text style={this.props.dlScore < 1 ? styles.initialScore : styles.output}>{this.props.dlScore}</Text></View>
+            <View style={styles.pointsContainer}>
+              <Text
+                style={
+                  this.props.dlScore < 1 ? styles.initialScore : styles.output
+                }>
+                {this.props.dlScore}
+              </Text>
+            </View>
           </View>
         </View>
       </View>

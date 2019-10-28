@@ -65,15 +65,19 @@ export default class Score extends Component {
     }
   }
 
-  goNoGo = e => {
+  goNoGo() {
+    var e = this.props.mosLevel;
+
+    console.log('props', this.props);
+
     if (e == 1 || e == 2 || e == 3) {
       var scoresAboveZero =
-        this.props.dlScore != 0 &&
-        this.props.ptScore != 0 &&
-        this.props.puScore != 0 &&
-        this.props.sdcScore != 0 &&
-        this.props.ltScore != 0 &&
-        this.props.runScore != 0;
+        this.props.dlScore > 0 &&
+        this.props.ptScore > 0 &&
+        this.props.puScore > 0 &&
+        this.props.sdcScore > 0 &&
+        this.props.ltScore > 0 &&
+        this.props.runScore > 0;
 
       var scoresUndefined =
         this.props.dlScore == undefined ||
@@ -92,12 +96,12 @@ export default class Score extends Component {
         this.props.runScore == 'FAIL';
 
       var scoresNotEntered =
-        this.props.dlScore == '' ||
-        this.props.ptScore == '' ||
-        this.props.puScore == '' ||
-        this.props.sdcScore == '' ||
-        this.props.ltScore == '' ||
-        this.props.runScore == '';
+        this.props.dlScore === '0' ||
+        this.props.ptScore === '0' ||
+        this.props.puScore === '0' ||
+        this.props.sdcScore === '0' ||
+        this.props.ltScore === '0' ||
+        this.props.runScore === '0';
 
       if (scoresAboveZero) {
         if (e == 1 && this.totalScore < 420) {
@@ -189,7 +193,7 @@ export default class Score extends Component {
         );
       }
     }
-  };
+  }
 
   render() {
     return (
@@ -205,9 +209,7 @@ export default class Score extends Component {
           </View>
           <View style={styles.goContainer}>
             <View style={styles.scoreOutput}>{this.calcScore()}</View>
-            <View style={styles.scoreOutput}>
-              {this.goNoGo(this.props.mosLevel)}
-            </View>
+            <View style={styles.scoreOutput}>{this.goNoGo()}</View>
           </View>
           <View style={styles.buttonContainer}>
             <View style={styles.lazyButton}>

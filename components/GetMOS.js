@@ -26,15 +26,13 @@ import Run from './events/Run';
 import Score from './Score';
 import Footer from './Footer';
 import Header from './Header';
-const DURATION = 10000;
+const DURATION = 1000;
 
 export default class GetMOS extends Component {
   constructor() {
     super();
 
     this.state = { isLoading: true };
-
-    this.state = this.getInitialState();
 
     this.state = {
       dlScoreInput: '',
@@ -509,13 +507,12 @@ export default class GetMOS extends Component {
 
   imLazy = () => {
     if (this.state.mosLevel == 1) {
+      console.log('dlscpre 1', this.state.dlScore);
       this.onDLHandler(180, 70);
     } else if (this.state.mosLevel == 2) {
-      this.setState({ dlScoreInput: 160 });
-      this.setState({ dlScore: 65 });
+      this.onDLHandler(160, 65);
     } else if (this.state.mosLevel == 3) {
-      this.setState({ dlScoreInput: 140 });
-      this.setState({ dlScore: 60 });
+      this.onDLHandler(140, 60);
     }
   };
 
@@ -627,8 +624,8 @@ export default class GetMOS extends Component {
   }
 
   onDLHandler = (e, x) => {
-    this.setState({ dlScoreInput: e });
     this.setState({ dlScore: x });
+    this.setState({ dlScoreInput: e });
   };
 
   onPTHandler = (e, x) => {
@@ -667,6 +664,19 @@ export default class GetMOS extends Component {
         }
       }
     }
+    if (this.state.dlScore === undefined) {
+      this.setState({ dlScore: '0' });
+    } else if (this.state.ltScore === undefined) {
+      this.setState({ ltScore: '0' });
+    } else if (this.state.ptScore === undefined) {
+      this.setState({ ptScore: '0' });
+    } else if (this.state.runScore === undefined) {
+      this.setState({ runScore: '0' });
+    } else if (this.state.sdcScore === undefined) {
+      this.setState({ sdcScore: '0' });
+    } else if (this.state.puScore === undefined) {
+      this.setState({ puScore: '0' });
+    }
   }
 
   splashScreen = async () => {
@@ -685,10 +695,15 @@ export default class GetMOS extends Component {
     }
   }
 
+  startVibrating = () => {
+    Vibration.vibrate(DURATION);
+  };
+
   render() {
     if (this.state.isLoading) {
       return <SplashScreen />;
     }
+    console.log('dlscpre 3', this.state.dlScore);
 
     return (
       <View style={styles.mainContainer}>
@@ -766,7 +781,6 @@ export default class GetMOS extends Component {
             keyboardVerticalOffset={100}
             onTouchStart={() => {
               if (this.state.mosLevel.trim() === '') {
-                Vibration.vibrate(DURATION);
                 this.setState(() => ({ mosError: 'MOS Required' }));
               } else {
                 this.setState(() => ({ mosError: null }));
@@ -775,7 +789,6 @@ export default class GetMOS extends Component {
             <ScrollView>
               <TouchableWithoutFeedback
                 onPress={() => {
-                  this.StartVibrationFunction;
                   Keyboard.dismiss();
                 }}>
                 <View>
