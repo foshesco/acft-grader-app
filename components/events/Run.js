@@ -1362,7 +1362,7 @@ export default class Run extends Component {
                         </View>
                     </View>
                     <View styles={styles.child3}>
-                        <View style={styles.pointsContainer}><Text style={this.props.runScore == '00:00' ? styles.initialScore : styles.output}>{this.props.runScore}</Text></View>
+                        <View style={styles.pointsContainer}><Text style={this.props.runScore == '0' ? styles.initialScore : styles.output}>{this.props.runScore}</Text></View>
                     </View>
                 </View>
             </View>

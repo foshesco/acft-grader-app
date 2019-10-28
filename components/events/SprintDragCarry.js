@@ -466,7 +466,7 @@ export default class SprintDragCarry extends Component {
                         </View>
                     </View>
                     <View styles={styles.child3}>
-                        <View style={styles.pointsContainer}><Text style={this.props.sdcScore == '0:00' ? styles.initialScore : styles.output}>{this.props.sdcScore}</Text></View>
+                        <View style={styles.pointsContainer}><Text style={this.props.sdcScore == '0' ? styles.initialScore : styles.output}>{this.props.sdcScore}</Text></View>
                     </View>
                 </View>
             </View>

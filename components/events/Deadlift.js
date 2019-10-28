@@ -579,27 +579,49 @@ export default class Deadlift extends Component {
 
   render() {
     const { onDLHandler } = this.props;
+    console.log("dlscoreinput", this.props)
     if (
       this.props.mosLevel === '1' ||
       this.props.mosLevel === '2' ||
       this.props.mosLevel === '3'
     ) {
-      picker = (
-        <Picker
-          {...this.props}
-          style={pickerSelectStyles}
-          placeholder={{
-            label: 'Weight',
-            value: null,
-          }}
-          items={this.state.items}
-          onValueChange={value => {
-            onDLHandler(value, this.getDLScore(value));
-          }}
-          value={this.props.dlScoreInput}
-          selectedValue={this.props.dlScore}
-        />
-      );
+      if (this.props.dlScore != '0' &&
+        (this.props.dlScoreInput == '180' || this.props.dlScoreInput == '170' || this.props.dlScoreInput == '160')) {
+        picker = (
+          <Picker
+            {...this.props}
+            style={pickerSelectStyles}
+            placeholder={{
+              label: this.props.dlScoreInput.toString(),
+              value: this.props.dlScoreInput,
+            }}
+            items={this.state.items}
+            onValueChange={value => {
+              onDLHandler(value, this.getDLScore(value));
+            }}
+            value={this.props.dlScoreInput}
+          />
+        );
+      } else {
+        console.log("3, dlscoreInput", this.props.dlScoreInput)
+        console.log("4, dlscore", this.props.dlScore)
+
+        picker = (
+          <Picker
+            {...this.props}
+            style={pickerSelectStyles}
+            placeholder={{
+              label: 'Weight',
+              value: null,
+            }}
+            items={this.state.items}
+            value={this.props.dlScoreInput}
+            onValueChange={value => {
+              onDLHandler(value, this.getDLScore(value));
+            }}
+          />
+        );
+      }
     } else {
       picker = (
         <Picker
@@ -615,7 +637,6 @@ export default class Deadlift extends Component {
             onDLHandler(value, this.getDLScore(value));
           }}
           value={this.props.dlScoreInput}
-          selectedValue={this.props.dlScore}
         />
       );
     }

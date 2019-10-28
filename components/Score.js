@@ -68,12 +68,12 @@ export default class Score extends Component {
   goNoGo = e => {
     if (e == 1 || e == 2 || e == 3) {
       var scoresAboveZero =
-        this.props.dlScore > 0 &&
-        this.props.ptScore > 0 &&
-        this.props.puScore > 0 &&
-        this.props.sdcScore > 0 &&
-        this.props.ltScore > 0 &&
-        this.props.runScore > 0;
+        this.props.dlScore != 0 &&
+        this.props.ptScore != 0 &&
+        this.props.puScore != 0 &&
+        this.props.sdcScore != 0 &&
+        this.props.ltScore != 0 &&
+        this.props.runScore != 0;
 
       var scoresUndefined =
         this.props.dlScore == undefined ||
@@ -84,12 +84,12 @@ export default class Score extends Component {
         this.props.runScore == undefined;
 
       var scoresEqualFail =
-        this.props.dlScore == 'fail' ||
-        this.props.ptScore == 'fail' ||
-        this.props.puScore == 'fail' ||
-        this.props.sdcScore == 'fail' ||
-        this.props.ltScore == 'fail' ||
-        this.props.runScore == 'fail';
+        this.props.dlScore == 'FAIL' ||
+        this.props.ptScore == 'FAIL' ||
+        this.props.puScore == 'FAIL' ||
+        this.props.sdcScore == 'FAIL' ||
+        this.props.ltScore == 'FAIL' ||
+        this.props.runScore == 'FAIL';
 
       var scoresNotEntered =
         this.props.dlScore == '' ||
@@ -268,7 +268,7 @@ const styles = StyleSheet.create({
   mainScoreContainer: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    padding: '5%',
+    padding: wp('4%'),
   },
   scoreContainer: {
     width: wp('43%'),
