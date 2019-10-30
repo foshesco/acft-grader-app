@@ -68,8 +68,6 @@ export default class Score extends Component {
   goNoGo() {
     var e = this.props.mosLevel;
 
-    console.log('props', this.props);
-
     if (e == 1 || e == 2 || e == 3) {
       var scoresAboveZero =
         this.props.dlScore > 0 &&
@@ -88,20 +86,20 @@ export default class Score extends Component {
         this.props.runScore == undefined;
 
       var scoresEqualFail =
-        this.props.dlScore == 'FAIL' ||
-        this.props.ptScore == 'FAIL' ||
-        this.props.puScore == 'FAIL' ||
-        this.props.sdcScore == 'FAIL' ||
-        this.props.ltScore == 'FAIL' ||
-        this.props.runScore == 'FAIL';
+        isNaN(this.props.dlScore) ||
+        isNaN(this.props.ptScore) ||
+        isNaN(this.props.puScore) ||
+        isNaN(this.props.sdcScore) ||
+        isNaN(this.props.ltScore) ||
+        isNaN(this.props.runScore);
 
       var scoresNotEntered =
-        this.props.dlScore === '0' ||
-        this.props.ptScore === '0' ||
-        this.props.puScore === '0' ||
-        this.props.sdcScore === '0' ||
-        this.props.ltScore === '0' ||
-        this.props.runScore === '0';
+        this.props.dlScore == 0 ||
+        this.props.ptScore == 0 ||
+        this.props.puScore == 0 ||
+        this.props.sdcScore == 0 ||
+        this.props.ltScore == 0 ||
+        this.props.runScore == 0;
 
       if (scoresAboveZero) {
         if (e == 1 && this.totalScore < 420) {

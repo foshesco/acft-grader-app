@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Text,
-} from 'react-native';
+import { View, Text } from 'react-native';
 import { styles } from './Styles';
 import Picker from 'react-native-picker-select';
 import { pickerSelectStyles } from './PickerStyles';
@@ -34,7 +31,7 @@ export default class LegTuck extends Component {
           4: 67,
           3: 65,
           2: 63,
-          1: 60
+          1: 60,
         },
       },
       items: [
@@ -59,7 +56,7 @@ export default class LegTuck extends Component {
         { label: '18', value: '18' },
         { label: '19', value: '19' },
         { label: '20', value: '20' },
-      ]
+      ],
     };
   }
 
@@ -101,43 +98,75 @@ export default class LegTuck extends Component {
   render() {
     const { onLTHandler } = this.props;
 
-    if (this.props.mosLevel === '1' || this.props.mosLevel === '2' || this.props.mosLevel === '3') {
-      picker = <Picker
-        {...this.props}
-        style={pickerSelectStyles}
-        placeholder={{
-          label: 'Reps',
-          value: null,
-        }}
-        items={this.state.items}
-        onValueChange={(value) => {
-          onLTHandler(
-            value,
-            this.getLTScore((value))
-          );
-        }}
-        value={this.props.ltScoreInput}
-        selectedValue={this.props.ltScore}
-      />
+    if (
+      this.props.mosLevel === '1' ||
+      this.props.mosLevel === '2' ||
+      this.props.mosLevel === '3'
+    ) {
+      if (
+        this.props.ltScore != 0 &&
+        this.props.ltScoreInput != null &&
+        (this.props.ltScoreInput == 5 ||
+          this.props.ltScoreInput == 3 ||
+          this.props.ltScoreInput == 1)
+      ) {
+        var picker = (
+          <Picker
+            {...this.props}
+            style={{
+              ...pickerSelectStyles,
+              placeholder: {
+                color: 'black',
+              },
+            }}
+            placeholder={{
+              label: this.props.ltScoreInput.toString(),
+              value: this.props.ltScoreInput,
+              color: 'black',
+            }}
+            items={this.state.items}
+            onValueChange={value => {
+              onLTHandler(value, this.getLTScore(value));
+            }}
+            value={this.props.ltScoreInput}
+          />
+        );
+      } else {
+        picker = (
+          <Picker
+            {...this.props}
+            style={pickerSelectStyles}
+            placeholder={{
+              label: 'Reps',
+              value: null,
+            }}
+            items={this.state.items}
+            onValueChange={value => {
+              onLTHandler(value, this.getLTScore(value));
+            }}
+            value={this.props.ltScoreInput}
+            selectedValue={this.props.ltScore}
+          />
+        );
+      }
     } else {
-      picker = <Picker
-        {...this.props}
-        style={pickerSelectStyles}
-        placeholder={{
-          label: 'Reps',
-          value: null,
-        }}
-        disabled
-        items={this.state.items}
-        onValueChange={(value) => {
-          onLTHandler(
-            value,
-            this.getLTScore((value))
-          );
-        }}
-        value={this.props.ltScoreInput}
-        selectedValue={this.props.ltScore}
-      />
+      picker = (
+        <Picker
+          {...this.props}
+          style={pickerSelectStyles}
+          placeholder={{
+            label: 'Reps',
+            value: null,
+          }}
+          disabled
+          items={this.state.items}
+          onValueChange={value => {
+            onLTHandler(value, this.getLTScore(value));
+          }}
+          value={this.props.ltScoreInput}
+          selectedValue={this.props.ltScore}
+        />
+      );
     }
 
     return (
@@ -147,12 +176,17 @@ export default class LegTuck extends Component {
             <Text style={styles.eventName}>LEG TUCK</Text>
           </View>
           <View styles={styles.child2}>
-            <View>
-              {picker}
-            </View>
+            <View>{picker}</View>
           </View>
           <View styles={styles.child3}>
-            <View style={styles.pointsContainer}><Text style={this.props.ltScore < 1 ? styles.initialScore : styles.output}>{this.props.ltScore}</Text></View>
+            <View style={styles.pointsContainer}>
+              <Text
+                style={
+                  this.props.ltScore < 1 ? styles.initialScore : styles.output
+                }>
+                {this.props.ltScore}
+              </Text>
+            </View>
           </View>
         </View>
       </View>

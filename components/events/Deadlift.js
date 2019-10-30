@@ -10,7 +10,6 @@ export default class Deadlift extends Component {
 
     this.state = {
       dlScoreInput: '',
-      dlPoints: 0,
       deadliftScore: {
         scoreSheet: {
           99: 19,
@@ -550,7 +549,7 @@ export default class Deadlift extends Component {
 
     if (e != '') {
       if (this.props.mosLevel === '1') {
-        if (e < 180) {
+        if (e < 200) {
           return <Text style={styles.failed}>FAIL</Text>;
         } else if (e >= 340) {
           return 100;
@@ -558,7 +557,7 @@ export default class Deadlift extends Component {
           return i;
         }
       } else if (this.props.mosLevel === '2') {
-        if (e < 160) {
+        if (e < 180) {
           return <Text style={styles.failed}>FAIL</Text>;
         } else if (e >= 340) {
           return 100;
@@ -579,7 +578,6 @@ export default class Deadlift extends Component {
 
   render() {
     const { onDLHandler } = this.props;
-    console.log('props', this.props);
     if (
       this.props.mosLevel === '1' ||
       this.props.mosLevel === '2' ||
@@ -588,8 +586,8 @@ export default class Deadlift extends Component {
       if (
         this.props.dlScore != 0 &&
         this.props.dlScoreInput != null &&
-        (this.props.dlScoreInput == 180 ||
-          this.props.dlScoreInput == 160 ||
+        (this.props.dlScoreInput == 200 ||
+          this.props.dlScoreInput == 180 ||
           this.props.dlScoreInput == 140)
       ) {
         var picker = (

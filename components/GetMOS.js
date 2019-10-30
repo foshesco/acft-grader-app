@@ -506,13 +506,27 @@ export default class GetMOS extends Component {
   };
 
   imLazy = () => {
-    if (this.state.mosLevel == 1) {
-      console.log('dlscpre 1', this.state.dlScore);
-      this.onDLHandler(180, 70);
-    } else if (this.state.mosLevel == 2) {
-      this.onDLHandler(160, 65);
-    } else if (this.state.mosLevel == 3) {
+    if (this.state.mosLevel === '1') {
+      this.onDLHandler(200, 70);
+      this.onPTHandler(8, 70);
+      this.onPUHandler(30, 70);
+      this.onSDCHandler('2:10', 70);
+      this.onLTHandler(5, 70);
+      this.onRunHandler('18:00', 70);
+    } else if (this.state.mosLevel === '2') {
+      this.onDLHandler(180, 65);
+      this.onPTHandler(6.5, 65);
+      this.onPUHandler(20, 65);
+      this.onSDCHandler('2:30', 65);
+      this.onLTHandler(3, 65);
+      this.onRunHandler('19:00', 65);
+    } else if (this.state.mosLevel === '3') {
       this.onDLHandler(140, 60);
+      this.onPTHandler(4.5, 60);
+      this.onPUHandler(10, 60);
+      this.onSDCHandler('3:00', 60);
+      this.onLTHandler(1, 60);
+      this.onRunHandler('21:00', 60);
     }
   };
 
@@ -703,7 +717,6 @@ export default class GetMOS extends Component {
     if (this.state.isLoading) {
       return <SplashScreen />;
     }
-    console.log('dlscpre 3', this.state.dlScore);
 
     return (
       <View style={styles.mainContainer}>

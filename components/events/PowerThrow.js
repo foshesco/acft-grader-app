@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Text,
-} from 'react-native';
+import { View, Text } from 'react-native';
 import { styles } from './Styles';
 import Picker from 'react-native-picker-select';
 import { pickerSelectStyles } from './PickerStyles';
@@ -13,10 +10,9 @@ export default class PowerThrow extends Component {
 
     this.state = {
       ptScoreInput: '',
-      ptScore: 0,
       powerThrowScore: {
         scoreSheet: {
-          4.5: 56,
+          4.5: 60,
           4.4: 52,
           4.3: 48,
           4.2: 44,
@@ -65,7 +61,7 @@ export default class PowerThrow extends Component {
           7.7: 67,
           7.8: 67,
           7.9: 67,
-          8.0: 68,
+          8.0: 70,
           8.1: 68,
           8.2: 68,
           8.3: 69,
@@ -120,7 +116,7 @@ export default class PowerThrow extends Component {
           13.2: 99,
           13.3: 99,
           13.4: 99,
-          13.5: 100
+          13.5: 100,
         },
       },
       items: [
@@ -229,7 +225,7 @@ export default class PowerThrow extends Component {
         { label: '13.3', value: '13.3' },
         { label: '13.4', value: '13.4' },
         { label: '13.5', value: '13.5' },
-      ]
+      ],
     };
   }
 
@@ -241,7 +237,7 @@ export default class PowerThrow extends Component {
 
     if (e != '') {
       if (this.props.mosLevel === '1') {
-        if (e < 8.5) {
+        if (e < 8) {
           return <Text style={styles.failed}>FAIL</Text>;
         } else if (e >= 13.5) {
           return 100;
@@ -249,7 +245,7 @@ export default class PowerThrow extends Component {
           return i;
         }
       } else if (this.props.mosLevel === '2') {
-        if (e < 6.6) {
+        if (e < 6.5) {
           return <Text style={styles.failed}>FAIL</Text>;
         } else if (e >= 13.5) {
           return 100;
@@ -257,7 +253,7 @@ export default class PowerThrow extends Component {
           return i;
         }
       } else if (this.props.mosLevel === '3') {
-        if (e < 4.6) {
+        if (e < 4.5) {
           return <Text style={styles.failed}>FAIL</Text>;
         } else if (e >= 13.5) {
           return 100;
@@ -271,43 +267,74 @@ export default class PowerThrow extends Component {
   render() {
     const { onPTHandler } = this.props;
 
-    if (this.props.mosLevel === '1' || this.props.mosLevel === '2' || this.props.mosLevel === '3') {
-      picker = <Picker
-        {...this.props}
-        style={pickerSelectStyles}
-        placeholder={{
-          label: 'Distance',
-          value: null,
-        }}
-        items={this.state.items}
-        onValueChange={(value) => {
-          onPTHandler(
-            value,
-            this.getPTScore((value))
-          );
-        }}
-        value={this.props.ptScoreInput}
-        selectedValue={this.props.ptScore}
-      />
+    if (
+      this.props.mosLevel === '1' ||
+      this.props.mosLevel === '2' ||
+      this.props.mosLevel === '3'
+    ) {
+      if (
+        this.props.ptScore != 0 &&
+        this.props.ptScoreInput != null &&
+        (this.props.ptScoreInput == 8 ||
+          this.props.ptScoreInput == 6.5 ||
+          this.props.ptScoreInput == 4.5)
+      ) {
+        var picker = (
+          <Picker
+            {...this.props}
+            style={{
+              ...pickerSelectStyles,
+              placeholder: {
+                color: 'black',
+              },
+            }}
+            placeholder={{
+              label: this.props.ptScoreInput.toString(),
+              value: this.props.ptScoreInput,
+              color: 'black',
+            }}
+            items={this.state.items}
+            onValueChange={value => {
+              onPTHandler(value, this.getPTScore(value));
+            }}
+            value={this.props.ptScoreInput}
+          />
+        );
+      } else {
+        picker = (
+          <Picker
+            {...this.props}
+            style={pickerSelectStyles}
+            placeholder={{
+              label: 'Distance',
+              value: null,
+            }}
+            items={this.state.items}
+            onValueChange={value => {
+              onPTHandler(value, this.getPTScore(value));
+            }}
+            value={this.props.ptScoreInput}
+          />
+        );
+      }
     } else {
-      picker = <Picker
-        {...this.props}
-        style={pickerSelectStyles}
-        placeholder={{
-          label: 'Distance',
-          value: null,
-        }}
-        disabled
-        items={this.state.items}
-        onValueChange={(value) => {
-          onPTHandler(
-            value,
-            this.getPTScore((value))
-          );
-        }}
-        value={this.props.ptScoreInput}
-        selectedValue={this.props.ptScore}
-      />
+      picker = (
+        <Picker
+          {...this.props}
+          style={pickerSelectStyles}
+          placeholder={{
+            label: 'Distance',
+            value: null,
+          }}
+          disabled
+          items={this.state.items}
+          onValueChange={value => {
+            onPTHandler(value, this.getPTScore(value));
+          }}
+          value={this.props.ptScoreInput}
+          selectedValue={this.props.ptScore}
+        />
+      );
     }
 
     return (
@@ -317,12 +344,17 @@ export default class PowerThrow extends Component {
             <Text style={styles.eventName}>POWER THROW</Text>
           </View>
           <View styles={styles.child2}>
-            <View>
-              {picker}
-            </View>
+            <View>{picker}</View>
           </View>
           <View styles={styles.child3}>
-            <View style={styles.pointsContainer}><Text style={this.props.ptScore < 1 ? styles.initialScore : styles.output}>{this.props.ptScore}</Text></View>
+            <View style={styles.pointsContainer}>
+              <Text
+                style={
+                  this.props.ptScore < 1 ? styles.initialScore : styles.output
+                }>
+                {this.props.ptScore}
+              </Text>
+            </View>
           </View>
         </View>
       </View>
