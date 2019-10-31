@@ -138,14 +138,13 @@ export default class LegTuck extends Component {
             style={pickerSelectStyles}
             placeholder={{
               label: 'Reps',
-              value: null,
+              value: 0,
             }}
             items={this.state.items}
             onValueChange={value => {
               onLTHandler(value, this.getLTScore(value));
             }}
             value={this.props.ltScoreInput}
-            selectedValue={this.props.ltScore}
           />
         );
       }
@@ -156,7 +155,7 @@ export default class LegTuck extends Component {
           style={pickerSelectStyles}
           placeholder={{
             label: 'Reps',
-            value: null,
+            value: 0,
           }}
           disabled
           items={this.state.items}
@@ -164,7 +163,6 @@ export default class LegTuck extends Component {
             onLTHandler(value, this.getLTScore(value));
           }}
           value={this.props.ltScoreInput}
-          selectedValue={this.props.ltScore}
         />
       );
     }

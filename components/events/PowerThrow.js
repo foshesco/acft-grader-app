@@ -307,7 +307,7 @@ export default class PowerThrow extends Component {
             style={pickerSelectStyles}
             placeholder={{
               label: 'Distance',
-              value: null,
+              value: 0,
             }}
             items={this.state.items}
             onValueChange={value => {
@@ -324,7 +324,7 @@ export default class PowerThrow extends Component {
           style={pickerSelectStyles}
           placeholder={{
             label: 'Distance',
-            value: null,
+            value: 0,
           }}
           disabled
           items={this.state.items}

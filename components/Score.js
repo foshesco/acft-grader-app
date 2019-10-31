@@ -43,7 +43,7 @@ export default class Score extends Component {
               fontSize: 18,
               fontWeight: '500',
               textAlign: 'center',
-              paddingBottom: hp('6%'),
+              paddingBottom: hp('5.9%'),
             }}>
             FAIL
           </Text>
@@ -56,7 +56,7 @@ export default class Score extends Component {
               fontSize: 18,
               fontWeight: '500',
               textAlign: 'center',
-              paddingBottom: hp('6%'),
+              paddingBottom: hp('5.5%'),
             }}>
             {totalScore}/600
           </Text>
@@ -111,7 +111,7 @@ export default class Score extends Component {
                 fontWeight: '500',
                 width: '100%',
                 textAlign: 'center',
-                paddingBottom: hp('7.5%'),
+                paddingBottom: hp('6%'),
               }}>
               NO-GO
             </Text>
@@ -125,7 +125,7 @@ export default class Score extends Component {
                 fontWeight: '500',
                 width: '100%',
                 textAlign: 'center',
-                paddingBottom: hp('7.5%'),
+                paddingBottom: hp('6'),
               }}>
               NO-GO
             </Text>
@@ -139,7 +139,7 @@ export default class Score extends Component {
                 fontWeight: '500',
                 width: '100%',
                 textAlign: 'center',
-                paddingBottom: hp('7.5%'),
+                paddingBottom: hp('6%'),
               }}>
               NO-GO
             </Text>
@@ -153,7 +153,7 @@ export default class Score extends Component {
                 fontWeight: '500',
                 width: '100%',
                 textAlign: 'center',
-                paddingBottom: hp('7.5%'),
+                paddingBottom: hp('6%'),
               }}>
               GO
             </Text>
@@ -168,7 +168,7 @@ export default class Score extends Component {
               fontWeight: '500',
               width: '100%',
               textAlign: 'center',
-              paddingBottom: hp('7.5%'),
+              paddingBottom: hp('6%'),
             }}>
             NO-GO
           </Text>
@@ -184,7 +184,7 @@ export default class Score extends Component {
               flex: 1,
               flexWrap: 'wrap',
               textAlign: 'center',
-              paddingBottom: hp('7.5%'),
+              paddingBottom: hp('7.1%'),
             }}>
             Enter All Scores
           </Text>

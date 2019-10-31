@@ -667,14 +667,20 @@ export default class GetMOS extends Component {
     this.setState({ runScore: x });
   };
 
-  componentDidUpdate() {
-    if (this.state.mosInput !== '') {
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.mosInput !== this.state.mosInput) {
       let mosDesc = this.state.mosDesc;
       let e = this.state.mosInput;
       if (mosDesc[e]) {
         var lvl = mosDesc[this.state.mosInput].substring(0, 1);
         if (this.state.mosLevel != lvl) {
           this.setState({ mosLevel: lvl });
+          this.onDLHandler(0,0)
+          this.onPTHandler(0,0);
+          this.onPUHandler(0,0);
+          this.onSDCHandler(0,0);
+          this.onLTHandler(0,0);
+          this.onRunHandler(0,0);
         }
       }
     }

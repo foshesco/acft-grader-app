@@ -240,7 +240,7 @@ export default class ReleasePushups extends Component {
             style={pickerSelectStyles}
             placeholder={{
               label: 'Reps',
-              value: null,
+              value: 0,
             }}
             items={this.state.items}
             onValueChange={value => {
@@ -257,7 +257,7 @@ export default class ReleasePushups extends Component {
           style={pickerSelectStyles}
           placeholder={{
             label: 'Reps',
-            value: null,
+            value: 0,
           }}
           disabled
           items={this.state.items}

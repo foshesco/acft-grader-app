@@ -453,7 +453,7 @@ export default class SprintDragCarry extends Component {
             style={pickerSelectStyles}
             placeholder={{
               label: 'Time',
-              value: null,
+              value: 0,
             }}
             items={this.state.items}
             onValueChange={value => {
@@ -470,7 +470,7 @@ export default class SprintDragCarry extends Component {
           style={pickerSelectStyles}
           placeholder={{
             label: 'Time',
-            value: null,
+            value: 0,
           }}
           disabled
           items={this.state.items}

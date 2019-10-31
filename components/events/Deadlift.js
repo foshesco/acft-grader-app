@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button, TouchableOpacity, StyleSheet } from 'react-native';
 import { styles } from './Styles';
 import Picker from 'react-native-picker-select';
 import { pickerSelectStyles } from './PickerStyles';
+import Modal from "react-native-modal";
 
 export default class Deadlift extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      visibleModal: false,
       dlScoreInput: '',
       deadliftScore: {
         scoreSheet: {
@@ -541,6 +543,10 @@ export default class Deadlift extends Component {
     };
   }
 
+  toggleModal = () => {
+    this.setState({ isModalVisible: !this.state.isModalVisible });
+  };
+
   getDLScore(e) {
     let i;
     let deadliftScore = this.state.deadliftScore;
@@ -575,6 +581,39 @@ export default class Deadlift extends Component {
       }
     }
   }
+
+  _renderButton = (text, onPress) => (
+    <TouchableOpacity onPress={onPress}>
+      <View style={styleModal.button}>
+        <Text>{text}</Text>
+      </View>
+    </TouchableOpacity>
+  );
+
+  _renderModalContent = () => (
+    <View style={styleModal.modalContent}>
+      <View>
+        <Text>3 REPETITION MAXIMUM DEADLIFT (MDL)</Text>
+      </View>
+      <View>
+        <Text>Deadlift the maximum weight possible three times.</Text>
+      </View>
+      <View>
+        <View>
+          <Text>
+            Significant
+        </Text>
+        </View>
+        <View>
+          <Text>
+            100 Points
+          </Text>
+        </View>
+      </View>
+      {this._renderButton('Close', () => this.setState({ visibleModal: null }))}
+    </View>
+  );
+
 
   render() {
     const { onDLHandler } = this.props;
@@ -652,7 +691,12 @@ export default class Deadlift extends Component {
         <View style={styles.eventContainer}>
           <View styles={styles.child1}>
             <Text style={styles.titleName}>Events</Text>
-            <Text style={styles.eventName}>DEADLIFT</Text>
+            <View>
+              {this._renderButton('DEADLIFT', () => this.setState({ visibleModal: 1 }))}
+              <Modal isVisible={this.state.visibleModal === 1}>
+                {this._renderModalContent()}
+              </Modal>
+            </View>
           </View>
           <View styles={styles.child2}>
             <Text style={styles.titleName}>Raw</Text>
@@ -674,3 +718,31 @@ export default class Deadlift extends Component {
     );
   }
 }
+
+const styleModal = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  button: {
+    backgroundColor: 'lightblue',
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 4,
+    borderColor: 'rgba(0, 0, 0, 0.1)',
+  },
+  modalContent: {
+    backgroundColor: 'white',
+    padding: 22,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 4,
+    borderColor: 'rgba(0, 0, 0, 0.1)',
+  },
+  bottomModal: {
+    justifyContent: 'flex-end',
+    margin: 0,
+  },
+});
