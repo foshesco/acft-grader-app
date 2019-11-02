@@ -1,14 +1,28 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { styles } from './Styles';
 import Picker from 'react-native-picker-select';
 import { pickerSelectStyles } from './PickerStyles';
+import Modal from 'react-native-modal';
+import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 export default class SprintDragCarry extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      visibleModal: false,
+      tableHead: ['', 'Worst Time', 'Min Points', 'Best Time', 'Max Points',],
+      tableTitle: ['Heavy', 'Significant', 'Moderate'],
+      tableData: [
+        ['2:10', '70', '1:33', '100'],
+        ['2:30', '65', '1:33', '100'],
+        ['3:10', '60', '1:33', '100'],
+      ],
       sdcTotalScore: '',
       sdcMinInput: '',
       sdcSecInput: '',
@@ -411,6 +425,43 @@ export default class SprintDragCarry extends Component {
     }
   }
 
+  _renderButton = (text, onPress) => (
+    <TouchableOpacity onPress={onPress}>
+      <View>
+        <Text style={styles.modalEventTitle}>{text}</Text>
+      </View>
+    </TouchableOpacity>
+  );
+
+  _renderButtonClose = (text, onPress) => (
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles.modalButton}>
+        <Text>{text}</Text>
+      </View>
+    </TouchableOpacity>
+  );
+
+  _renderModalContent = () => (
+    <View style={styles.modalContent}>
+      <View>
+        <Text style={styles.modalTitle}>SPRINT-DRAG-CARRY (SDC)</Text>
+      </View>
+      <View>
+        <Text style={styles.modalSummary}>Objective: Conduct 5 x 50 meter shuttles for time - sprint, drag, lateral, carry and sprint.</Text>
+      </View>
+      <View style={styles.tableContainer}>
+        <Table borderStyle={{ borderWidth: 1 }}>
+          <Row data={this.state.tableHead} flexArr={[2, 1, 1, 1]} style={styles.tableHead} textStyle={styles.tableText} />
+          <TableWrapper style={styles.tableWrapper}>
+            <Col data={this.state.tableTitle} style={styles.tableTitle} heightArr={[hp('5%'), hp('5%')]} textStyle={styles.tableText} />
+            <Rows data={this.state.tableData} flexArr={[1, 1]} style={styles.tableRow} textStyle={styles.tableText} />
+          </TableWrapper>
+        </Table>
+      </View>
+      {this._renderButtonClose('Close', () => this.setState({ visibleModal: null }))}
+    </View>
+  );
+
   render() {
     const { onSDCHandler } = this.props;
     if (
@@ -487,7 +538,14 @@ export default class SprintDragCarry extends Component {
       <View>
         <View style={styles.eventContainer}>
           <View styles={styles.child1}>
-            <Text style={styles.eventName}>SPRINT-DRAG-CARRY</Text>
+            <View>
+              {this._renderButton('S-D-C', () =>
+                this.setState({ visibleModal: 1 })
+              )}
+              <Modal isVisible={this.state.visibleModal === 1}>
+                {this._renderModalContent()}
+              </Modal>
+            </View>
           </View>
           <View styles={styles.child2}>
             <View style={styles.runContainer}>

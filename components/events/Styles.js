@@ -59,6 +59,64 @@ const styles = StyleSheet.create({
   eventBottom: {
     marginBottom: hp('3%'),
   },
+  modalContent: {
+    height: hp('55%'),
+    backgroundColor: 'white',
+    padding: hp('2%'),
+    paddingBottom: hp('1%'),
+    borderRadius: 4,
+    borderColor: 'rgba(0, 0, 0, 0.1)',
+  },
+  modalButton: {
+    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+    padding: hp('1%'),
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 4,
+    borderWidth: 1,
+    borderColor: 'black',
+    width: wp('30%'),
+    fontSize: hp('1.7%'),
+    alignSelf: 'center',
+  },
+  modalEventTitle: {
+    width: wp('35%'),
+    fontSize: hp('2%'),
+  },
+  modalTitle: {
+    fontSize: hp('2.5%'),
+    padding: hp('2%'),
+    textAlign: 'center'
+  },
+  modalSummary: {
+    fontSize: hp('2%'),
+    paddingBottom: hp('1.5%'),
+    textAlign: 'center'
+  },
+  tableContainer: {
+    flex: 1,
+    padding: hp('2%'),
+    paddingTop: hp('4%'),
+    marginBottom: hp('10%'),
+    backgroundColor: '#fff'
+  },
+  tableHead: {
+    height: hp('5%'),
+    backgroundColor: '#f1f8ff'
+  },
+  tableWrapper: {
+    flexDirection: 'row'
+  },
+  tableTitle: {
+    flex: 1,
+    backgroundColor: '#f6f8fa'
+  },
+  tableRow: {
+    height: hp('5%')
+  },
+  tableText: {
+    textAlign: 'center'
+  }
 });
 
 export { styles };

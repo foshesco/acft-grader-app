@@ -26,6 +26,7 @@ import Run from './events/Run';
 import Score from './Score';
 import Footer from './Footer';
 import Header from './Header';
+import Emoji from 'react-native-emoji';
 const DURATION = 1000;
 
 export default class GetMOS extends Component {
@@ -536,7 +537,7 @@ export default class GetMOS extends Component {
     let invalid = (
       <Text
         style={{
-          height: 35,
+          height: hp('5%'),
           color: 'white',
           fontSize: 20,
           fontWeight: '500',
@@ -587,14 +588,13 @@ export default class GetMOS extends Component {
           <Text
             style={{
               width: wp('40%'),
-              height: 40,
+              height: hp('5%'),
               fontSize: 20,
               fontWeight: 'bold',
               textAlign: 'center',
               backgroundColor: 'black',
               color: 'white',
-              paddingTop: '4%',
-              marginBottom: hp('3%'),
+              paddingTop: '5%',
             }}>
             HEAVY
           </Text>
@@ -604,14 +604,13 @@ export default class GetMOS extends Component {
           <Text
             style={{
               width: wp('40%'),
-              height: 40,
+              height: hp('5%'),
               fontSize: 20,
               fontWeight: 'bold',
               textAlign: 'center',
               backgroundColor: 'blue',
               color: 'white',
-              paddingTop: '4%',
-              marginBottom: hp('3%'),
+              paddingTop: '5%',
             }}>
             SIGNIFICANT
           </Text>
@@ -621,16 +620,15 @@ export default class GetMOS extends Component {
           <Text
             style={{
               width: wp('40%'),
-              height: 40,
+              height: hp('5%'),
               fontSize: 20,
               fontWeight: 'bold',
               textAlign: 'center',
               backgroundColor: 'pink',
               color: 'white',
-              paddingTop: '4%',
-              marginBottom: hp('3%'),
+              paddingTop: '5%',
             }}>
-            MODERATE
+            MODERATE {''} <Emoji name="baby_bottle" style={{fontSize: hp('2.5%')}} />
           </Text>
         );
       }
@@ -675,12 +673,12 @@ export default class GetMOS extends Component {
         var lvl = mosDesc[this.state.mosInput].substring(0, 1);
         if (this.state.mosLevel != lvl) {
           this.setState({ mosLevel: lvl });
-          this.onDLHandler(0,0)
-          this.onPTHandler(0,0);
-          this.onPUHandler(0,0);
-          this.onSDCHandler(0,0);
-          this.onLTHandler(0,0);
-          this.onRunHandler(0,0);
+          this.onDLHandler(0, 0);
+          this.onPTHandler(0, 0);
+          this.onPUHandler(0, 0);
+          this.onSDCHandler(0, 0);
+          this.onLTHandler(0, 0);
+          this.onRunHandler(0, 0);
         }
       }
     }
@@ -761,7 +759,7 @@ export default class GetMOS extends Component {
             <View style={styles.mosText}>
               <Text
                 style={{
-                  paddingBottom: hp('6%'),
+                  paddingBottom: hp('7.2%'),
                   paddingTop: hp('4%'),
                   fontSize: 15,
                 }}>
@@ -781,23 +779,9 @@ export default class GetMOS extends Component {
             </View>
           </View>
         </View>
-        <View
-          style={{
-            borderWidth: 1,
-            borderColor: '#ddd',
-            borderBottomWidth: 0,
-            shadowColor: '#000',
-            shadowOffset: { width: 0, height: 2 },
-            shadowOpacity: 0.8,
-            shadowRadius: 2,
-            elevation: 1,
-          }}
-        />
         <View style={styles.eventContainer}>
           <KeyboardAvoidingView
-            behavior="position"
             enabled
-            keyboardVerticalOffset={100}
             onTouchStart={() => {
               if (this.state.mosLevel.trim() === '') {
                 this.setState(() => ({ mosError: 'MOS Required' }));
@@ -868,21 +852,6 @@ export default class GetMOS extends Component {
             </ScrollView>
           </KeyboardAvoidingView>
         </View>
-
-        <View
-          style={{
-            borderWidth: 1,
-            borderRadius: 2,
-            borderColor: '#ddd',
-            borderBottomWidth: 0,
-            shadowColor: '#000',
-            shadowOffset: { width: 0, height: 2 },
-            shadowOpacity: 0.8,
-            shadowRadius: 2,
-            elevation: 1,
-            paddingBottom: 2,
-          }}
-        />
         <View style={styles.scoreContainer}>
           <Score
             clearState={this.clearState}
@@ -914,24 +883,59 @@ const styles = StyleSheet.create({
     backgroundColor: 'green',
   },
   mosInfoContainer: {
+    marginTop: hp('1%'),
     paddingLeft: wp('5%'),
-    width: wp('100%'),
-    height: hp('21%'),
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    width: wp('95%'),
+    height: hp('19%'),
     flexDirection: 'row',
     borderBottomWidth: 1,
     borderColor: 'gray',
+    marginBottom: hp('1%'),
+    borderWidth: 0.1,
+    borderColor: '#ddd',
+    borderBottomWidth: 0,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 1,
   },
   eventContainer: {
-    width: wp('100%'),
-    height: hp('47%'),
+    width: wp('95%'),
+    height: hp('46%'),
+    paddingTop: hp('1%'),
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignSelf: 'center',
     justifyContent: 'space-evenly',
+    borderWidth: 0.1,
+    borderColor: '#ddd',
+    borderBottomWidth: 0,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 1,
   },
   scoreContainer: {
-    width: wp('100%'),
-    height: hp('20%'),
-    borderTopWidth: 1,
-    borderRadius: 5,
-    borderColor: 'gray',
+    width: wp('95%'),
+    height: hp('19%'),
+    marginTop: hp('1%'),
+    marginBottom: hp('1%'),
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    borderWidth: 0.1,
+    borderColor: '#ddd',
+    borderBottomWidth: 0,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 1,
   },
   footerContainer: {
     width: wp('100%'),
@@ -954,7 +958,7 @@ const styles = StyleSheet.create({
   },
   mosOutputText: {
     width: wp('40%'),
-    height: 35,
+    height: hp('5%'),
     textAlign: 'center',
     backgroundColor: '#F5F5F5',
     marginBottom: hp('4%'),
@@ -964,17 +968,20 @@ const styles = StyleSheet.create({
   },
   mosLevelText: {
     width: wp('40%'),
-    height: 40,
+    height: hp('5%'),
     fontWeight: 'bold',
     textAlign: 'center',
     backgroundColor: '#F5F5F5',
     marginBottom: hp('3%'),
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   input: {
     borderColor: 'black',
     borderWidth: 1,
     width: wp('27%'),
-    height: hp('7%'),
+    height: hp('8%'),
     textAlign: 'center',
     justifyContent: 'center',
     fontSize: hp('3%'),

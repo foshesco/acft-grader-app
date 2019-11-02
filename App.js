@@ -19,15 +19,9 @@ export default function App() {
   );
 }
 
-const height = Dimensions.get('window').height;
-const width = Dimensions.get('window').width;
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  myView: {
-    height: height,
-    width: width,
+    backgroundColor: '#dbdbdb'
   },
 });

@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
-import { View, Text, Button, TouchableOpacity, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  WebView,
+} from 'react-native';
 import { styles } from './Styles';
 import Picker from 'react-native-picker-select';
 import { pickerSelectStyles } from './PickerStyles';
-import Modal from "react-native-modal";
+import Modal from 'react-native-modal';
+import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+import Emoji from 'react-native-emoji';
 
 export default class Deadlift extends Component {
   constructor(props) {
@@ -11,6 +22,13 @@ export default class Deadlift extends Component {
 
     this.state = {
       visibleModal: false,
+      tableHead: ['', 'Min Weight', 'Min Points', 'Max Weight', 'Max Points',],
+      tableTitle: ['Heavy', 'Significant', 'Moderate'],
+      tableData: [
+        ['200', '70', '340', '100'],
+        ['180', '65', '340', '100'],
+        ['140', '60', '340', '100'],
+      ],
       dlScoreInput: '',
       deadliftScore: {
         scoreSheet: {
@@ -584,36 +602,40 @@ export default class Deadlift extends Component {
 
   _renderButton = (text, onPress) => (
     <TouchableOpacity onPress={onPress}>
-      <View style={styleModal.button}>
+      <View>
+        <Text style={styles.modalEventTitle}>{text}</Text>
+      </View>
+    </TouchableOpacity>
+  );
+
+  _renderButtonClose = (text, onPress) => (
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles.modalButton}>
         <Text>{text}</Text>
       </View>
     </TouchableOpacity>
   );
 
   _renderModalContent = () => (
-    <View style={styleModal.modalContent}>
+    <View style={styles.modalContent}>
       <View>
-        <Text>3 REPETITION MAXIMUM DEADLIFT (MDL)</Text>
+        <Text style={styles.modalTitle}>3 REPETITION MAXIMUM DEADLIFT (MDL)</Text>
       </View>
       <View>
-        <Text>Deadlift the maximum weight possible three times.</Text>
+        <Text style={styles.modalSummary}>Objective: Deadlift the maximum weight possible three times.</Text>
       </View>
-      <View>
-        <View>
-          <Text>
-            Significant
-        </Text>
-        </View>
-        <View>
-          <Text>
-            100 Points
-          </Text>
-        </View>
+      <View style={styles.tableContainer}>
+        <Table borderStyle={{ borderWidth: 1 }}>
+          <Row data={this.state.tableHead} flexArr={[2, 1, 1, 1]} style={styles.tableHead} textStyle={styles.tableText} />
+          <TableWrapper style={styles.tableWrapper}>
+            <Col data={this.state.tableTitle} style={styles.tableTitle} heightArr={[hp('5%'), hp('5%')]} textStyle={styles.tableText} />
+            <Rows data={this.state.tableData} flexArr={[1, 1]} style={styles.tableRow} textStyle={styles.tableText} />
+          </TableWrapper>
+        </Table>
       </View>
-      {this._renderButton('Close', () => this.setState({ visibleModal: null }))}
+      {this._renderButtonClose('Close', () => this.setState({ visibleModal: null }))}
     </View>
   );
-
 
   render() {
     const { onDLHandler } = this.props;
@@ -692,7 +714,9 @@ export default class Deadlift extends Component {
           <View styles={styles.child1}>
             <Text style={styles.titleName}>Events</Text>
             <View>
-              {this._renderButton('DEADLIFT', () => this.setState({ visibleModal: 1 }))}
+              {this._renderButton('DEADLIFT', () =>
+                this.setState({ visibleModal: 1 })
+              )}
               <Modal isVisible={this.state.visibleModal === 1}>
                 {this._renderModalContent()}
               </Modal>
@@ -718,31 +742,3 @@ export default class Deadlift extends Component {
     );
   }
 }
-
-const styleModal = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  button: {
-    backgroundColor: 'lightblue',
-    padding: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 4,
-    borderColor: 'rgba(0, 0, 0, 0.1)',
-  },
-  modalContent: {
-    backgroundColor: 'white',
-    padding: 22,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 4,
-    borderColor: 'rgba(0, 0, 0, 0.1)',
-  },
-  bottomModal: {
-    justifyContent: 'flex-end',
-    margin: 0,
-  },
-});
