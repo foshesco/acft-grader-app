@@ -6,7 +6,7 @@ import {
 
 const styles = StyleSheet.create({
   eventName: {
-    fontSize: hp('1.7%'),
+    fontSize: hp('1.5%'),
     width: wp('30%'),
   },
   titleName: {
@@ -51,7 +51,6 @@ const styles = StyleSheet.create({
   },
   eventContainer: {
     flexDirection: 'row',
-    width: Dimensions.get('window').width,
     paddingHorizontal: wp('2%'),
     paddingBottom: hp('2.3%'),
     justifyContent: 'space-around',
@@ -81,7 +80,7 @@ const styles = StyleSheet.create({
   },
   modalEventTitle: {
     width: wp('35%'),
-    fontSize: hp('2%'),
+    fontSize: hp('1.7%'),
   },
   modalTitle: {
     fontSize: hp('2.5%'),

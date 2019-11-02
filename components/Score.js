@@ -43,7 +43,6 @@ export default class Score extends Component {
               fontSize: 18,
               fontWeight: '500',
               textAlign: 'center',
-              paddingBottom: hp('6%'),
             }}>
             FAIL
           </Text>
@@ -56,7 +55,6 @@ export default class Score extends Component {
               fontSize: 18,
               fontWeight: '500',
               textAlign: 'center',
-              paddingBottom: hp('6%'),
             }}>
             {totalScore}/600
           </Text>
@@ -111,7 +109,6 @@ export default class Score extends Component {
                 fontWeight: '500',
                 width: '100%',
                 textAlign: 'center',
-                paddingBottom: hp('6.5%'),
               }}>
               NO-GO
             </Text>
@@ -125,7 +122,6 @@ export default class Score extends Component {
                 fontWeight: '500',
                 width: '100%',
                 textAlign: 'center',
-                paddingBottom: hp('6.5%'),
               }}>
               NO-GO
             </Text>
@@ -139,7 +135,6 @@ export default class Score extends Component {
                 fontWeight: '500',
                 width: '100%',
                 textAlign: 'center',
-                paddingBottom: hp('6.5%'),
               }}>
               NO-GO
             </Text>
@@ -153,7 +148,6 @@ export default class Score extends Component {
                 fontWeight: '500',
                 width: '100%',
                 textAlign: 'center',
-                paddingBottom: hp('6.5%'),
               }}>
               GO
             </Text>
@@ -168,7 +162,6 @@ export default class Score extends Component {
               fontWeight: '500',
               width: '100%',
               textAlign: 'center',
-              paddingBottom: hp('6.5%'),
             }}>
             NO-GO
           </Text>
@@ -184,7 +177,7 @@ export default class Score extends Component {
               flex: 1,
               flexWrap: 'wrap',
               textAlign: 'center',
-              paddingBottom: hp('7.5%'),
+              paddingTop: hp('1%'),
             }}>
             Enter All Scores
           </Text>
@@ -198,31 +191,22 @@ export default class Score extends Component {
       <View style={styles.mainScoreContainer}>
         <View style={styles.scoreContainer}>
           <View>
-            <Text style={styles.scoreTitle1}>TOTAL POINTS:</Text>
+            <Text style={styles.scoreTitle1}>POINTS</Text>
           </View>
-          <View>
-            <Text style={styles.scoreTitle2}>GO/NO-GO:</Text>
-          </View>
+          <View style={styles.scoreOutput1}>{this.calcScore()}</View>
         </View>
         <View style={styles.goContainer}>
-          <View style={styles.scoreOutput1}>{this.calcScore()}</View>
+          <View>
+            <Text style={styles.scoreTitle2}>GO/NO-GO</Text>
+          </View>
           <View style={styles.scoreOutput2}>{this.goNoGo()}</View>
         </View>
         <View style={styles.buttonContainer}>
-          <View style={styles.lazyButton}>
-            <TouchableOpacity
-              style={styles.scoreButton}
-              onPress={() => this.props.imLazy()}>
-              <Text style={{ color: 'white' }}>{"I'm Lazy"}</Text>
-            </TouchableOpacity>
-          </View>
-          <View>
-            <TouchableOpacity
-              style={styles.scoreButton}
-              onPress={() => this.props.clearState()}>
-              <Text style={{ color: 'white' }}>Clear</Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity
+            style={styles.scoreButton}
+            onPress={() => this.props.clearState()}>
+            <Text style={{ color: 'white' }}>Clear</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -233,25 +217,18 @@ const styles = StyleSheet.create({
   scoreTitle1: {
     fontSize: hp('2.2%'),
     color: 'black',
-    marginBottom: hp('6.5%'),
     justifyContent: 'center',
+    alignSelf: 'center',
+    paddingBottom: hp('2%'),
+    textDecorationLine: "underline"
   },
   scoreTitle2: {
     fontSize: hp('2.2%'),
     color: 'black',
     justifyContent: 'center',
-  },
-  lazyButton: {
-    marginBottom: hp('5%'),
-    justifyContent: 'center',
-  },
-  scoreButton: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#3f4a46',
-    height: hp('5%'),
-    width: hp('9%'),
-    borderRadius: 5,
+    alignSelf: 'center',
+    paddingBottom: hp('2%'),
+    textDecorationLine: "underline"
   },
   scoreOutput1: {
     borderColor: 'black',
@@ -260,8 +237,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     width: wp('20%'),
     height: hp('6%'),
-    marginBottom: hp('3.5%'),
     justifyContent: 'center',
+    alignSelf: 'center',
   },
   scoreOutput2: {
     borderColor: 'black',
@@ -271,25 +248,31 @@ const styles = StyleSheet.create({
     width: wp('20%'),
     height: hp('6%'),
     justifyContent: 'center',
+    alignSelf: 'center',
+    alignContent: 'center'
+  },
+  scoreButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignContent: 'center',
+    backgroundColor: '#3f4a46',
+    height: hp('5%'),
+    width: hp('9%'),
+    borderRadius: 5,
   },
   mainScoreContainer: {
     flexDirection: 'row',
-    paddingRight: wp('2%'),
-    paddingLeft: wp('5%')
+    padding: wp('2%'),
   },
   scoreContainer: {
-    width: wp('40%'),
-    justifyContent: 'center',
-    alignSelf: 'center',
+    width: wp('30%'),
   },
   goContainer: {
-    width: wp('25%'),
-    justifyContent: 'center',
-    alignSelf: 'center',
+    width: wp('30%'),
   },
   buttonContainer: {
-    width: wp('25%'),
+    width: wp('35%'),
     justifyContent: 'center',
-    alignSelf: 'center',
+    alignItems: 'center'
   },
 });

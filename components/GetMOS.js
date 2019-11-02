@@ -12,6 +12,7 @@ import {
   SafeAreaView,
   ScrollView,
   Vibration,
+  TouchableOpacity
 } from 'react-native';
 import {
   widthPercentageToDP as wp,
@@ -537,15 +538,17 @@ export default class GetMOS extends Component {
     let invalid = (
       <Text
         style={{
-          height: hp('5%'),
+          height: hp('4.5%'),
           color: 'white',
           fontSize: 20,
           fontWeight: '500',
           backgroundColor: 'red',
-          textAlign: 'center',
-          paddingTop: '3%',
           flex: 1,
           flexWrap: 'wrap',
+          textAlign: 'center',
+          justifyContent: 'center',
+          alignSelf: 'center',
+          alignItems: 'center',
         }}>
         Invalid MOS
       </Text>
@@ -587,9 +590,9 @@ export default class GetMOS extends Component {
         return (
           <Text
             style={{
-              width: wp('40%'),
-              height: hp('5%'),
-              fontSize: 20,
+              width: wp('37%'),
+              height: hp('4.5%'),
+              fontSize: 18,
               fontWeight: 'bold',
               textAlign: 'center',
               backgroundColor: 'black',
@@ -603,9 +606,9 @@ export default class GetMOS extends Component {
         return (
           <Text
             style={{
-              width: wp('40%'),
-              height: hp('5%'),
-              fontSize: 20,
+              width: wp('37%'),
+              height: hp('4.5%'),
+              fontSize: 18,
               fontWeight: 'bold',
               textAlign: 'center',
               backgroundColor: 'blue',
@@ -619,16 +622,16 @@ export default class GetMOS extends Component {
         return (
           <Text
             style={{
-              width: wp('40%'),
-              height: hp('5%'),
-              fontSize: 20,
+              width: wp('37%'),
+              height: hp('4.5%'),
+              fontSize: 18,
               fontWeight: 'bold',
               textAlign: 'center',
               backgroundColor: 'pink',
               color: 'white',
               paddingTop: '5%',
             }}>
-            MODERATE {''} <Emoji name="baby_bottle" style={{fontSize: hp('2.5%')}} />
+            MODERATE {''} <Emoji name="baby_bottle" style={{ fontSize: hp('2.5%') }} />
           </Text>
         );
       }
@@ -759,7 +762,7 @@ export default class GetMOS extends Component {
             <View style={styles.mosText}>
               <Text
                 style={{
-                  paddingBottom: hp('7.2%'),
+                  paddingBottom: hp('6%'),
                   paddingTop: hp('4%'),
                   fontSize: 15,
                 }}>
@@ -778,6 +781,20 @@ export default class GetMOS extends Component {
               </View>
             </View>
           </View>
+        </View>
+        <View style={styles.lazyButton}>
+          <TouchableOpacity
+            style={styles.scoreButton}
+            onPress={() => {
+              if (this.state.mosLevel.trim() === '') {
+                this.setState(() => ({ mosError: 'MOS Required' }));
+              } else {
+                this.setState(() => ({ mosError: null }));
+                this.imLazy();
+              }
+            }}>
+            <Text style={{ color: 'white' }}>{"Feeling Lazy?"}</Text>
+          </TouchableOpacity>
         </View>
         <View style={styles.eventContainer}>
           <KeyboardAvoidingView
@@ -856,7 +873,6 @@ export default class GetMOS extends Component {
           <Score
             clearState={this.clearState}
             mosLevel={this.state.mosLevel}
-            imLazy={this.imLazy}
             dlScore={this.state.dlScore}
             ptScore={this.state.ptScore}
             puScore={this.state.puScore}
@@ -889,16 +905,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center',
     width: wp('95%'),
-    height: hp('19%'),
+    height: hp('18%'),
     flexDirection: 'row',
-    borderBottomWidth: 1,
-    borderColor: 'gray',
-    marginBottom: hp('1%'),
     borderWidth: 0.1,
     borderColor: '#ddd',
     borderBottomWidth: 0,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
+    shadowOffset: { width: 0, height: -2 },
     shadowOpacity: 0.5,
     shadowRadius: 2,
     elevation: 1,
@@ -922,7 +935,7 @@ const styles = StyleSheet.create({
   },
   scoreContainer: {
     width: wp('95%'),
-    height: hp('19%'),
+    height: hp('15%'),
     marginTop: hp('1%'),
     marginBottom: hp('1%'),
     backgroundColor: 'white',
@@ -946,29 +959,27 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     textAlign: 'right',
     paddingRight: wp('10%'),
-    paddingTop: hp('1%'),
   },
   mosText: {
     textAlign: 'right',
-    paddingTop: hp('1%'),
     paddingBottom: hp('2%'),
   },
   mosOutput: {
-    paddingTop: hp('4%'),
+    paddingTop: hp('3%'),
   },
   mosOutputText: {
-    width: wp('40%'),
-    height: hp('5%'),
+    width: wp('37%'),
+    height: hp('4.5%'),
     textAlign: 'center',
     backgroundColor: '#F5F5F5',
-    marginBottom: hp('4%'),
+    marginBottom: hp('3%'),
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
   mosLevelText: {
-    width: wp('40%'),
-    height: hp('5%'),
+    width: wp('37%'),
+    height: hp('4.5%'),
     fontWeight: 'bold',
     textAlign: 'center',
     backgroundColor: '#F5F5F5',
@@ -1001,9 +1012,37 @@ const styles = StyleSheet.create({
   },
   enterMOS: {
     fontSize: hp('2.5%'),
-    paddingTop: hp('2.5%'),
+    paddingTop: hp('2%'),
     paddingBottom: hp('1%'),
     textAlign: 'center',
     justifyContent: 'center',
+  },
+  lazyButton: {
+    height: hp('5%'),
+    paddingBottom: hp('1%'),
+    backgroundColor: 'white',
+    alignSelf: 'center',
+    width: wp('95%'),
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: hp('1%'),
+
+    borderWidth: 0.1,
+    borderColor: '#ddd',
+    borderTopWidth: 0,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3.5 },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 1,
+  },
+  scoreButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#3f4a46',
+    height: hp('4%'),
+    width: hp('40%'),
+    borderRadius: 5,
   },
 });
