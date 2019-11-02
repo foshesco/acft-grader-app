@@ -60,6 +60,18 @@ export default class Score extends Component {
           </Text>
         );
       }
+    } else {
+      return (
+        <Text
+            style={{
+              color: '#d6d6d6',
+              fontSize: 18,
+              fontWeight: '500',
+              textAlign: 'center',
+            }}>
+            {totalScore}/600
+          </Text>
+      );
     }
   }
 
@@ -184,21 +196,28 @@ export default class Score extends Component {
         );
       }
     }
+    else {
+      return (
+        <Text
+            style={{
+              color: '#d6d6d6',
+              fontSize: 18,
+              fontWeight: '500',
+              textAlign: 'center',
+            }}>
+            GO/NO-GO
+          </Text>
+      );
+    }
   }
 
   render() {
     return (
       <View style={styles.mainScoreContainer}>
         <View style={styles.scoreContainer}>
-          <View>
-            <Text style={styles.scoreTitle1}>POINTS</Text>
-          </View>
           <View style={styles.scoreOutput1}>{this.calcScore()}</View>
         </View>
         <View style={styles.goContainer}>
-          <View>
-            <Text style={styles.scoreTitle2}>GO/NO-GO</Text>
-          </View>
           <View style={styles.scoreOutput2}>{this.goNoGo()}</View>
         </View>
         <View style={styles.buttonContainer}>
@@ -234,8 +253,8 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     backgroundColor: 'white',
     color: 'black',
-    borderWidth: 1,
-    width: wp('20%'),
+    borderBottomWidth: 1,
+    width: wp('23%'),
     height: hp('6%'),
     justifyContent: 'center',
     alignSelf: 'center',
@@ -244,8 +263,8 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     backgroundColor: 'white',
     color: 'black',
-    borderWidth: 1,
-    width: wp('20%'),
+    borderBottomWidth: 1,
+    width: wp('23%'),
     height: hp('6%'),
     justifyContent: 'center',
     alignSelf: 'center',
@@ -265,13 +284,13 @@ const styles = StyleSheet.create({
     padding: wp('2%'),
   },
   scoreContainer: {
-    width: wp('30%'),
+    width: wp('32%'),
   },
   goContainer: {
-    width: wp('30%'),
+    width: wp('32%'),
   },
   buttonContainer: {
-    width: wp('35%'),
+    width: wp('30%'),
     justifyContent: 'center',
     alignItems: 'center'
   },
