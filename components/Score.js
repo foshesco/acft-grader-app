@@ -7,11 +7,13 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   TouchableOpacity,
+  Image
 } from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import Emoji from 'react-native-emoji';
 
 export default class Score extends Component {
   constructor(props) {
@@ -47,7 +49,24 @@ export default class Score extends Component {
             FAIL
           </Text>
         );
-      } else {
+      }
+      if (e == 1 && totalScore == 420) {
+        return (
+          <Text
+            style={{
+              color: 'black',
+              fontSize: 18,
+              fontWeight: '500',
+              width: '100%',
+              textAlign: 'center',
+            }}>
+            {totalScore}/600 <Emoji name="smirk" style={{ fontSize: hp('2.5%') }} />
+            <Image style={{ width: 19, height: 6 }}
+              source={require('../assets/sunglasses.png')} />
+          </Text>
+        );
+      }
+      else {
         return (
           <Text
             style={{
@@ -63,13 +82,13 @@ export default class Score extends Component {
     } else {
       return (
         <Text
-            style={{
-              color: '#d6d6d6',
-              fontSize: 18,
-              fontWeight: '500',
-              textAlign: 'center',
-            }}>
-            {totalScore}/600
+          style={{
+            color: '#d6d6d6',
+            fontSize: 18,
+            fontWeight: '500',
+            textAlign: 'center',
+          }}>
+          {totalScore}/600
           </Text>
       );
     }
@@ -125,7 +144,8 @@ export default class Score extends Component {
               NO-GO
             </Text>
           );
-        } else if (e == 2 && this.totalScore < 390) {
+        }
+        else if (e == 2 && this.totalScore < 390) {
           return (
             <Text
               style={{
@@ -199,13 +219,13 @@ export default class Score extends Component {
     else {
       return (
         <Text
-            style={{
-              color: '#d6d6d6',
-              fontSize: 18,
-              fontWeight: '500',
-              textAlign: 'center',
-            }}>
-            GO/NO-GO
+          style={{
+            color: '#d6d6d6',
+            fontSize: 18,
+            fontWeight: '500',
+            textAlign: 'center',
+          }}>
+          GO/NO-GO
           </Text>
       );
     }
@@ -224,7 +244,7 @@ export default class Score extends Component {
           <TouchableOpacity
             style={styles.scoreButton}
             onPress={() => this.props.clearState()}>
-            <Text style={{ color: 'white' }}>Clear</Text>
+            <Text style={{ color: '#507858', fontWeight: 'bold' }}>Clear</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -274,10 +294,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     alignContent: 'center',
-    backgroundColor: '#3f4a46',
     height: hp('5%'),
     width: hp('9%'),
     borderRadius: 5,
+    backgroundColor: 'white',
+    borderWidth: 1,
+    borderColor: '#507858',
   },
   mainScoreContainer: {
     flexDirection: 'row',

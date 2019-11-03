@@ -793,7 +793,7 @@ export default class GetMOS extends Component {
                 this.imLazy();
               }
             }}>
-            <Text style={{ color: 'white' }}>{"Feeling Lazy?"}</Text>
+            <Text style={{ color: '#507858', fontWeight:'bold' }}>{"Feeling Lazy?"}</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.eventContainer}>
@@ -896,7 +896,7 @@ const styles = StyleSheet.create({
   headerContainer: {
     width: wp('100%'),
     height: hp('7%'),
-    backgroundColor: 'green',
+    backgroundColor: '#507858',
   },
   mosInfoContainer: {
     marginTop: hp('1%'),
@@ -953,7 +953,7 @@ const styles = StyleSheet.create({
   footerContainer: {
     width: wp('100%'),
     height: hp('5%'),
-    backgroundColor: 'green',
+    backgroundColor: '#507858',
   },
   mosInput: {
     flexDirection: 'column',
@@ -1040,7 +1040,9 @@ const styles = StyleSheet.create({
   scoreButton: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#3f4a46',
+    backgroundColor: 'white',
+    borderWidth: 1,
+    borderColor: '#507858',
     height: hp('4%'),
     width: hp('40%'),
     borderRadius: 5,

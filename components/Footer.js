@@ -15,7 +15,6 @@ const Footer = props => {
 
 const styles = StyleSheet.create({
   footer: {
-    backgroundColor: 'green',
     justifyContent: 'center',
     alignItems: 'center',
   },
