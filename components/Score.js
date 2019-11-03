@@ -60,9 +60,7 @@ export default class Score extends Component {
               width: '100%',
               textAlign: 'center',
             }}>
-            {totalScore}/600 <Emoji name="smirk" style={{ fontSize: hp('2.5%') }} />
-            <Image style={{ width: 19, height: 6 }}
-              source={require('../assets/sunglasses.png')} />
+            {totalScore}/600
           </Text>
         );
       }

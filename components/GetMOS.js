@@ -12,7 +12,8 @@ import {
   SafeAreaView,
   ScrollView,
   Vibration,
-  TouchableOpacity
+  TouchableOpacity,
+  Animated
 } from 'react-native';
 import {
   widthPercentageToDP as wp,
@@ -35,6 +36,7 @@ export default class GetMOS extends Component {
     super();
 
     this.state = { isLoading: true };
+    this.shakeAnimation = new Animated.Value(0);
 
     this.state = {
       dlScoreInput: '',
@@ -710,7 +712,6 @@ export default class GetMOS extends Component {
 
   async componentDidMount() {
     const data = await this.splashScreen();
-
     if (data !== null) {
       this.setState({ isLoading: false });
     }
@@ -719,6 +720,15 @@ export default class GetMOS extends Component {
   startVibrating = () => {
     Vibration.vibrate(DURATION);
   };
+
+  startShake = () => {
+    Animated.sequence([
+      Animated.timing(this.shakeAnimation, { toValue: 10, duration: 100, useNativeDriver: true }),
+      Animated.timing(this.shakeAnimation, { toValue: -10, duration: 100, useNativeDriver: true }),
+      Animated.timing(this.shakeAnimation, { toValue: 10, duration: 100, useNativeDriver: true }),
+      Animated.timing(this.shakeAnimation, { toValue: 0, duration: 100, useNativeDriver: true })
+    ]).start();
+  }
 
   render() {
     if (this.state.isLoading) {
@@ -746,17 +756,19 @@ export default class GetMOS extends Component {
               onChangeText={mosOutput => this.setState({ mosInput: mosOutput })}
               value={this.state.mosInput}
             />
-            {!!this.state.mosError && (
-              <Text
-                style={{
-                  paddingTop: hp('1%'),
-                  textAlign: 'center',
-                  fontSize: 15,
-                  color: 'red',
-                }}>
-                {this.state.mosError}
-              </Text>
-            )}
+            <Animated.View style={{ transform: [{ translateX: this.shakeAnimation }] }}>
+              {!!this.state.mosError && (
+                <Text
+                  style={{
+                    paddingTop: hp('1%'),
+                    textAlign: 'center',
+                    fontSize: 15,
+                    color: 'red',
+                  }}>
+                  {this.state.mosError}
+                </Text>
+              )}
+            </Animated.View>
           </View>
           <View style={{ flex: 1, flexDirection: 'row' }}>
             <View style={styles.mosText}>
@@ -788,12 +800,13 @@ export default class GetMOS extends Component {
             onPress={() => {
               if (this.state.mosLevel.trim() === '') {
                 this.setState(() => ({ mosError: 'MOS Required' }));
+                this.startShake();
               } else {
                 this.setState(() => ({ mosError: null }));
                 this.imLazy();
               }
             }}>
-            <Text style={{ color: '#507858', fontWeight:'bold' }}>{"Feeling Lazy?"}</Text>
+            <Text style={{ color: '#507858', fontWeight: 'bold' }}>{"Feeling Lazy?"}</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.eventContainer}>
@@ -802,6 +815,7 @@ export default class GetMOS extends Component {
             onTouchStart={() => {
               if (this.state.mosLevel.trim() === '') {
                 this.setState(() => ({ mosError: 'MOS Required' }));
+                this.startShake();
               } else {
                 this.setState(() => ({ mosError: null }));
               }
@@ -884,7 +898,7 @@ export default class GetMOS extends Component {
         <View style={styles.footerContainer}>
           <Footer title="3932 - Group" />
         </View>
-      </View>
+      </View >
     );
   }
 }
