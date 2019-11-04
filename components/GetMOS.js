@@ -13,7 +13,7 @@ import {
   ScrollView,
   Vibration,
   TouchableOpacity,
-  Animated
+  Animated,
 } from 'react-native';
 import {
   widthPercentageToDP as wp,
@@ -542,7 +542,7 @@ export default class GetMOS extends Component {
         style={{
           height: hp('4.5%'),
           color: 'white',
-          fontSize: 20,
+          fontSize: hp('3%'),
           fontWeight: '500',
           backgroundColor: 'red',
           flex: 1,
@@ -551,6 +551,7 @@ export default class GetMOS extends Component {
           justifyContent: 'center',
           alignSelf: 'center',
           alignItems: 'center',
+          paddingTop: hp('0.3%'),
         }}>
         Invalid MOS
       </Text>
@@ -562,7 +563,7 @@ export default class GetMOS extends Component {
         <Text
           style={{
             color: 'black',
-            fontSize: 13,
+            fontSize: hp('1.5%'),
             fontWeight: '500',
             flex: 1,
             flexWrap: 'wrap',
@@ -594,12 +595,12 @@ export default class GetMOS extends Component {
             style={{
               width: wp('37%'),
               height: hp('4.5%'),
-              fontSize: 18,
+              fontSize: hp('2%'),
               fontWeight: 'bold',
               textAlign: 'center',
               backgroundColor: 'black',
               color: 'white',
-              paddingTop: '5%',
+              paddingTop: hp('0.8%'),
             }}>
             HEAVY
           </Text>
@@ -610,12 +611,12 @@ export default class GetMOS extends Component {
             style={{
               width: wp('37%'),
               height: hp('4.5%'),
-              fontSize: 18,
+              fontSize: hp('2%'),
               fontWeight: 'bold',
               textAlign: 'center',
               backgroundColor: 'blue',
               color: 'white',
-              paddingTop: '5%',
+              paddingTop: hp('0.8%'),
             }}>
             SIGNIFICANT
           </Text>
@@ -626,14 +627,15 @@ export default class GetMOS extends Component {
             style={{
               width: wp('37%'),
               height: hp('4.5%'),
-              fontSize: 18,
+              fontSize: hp('2%'),
               fontWeight: 'bold',
               textAlign: 'center',
               backgroundColor: 'pink',
               color: 'white',
-              paddingTop: '5%',
+              paddingTop: hp('0.8%'),
             }}>
-            MODERATE {''} <Emoji name="baby_bottle" style={{ fontSize: hp('2.5%') }} />
+            MODERATE {''}{' '}
+            <Emoji name="baby_bottle" style={{ fontSize: hp('2.5%') }} />
           </Text>
         );
       }
@@ -723,12 +725,28 @@ export default class GetMOS extends Component {
 
   startShake = () => {
     Animated.sequence([
-      Animated.timing(this.shakeAnimation, { toValue: 10, duration: 100, useNativeDriver: true }),
-      Animated.timing(this.shakeAnimation, { toValue: -10, duration: 100, useNativeDriver: true }),
-      Animated.timing(this.shakeAnimation, { toValue: 10, duration: 100, useNativeDriver: true }),
-      Animated.timing(this.shakeAnimation, { toValue: 0, duration: 100, useNativeDriver: true })
+      Animated.timing(this.shakeAnimation, {
+        toValue: 10,
+        duration: 100,
+        useNativeDriver: true,
+      }),
+      Animated.timing(this.shakeAnimation, {
+        toValue: -10,
+        duration: 100,
+        useNativeDriver: true,
+      }),
+      Animated.timing(this.shakeAnimation, {
+        toValue: 10,
+        duration: 100,
+        useNativeDriver: true,
+      }),
+      Animated.timing(this.shakeAnimation, {
+        toValue: 0,
+        duration: 100,
+        useNativeDriver: true,
+      }),
     ]).start();
-  }
+  };
 
   render() {
     if (this.state.isLoading) {
@@ -756,13 +774,14 @@ export default class GetMOS extends Component {
               onChangeText={mosOutput => this.setState({ mosInput: mosOutput })}
               value={this.state.mosInput}
             />
-            <Animated.View style={{ transform: [{ translateX: this.shakeAnimation }] }}>
+            <Animated.View
+              style={{ transform: [{ translateX: this.shakeAnimation }] }}>
               {!!this.state.mosError && (
                 <Text
                   style={{
                     paddingTop: hp('1%'),
                     textAlign: 'center',
-                    fontSize: 15,
+                    fontSize: hp('1.8%'),
                     color: 'red',
                   }}>
                   {this.state.mosError}
@@ -774,13 +793,13 @@ export default class GetMOS extends Component {
             <View style={styles.mosText}>
               <Text
                 style={{
-                  paddingBottom: hp('6%'),
+                  paddingBottom: hp('5.5%'),
                   paddingTop: hp('4%'),
-                  fontSize: 15,
+                  fontSize: hp('1.7%'),
                 }}>
                 Job:{' '}
               </Text>
-              <Text style={{ paddingRight: wp('1%'), fontSize: 15 }}>
+              <Text style={{ paddingRight: wp('1%'), fontSize: hp('1.7%') }}>
                 Level:{' '}
               </Text>
             </View>
@@ -806,7 +825,9 @@ export default class GetMOS extends Component {
                 this.imLazy();
               }
             }}>
-            <Text style={{ color: '#507858', fontWeight: 'bold' }}>{"Feeling Lazy?"}</Text>
+            <Text style={{ color: '#507858', fontWeight: 'bold' }}>
+              {'Feeling Lazy?'}
+            </Text>
           </TouchableOpacity>
         </View>
         <View style={styles.eventContainer}>
@@ -898,7 +919,7 @@ export default class GetMOS extends Component {
         <View style={styles.footerContainer}>
           <Footer title="3932 - Group" />
         </View>
-      </View >
+      </View>
     );
   }
 }
@@ -935,7 +956,6 @@ const styles = StyleSheet.create({
     height: hp('46%'),
     paddingTop: hp('1%'),
     backgroundColor: 'white',
-    justifyContent: 'center',
     alignSelf: 'center',
     justifyContent: 'space-evenly',
     borderWidth: 0.1,
@@ -949,7 +969,7 @@ const styles = StyleSheet.create({
   },
   scoreContainer: {
     width: wp('95%'),
-    height: hp('15%'),
+    height: hp('14%'),
     marginTop: hp('1%'),
     marginBottom: hp('1%'),
     backgroundColor: 'white',
@@ -1017,7 +1037,7 @@ const styles = StyleSheet.create({
     borderColor: 'red',
     borderWidth: 2,
     width: wp('27%'),
-    height: hp('7%'),
+    height: hp('8%'),
     textAlign: 'center',
     justifyContent: 'center',
     fontSize: hp('3%'),
@@ -1032,7 +1052,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   lazyButton: {
-    height: hp('5%'),
+    height: hp('6%'),
     paddingBottom: hp('1%'),
     backgroundColor: 'white',
     alignSelf: 'center',

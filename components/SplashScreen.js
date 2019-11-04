@@ -41,7 +41,7 @@ export default class SplashScreen extends Component {
                         Did you know...
                 </Text>
                     <Text>
-                        The 2 mile run is the dumbest event everrrrrrrrrr.
+                        The 2 mile run is the dumbest event ever.
                 </Text>
                 </View>
             </View>

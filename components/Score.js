@@ -7,7 +7,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   TouchableOpacity,
-  Image
+  Image,
 } from 'react-native';
 import {
   widthPercentageToDP as wp,
@@ -63,8 +63,7 @@ export default class Score extends Component {
             {totalScore}/600
           </Text>
         );
-      }
-      else {
+      } else {
         return (
           <Text
             style={{
@@ -87,7 +86,7 @@ export default class Score extends Component {
             textAlign: 'center',
           }}>
           {totalScore}/600
-          </Text>
+        </Text>
       );
     }
   }
@@ -142,8 +141,7 @@ export default class Score extends Component {
               NO-GO
             </Text>
           );
-        }
-        else if (e == 2 && this.totalScore < 390) {
+        } else if (e == 2 && this.totalScore < 390) {
           return (
             <Text
               style={{
@@ -203,18 +201,13 @@ export default class Score extends Component {
               color: 'black',
               fontSize: 14,
               fontWeight: '500',
-              width: '100%',
-              flex: 1,
-              flexWrap: 'wrap',
               textAlign: 'center',
-              paddingTop: hp('1%'),
             }}>
-            Enter All Scores
+            Enter Scores
           </Text>
         );
       }
-    }
-    else {
+    } else {
       return (
         <Text
           style={{
@@ -224,7 +217,7 @@ export default class Score extends Component {
             textAlign: 'center',
           }}>
           GO/NO-GO
-          </Text>
+        </Text>
       );
     }
   }
@@ -251,22 +244,6 @@ export default class Score extends Component {
 }
 
 const styles = StyleSheet.create({
-  scoreTitle1: {
-    fontSize: hp('2.2%'),
-    color: 'black',
-    justifyContent: 'center',
-    alignSelf: 'center',
-    paddingBottom: hp('2%'),
-    textDecorationLine: "underline"
-  },
-  scoreTitle2: {
-    fontSize: hp('2.2%'),
-    color: 'black',
-    justifyContent: 'center',
-    alignSelf: 'center',
-    paddingBottom: hp('2%'),
-    textDecorationLine: "underline"
-  },
   scoreOutput1: {
     borderColor: 'black',
     backgroundColor: 'white',
@@ -282,11 +259,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     color: 'black',
     borderBottomWidth: 1,
-    width: wp('23%'),
+    width: wp('25%'),
     height: hp('6%'),
     justifyContent: 'center',
     alignSelf: 'center',
-    alignContent: 'center'
   },
   scoreButton: {
     alignItems: 'center',
@@ -302,16 +278,21 @@ const styles = StyleSheet.create({
   mainScoreContainer: {
     flexDirection: 'row',
     padding: wp('2%'),
+    justifyContent: 'space-evenly',
   },
   scoreContainer: {
     width: wp('32%'),
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   goContainer: {
     width: wp('32%'),
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   buttonContainer: {
     width: wp('30%'),
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 });
