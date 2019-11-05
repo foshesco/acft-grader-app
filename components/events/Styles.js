@@ -90,12 +90,16 @@ const styles = StyleSheet.create({
   modalSummary: {
     fontSize: hp('2%'),
     paddingBottom: hp('1.5%'),
-    textAlign: 'center'
+  },
+  modalTitleSummary: {
+    fontSize: hp('2%'),
+    paddingBottom: hp('1.5%'),
+    textDecorationLine: 'underline'
   },
   tableContainer: {
     flex: 1,
     padding: hp('2%'),
-    paddingTop: hp('4%'),
+    paddingTop: hp('1%'),
     marginBottom: hp('10%'),
     backgroundColor: '#fff'
   },

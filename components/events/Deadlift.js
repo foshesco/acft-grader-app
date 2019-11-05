@@ -15,6 +15,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import Emoji from 'react-native-emoji';
+import Ads from './Ads';
 
 export default class Deadlift extends Component {
   constructor(props) {
@@ -622,7 +623,13 @@ export default class Deadlift extends Component {
         <Text style={styles.modalTitle}>3 REPETITION MAXIMUM DEADLIFT (MDL)</Text>
       </View>
       <View>
-        <Text style={styles.modalSummary}>Objective: Deadlift the maximum weight possible three times.</Text>
+        <Text style={styles.modalTitleSummary}>Objective:</Text>
+      </View>
+      <View>
+        <Text style={styles.modalSummary}>Deadlift the maximum weight possible three times.</Text>
+      </View>
+      <View>
+        <Text style={styles.modalTitleSummary}>Min/Max:</Text>
       </View>
       <View style={styles.tableContainer}>
         <Table borderStyle={{ borderWidth: 1 }}>

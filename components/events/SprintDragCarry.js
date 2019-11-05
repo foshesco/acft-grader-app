@@ -447,7 +447,13 @@ export default class SprintDragCarry extends Component {
         <Text style={styles.modalTitle}>SPRINT-DRAG-CARRY (SDC)</Text>
       </View>
       <View>
-        <Text style={styles.modalSummary}>Objective: Conduct 5 x 50 meter shuttles for time - sprint, drag, lateral, carry and sprint.</Text>
+        <Text style={styles.modalTitleSummary}>Objective:</Text>
+      </View>
+      <View>
+        <Text style={styles.modalSummary}>Conduct 5 x 50 meter shuttles for time - sprint, drag, lateral, carry and sprint.</Text>
+      </View>
+      <View>
+        <Text style={styles.modalTitleSummary}>Min/Max:</Text>
       </View>
       <View style={styles.tableContainer}>
         <Table borderStyle={{ borderWidth: 1 }}>

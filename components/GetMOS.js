@@ -29,6 +29,12 @@ import Score from './Score';
 import Footer from './Footer';
 import Header from './Header';
 import Emoji from 'react-native-emoji';
+import {
+  AdMobBanner,
+  AdMobInterstitial,
+  PublisherBanner,
+  AdMobRewarded
+} from 'expo-ads-admob';
 const DURATION = 1000;
 
 export default class GetMOS extends Component {
@@ -951,6 +957,25 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     elevation: 1,
   },
+  lazyButton: {
+    height: hp('6%'),
+    paddingBottom: hp('1%'),
+    backgroundColor: 'white',
+    alignSelf: 'center',
+    width: wp('95%'),
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: hp('1%'),
+    borderWidth: 0.1,
+    borderColor: '#ddd',
+    borderTopWidth: 0,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3.5 },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 1,
+  },
   eventContainer: {
     width: wp('95%'),
     height: hp('46%'),
@@ -969,7 +994,7 @@ const styles = StyleSheet.create({
   },
   scoreContainer: {
     width: wp('95%'),
-    height: hp('14%'),
+    height: hp('12%'),
     marginTop: hp('1%'),
     marginBottom: hp('1%'),
     backgroundColor: 'white',
@@ -987,7 +1012,8 @@ const styles = StyleSheet.create({
   footerContainer: {
     width: wp('100%'),
     height: hp('5%'),
-    backgroundColor: '#507858',
+    paddingTop: hp('1%'),
+    backgroundColor: '#dbdbdb'
   },
   mosInput: {
     flexDirection: 'column',
@@ -1050,26 +1076,6 @@ const styles = StyleSheet.create({
     paddingBottom: hp('1%'),
     textAlign: 'center',
     justifyContent: 'center',
-  },
-  lazyButton: {
-    height: hp('6%'),
-    paddingBottom: hp('1%'),
-    backgroundColor: 'white',
-    alignSelf: 'center',
-    width: wp('95%'),
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: hp('1%'),
-
-    borderWidth: 0.1,
-    borderColor: '#ddd',
-    borderTopWidth: 0,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 3.5 },
-    shadowOpacity: 0.5,
-    shadowRadius: 2,
-    elevation: 1,
   },
   scoreButton: {
     alignItems: 'center',
