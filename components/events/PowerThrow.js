@@ -300,7 +300,13 @@ export default class PowerThrow extends Component {
         <Text style={styles.modalTitle}>STANDING POWER THROW (SPT)</Text>
       </View>
       <View>
-        <Text style={styles.modalSummary}>Objective: Throw a 10-pound medicine ball backward and overhead for distance.</Text>
+        <Text style={styles.modalTitleSummary}>Objective:</Text>
+      </View>
+      <View>
+        <Text style={styles.modalSummary}>Throw a 10-pound medicine ball backward and overhead for distance.</Text>
+      </View>
+      <View>
+        <Text style={styles.modalTitleSummary}>Min/Max</Text>
       </View>
       <View style={styles.tableContainer}>
         <Table borderStyle={{ borderWidth: 1 }}>

@@ -232,7 +232,13 @@ export default class ReleasePushups extends Component {
         <Text style={styles.modalTitle}>HAND RELEASE PUSH-UP - ARM EXTENSION (HRP)</Text>
       </View>
       <View>
-        <Text style={styles.modalSummary}>Objective: Complete as many Hand-Release Push-ups as possible in two minutes.</Text>
+        <Text style={styles.modalTitleSummary}>Objective:</Text>
+      </View>
+      <View>
+        <Text style={styles.modalSummary}>Complete as many Hand-Release Push-ups as possible in two minutes.</Text>
+      </View>
+      <View>
+        <Text style={styles.modalTitleSummary}>Min/Max</Text>
       </View>
       <View style={styles.tableContainer}>
         <Table borderStyle={{ borderWidth: 1 }}>

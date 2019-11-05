@@ -1340,7 +1340,13 @@ export default class Run extends Component {
         <Text style={styles.modalTitle}>TWO-MILE RUN (2MR)</Text>
       </View>
       <View>
-        <Text style={styles.modalSummary}>Objective: Run two miles for time on a measured, generally flat outdoor course.</Text>
+        <Text style={styles.modalTitleSummary}>Objective:</Text>
+      </View>
+      <View>
+        <Text style={styles.modalSummary}> Run two miles for time on a measured, generally flat outdoor course.</Text>
+      </View>
+      <View>
+        <Text style={styles.modalTitleSummary}>Min/Max</Text>
       </View>
       <View style={styles.tableContainer}>
         <Table borderStyle={{ borderWidth: 1 }}>

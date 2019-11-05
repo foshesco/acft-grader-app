@@ -131,7 +131,13 @@ export default class LegTuck extends Component {
         <Text style={styles.modalTitle}>LEG TUCK (LTK)</Text>
       </View>
       <View>
-        <Text style={styles.modalSummary}>Objective: Complete as many leg tucks as possible; maintain a relative vertical posture while moving the hips and knees up and down without excessive swinging.</Text>
+        <Text style={styles.modalTitleSummary}>Objective:</Text>
+      </View>
+      <View>
+        <Text style={styles.modalSummary}>Complete as many leg tucks as possible; maintain a relative vertical posture while moving the hips and knees up and down without excessive swinging.</Text>
+      </View>
+      <View>
+        <Text style={styles.modalTitleSummary}>Min/Max</Text>
       </View>
       <View style={styles.tableContainer}>
         <Table borderStyle={{ borderWidth: 1 }}>
