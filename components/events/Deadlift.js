@@ -33,33 +33,33 @@ export default class Deadlift extends Component {
       dlScoreInput: '',
       deadliftScore: {
         scoreSheet: {
-          80:0,
-          90:10,
-          100:20,
-          110:30,
-          120:40,
-          130:50,
-          140:60,
-          150:62,
-          160:63,
-          170:64,
-          180:65,
-          190:68,
-          200:70,
-          210:72,
-          220:74,
-          230:76,
-          240:78,
-          250:80,
-          260:82,
-          270:84,
-          280:86,
-          290:88,
-          300:90,
-          310:92,
-          320:94,
-          330:97,
-          340:100
+          80: 0,
+          90: 10,
+          100: 20,
+          110: 30,
+          120: 40,
+          130: 50,
+          140: 60,
+          150: 62,
+          160: 63,
+          170: 64,
+          180: 65,
+          190: 68,
+          200: 70,
+          210: 72,
+          220: 74,
+          230: 76,
+          240: 78,
+          250: 80,
+          260: 82,
+          270: 84,
+          280: 86,
+          290: 88,
+          300: 90,
+          310: 92,
+          320: 94,
+          330: 97,
+          340: 100
         },
       },
       items: [
@@ -155,8 +155,8 @@ export default class Deadlift extends Component {
         <Text style={styles.modalTitle}>3 REPETITION MAXIMUM DEADLIFT (MDL)</Text>
       </View>
       <View>
-      <Image
-          style={{width: wp('50%'), height: hp('20%')}}
+        <Image
+          style={{ width: wp('50%'), height: hp('20%') }}
           source={require('../../assets/dl.jpg')}
         />
       </View>
