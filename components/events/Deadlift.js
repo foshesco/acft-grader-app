@@ -155,6 +155,12 @@ export default class Deadlift extends Component {
         <Text style={styles.modalTitle}>3 REPETITION MAXIMUM DEADLIFT (MDL)</Text>
       </View>
       <View>
+      <Image
+          style={{width: wp('50%'), height: hp('20%')}}
+          source={require('../../assets/dl.jpg')}
+        />
+      </View>
+      <View>
         <Text style={styles.modalTitleSummary}>Objective:</Text>
       </View>
       <View>
