@@ -29,6 +29,7 @@ import Score from './Score';
 import Footer from './Footer';
 import Header from './Header';
 import Emoji from 'react-native-emoji';
+import Ads from './events/Ads';
 import {
   AdMobBanner,
   AdMobInterstitial,
@@ -756,7 +757,7 @@ export default class GetMOS extends Component {
 
   render() {
     if (this.state.isLoading) {
-      return <SplashScreen />;
+      return <SplashScreen />
     }
 
     return (
@@ -820,6 +821,21 @@ export default class GetMOS extends Component {
           </View>
         </View>
         <View style={styles.lazyButton}>
+          <TouchableOpacity
+            style={styles.scoreButton}
+            onPress={() => {
+              if (this.state.mosLevel.trim() === '') {
+                this.setState(() => ({ mosError: 'MOS Required' }));
+                this.startShake();
+              } else {
+                this.setState(() => ({ mosError: null }));
+                this.imLazy();
+              }
+            }}>
+            <Text style={{ color: '#507858', fontWeight: 'bold' }}>
+              {'Feeling Good?'}
+            </Text>
+          </TouchableOpacity>
           <TouchableOpacity
             style={styles.scoreButton}
             onPress={() => {
@@ -910,6 +926,9 @@ export default class GetMOS extends Component {
             </ScrollView>
           </KeyboardAvoidingView>
         </View>
+        <View style={styles.adContainer}>
+          <Ads />
+        </View>
         <View style={styles.scoreContainer}>
           <Score
             clearState={this.clearState}
@@ -936,17 +955,17 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     width: wp('100%'),
-    height: hp('7%'),
+    height: hp('6%'),
     backgroundColor: '#507858',
+    marginBottom: hp('1%'),
   },
   mosInfoContainer: {
-    marginTop: hp('1%'),
+    width: wp('95%'),
+    height: hp('17%'),
     paddingLeft: wp('5%'),
     backgroundColor: 'white',
     justifyContent: 'center',
     alignSelf: 'center',
-    width: wp('95%'),
-    height: hp('18%'),
     flexDirection: 'row',
     borderWidth: 0.1,
     borderColor: '#ddd',
@@ -958,15 +977,14 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
   lazyButton: {
-    height: hp('6%'),
-    paddingBottom: hp('1%'),
+    height: hp('5%'),
+    marginBottom: hp('1%'),
     backgroundColor: 'white',
     alignSelf: 'center',
     width: wp('95%'),
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
-    marginBottom: hp('1%'),
     borderWidth: 0.1,
     borderColor: '#ddd',
     borderTopWidth: 0,
@@ -976,10 +994,29 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     elevation: 1,
   },
+  adContainer: {
+    width: wp('100%'),
+    height: hp('6%'),
+    marginBottom: hp('1%'),
+    backgroundColor: 'white',
+    alignSelf: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 0.1,
+    borderColor: '#ddd',
+    borderTopWidth: 0,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 1,
+  },
   eventContainer: {
     width: wp('95%'),
-    height: hp('46%'),
+    height: hp('45%'),
     paddingTop: hp('1%'),
+    marginBottom: hp('1%'),
     backgroundColor: 'white',
     alignSelf: 'center',
     justifyContent: 'space-evenly',
@@ -994,8 +1031,7 @@ const styles = StyleSheet.create({
   },
   scoreContainer: {
     width: wp('95%'),
-    height: hp('12%'),
-    marginTop: hp('1%'),
+    height: hp('11%'),
     marginBottom: hp('1%'),
     backgroundColor: 'white',
     justifyContent: 'center',
@@ -1012,8 +1048,7 @@ const styles = StyleSheet.create({
   footerContainer: {
     width: wp('100%'),
     height: hp('5%'),
-    paddingTop: hp('1%'),
-    backgroundColor: '#dbdbdb'
+    backgroundColor: '#507858',
   },
   mosInput: {
     flexDirection: 'column',
@@ -1083,8 +1118,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderWidth: 1,
     borderColor: '#507858',
-    height: hp('4%'),
-    width: hp('40%'),
+    height: hp('3.5%'),
+    width: hp('18.5%'),
     borderRadius: 5,
   },
 });

@@ -11,7 +11,6 @@ import {
     AdMobRewarded
 } from 'expo-ads-admob';
 
-
 const Ads = props => {
     return (
         <View style={styles.footer}>
@@ -28,13 +27,12 @@ const Ads = props => {
 
 const styles = StyleSheet.create({
     footer: {
-        flex: 1,
+        flexDirection: 'row',
         backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "center"
     },
     bottomBanner: {
-        position: "absolute",
         alignItems: "center",
         justifyContent: "center",
         borderWidth: 0.1,

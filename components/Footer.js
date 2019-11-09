@@ -4,47 +4,24 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {
-  AdMobBanner,
-  AdMobInterstitial,
-  PublisherBanner,
-  AdMobRewarded
-} from 'expo-ads-admob';
-
 
 const Footer = props => {
   return (
     <View style={styles.footer}>
-      <AdMobBanner
-        style={styles.bottomBanner}
-        bannerSize="fullBanner"
-        adUnitID="ca-app-pub-3940256099942544/6300978111"
-        testDeviceID="EMULATOR"
-        didFailToReceiveAdWithError={this.bannerError}
-      />
+      <Text style={styles.footerTitle}>{props.title}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   footer: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  bottomBanner: {
-    position: "absolute",
-    alignItems: "center",
-    justifyContent: "center",
-    borderWidth: 0.1,
-    borderColor: '#ddd',
-    borderBottomWidth: 0,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.5,
-    shadowRadius: 2,
-    elevation: 1,
+  footerTitle: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: '500',
   },
 });
 

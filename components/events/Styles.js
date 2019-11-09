@@ -21,14 +21,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     justifyContent: 'center',
     paddingTop: hp('0.5%'),
-    color: '#d1d1d1'
+    color: '#d1d1d1',
   },
   output: {
     fontSize: hp('2%'),
     fontWeight: '400',
     textAlign: 'center',
     justifyContent: 'center',
-    paddingTop: hp('0.5%')
+    paddingTop: hp('0.5%'),
   },
   pointsContainer: {
     borderBottomColor: 'black',
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     fontSize: hp('2%'),
     fontWeight: '500',
     textAlign: 'center',
-    paddingTop: hp('0.5%')
+    paddingTop: hp('0.5%'),
   },
   running: {
     flexDirection: 'row',
@@ -81,45 +81,42 @@ const styles = StyleSheet.create({
   modalEventTitle: {
     width: wp('35%'),
     fontSize: hp('1.7%'),
+    textDecorationLine: 'underline'
   },
   modalTitle: {
     fontSize: hp('2.5%'),
     padding: hp('2%'),
-    textAlign: 'center'
+    textAlign: 'center',
   },
   modalSummary: {
     fontSize: hp('2%'),
     paddingBottom: hp('1.5%'),
-  },
-  modalTitleSummary: {
-    fontSize: hp('2%'),
-    paddingBottom: hp('1.5%'),
-    textDecorationLine: 'underline'
+    textAlign: 'center',
   },
   tableContainer: {
     flex: 1,
     padding: hp('2%'),
-    paddingTop: hp('1%'),
+    paddingTop: hp('4%'),
     marginBottom: hp('10%'),
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
   tableHead: {
     height: hp('5%'),
-    backgroundColor: '#f1f8ff'
+    backgroundColor: '#f1f8ff',
   },
   tableWrapper: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   tableTitle: {
     flex: 1,
-    backgroundColor: '#f6f8fa'
+    backgroundColor: '#f6f8fa',
   },
   tableRow: {
-    height: hp('5%')
+    height: hp('5%'),
   },
   tableText: {
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+  },
 });
 
 export { styles };

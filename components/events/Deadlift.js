@@ -4,6 +4,7 @@ import {
   Text,
   TouchableOpacity,
   WebView,
+  Image
 } from 'react-native';
 import { styles } from './Styles';
 import Picker from 'react-native-picker-select';
@@ -16,6 +17,13 @@ import {
 } from 'react-native-responsive-screen';
 import Emoji from 'react-native-emoji';
 import Ads from './Ads';
+import ImageViewer from 'react-native-image-zoom-viewer';
+
+const images = [{
+  props: {
+    source: require('../../assets/dl.jpg')
+  }
+}]
 
 export default class Deadlift extends Component {
   constructor(props) {
@@ -133,6 +141,10 @@ export default class Deadlift extends Component {
     }
   }
 
+  ShowModalFunction(visible) {
+    this.setState({ isModelVisible: false });
+  }
+
   _renderButton = (text, onPress) => (
     <TouchableOpacity onPress={onPress}>
       <View>
@@ -149,14 +161,30 @@ export default class Deadlift extends Component {
     </TouchableOpacity>
   );
 
+  _renderPicture = () => {
+    <View style={styles.picContainer}>
+      <Modal
+        visible={this.state.isModelVisible}
+        transparent={true}
+        onRequestClose={() => this.ShowModalFunction()}>
+        <ImageViewer imageUrls={images} />
+      </Modal>
+    </View>
+  }
+
   _renderModalContent = () => (
     <View style={styles.modalContent}>
       <View>
         <Text style={styles.modalTitle}>3 REPETITION MAXIMUM DEADLIFT (MDL)</Text>
       </View>
-      <View>
+      <View onPress={this._renderPicture()}>
         <Image
-          style={{ width: wp('50%'), height: hp('20%') }}
+          style={{
+            width: wp('80%'),
+            height: hp('10%'),
+            resizeMode: 'contain'
+
+          }}
           source={require('../../assets/dl.jpg')}
         />
       </View>
