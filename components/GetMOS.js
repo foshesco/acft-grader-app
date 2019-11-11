@@ -46,6 +46,7 @@ export default class GetMOS extends Component {
     this.shakeAnimation = new Animated.Value(0);
 
     this.state = {
+      enterMOS: 'Enter MOS',
       dlScoreInput: '',
       dlScore: '0',
       ptScoreInput: '',
@@ -518,26 +519,37 @@ export default class GetMOS extends Component {
 
   imLazy = () => {
     if (this.state.mosLevel === '1') {
-      this.onDLHandler(200, 70);
-      this.onPTHandler(8, 70);
-      this.onPUHandler(30, 70);
+      this.onDLHandler('200', 70);
+      this.onPTHandler('8', 70);
+      this.onPUHandler('30', 70);
       this.onSDCHandler('2:10', 70);
-      this.onLTHandler(5, 70);
+      this.onLTHandler('5', 70);
       this.onRunHandler('18:00', 70);
     } else if (this.state.mosLevel === '2') {
-      this.onDLHandler(180, 65);
-      this.onPTHandler(6.5, 65);
-      this.onPUHandler(20, 65);
+      this.onDLHandler('180', 65);
+      this.onPTHandler('6.5', 65);
+      this.onPUHandler('20', 65);
       this.onSDCHandler('2:30', 65);
-      this.onLTHandler(3, 65);
+      this.onLTHandler('3', 65);
       this.onRunHandler('19:00', 65);
     } else if (this.state.mosLevel === '3') {
-      this.onDLHandler(140, 60);
-      this.onPTHandler(4.5, 60);
-      this.onPUHandler(10, 60);
+      this.onDLHandler('140', 60);
+      this.onPTHandler('4.5', 60);
+      this.onPUHandler('10', 60);
       this.onSDCHandler('3:00', 60);
-      this.onLTHandler(1, 60);
+      this.onLTHandler('1', 60);
       this.onRunHandler('21:00', 60);
+    }
+  };
+
+  imGood = () => {
+    if (this.state.mosLevel !== '') {
+      this.onDLHandler('340', 100);
+      this.onPTHandler('12.5', 100);
+      this.onPUHandler('60', 100);
+      this.onSDCHandler('1:33', 100);
+      this.onLTHandler('20', 100);
+      this.onRunHandler('13:30', 100);
     }
   };
 
@@ -755,6 +767,29 @@ export default class GetMOS extends Component {
     ]).start();
   };
 
+  missingMOS() {
+    if (this.state.mosError != 'MOS Required') {
+      return (<Text style={styles.enterMOS}>{this.state.enterMOS}</Text>)
+    } else {
+      return (<Animated.View
+        style={{ transform: [{ translateX: this.shakeAnimation }] }}>
+        {!!this.state.mosError && (
+          <Text
+            style={{
+              fontSize: hp('2.5%'),
+              color: 'red',
+              paddingTop: hp('2%'),
+              paddingBottom: hp('1%'),
+              textAlign: 'center',
+              justifyContent: 'center',
+            }}>
+            {this.state.enterMOS}
+          </Text>
+        )}
+      </Animated.View>)
+    }
+  }
+
   render() {
     if (this.state.isLoading) {
       return <SplashScreen />
@@ -767,7 +802,7 @@ export default class GetMOS extends Component {
         </View>
         <View style={styles.mosInfoContainer}>
           <View style={styles.mosInput}>
-            <Text style={styles.enterMOS}>Enter MOS</Text>
+            <View>{this.missingMOS()}</View>
             <TextInput
               style={
                 this.state.mosError != 'MOS Required'
@@ -781,20 +816,6 @@ export default class GetMOS extends Component {
               onChangeText={mosOutput => this.setState({ mosInput: mosOutput })}
               value={this.state.mosInput}
             />
-            <Animated.View
-              style={{ transform: [{ translateX: this.shakeAnimation }] }}>
-              {!!this.state.mosError && (
-                <Text
-                  style={{
-                    paddingTop: hp('1%'),
-                    textAlign: 'center',
-                    fontSize: hp('1.8%'),
-                    color: 'red',
-                  }}>
-                  {this.state.mosError}
-                </Text>
-              )}
-            </Animated.View>
           </View>
           <View style={{ flex: 1, flexDirection: 'row' }}>
             <View style={styles.mosText}>
@@ -829,7 +850,7 @@ export default class GetMOS extends Component {
                 this.startShake();
               } else {
                 this.setState(() => ({ mosError: null }));
-                this.imLazy();
+                this.imGood();
               }
             }}>
             <Text style={{ color: '#507858', fontWeight: 'bold' }}>
@@ -977,7 +998,8 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
   lazyButton: {
-    height: hp('5%'),
+    height: hp('4%'),
+    paddingBottom: hp('1%'),
     marginBottom: hp('1%'),
     backgroundColor: 'white',
     alignSelf: 'center',
@@ -996,7 +1018,7 @@ const styles = StyleSheet.create({
   },
   adContainer: {
     width: wp('100%'),
-    height: hp('6%'),
+    height: hp('9%'),
     marginBottom: hp('1%'),
     backgroundColor: 'white',
     alignSelf: 'center',
@@ -1014,7 +1036,7 @@ const styles = StyleSheet.create({
   },
   eventContainer: {
     width: wp('95%'),
-    height: hp('45%'),
+    height: hp('44%'),
     paddingTop: hp('1%'),
     marginBottom: hp('1%'),
     backgroundColor: 'white',

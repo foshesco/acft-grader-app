@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { styles } from './Styles';
 import Picker from 'react-native-picker-select';
 import { pickerSelectStyles } from './PickerStyles';
@@ -9,6 +9,13 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import ImageViewer from 'react-native-image-zoom-viewer';
+
+const images = [{
+  props: {
+    source: require('../../assets/lt.jpg')
+  }
+}]
 
 export default class LegTuck extends Component {
   constructor(props) {
@@ -132,13 +139,25 @@ export default class LegTuck extends Component {
         <Text style={styles.modalTitle}>LEG TUCK (LTK)</Text>
       </View>
       <View>
+        <Image
+          style={{
+            width: wp('80%'),
+            height: hp('10%'),
+            paddingBottom: hp('2%'),
+            resizeMode: 'contain'
+
+          }}
+          source={require('../../assets/lt.jpg')}
+        />
+      </View>
+      <View>
         <Text style={styles.modalTitleSummary}>Objective:</Text>
       </View>
       <View>
         <Text style={styles.modalSummary}>Complete as many leg tucks as possible; maintain a relative vertical posture while moving the hips and knees up and down without excessive swinging.</Text>
       </View>
       <View>
-        <Text style={styles.modalTitleSummary}>Min/Max</Text>
+        <Text style={styles.modalTitleSummary}>Min/Max:</Text>
       </View>
       <View style={styles.tableContainer}>
         <Table borderStyle={{ borderWidth: 1 }}>

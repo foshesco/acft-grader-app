@@ -59,8 +59,9 @@ const styles = StyleSheet.create({
     marginBottom: hp('3%'),
   },
   modalContent: {
-    height: hp('55%'),
+    height: hp('69%'),
     backgroundColor: 'white',
+    justifyContent:'space-around',
     padding: hp('2%'),
     paddingBottom: hp('1%'),
     borderRadius: 4,
@@ -78,10 +79,16 @@ const styles = StyleSheet.create({
     fontSize: hp('1.7%'),
     alignSelf: 'center',
   },
+  modalTitleSummary: {
+    fontSize: hp('2%'),
+    paddingBottom: hp('1%'),
+    textDecorationLine: 'underline'
+  },
   modalEventTitle: {
     width: wp('35%'),
     fontSize: hp('1.7%'),
-    textDecorationLine: 'underline'
+    fontWeight: 'bold',
+    color: '#507858'
   },
   modalTitle: {
     fontSize: hp('2.5%'),
@@ -90,14 +97,13 @@ const styles = StyleSheet.create({
   },
   modalSummary: {
     fontSize: hp('2%'),
-    paddingBottom: hp('1.5%'),
-    textAlign: 'center',
+    paddingBottom: hp('2%'),
   },
   tableContainer: {
     flex: 1,
     padding: hp('2%'),
-    paddingTop: hp('4%'),
-    marginBottom: hp('10%'),
+    paddingTop: hp('2%'),
+    marginBottom: hp('1%'),
     backgroundColor: '#fff',
   },
   tableHead: {

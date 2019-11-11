@@ -17,13 +17,6 @@ import {
 } from 'react-native-responsive-screen';
 import Emoji from 'react-native-emoji';
 import Ads from './Ads';
-import ImageViewer from 'react-native-image-zoom-viewer';
-
-const images = [{
-  props: {
-    source: require('../../assets/dl.jpg')
-  }
-}]
 
 export default class Deadlift extends Component {
   constructor(props) {
@@ -161,27 +154,17 @@ export default class Deadlift extends Component {
     </TouchableOpacity>
   );
 
-  _renderPicture = () => {
-    <View style={styles.picContainer}>
-      <Modal
-        visible={this.state.isModelVisible}
-        transparent={true}
-        onRequestClose={() => this.ShowModalFunction()}>
-        <ImageViewer imageUrls={images} />
-      </Modal>
-    </View>
-  }
-
   _renderModalContent = () => (
     <View style={styles.modalContent}>
       <View>
         <Text style={styles.modalTitle}>3 REPETITION MAXIMUM DEADLIFT (MDL)</Text>
       </View>
-      <View onPress={this._renderPicture()}>
+      <View>
         <Image
           style={{
             width: wp('80%'),
             height: hp('10%'),
+            paddingBottom: hp('2%'),
             resizeMode: 'contain'
 
           }}
@@ -192,7 +175,7 @@ export default class Deadlift extends Component {
         <Text style={styles.modalTitleSummary}>Objective:</Text>
       </View>
       <View>
-        <Text style={styles.modalSummary}>Deadlift the maximum weight possible three times.</Text>
+        <Text style={styles.modalSummary}>-Deadlift the maximum weight possible three times.</Text>
       </View>
       <View>
         <Text style={styles.modalTitleSummary}>Min/Max:</Text>

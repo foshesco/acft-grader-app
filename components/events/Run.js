@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { styles } from './Styles';
 import Picker from 'react-native-picker-select';
 import { pickerSelectStyles } from './PickerStyles';
@@ -294,13 +294,25 @@ export default class Run extends Component {
         <Text style={styles.modalTitle}>TWO-MILE RUN (2MR)</Text>
       </View>
       <View>
+        <Image
+          style={{
+            width: wp('80%'),
+            height: hp('10%'),
+            paddingBottom: hp('2%'),
+            resizeMode: 'contain'
+
+          }}
+          source={require('../../assets/run.png')}
+        />
+      </View>
+      <View>
         <Text style={styles.modalTitleSummary}>Objective:</Text>
       </View>
       <View>
         <Text style={styles.modalSummary}> Run two miles for time on a measured, generally flat outdoor course.</Text>
       </View>
       <View>
-        <Text style={styles.modalTitleSummary}>Min/Max</Text>
+        <Text style={styles.modalTitleSummary}>Min/Max:</Text>
       </View>
       <View style={styles.tableContainer}>
         <Table borderStyle={{ borderWidth: 1 }}>
