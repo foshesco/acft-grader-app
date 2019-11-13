@@ -17,7 +17,7 @@ const Ads = props => {
             <AdMobBanner
                 style={styles.bottomBanner}
                 bannerSize="fullBanner"
-                adUnitID="ca-app-pub-3940256099942544/6300978111"
+                adUnitID="ca-app-pub-5880817678640168~1356036820"
                 testDeviceID="EMULATOR"
                 didFailToReceiveAdWithError={this.bannerError}
             />

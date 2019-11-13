@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ACFT Calculator",
-    "slug": "acft-app",
+    "name": "ACFT",
+    "slug": "snack.expo.io/@easye/3e88dc",
     "privacy": "public",
     "sdkVersion": "34.0.0",
     "platforms": [
@@ -22,6 +22,7 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.fosho.acftcalc",
       "supportsTablet": true,
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-5880817678640168~1356036820"
