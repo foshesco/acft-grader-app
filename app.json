@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "ACFT",
-    "slug": "snack.expo.io/@easye/3e88dc",
+    "slug": "acft-calc-easye",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [
@@ -25,7 +25,7 @@
       "bundleIdentifier": "com.fosho.acftcalc",
       "supportsTablet": true,
       "config": {
-        "googleMobileAdsAppId": "ca-app-pub-5880817678640168~1356036820"
+        "googleMobileAdsAppId": "ca-app-pub-1171575529205896/8947867564"
       }
     }
   }

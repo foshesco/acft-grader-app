@@ -3,17 +3,15 @@ import {
   View,
   Text,
   StyleSheet,
-  TextInput,
-  TouchableWithoutFeedback,
-  Keyboard,
   TouchableOpacity,
-  Image,
 } from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import Emoji from 'react-native-emoji';
+import {
+  AdMobInterstitial,
+} from 'expo-ads-admob';
 
 export default class Score extends Component {
   constructor(props) {
@@ -23,6 +21,17 @@ export default class Score extends Component {
       goNoGo: 'GO',
       totalScore: '',
     };
+  }
+
+  componentDidMount() {
+    AdMobInterstitial.setTestDeviceID('EMULATOR');
+    AdMobInterstitial.setAdUnitID('ca-app-pub-1171575529205896/9897987159');
+  }
+  componentWillUnmount() {
+    AdMobInterstitial.removeAllListeners();
+  }
+  showInterstital() {
+    AdMobInterstitial.requestAd(AdMobInterstitial.showAd);
   }
 
   calcScore() {
@@ -234,7 +243,7 @@ export default class Score extends Component {
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             style={styles.scoreButton}
-            onPress={() => this.props.clearState()}>
+            onPress={() => this.showInterstitial && this.props.clearState()}>
             <Text style={{ color: '#507858', fontWeight: 'bold' }}>Clear</Text>
           </TouchableOpacity>
         </View>
