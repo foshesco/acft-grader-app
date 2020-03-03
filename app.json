@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ACFT",
-    "slug": "acft-calc-easye",
+    "name": "ACFT-CALC",
+    "slug": "acft-calc-foshesco",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [
@@ -13,7 +13,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#000000"
+      "backgroundColor": "#507858"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -22,10 +22,10 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.fosho.acftcalc",
-      "supportsTablet": true,
+      "bundleIdentifier": "com.foshesco.acftcalc",
+      "supportsTablet": false,
       "config": {
-        "googleMobileAdsAppId": "ca-app-pub-1171575529205896/8947867564"
+        "googleMobileAdsAppId": "ca-app-pub-1171575529205896~2181959299"
       }
     }
   }

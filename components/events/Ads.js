@@ -1,48 +1,45 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import {
-    widthPercentageToDP as wp,
-    heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
+import { Text, View, StyleSheet, Button } from 'react-native';
+import { Constants } from 'expo';
+// AdMob
 import {
     AdMobBanner,
-    AdMobInterstitial,
-    PublisherBanner,
-    AdMobRewarded
 } from 'expo-ads-admob';
 
-const Ads = props => {
-    return (
-        <View style={styles.footer}>
-            <AdMobBanner
-                style={styles.bottomBanner}
-                bannerSize="fullBanner"
-                adUnitID="ca-app-pub-1171575529205896/8947867564"
-                didFailToReceiveAdWithError={this.bannerError}
-            />
-        </View>
-    );
-};
+export default class App extends Component {
+    bannerError = () => {
+        console.log('banner ad not loading')
+    }
+    bannerAdReceived = () => {
+        console.log('banner ad received')
+    }
+    render() {
+        return (
+            <View style={styles.container}>
+                <AdMobBanner
+                    bannerSize="fullBanner"
+                    adUnitID="ca-app-pub-1171575529205896/8947867564" // Test ID, Replace with your-admob-unit-id
+                    onDidFailToReceiveAdWithError={this.bannerError} />
+            </View>
+        );
+    }
+}
 
 const styles = StyleSheet.create({
-    footer: {
-        flexDirection: 'row',
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center"
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#ecf0f1',
     },
-    bottomBanner: {
-        alignItems: "center",
-        justifyContent: "center",
-        borderWidth: 0.1,
-        borderColor: '#ddd',
-        borderBottomWidth: 0,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: 0.5,
-        shadowRadius: 2,
-        elevation: 1,
+    bannerAd: {
+        position: "absolute",
+        width: "100%",
+        bottom: 0
+    },
+    interstitialBanner: {
+        width: "100%",
+        marginLeft: 0,
+        color: '#00FFFF'
     },
 });
-
-export default Ads;
