@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -27,12 +27,6 @@ import Footer from './Footer';
 import Header from './Header';
 import Emoji from 'react-native-emoji';
 import Ads from './events/Ads';
-import {
-  AdMobBanner,
-  AdMobInterstitial,
-  PublisherBanner,
-  AdMobRewarded
-} from 'expo-ads-admob';
 const DURATION = 1000;
 
 export default class GetMOS extends Component {
@@ -505,6 +499,7 @@ export default class GetMOS extends Component {
   };
 
   clearState = () => {
+    
     this.setState(this.getInitialState());
   };
 

@@ -1,13 +1,10 @@
 import React from 'react';
 import {
   StyleSheet,
-  Text,
   View,
-  Button,
-  TextInput,
-  Dimensions,
 } from 'react-native';
 import GetMOS from './components/GetMOS';
+import { SplashScreen } from 'expo';
 
 export default function App() {
   return (

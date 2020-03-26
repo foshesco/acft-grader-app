@@ -18,7 +18,7 @@ export default class App extends Component {
             <View style={styles.container}>
                 <AdMobBanner
                     bannerSize="fullBanner"
-                    adUnitID="ca-app-pub-1171575529205896/8947867564" // Test ID, Replace with your-admob-unit-id
+                    adUnitID="ca-app-pub-3940256099942544/6300978111"
                     onDidFailToReceiveAdWithError={this.bannerError} />
             </View>
         );
