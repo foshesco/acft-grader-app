@@ -149,7 +149,7 @@ export default class Deadlift extends Component {
   _renderButtonClose = (text, onPress) => (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.modalButton}>
-        <Text>{text}</Text>
+        <Text style={{color: '#507858', fontWeight: 'bold',}}>{text}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -175,7 +175,7 @@ export default class Deadlift extends Component {
         <Text style={styles.modalTitleSummary}>Objective:</Text>
       </View>
       <View>
-        <Text style={styles.modalSummary}>-Deadlift the maximum weight possible three times.</Text>
+        <Text style={styles.modalSummary}>Deadlift the maximum weight possible three times.</Text>
       </View>
       <View>
         <Text style={styles.modalTitleSummary}>Min/Max:</Text>

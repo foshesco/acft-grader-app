@@ -234,7 +234,7 @@ export default class SprintDragCarry extends Component {
   _renderButtonClose = (text, onPress) => (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.modalButton}>
-        <Text>{text}</Text>
+      <Text style={{color: '#507858', fontWeight: 'bold',}}>{text}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -242,7 +242,7 @@ export default class SprintDragCarry extends Component {
   _renderModalContent = () => (
     <View style={styles.modalContent}>
       <View>
-        <Text style={styles.modalTitle}>SPRINT-DRAG-CARRY (SDC)</Text>
+        <Text style={styles.modalTitle}>SPRINT-DRAG-CARRY (S-D-C)</Text>
       </View>
       <View>
         <Image

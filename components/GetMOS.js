@@ -27,6 +27,9 @@ import Footer from './Footer';
 import Header from './Header';
 import Emoji from 'react-native-emoji';
 import Ads from './events/Ads';
+import {
+  AdMobInterstitial,
+} from 'expo-ads-admob';
 const DURATION = 1000;
 
 export default class GetMOS extends Component {
@@ -321,7 +324,7 @@ export default class GetMOS extends Component {
         '15H': '3Aircraft Pneudraulics Repairer',
         '15J': '2OH-58D Systems Repairer',
         '15K': '3Aircraft Components Repair Supervisor',
-        '15L': '3Repair Supervisor', 
+        '15L': '3Repair Supervisor',
         '15M': '3MQ-1 Repairer',
         '15N': '3Avionic Mechanic',
         '15P': '3Aviation Operations Specialist',
@@ -498,8 +501,15 @@ export default class GetMOS extends Component {
     return initialState;
   };
 
-  clearState = () => {
-    
+  clearState = async () => {
+    AdMobInterstitial.setAdUnitID('ca-app-pub-1171575529205896/4862507652'); // Test ID, Replace with your-admob-unit-id
+    try {
+      await AdMobInterstitial.requestAdAsync();
+      await AdMobInterstitial.showAdAsync();
+    }
+    catch (e) {
+      console.log(e);
+    }
     this.setState(this.getInitialState());
   };
 
@@ -1003,7 +1013,7 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
   adContainer: {
-    width: wp('100%'),
+    width: wp('95%'),
     height: hp('9%'),
     marginBottom: hp('1%'),
     backgroundColor: 'white',

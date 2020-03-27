@@ -17,8 +17,8 @@ export default class App extends Component {
         return (
             <View style={styles.container}>
                 <AdMobBanner
-                    bannerSize="fullBanner"
-                    adUnitID="ca-app-pub-3940256099942544/6300978111"
+                    bannerSize="banner"
+                    adUnitID="ca-app-pub-1171575529205896/8947867564"
                     onDidFailToReceiveAdWithError={this.bannerError} />
             </View>
         );
@@ -30,16 +30,6 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#ecf0f1',
-    },
-    bannerAd: {
-        position: "absolute",
-        width: "100%",
-        bottom: 0
-    },
-    interstitialBanner: {
-        width: "100%",
-        marginLeft: 0,
-        color: '#00FFFF'
+        backgroundColor: 'white',
     },
 });

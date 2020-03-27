@@ -128,7 +128,7 @@ export default class LegTuck extends Component {
   _renderButtonClose = (text, onPress) => (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.modalButton}>
-        <Text>{text}</Text>
+        <Text style={{ color: '#507858', fontWeight: 'bold', }}>{text}</Text>
       </View>
     </TouchableOpacity>
   );
