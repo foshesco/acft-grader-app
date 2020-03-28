@@ -5,6 +5,10 @@ import {
 } from 'react-native-responsive-screen';
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#dbdbdb'
+  },
   eventName: {
     fontSize: hp('1.5%'),
     width: wp('30%'),
@@ -61,7 +65,7 @@ const styles = StyleSheet.create({
   modalContent: {
     height: hp('69%'),
     backgroundColor: 'white',
-    justifyContent:'space-around',
+    justifyContent: 'space-around',
     padding: hp('2%'),
     paddingBottom: hp('1%'),
     borderRadius: 4,

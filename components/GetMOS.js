@@ -477,11 +477,6 @@ export default class GetMOS extends Component {
     };
   }
 
-  // isAdShowing = () => {
-  //   const adShown = props.adShown;
-  //   if (adShown) 
-  // }
-
   getInitialState = () => {
     const initialState = {
       dlScoreInput: '',
@@ -579,7 +574,6 @@ export default class GetMOS extends Component {
 
     if (mosDesc[e]) {
       mos = mosDesc[e].substring(1, 100);
-      Keyboard.dismiss();
       return (
         <Text
           style={{
