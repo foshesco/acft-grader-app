@@ -507,7 +507,7 @@ export default class GetMOS extends Component {
   };
 
   clearState = async () => {
-    AdMobInterstitial.setAdUnitID('ca-app-pub-3940256099942544/4411468910'); // Test ID, Replace with your-admob-unit-id
+    AdMobInterstitial.setAdUnitID('ca-app-pub-1171575529205896/4862507652'); // Test ID, Replace with your-admob-unit-id
     try {
       await AdMobInterstitial.requestAdAsync();
       await AdMobInterstitial.showAdAsync();
