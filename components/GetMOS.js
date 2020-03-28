@@ -36,10 +36,10 @@ export default class GetMOS extends Component {
   constructor() {
     super();
 
-    this.state = { isLoading: true };
     this.shakeAnimation = new Animated.Value(0);
 
     this.state = {
+      adShown: "false",
       enterMOS: 'Enter MOS',
       dlScoreInput: '',
       dlScore: '0',
@@ -477,6 +477,11 @@ export default class GetMOS extends Component {
     };
   }
 
+  // isAdShowing = () => {
+  //   const adShown = props.adShown;
+  //   if (adShown) 
+  // }
+
   getInitialState = () => {
     const initialState = {
       dlScoreInput: '',
@@ -574,6 +579,7 @@ export default class GetMOS extends Component {
 
     if (mosDesc[e]) {
       mos = mosDesc[e].substring(1, 100);
+      Keyboard.dismiss();
       return (
         <Text
           style={{
@@ -615,7 +621,7 @@ export default class GetMOS extends Component {
               textAlign: 'center',
               backgroundColor: 'black',
               color: 'white',
-              paddingTop: hp('0.8%'),
+              paddingTop: hp('0.9%'),
             }}>
             HEAVY
           </Text>
@@ -631,7 +637,7 @@ export default class GetMOS extends Component {
               textAlign: 'center',
               backgroundColor: 'blue',
               color: 'white',
-              paddingTop: hp('0.8%'),
+              paddingTop: hp('0.9%'),
             }}>
             SIGNIFICANT
           </Text>
@@ -647,7 +653,7 @@ export default class GetMOS extends Component {
               textAlign: 'center',
               backgroundColor: 'pink',
               color: 'white',
-              paddingTop: hp('0.8%'),
+              paddingTop: hp('0.9%'),
             }}>
             MODERATE {''}{' '}
             <Emoji name="baby_bottle" style={{ fontSize: hp('2.5%') }} />
@@ -686,6 +692,9 @@ export default class GetMOS extends Component {
     this.setState({ runScoreInput: e });
     this.setState({ runScore: x });
   };
+  onAdHandler = (e) => {
+    this.setState({ adShown: e })
+  };
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.mosInput !== this.state.mosInput) {
@@ -719,21 +728,6 @@ export default class GetMOS extends Component {
     }
   }
 
-  splashScreen = async () => {
-    return new Promise(resolve =>
-      setTimeout(() => {
-        resolve('result');
-      }, 2000)
-    );
-  };
-
-  async componentDidMount() {
-    const data = await this.splashScreen();
-    if (data !== null) {
-      this.setState({ isLoading: false });
-    }
-  }
-
   startVibrating = () => {
     Vibration.vibrate(DURATION);
   };
@@ -741,17 +735,17 @@ export default class GetMOS extends Component {
   startShake = () => {
     Animated.sequence([
       Animated.timing(this.shakeAnimation, {
-        toValue: 10,
+        toValue: 3,
         duration: 100,
         useNativeDriver: true,
       }),
       Animated.timing(this.shakeAnimation, {
-        toValue: -10,
+        toValue: -3,
         duration: 100,
         useNativeDriver: true,
       }),
       Animated.timing(this.shakeAnimation, {
-        toValue: 10,
+        toValue: 3,
         duration: 100,
         useNativeDriver: true,
       }),
@@ -787,10 +781,6 @@ export default class GetMOS extends Component {
   }
 
   render() {
-    if (this.state.isLoading) {
-      return <SplashScreen />
-    }
-
     return (
       <View style={styles.mainContainer}>
         <View style={styles.headerContainer}>
@@ -811,6 +801,7 @@ export default class GetMOS extends Component {
               autoCorrect={false}
               onChangeText={mosOutput => this.setState({ mosInput: mosOutput })}
               value={this.state.mosInput}
+              keyboardType={p}
             />
           </View>
           <View style={{ flex: 1, flexDirection: 'row' }}>
@@ -943,9 +934,6 @@ export default class GetMOS extends Component {
             </ScrollView>
           </KeyboardAvoidingView>
         </View>
-        <View style={styles.adContainer}>
-          <Ads />
-        </View>
         <View style={styles.scoreContainer}>
           <Score
             clearState={this.clearState}
@@ -978,7 +966,7 @@ const styles = StyleSheet.create({
   },
   mosInfoContainer: {
     width: wp('95%'),
-    height: hp('17%'),
+    height: hp('19%'),
     paddingLeft: wp('5%'),
     backgroundColor: 'white',
     justifyContent: 'center',
@@ -995,7 +983,7 @@ const styles = StyleSheet.create({
   },
   lazyButton: {
     height: hp('4%'),
-    paddingBottom: hp('1%'),
+    paddingBottom: hp('2%'),
     marginBottom: hp('1%'),
     backgroundColor: 'white',
     alignSelf: 'center',
@@ -1012,27 +1000,9 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     elevation: 1,
   },
-  adContainer: {
-    width: wp('95%'),
-    height: hp('9%'),
-    marginBottom: hp('1%'),
-    backgroundColor: 'white',
-    alignSelf: 'center',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 0.1,
-    borderColor: '#ddd',
-    borderTopWidth: 0,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.5,
-    shadowRadius: 2,
-    elevation: 1,
-  },
   eventContainer: {
     width: wp('95%'),
-    height: hp('44%'),
+    height: hp('49%'),
     paddingTop: hp('1%'),
     marginBottom: hp('1%'),
     backgroundColor: 'white',
@@ -1049,7 +1019,7 @@ const styles = StyleSheet.create({
   },
   scoreContainer: {
     width: wp('95%'),
-    height: hp('11%'),
+    height: hp('13%'),
     marginBottom: hp('1%'),
     backgroundColor: 'white',
     justifyContent: 'center',

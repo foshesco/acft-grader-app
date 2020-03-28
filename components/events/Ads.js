@@ -1,25 +1,37 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
-import { Constants } from 'expo';
-// AdMob
-import {
-    AdMobBanner,
-} from 'expo-ads-admob';
+import { View, StyleSheet } from 'react-native';
+import { AdMobBanner } from 'expo-ads-admob';
 
 export default class App extends Component {
-    bannerError = () => {
-        console.log('banner ad not loading')
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            adShown: false
+        }
     }
-    bannerAdReceived = () => {
-        console.log('banner ad received')
-    }
+
     render() {
+        const { onAdHandler } = this.props;
+        bannerError = () => {
+            console.log('banner ad not loading')
+        }
+        bannerAdReceived = () => {
+            console.log('banner ad received');
+        }
+        onAdHandlerCheck = () => {
+            onAdHandler("true");
+        }
+
         return (
             <View style={styles.container}>
-                <AdMobBanner
-                    bannerSize="banner"
-                    adUnitID="ca-app-pub-1171575529205896/8947867564"
-                    onDidFailToReceiveAdWithError={this.bannerError} />
+                <AdMobBanner style={styles.bannerAd}
+                    bannerSize="fullBanner"
+                    adUnitID="ca-app-pub-3940256099942544/6300978111"
+                    onAdLoaded={this.onAdHandlerCheck}
+                    onAdFailedToLoad={this.onAdHandlerCheck}
+                    onDidFailToReceiveAdWithError={this.bannerError}
+                    onAdViewDidReceiveAd={this.bannerAdReceived} />
             </View>
         );
     }

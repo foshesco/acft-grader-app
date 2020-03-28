@@ -169,7 +169,7 @@ export default class Score extends Component {
           return (
             <Text
               style={{
-                color: 'green',
+                color: '#507858',
                 fontSize: 20,
                 fontWeight: '500',
                 width: '100%',
@@ -248,7 +248,7 @@ const styles = StyleSheet.create({
     color: 'black',
     borderBottomWidth: 1,
     width: wp('23%'),
-    height: hp('6%'),
+    height: hp('5%'),
     justifyContent: 'center',
     alignSelf: 'center',
   },
@@ -258,7 +258,7 @@ const styles = StyleSheet.create({
     color: 'black',
     borderBottomWidth: 1,
     width: wp('25%'),
-    height: hp('6%'),
+    height: hp('5%'),
     justifyContent: 'center',
     alignSelf: 'center',
   },
