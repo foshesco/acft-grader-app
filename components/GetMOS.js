@@ -507,7 +507,7 @@ export default class GetMOS extends Component {
   };
 
   clearState = async () => {
-    AdMobInterstitial.setAdUnitID('ca-app-pub-1171575529205896/4862507652'); // Test ID, Replace with your-admob-unit-id
+    AdMobInterstitial.setAdUnitID('ca-app-pub-3940256099942544/4411468910'); // Test ID, Replace with your-admob-unit-id
     try {
       await AdMobInterstitial.requestAdAsync();
       await AdMobInterstitial.showAdAsync();
@@ -692,9 +692,6 @@ export default class GetMOS extends Component {
     this.setState({ runScoreInput: e });
     this.setState({ runScore: x });
   };
-  onAdHandler = (e) => {
-    this.setState({ adShown: e })
-  };
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.mosInput !== this.state.mosInput) {
@@ -801,7 +798,6 @@ export default class GetMOS extends Component {
               autoCorrect={false}
               onChangeText={mosOutput => this.setState({ mosInput: mosOutput })}
               value={this.state.mosInput}
-              keyboardType={p}
             />
           </View>
           <View style={{ flex: 1, flexDirection: 'row' }}>
