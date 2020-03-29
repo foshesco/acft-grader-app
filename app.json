@@ -21,7 +21,7 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.foshesco.acftcalc",
+      "bundleIdentifier": "com.foshesco.acftcalc.app",
       "supportsTablet": false,
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-1171575529205896~2181959299"
