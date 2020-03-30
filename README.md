@@ -1,11 +1,21 @@
-ACFT Calc
+<h2>ACFT Calc</h2>
 
 Hope you've found the app useful. If you have any questions or comments, email me at foshesco@gmail.com.
 
 Thanks,
 Foshesco
 
-Privacy Policy
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+<h3>Privacy Policy</h3>
+
 This policy applies to all information collected or submitted on Overcast’s website and our apps for iPhone and any other devices and platforms.
 
 Personal Information we collect
