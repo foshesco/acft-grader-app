@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
   },
   tableText: {
     textAlign: 'center',
+    fontSize: hp('1.7%'),
   },
 });
 

@@ -830,7 +830,7 @@ export default class GetMOS extends Component {
                 this.imGood();
               }
             }}>
-            <Text style={{ color: '#507858', fontWeight: 'bold' }}>
+            <Text style={{ color: '#507858', fontWeight: 'bold', fontSize: hp('1.7%') }}>
               {'Feeling Good?'}
             </Text>
           </TouchableOpacity>
@@ -845,7 +845,7 @@ export default class GetMOS extends Component {
                 this.imLazy();
               }
             }}>
-            <Text style={{ color: '#507858', fontWeight: 'bold' }}>
+            <Text style={{ color: '#507858', fontWeight: 'bold', fontSize: hp('1.7%') }}>
               {'Feeling Lazy?'}
             </Text>
           </TouchableOpacity>

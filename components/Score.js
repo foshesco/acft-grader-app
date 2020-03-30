@@ -9,9 +9,6 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {
-  AdMobInterstitial,
-} from 'expo-ads-admob';
 
 export default class Score extends Component {
   constructor(props) {
@@ -40,7 +37,7 @@ export default class Score extends Component {
           <Text
             style={{
               color: 'red',
-              fontSize: 18,
+              fontSize: hp('2%'),
               fontWeight: '500',
               textAlign: 'center',
             }}>
@@ -53,7 +50,7 @@ export default class Score extends Component {
           <Text
             style={{
               color: 'black',
-              fontSize: 18,
+              fontSize: hp('2%'),
               fontWeight: '500',
               width: '100%',
               textAlign: 'center',
@@ -66,7 +63,7 @@ export default class Score extends Component {
           <Text
             style={{
               color: 'black',
-              fontSize: 18,
+              fontSize: hp('2%'),
               fontWeight: '500',
               textAlign: 'center',
             }}>
@@ -79,7 +76,7 @@ export default class Score extends Component {
         <Text
           style={{
             color: '#d6d6d6',
-            fontSize: 18,
+            fontSize: hp('2%'),
             fontWeight: '500',
             textAlign: 'center',
           }}>
@@ -131,7 +128,7 @@ export default class Score extends Component {
             <Text
               style={{
                 color: 'red',
-                fontSize: 20,
+                fontSize: hp('2%'),
                 fontWeight: '500',
                 width: '100%',
                 textAlign: 'center',
@@ -144,7 +141,7 @@ export default class Score extends Component {
             <Text
               style={{
                 color: 'red',
-                fontSize: 20,
+                fontSize: hp('2%'),
                 fontWeight: '500',
                 width: '100%',
                 textAlign: 'center',
@@ -157,7 +154,7 @@ export default class Score extends Component {
             <Text
               style={{
                 color: 'red',
-                fontSize: 20,
+                fontSize: hp('2%'),
                 fontWeight: '500',
                 width: '100%',
                 textAlign: 'center',
@@ -170,7 +167,7 @@ export default class Score extends Component {
             <Text
               style={{
                 color: '#507858',
-                fontSize: 20,
+                fontSize: hp('2%'),
                 fontWeight: '500',
                 width: '100%',
                 textAlign: 'center',
@@ -184,7 +181,7 @@ export default class Score extends Component {
           <Text
             style={{
               color: 'red',
-              fontSize: 20,
+              fontSize: hp('2%'),
               fontWeight: '500',
               width: '100%',
               textAlign: 'center',
@@ -197,7 +194,7 @@ export default class Score extends Component {
           <Text
             style={{
               color: 'black',
-              fontSize: 14,
+              fontSize: hp('1.8%'),
               fontWeight: '500',
               textAlign: 'center',
             }}>
@@ -210,7 +207,7 @@ export default class Score extends Component {
         <Text
           style={{
             color: '#d6d6d6',
-            fontSize: 18,
+            fontSize: hp('2%'),
             fontWeight: '500',
             textAlign: 'center',
           }}>
@@ -233,7 +230,9 @@ export default class Score extends Component {
           <TouchableOpacity
             style={styles.scoreButton}
             onPress={() => this.props.clearState()}>
-            <Text style={{ color: '#507858', fontWeight: 'bold' }}>Clear</Text>
+            <Text style={{
+              color: '#507858', fontWeight: 'bold', fontSize: hp('1.8%'),
+            }}>Clear</Text>
           </TouchableOpacity>
         </View>
       </View>

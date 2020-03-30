@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   },
   footerTitle: {
     color: 'white',
-    fontSize: 16,
+    fontSize: hp('1.8%'),
     fontWeight: '500',
   },
 });

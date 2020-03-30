@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     color: 'white',
-    fontSize: 16,
+    fontSize: hp('1.8%'),
     fontWeight: '500',
   },
 });
