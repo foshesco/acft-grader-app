@@ -6,7 +6,7 @@
     "platforms": [
       "ios"
     ],
-    "version": "1.0",
+    "version": "1.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -21,7 +21,7 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.foshesco.acftcalc1",
+      "bundleIdentifier": "com.foshesco.acftcalc2",
       "supportsTablet": false,
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-1171575529205896~2181959299"
