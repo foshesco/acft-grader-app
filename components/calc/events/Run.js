@@ -302,7 +302,7 @@ export default class Run extends Component {
             resizeMode: 'contain'
 
           }}
-          source={require('../../assets/run.png')}
+          source={require('../../../assets/run.png')}
         />
       </View>
       <View>

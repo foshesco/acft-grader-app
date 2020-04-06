@@ -23,10 +23,7 @@ import SprintDragCarry from './events/SprintDragCarry';
 import LegTuck from './events/LegTuck';
 import Run from './events/Run';
 import Score from './Score';
-import Footer from './Footer';
-import Header from './Header';
 import Emoji from 'react-native-emoji';
-import Ads from './events/Ads';
 import {
   AdMobInterstitial,
 } from 'expo-ads-admob';
@@ -759,7 +756,7 @@ export default class GetMOS extends Component {
             style={{
               fontSize: hp('2.5%'),
               color: 'red',
-              paddingTop: hp('2%'),
+              paddingTop: hp('1%'),
               paddingBottom: hp('1%'),
               textAlign: 'center',
               justifyContent: 'center',
@@ -774,9 +771,6 @@ export default class GetMOS extends Component {
   render() {
     return (
       <View style={styles.mainContainer}>
-        <View style={styles.headerContainer}>
-          <Header title="ACFT Calculator" />
-        </View>
         <View style={styles.mosInfoContainer}>
           <View style={styles.mosInput}>
             <View>{this.missingMOS()}</View>
@@ -798,8 +792,8 @@ export default class GetMOS extends Component {
             <View style={styles.mosText}>
               <Text
                 style={{
+                  paddingTop: hp('3%'),
                   paddingBottom: hp('5.5%'),
-                  paddingTop: hp('4%'),
                   fontSize: hp('1.7%'),
                 }}>
                 Job:{' '}
@@ -936,9 +930,6 @@ export default class GetMOS extends Component {
             runScore={this.state.runScore}
           />
         </View>
-        <View style={styles.footerContainer}>
-          <Footer title="3932 - Group" />
-        </View>
       </View>
     );
   }
@@ -948,15 +939,10 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
   },
-  headerContainer: {
-    width: wp('100%'),
-    height: hp('6%'),
-    backgroundColor: '#507858',
-    marginBottom: hp('1%'),
-  },
   mosInfoContainer: {
     width: wp('95%'),
-    height: hp('19%'),
+    height: hp('17%'),
+    marginTop: hp('1%'),
     paddingLeft: wp('5%'),
     backgroundColor: 'white',
     justifyContent: 'center',
@@ -992,7 +978,7 @@ const styles = StyleSheet.create({
   },
   eventContainer: {
     width: wp('95%'),
-    height: hp('49%'),
+    height: hp('46%'),
     paddingTop: hp('1%'),
     marginBottom: hp('1%'),
     backgroundColor: 'white',
@@ -1009,7 +995,7 @@ const styles = StyleSheet.create({
   },
   scoreContainer: {
     width: wp('95%'),
-    height: hp('13%'),
+    height: hp('10%'),
     marginBottom: hp('1%'),
     backgroundColor: 'white',
     justifyContent: 'center',
@@ -1023,11 +1009,6 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     elevation: 1,
   },
-  footerContainer: {
-    width: wp('100%'),
-    height: hp('5%'),
-    backgroundColor: '#507858',
-  },
   mosInput: {
     flexDirection: 'column',
     textAlign: 'right',
@@ -1038,7 +1019,7 @@ const styles = StyleSheet.create({
     paddingBottom: hp('2%'),
   },
   mosOutput: {
-    paddingTop: hp('3%'),
+    paddingTop: hp('1.8%'),
   },
   mosOutputText: {
     width: wp('37%'),
@@ -1079,13 +1060,13 @@ const styles = StyleSheet.create({
     height: hp('8%'),
     textAlign: 'center',
     justifyContent: 'center',
-    fontSize: hp('3%'),
+    fontSize: hp('2.5%'),
     fontWeight: 'bold',
     backgroundColor: 'white',
   },
   enterMOS: {
     fontSize: hp('2.5%'),
-    paddingTop: hp('2%'),
+    paddingTop: hp('1%'),
     paddingBottom: hp('1%'),
     textAlign: 'center',
     justifyContent: 'center',

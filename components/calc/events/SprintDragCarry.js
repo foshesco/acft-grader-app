@@ -253,7 +253,7 @@ export default class SprintDragCarry extends Component {
             resizeMode: 'contain'
 
           }}
-          source={require('../../assets/sdc.jpg')}
+          source={require('../../../assets/sdc.jpg')}
         />
       </View>
       <View>

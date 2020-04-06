@@ -204,7 +204,7 @@ export default class PowerThrow extends Component {
             resizeMode: 'contain'
 
           }}
-          source={require('../../assets/pt.jpg')}
+          source={require('../../../assets/pt.jpg')}
         />
       </View>
       <View>

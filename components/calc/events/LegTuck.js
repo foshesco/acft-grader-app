@@ -13,7 +13,7 @@ import ImageViewer from 'react-native-image-zoom-viewer';
 
 const images = [{
   props: {
-    source: require('../../assets/lt.jpg')
+    source: require('../../../assets/lt.jpg')
   }
 }]
 
@@ -147,7 +147,7 @@ export default class LegTuck extends Component {
             resizeMode: 'contain'
 
           }}
-          source={require('../../assets/lt.jpg')}
+          source={require('../../../assets/lt.jpg')}
         />
       </View>
       <View>

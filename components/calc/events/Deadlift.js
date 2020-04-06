@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  WebView,
+  Image
+} from 'react-native';
 import { styles } from './Styles';
 import Picker from 'react-native-picker-select';
 import { pickerSelectStyles } from './PickerStyles';
@@ -9,166 +15,127 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import Emoji from 'react-native-emoji';
+import Ads from './Ads';
 
-export default class ReleasePushups extends Component {
+export default class Deadlift extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       visibleModal: false,
-      tableHead: ['', 'Min Reps', 'Min Points', 'Max Reps', 'Max Points',],
+      tableHead: ['', 'Min Weight', 'Min Points', 'Max Weight', 'Max Points',],
       tableTitle: ['Heavy', 'Significant', 'Moderate'],
       tableData: [
-        ['30', '70', '60', '100'],
-        ['20', '65', '60', '100'],
-        ['10', '60', '60', '100'],
+        ['200', '70', '340', '100'],
+        ['180', '65', '340', '100'],
+        ['140', '60', '340', '100'],
       ],
-      puScoreInput: '',
-      puScore: 0,
-      pushupScore: {
+      dlScoreInput: '',
+      deadliftScore: {
         scoreSheet: {
-          0: 0,
-          1: 15,
-          2: 20,
-          3: 25,
-          4: 30,
-          5: 35,
-          6: 40,
-          7: 45,
-          8: 50,
-          9: 55,
-          10: 60,
-          12: 61,
-          14: 62,
-          16: 63,
-          18: 64,
-          20: 65,
-          22: 66,
-          24: 67,
-          26: 68,
-          28: 69,
-          30: 70,
-          31: 71,
-          32: 72,
-          33: 73,
-          34: 74,
-          35: 75,
-          36: 76,
-          37: 77,
-          38: 78,
-          39: 79,
-          40: 80,
-          41: 81,
-          42: 82,
-          43: 83,
-          44: 84,
-          45: 85,
-          46: 86,
-          47: 87,
-          48: 88,
-          49: 89,
-          50: 90,
-          51: 91,
-          52: 92,
-          53: 93,
-          54: 94,
-          55: 95,
-          56: 96,
-          57: 97,
-          58: 98,
-          59: 99,
-          60: 100,
+          80: 0,
+          90: 10,
+          100: 20,
+          110: 30,
+          120: 40,
+          130: 50,
+          140: 60,
+          150: 62,
+          160: 63,
+          170: 64,
+          180: 65,
+          190: 68,
+          200: 70,
+          210: 72,
+          220: 74,
+          230: 76,
+          240: 78,
+          250: 80,
+          260: 82,
+          270: 84,
+          280: 86,
+          290: 88,
+          300: 90,
+          310: 92,
+          320: 94,
+          330: 97,
+          340: 100
         },
       },
       items: [
-        { label: '0', value: '0' },
-        { label: '1', value: '1' },
-        { label: '2', value: '2' },
-        { label: '3', value: '3' },
-        { label: '4', value: '4' },
-        { label: '5', value: '5' },
-        { label: '6', value: '6' },
-        { label: '7', value: '7' },
-        { label: '8', value: '8' },
-        { label: '9', value: '9' },
-        { label: '10', value: '10' },
-        { label: '12', value: '12' },
-        { label: '14', value: '14' },
-        { label: '16', value: '16' },
-        { label: '18', value: '18' },
-        { label: '20', value: '20' },
-        { label: '22', value: '22' },
-        { label: '24', value: '24' },
-        { label: '26', value: '26' },
-        { label: '28', value: '28' },
-        { label: '30', value: '30' },
-        { label: '31', value: '31' },
-        { label: '32', value: '32' },
-        { label: '33', value: '33' },
-        { label: '34', value: '34' },
-        { label: '35', value: '35' },
-        { label: '36', value: '36' },
-        { label: '37', value: '37' },
-        { label: '38', value: '38' },
-        { label: '39', value: '39' },
-        { label: '40', value: '40' },
-        { label: '41', value: '41' },
-        { label: '42', value: '42' },
-        { label: '43', value: '43' },
-        { label: '44', value: '44' },
-        { label: '45', value: '45' },
-        { label: '46', value: '46' },
-        { label: '47', value: '47' },
-        { label: '48', value: '48' },
-        { label: '49', value: '49' },
-        { label: '50', value: '50' },
-        { label: '51', value: '51' },
-        { label: '52', value: '52' },
-        { label: '53', value: '53' },
-        { label: '54', value: '54' },
-        { label: '55', value: '55' },
-        { label: '56', value: '56' },
-        { label: '57', value: '57' },
-        { label: '58', value: '58' },
-        { label: '59', value: '59' },
-        { label: '60', value: '60' },
+        { label: '80', value: '80' },
+        { label: '90', value: '90' },
+        { label: '100', value: '100' },
+        { label: '110', value: '110' },
+        { label: '120', value: '120' },
+        { label: '130', value: '130' },
+        { label: '140', value: '140' },
+        { label: '150', value: '150' },
+        { label: '160', value: '160' },
+        { label: '170', value: '170' },
+        { label: '180', value: '180' },
+        { label: '190', value: '190' },
+        { label: '200', value: '200' },
+        { label: '210', value: '210' },
+        { label: '220', value: '220' },
+        { label: '230', value: '230' },
+        { label: '240', value: '240' },
+        { label: '250', value: '250' },
+        { label: '260', value: '260' },
+        { label: '270', value: '270' },
+        { label: '280', value: '280' },
+        { label: '290', value: '290' },
+        { label: '300', value: '300' },
+        { label: '310', value: '310' },
+        { label: '320', value: '320' },
+        { label: '330', value: '330' },
+        { label: '340', value: '340' },
       ],
     };
   }
 
-  getPUScore(e) {
-    let i;
-    let pushupScore = this.state.pushupScore;
+  toggleModal = () => {
+    this.setState({ isModalVisible: !this.state.isModalVisible });
+  };
 
-    i = pushupScore.scoreSheet[e];
+  getDLScore(e) {
+    let i;
+    let deadliftScore = this.state.deadliftScore;
+
+    i = deadliftScore.scoreSheet[e];
 
     if (e != '') {
       if (this.props.mosLevel === '1') {
-        if (e < 30) {
+        if (e < 200) {
           return <Text style={styles.failed}>FAIL</Text>;
-        } else if (e >= 70) {
+        } else if (e >= 340) {
           return 100;
         } else {
           return i;
         }
       } else if (this.props.mosLevel === '2') {
-        if (e < 20) {
+        if (e < 180) {
           return <Text style={styles.failed}>FAIL</Text>;
-        } else if (e >= 70) {
+        } else if (e >= 340) {
           return 100;
         } else {
           return i;
         }
       } else if (this.props.mosLevel === '3') {
-        if (e < 10) {
+        if (e < 140) {
           return <Text style={styles.failed}>FAIL</Text>;
-        } else if (e >= 70) {
+        } else if (e >= 340) {
           return 100;
         } else {
           return i;
         }
       }
     }
+  }
+
+  ShowModalFunction(visible) {
+    this.setState({ isModelVisible: false });
   }
 
   _renderButton = (text, onPress) => (
@@ -182,14 +149,15 @@ export default class ReleasePushups extends Component {
   _renderButtonClose = (text, onPress) => (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.modalButton}>
-        <Text style={{ color: '#507858', fontWeight: 'bold', }}>{text}</Text>
+        <Text style={{color: '#507858', fontWeight: 'bold',}}>{text}</Text>
       </View>
     </TouchableOpacity>
   );
+
   _renderModalContent = () => (
     <View style={styles.modalContent}>
       <View>
-        <Text style={styles.modalTitle}>HAND RELEASE PUSH-UP - ARM EXTENSION (HRP)</Text>
+        <Text style={styles.modalTitle}>3 REPETITION MAXIMUM DEADLIFT (MDL)</Text>
       </View>
       <View>
         <Image
@@ -200,14 +168,14 @@ export default class ReleasePushups extends Component {
             resizeMode: 'contain'
 
           }}
-          source={require('../../assets/pu.png')}
+          source={require('../../../assets/dl.jpg')}
         />
       </View>
       <View>
         <Text style={styles.modalTitleSummary}>Objective:</Text>
       </View>
       <View>
-        <Text style={styles.modalSummary}>Complete as many Hand-Release Push-ups as possible in two minutes.</Text>
+        <Text style={styles.modalSummary}>Deadlift the maximum weight possible three times.</Text>
       </View>
       <View>
         <Text style={styles.modalTitleSummary}>Min/Max:</Text>
@@ -226,19 +194,18 @@ export default class ReleasePushups extends Component {
   );
 
   render() {
-    const { onPUHandler } = this.props;
-
+    const { onDLHandler } = this.props;
     if (
       this.props.mosLevel === '1' ||
       this.props.mosLevel === '2' ||
       this.props.mosLevel === '3'
     ) {
       if (
-        this.props.puScore != 0 &&
-        this.props.puScoreInput != null &&
-        (this.props.puScoreInput == 30 ||
-          this.props.puScoreInput == 20 ||
-          this.props.puScoreInput == 10)
+        this.props.dlScore != 0 &&
+        this.props.dlScoreInput != null &&
+        (this.props.dlScoreInput == 200 ||
+          this.props.dlScoreInput == 180 ||
+          this.props.dlScoreInput == 140)
       ) {
         var picker = (
           <Picker
@@ -250,15 +217,15 @@ export default class ReleasePushups extends Component {
               },
             }}
             placeholder={{
-              label: this.props.puScoreInput.toString(),
-              value: this.props.puScoreInput,
+              label: this.props.dlScoreInput.toString(),
+              value: this.props.dlScoreInput,
               color: 'black',
             }}
             items={this.state.items}
             onValueChange={value => {
-              onPUHandler(value, this.getPUScore(value));
+              onDLHandler(value, this.getDLScore(value));
             }}
-            value={this.props.puScoreInput}
+            value={this.props.dlScoreInput}
           />
         );
       } else {
@@ -267,14 +234,14 @@ export default class ReleasePushups extends Component {
             {...this.props}
             style={pickerSelectStyles}
             placeholder={{
-              label: 'Reps',
+              label: 'Weight',
               value: 0,
             }}
             items={this.state.items}
             onValueChange={value => {
-              onPUHandler(value, this.getPUScore(value));
+              onDLHandler(value, this.getDLScore(value));
             }}
-            value={this.props.puScoreInput}
+            value={this.props.dlScoreInput}
           />
         );
       }
@@ -284,16 +251,15 @@ export default class ReleasePushups extends Component {
           {...this.props}
           style={pickerSelectStyles}
           placeholder={{
-            label: 'Reps',
+            label: 'Weight',
             value: 0,
           }}
           disabled
           items={this.state.items}
           onValueChange={value => {
-            onPUHandler(value, this.getPUScore(value));
+            onDLHandler(value, this.getDLScore(value));
           }}
-          value={this.props.puScoreInput}
-          selectedValue={this.props.puScore}
+          value={this.props.dlScoreInput}
         />
       );
     }
@@ -302,8 +268,9 @@ export default class ReleasePushups extends Component {
       <View>
         <View style={styles.eventContainer}>
           <View styles={styles.child1}>
+            <Text style={styles.titleName}>Events</Text>
             <View>
-              {this._renderButton('PUSH-UP', () =>
+              {this._renderButton('DEADLIFT', () =>
                 this.setState({ visibleModal: 1 })
               )}
               <Modal isVisible={this.state.visibleModal === 1}>
@@ -312,15 +279,17 @@ export default class ReleasePushups extends Component {
             </View>
           </View>
           <View styles={styles.child2}>
+            <Text style={styles.titleName}>Raw</Text>
             <View>{picker}</View>
           </View>
           <View styles={styles.child3}>
+            <Text style={styles.titleName}>Points</Text>
             <View style={styles.pointsContainer}>
               <Text
                 style={
-                  this.props.puScore < 1 ? styles.initialScore : styles.output
+                  this.props.dlScore < 1 ? styles.initialScore : styles.output
                 }>
-                {this.props.puScore}
+                {this.props.dlScore}
               </Text>
             </View>
           </View>
