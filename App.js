@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { Asset } from 'expo-asset';
 import { AppLoading } from 'expo';
 import calcHome from './components/calc/calcHome';
-import Workouts from './components/Workouts';
+import Instructions from './components/Instructions';
 import Docs from './components/docs/Docs';
 import { Ionicons } from '@expo/vector-icons';
 import {
@@ -40,8 +40,8 @@ export default class App extends React.Component {
 
               if (route.name === 'Calc') {
                 iconName = focused ? 'ios-calculator' : 'ios-calculator';
-              } else if (route.name === 'Workouts') {
-                iconName = focused ? 'ios-power' : 'ios-power';
+              } else if (route.name === 'Instructions') {
+                iconName = focused ? 'md-clipboard' : 'md-clipboard';
               } else if (route.name === 'Docs') {
                 iconName = focused ? 'ios-book' : 'ios-book';
               }
@@ -53,9 +53,9 @@ export default class App extends React.Component {
             inactiveTintColor: 'gray',
           }}
         >
-          <Tab.Screen name="Docs" component={Docs} />
+          <Tab.Screen name="Instructions" component={Instructions} />
           <Tab.Screen name="Calc" component={calcHome} />
-          <Tab.Screen name="Workouts" component={Workouts} />
+          <Tab.Screen name="Docs" component={Docs} />
         </Tab.Navigator>
       </NavigationContainer>
     );
