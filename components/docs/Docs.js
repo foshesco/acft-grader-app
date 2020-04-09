@@ -142,78 +142,105 @@ function Swim() {
 function DocsHome({ navigation }) {
     return (
         <View style={{ flex: 1 }}>
-            <View style={{ padding: hp('2%') }}>
-                <TouchableOpacity style={styles.docButton} onPress={() => navigation.navigate('ACFT')}>
-                    <Text style={styles.docButtonText}>
-                        ACFT IOC Manual
+            <View style={styles.headerContainer}><Text style={styles.headerText}>ACFT General Info</Text></View>
+            <View style={styles.container} >
+                <View style={styles.item}>
+                    <TouchableOpacity style={styles.docButton} onPress={() => navigation.navigate('ACFT')}>
+                        <Text style={styles.docButtonText}>
+                            ACFT IOC Manual
                     </Text>
-                </TouchableOpacity >
-                <TouchableOpacity style={styles.docButton} onPress={() => navigation.navigate('ACFT_Standards')}>
-                    <Text style={styles.docButtonText}>
-                        ACFT Standards
+                    </TouchableOpacity >
+                </View>
+                <View style={styles.item} >
+                    <TouchableOpacity style={styles.docButton} onPress={() => navigation.navigate('ACFT_Standards')}>
+                        <Text style={styles.docButtonText}>
+                            ACFT Standards
                     </Text>
-                </TouchableOpacity >
-                <TouchableOpacity style={styles.docButton} onPress={() => navigation.navigate('ACFT_Alternate_Events')}>
-                    <Text style={styles.docButtonText}>
-                        ACFT Alternate Events
+                    </TouchableOpacity >
+                </View>
+                <View style={styles.item}>
+                    <TouchableOpacity style={styles.docButton} onPress={() => navigation.navigate('ACFT_Alternate_Events')}>
+                        <Text style={styles.docButtonText}>
+                            ACFT Alternate Events
                     </Text>
-                </TouchableOpacity >
-
-                <Button
-                    style={styles.docButton}
-                    title="ACFT IOC Manual"
-                    onPress={() => navigation.navigate('ACFT')}
-                />
-                <Button
-                    title="ACFT Standards"
-                    onPress={() => navigation.navigate('ACFT_Standards')}
-                />
-                <Button
-                    title="ACFT Alternate Events"
-                    onPress={() => navigation.navigate('ACFT_Alternate_Events')}
-                />
-                <Button
-                    title="AR 670-1"
-                    onPress={() => navigation.navigate('AR_670_1')}
-                />
+                    </TouchableOpacity >
+                </View>
+                <View style={styles.item}>
+                    <TouchableOpacity style={styles.docButton} onPress={() => navigation.navigate('AR_670_1')}>
+                        <Text style={styles.docButtonText}>
+                            AR 670-1
+                    </Text>
+                    </TouchableOpacity >
+                </View>
             </View>
-            <View style={{ padding: hp('2%') }}>
-                <Button
-                    title="3 Repetition Maximum Deadlift"
-                    onPress={() => navigation.navigate('Deadlift')}
-                />
-                <Button
-                    title="Standing Power Throw"
-                    onPress={() => navigation.navigate('Standing_Power_Throw')}
-                />
-                <Button
-                    title="Hand-Release Push-Up"
-                    onPress={() => navigation.navigate('Pushup')}
-                />
-                <Button
-                    title="Sprint-Drag-Carry"
-                    onPress={() => navigation.navigate('Sprint_Drag_Carry')}
-                />
-                <Button
-                    title="Leg Tuck"
-                    onPress={() => navigation.navigate('Leg_Tuck')}
-                />
-                <Button
-                    title="2-Mile Run"
-                    onPress={() => navigation.navigate('Two_Mile_Run')}
-                />
-                <Button
-                    title="5000 Meter Row - Alternate"
-                    onPress={() => navigation.navigate('Row')}
-                />
-                <Button
-                    title="15000 Meter Bike - Alternate"
-                    onPress={() => navigation.navigate('Bike')}
-                />
-                <Button
-                    title="1000 Meter Swim - Alternate"
-                    onPress={() => navigation.navigate('Swim')}
-                />
+            <View style={styles.headerContainer}><Text style={styles.headerText}>ACFT Event Info</Text></View>
+            <View style={styles.container2} >
+                <View style={styles.item}>
+                    <TouchableOpacity style={styles.docButton} onPress={() => navigation.navigate('Deadlift')}>
+                        <Text style={styles.docButtonText}>
+                            3 Repetition Maximum Deadlift
+                    </Text>
+                    </TouchableOpacity >
+                </View>
+                <View style={styles.item}>
+                    <TouchableOpacity style={styles.docButton} onPress={() => navigation.navigate('Standing_Power_Throw')}>
+                        <Text style={styles.docButtonText}>
+                            Standing Power Throw
+                    </Text>
+                    </TouchableOpacity >
+                </View>
+                <View style={styles.item}>
+                    <TouchableOpacity style={styles.docButton} onPress={() => navigation.navigate('Pushup')}>
+                        <Text style={styles.docButtonText}>
+                            Hand-Release Push-Up
+                    </Text>
+                    </TouchableOpacity >
+                </View>
+                <View style={styles.item}>
+                    <TouchableOpacity style={styles.docButton} onPress={() => navigation.navigate('Sprint_Drag_Carry')}>
+                        <Text style={styles.docButtonText}>
+                            Sprint-Drag-Carry
+                    </Text>
+                    </TouchableOpacity >
+                </View>
+                <View style={styles.item}>
+                    <TouchableOpacity style={styles.docButton} onPress={() => navigation.navigate('Leg_Tuck')}>
+                        <Text style={styles.docButtonText}>
+                            Leg Tuck
+                    </Text>
+                    </TouchableOpacity >
+                </View>
+                <View style={styles.item}>
+                    <TouchableOpacity style={styles.docButton} onPress={() => navigation.navigate('Two_Mile_Run')}>
+                        <Text style={styles.docButtonText}>
+                            2-Mile Run
+                    </Text>
+                    </TouchableOpacity >
+                </View>
+            </View>
+            <View style={styles.headerContainer}><Text style={styles.headerText}>ACFT Alternate Event Info</Text></View>
+            <View style={styles.container} >
+                <View style={styles.item}>
+                    <TouchableOpacity style={styles.docButton} onPress={() => navigation.navigate('Row')}>
+                        <Text style={styles.docButtonText}>
+                            5000 Meter Row (Alternate Event)
+                    </Text>
+                    </TouchableOpacity >
+                </View>
+                <View style={styles.item}>
+                    <TouchableOpacity style={styles.docButton} onPress={() => navigation.navigate('Bike')}>
+                        <Text style={styles.docButtonText}>
+                            15000 Meter Bike (Alternate Event)
+                    </Text>
+                    </TouchableOpacity >
+                </View>
+                <View style={styles.item}>
+                    <TouchableOpacity style={styles.docButton} onPress={() => navigation.navigate('Swim')}>
+                        <Text style={styles.docButtonText}>
+                            1000 Meter Swim (Alternate Event)
+                    </Text>
+                    </TouchableOpacity >
+                </View>
             </View>
         </View >
     );
@@ -248,9 +275,39 @@ export default function Docs() {
 }
 
 const styles = StyleSheet.create({
-    docButton: {
-        width: wp('40%'),
+    headerContainer: {
         height: hp('5%'),
+        paddingTop: hp('1%'),
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignContent: 'center'
+    },
+    headerText: {
+        fontSize: hp('2%'),
+        paddingTop: hp('1.5%'),
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    container: {
+        height: hp('20%'),
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        alignContent: 'center',
+    },
+    item: {
+        padding: wp('2%'),
+    },
+    container2: {
+        height: hp('26%'),
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        alignContent: 'center',
+    },
+    docButton: {
+        width: wp('42%'),
+        height: hp('6%'),
         shadowColor: 'rgba(0,0,0, .4)',
         shadowOffset: { height: 1, width: 1 },
         shadowOpacity: 1,
@@ -266,6 +323,7 @@ const styles = StyleSheet.create({
     docButtonText: {
         color: '#507858',
         fontWeight: 'bold',
-        fontSize: hp('1.8%')
+        fontSize: hp('1.8%'),
+        textAlign: 'center'
     }
 })
