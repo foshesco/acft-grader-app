@@ -2,9 +2,10 @@ import React from 'react';
 import { View } from 'react-native';
 import { Asset } from 'expo-asset';
 import { AppLoading } from 'expo';
-import calcHome from './components/calc/calcHome';
+import CalcHome from './components/calc/calcHome';
+import TimerHome from './components/TimerHome';
 import Instructions from './components/Instructions';
-import Docs from './components/docs/Docs';
+import Docs from './components/Docs';
 import { Ionicons } from '@expo/vector-icons';
 import {
   widthPercentageToDP as wp,
@@ -42,6 +43,8 @@ export default class App extends React.Component {
                 iconName = focused ? 'ios-calculator' : 'ios-calculator';
               } else if (route.name === 'Instructions') {
                 iconName = focused ? 'md-clipboard' : 'md-clipboard';
+              } else if (route.name === 'Timer') {
+                iconName = focused ? 'ios-timer' : 'ios-timer';
               } else if (route.name === 'Docs') {
                 iconName = focused ? 'ios-book' : 'ios-book';
               }
@@ -54,7 +57,8 @@ export default class App extends React.Component {
           }}
         >
           <Tab.Screen name="Instructions" component={Instructions} />
-          <Tab.Screen name="Calc" component={calcHome} />
+          <Tab.Screen name="Calc" component={CalcHome} />
+          <Tab.Screen name="Timer" component={TimerHome} />
           <Tab.Screen name="Docs" component={Docs} />
         </Tab.Navigator>
       </NavigationContainer>

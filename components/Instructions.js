@@ -6,7 +6,7 @@ import {
     heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
-function ACFT({ navigation }) {
+function Instructions({ navigation }) {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.scrollView}>
@@ -212,7 +212,7 @@ function ACFT({ navigation }) {
 
 const HomeStack = createStackNavigator();
 
-export default function Instructions() {
+export default function InstructionsHome() {
     return (
         <HomeStack.Navigator
             headerMode="screen"
@@ -220,7 +220,7 @@ export default function Instructions() {
                 headerTintColor: 'white',
                 headerStyle: { backgroundColor: '#507858' },
             }}>
-            <HomeStack.Screen name="ACFT" component={ACFT} />
+            <HomeStack.Screen name="Instructions" component={Instructions} />
         </HomeStack.Navigator>
     );
 }
