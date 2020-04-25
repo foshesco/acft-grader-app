@@ -54,8 +54,8 @@ export default class Time extends Component {
                         getTime={this.getFormattedTime} />
                     <View style={styles.buttonsRow}>
                         <View style={styles.button1}>
-                            <TouchableOpacity style={styles.button} onPress={this.toggleStopwatch}>
-                                <TouchableOpacity style={styles.buttonRing} onPress={this.toggleStopwatch}>
+                            <TouchableOpacity style={[this.state.stopwatchStart == true ? styles.buttonStop : styles.buttonStart]} onPress={this.toggleStopwatch}>
+                                <TouchableOpacity style={[this.state.stopwatchStart == true ? styles.buttonRing2 : styles.buttonRing]} onPress={this.toggleStopwatch}>
                                     <Text style={styles.buttonText}>{!this.state.stopwatchStart ? "Start" : "Stop"}</Text>
                                 </TouchableOpacity>
                             </TouchableOpacity>
@@ -77,8 +77,8 @@ export default class Time extends Component {
                         getTime={this.getFormattedTime} />
                     <View style={styles.buttonsRow}>
                         <View style={styles.button1}>
-                            <TouchableOpacity style={[this.state.timerStart == "Stop" ? styles.buttonStop : styles.buttonStart]} onPress={this.toggleTimer}>
-                                <TouchableOpacity style={styles.buttonRing} onPress={this.toggleTimer}>
+                            <TouchableOpacity style={[this.state.timerStart == true ? styles.buttonStop : styles.buttonStart]} onPress={this.toggleTimer}>
+                                <TouchableOpacity style={[this.state.timerStart == true ? styles.buttonRing2 : styles.buttonRing]} onPress={this.toggleTimer}>
                                     <Text style={styles.buttonText}>{!this.state.timerStart ? "Start" : "Stop"}</Text>
                                 </TouchableOpacity>
                             </TouchableOpacity>
@@ -146,13 +146,13 @@ const styles = StyleSheet.create({
         shadowOffset: { height: 2, width: 1 },
         shadowOpacity: 1,
         shadowRadius: 1,
-        backgroundColor: '#ffff7f',
+        backgroundColor: '#507858',
         justifyContent: 'space-evenly',
         alignItems: 'center',
         flexDirection: 'row',
         borderRadius: hp('50%'),
         borderWidth: 1,
-        borderColor: '#ffff7f',
+        borderColor: '#507858',
         marginRight: wp('10%')
     },
     buttonText: {
@@ -184,6 +184,16 @@ const styles = StyleSheet.create({
         width: wp('21.5%'),
         height: hp('10%'),
         borderColor: '#101010',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+    },
+    buttonRing2: {
+        borderRadius: hp('50%'),
+        borderWidth: 3,
+        width: wp('21.5%'),
+        height: hp('10%'),
+        borderColor: '#b2b200',
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row',
