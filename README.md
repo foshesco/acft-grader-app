@@ -1,4 +1,4 @@
-<h2>ACFT Calc</h2>
+<h2>ACFT: Grader</h2>
 
 Hope you've found the app useful. If you have any questions or comments, email me at foshesco@gmail.com.
 
@@ -22,9 +22,9 @@ Personal Information we collect
 None.
 
 Ads and analytics
-ACFT Calc collects aggregate, anonymous statistics, such as the percentage of users who use particular features, to improve the app.
+ACFT: Grader collects aggregate, anonymous statistics, such as the percentage of users who use particular features, to improve the app.
 
-No personal data is used to target ACFT Calc’s ads.
+No personal data is used to target ACFT: Grader’s ads.
 
 Information usage
 We use the information we collect to operate and improve our website, apps, and customer support.
