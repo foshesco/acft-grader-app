@@ -52,14 +52,20 @@ export default class App extends React.Component {
             },
           })}
           tabBarOptions={{
-            activeTintColor: '#507858',
-            inactiveTintColor: 'gray',
+            inactiveBackgroundColor: '#507858',
+            activeBackgroundColor: '#507858',
+            activeTintColor: 'darkgray',
+            inactiveTintColor: 'white',
+            labelPosition: 'below-icon',
+            style: {
+              backgroundColor: '#507858',
+            },
           }}
         >
-          <Tab.Screen name="Instructions" component={Instructions} />
-          <Tab.Screen name="Calc" component={CalcHome} />
-          <Tab.Screen name="Timer" component={TimerHome} />
-          <Tab.Screen name="Docs" component={Docs} />
+          <Tab.Screen name='Instructions' component={Instructions} />
+          <Tab.Screen name='Calc' component={CalcHome} />
+          <Tab.Screen name='Timer' component={TimerHome} />
+          <Tab.Screen name='Docs' component={Docs} />
         </Tab.Navigator>
       </NavigationContainer>
     );
@@ -68,12 +74,9 @@ export default class App extends React.Component {
   async _cacheResourcesAsync() {
     const images = [require('./assets/splash.png')];
 
-    const cacheImages = images.map(image => {
+    const cacheImages = images.map((image) => {
       return Asset.fromModule(image).downloadAsync();
     });
     return Promise.all(cacheImages);
   }
 }
-
-
-

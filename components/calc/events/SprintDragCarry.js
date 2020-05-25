@@ -4,7 +4,15 @@ import { styles } from './Styles';
 import Picker from 'react-native-picker-select';
 import { pickerSelectStyles } from './PickerStyles';
 import Modal from 'react-native-modal';
-import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
+import {
+  Table,
+  TableWrapper,
+  Row,
+  Rows,
+  Col,
+  Cols,
+  Cell,
+} from 'react-native-table-component';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -16,7 +24,7 @@ export default class SprintDragCarry extends Component {
 
     this.state = {
       visibleModal: false,
-      tableHead: ['', 'Worst Time', 'Min Points', 'Best Time', 'Max Points',],
+      tableHead: ['', 'Worst Time', 'Min Points', 'Best Time', 'Max Points'],
       tableTitle: ['Heavy', 'Significant', 'Moderate'],
       tableData: [
         ['2:10', '70', '1:33', '100'],
@@ -234,7 +242,7 @@ export default class SprintDragCarry extends Component {
   _renderButtonClose = (text, onPress) => (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.modalButton}>
-      <Text style={{color: '#507858', fontWeight: 'bold',}}>{text}</Text>
+        <Text style={{ color: '#507858', fontWeight: 'bold' }}>{text}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -242,7 +250,15 @@ export default class SprintDragCarry extends Component {
   _renderModalContent = () => (
     <View style={styles.modalContent}>
       <View>
-        <Text style={styles.modalTitle}>SPRINT-DRAG-CARRY (S-D-C)</Text>
+        <Text
+          style={{
+            fontSize: hp('2%'),
+            padding: hp('2%'),
+            textAlign: 'center',
+          }}
+        >
+          SPRINT-DRAG-CARRY (S-D-C)
+        </Text>
       </View>
       <View>
         <Image
@@ -250,8 +266,7 @@ export default class SprintDragCarry extends Component {
             width: wp('80%'),
             height: hp('10%'),
             paddingBottom: hp('2%'),
-            resizeMode: 'contain'
-
+            resizeMode: 'contain',
           }}
           source={require('../../../assets/sdc.jpg')}
         />
@@ -260,21 +275,41 @@ export default class SprintDragCarry extends Component {
         <Text style={styles.modalTitleSummary}>Objective:</Text>
       </View>
       <View>
-        <Text style={styles.modalSummary}>Conduct 5 x 50 meter shuttles for time - sprint, drag, lateral, carry and sprint.</Text>
+        <Text style={styles.modalSummary}>
+          Conduct 5 x 50 meter shuttles for time - sprint, drag, lateral, carry
+          and sprint.
+        </Text>
       </View>
       <View>
         <Text style={styles.modalTitleSummary}>Min/Max:</Text>
       </View>
       <View style={styles.tableContainer}>
         <Table borderStyle={{ borderWidth: 1 }}>
-          <Row data={this.state.tableHead} flexArr={[2, 1, 1, 1]} style={styles.tableHead} textStyle={styles.tableText} />
+          <Row
+            data={this.state.tableHead}
+            flexArr={[2, 1, 1, 1]}
+            style={styles.tableHead}
+            textStyle={styles.tableText}
+          />
           <TableWrapper style={styles.tableWrapper}>
-            <Col data={this.state.tableTitle} style={styles.tableTitle} heightArr={[hp('5%'), hp('5%')]} textStyle={styles.tableText} />
-            <Rows data={this.state.tableData} flexArr={[1, 1]} style={styles.tableRow} textStyle={styles.tableText} />
+            <Col
+              data={this.state.tableTitle}
+              style={styles.tableTitle}
+              heightArr={[hp('5%'), hp('5%')]}
+              textStyle={styles.tableText}
+            />
+            <Rows
+              data={this.state.tableData}
+              flexArr={[1, 1]}
+              style={styles.tableRow}
+              textStyle={styles.tableText}
+            />
           </TableWrapper>
         </Table>
       </View>
-      {this._renderButtonClose('Close', () => this.setState({ visibleModal: null }))}
+      {this._renderButtonClose('Close', () =>
+        this.setState({ visibleModal: null })
+      )}
     </View>
   );
 
@@ -307,7 +342,7 @@ export default class SprintDragCarry extends Component {
               color: 'black',
             }}
             items={this.state.items}
-            onValueChange={value => {
+            onValueChange={(value) => {
               onSDCHandler(value, this.getSDCScore(value));
             }}
             value={this.props.sdcScoreInput}
@@ -323,7 +358,7 @@ export default class SprintDragCarry extends Component {
               value: 0,
             }}
             items={this.state.items}
-            onValueChange={value => {
+            onValueChange={(value) => {
               onSDCHandler(value, this.getSDCScore(value));
             }}
             value={this.props.sdcScoreInput}
@@ -341,7 +376,7 @@ export default class SprintDragCarry extends Component {
           }}
           disabled
           items={this.state.items}
-          onValueChange={value => {
+          onValueChange={(value) => {
             onSDCHandler(value, this.getSDCScore(value));
           }}
           value={this.props.sdcScoreInput}
@@ -373,7 +408,8 @@ export default class SprintDragCarry extends Component {
               <Text
                 style={
                   this.props.sdcScore < 1 ? styles.initialScore : styles.output
-                }>
+                }
+              >
                 {this.props.sdcScore}
               </Text>
             </View>
